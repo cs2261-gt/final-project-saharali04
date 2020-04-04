@@ -1,8 +1,11 @@
 // Header files
 #include "myLib.h"
+#include "game.h"
+#include "game2.h"
 #include "splashScreen.h"
 #include "instructionsScreen.h"
 #include "gameScreen.h"
+#include "gameScreen2.h"
 #include "pauseScreen.h"
 #include "winScreen.h"
 #include "loseScreen.h"
@@ -17,6 +20,8 @@ void goToInstruction();
 void instruction();
 void goToGame();
 void game();
+void goToGame2();
+void game2();
 void goToPause();
 void pause();
 void goToWin();
@@ -47,7 +52,7 @@ void initialize();
     int seed;
 
     // States
-    enum {SPLASH, INSTRUCTION, GAME, PAUSE, WIN, LOSE};
+    enum {SPLASH, INSTRUCTION, GAME, GAME2, PAUSE, WIN, LOSE};
     int state;
 
 int main() {
@@ -67,6 +72,9 @@ int main() {
                 break;
             case GAME:
                 game();
+                break;
+            case GAME2:
+                game2();
                 break;
             case PAUSE:
                 pause();
@@ -91,9 +99,13 @@ void initialize() {
 
     DMANow(3, spriteSheetPal, SPRITEPALETTE, spriteSheetPalLen/2);
     DMANow(3, spriteSheetTiles, &CHARBLOCK[4], spriteSheetTilesLen/2);
+    hideSprites();
+    REG_DISPCTL = MODE0 | SPRITE_ENABLE;
+    initGame();
     buttons = BUTTONS; 
     hOff = 0;
     vOff = 0;
+    goToSplash();
 
 }
 
@@ -132,14 +144,13 @@ void splash() {
         shadowOAM[i].attr2 = 0;
     }
 
-    hideSprites();
-    waitForVBlank();
 
     DMANow(3, shadowOAM, OAM, 128 * 4);
 
     if (BUTTON_PRESSED(BUTTON_START)) 
     {
         srand(seed);
+        initGame();
         goToGame(); 
     }
 
@@ -186,7 +197,6 @@ void instruction() {
 void goToGame() {
 
     hideSprites();
-    waitForVBlank();
     state = GAME;
 
 }
@@ -199,7 +209,7 @@ void game() {
     DMANow(3, gameScreenPal, PALETTE, gameScreenPalLen/2);
 
     // Set up bg 1 control register
-    REG_BG1CNT = BG_SIZE_LARGE | BG_CHARBLOCK(0) | BG_SCREENBLOCK(31);
+    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(31);
 
     // Load loseScreen tiles to charblock
     DMANow(3, gameScreenTiles, &CHARBLOCK[0], gameScreenTilesLen/2);
@@ -207,18 +217,70 @@ void game() {
     // Load loseScreen map to screenblock
     DMANow(3, gameScreenMap, &SCREENBLOCK[31], gameScreenMapLen/2);
 
+    updateGame();
+
     if (BUTTON_PRESSED(BUTTON_START)) 
     {
         goToPause();
     }
-
-    if (BUTTON_PRESSED(BUTTON_LEFT)) 
+    if (BUTTON_PRESSED(BUTTON_SELECT)) 
     {
-        goToWin();
+        goToGame2();
     }
 
-    if (BUTTON_PRESSED(BUTTON_RIGHT)) 
+    if (hasLost) {
+        goToLose();
+    }
+
+}
+
+
+// Sets up the game state
+void goToGame2() {
+
+    REG_DISPCTL = MODE0 | BG1_ENABLE;
+    hideSprites();
+    state = GAME2;
+
+}
+
+// Runs every frame of the game state
+void game2() {
+
+    for (int i = 1; i < SHADOWOAMLENGTH; i++) 
     {
+        shadowOAM[i].attr0 = 0;
+        shadowOAM[i].attr1 = 0;
+        shadowOAM[i].attr2 = 0;
+    }
+
+    DMANow(3, shadowOAM, OAM, 128 * 4);
+    
+    DMANow(3, gameScreen2Pal, PALETTE, gameScreen2PalLen/2);
+
+    // Set up bg 1 control register
+    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(31);
+
+    // Load loseScreen tiles to charblock
+    DMANow(3, gameScreen2Tiles, &CHARBLOCK[0], gameScreen2TilesLen/2);
+
+    // Load loseScreen map to screenblock
+    DMANow(3, gameScreen2Map, &SCREENBLOCK[31], gameScreen2MapLen/2);
+    
+    REG_DISPCTL = MODE0 | BG1_ENABLE | SPRITE_ENABLE;
+    
+    drawPanda();
+    
+    if (BUTTON_PRESSED(BUTTON_START)) 
+    {
+        goToPause();
+    }
+    if (BUTTON_PRESSED(BUTTON_SELECT)) 
+    {
+        goToGame();
+    }
+
+    if (hasLost) {
         goToLose();
     }
 

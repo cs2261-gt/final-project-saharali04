@@ -8,16 +8,16 @@
 	.eabi_attribute 30, 2
 	.eabi_attribute 34, 0
 	.eabi_attribute 18, 4
-	.file	"gameScreen.c"
+	.file	"gameScreen2.c"
 	.text
-	.global	gameScreenPal
-	.global	gameScreenMap
-	.global	gameScreenTiles
+	.global	gameScreen2Pal
+	.global	gameScreen2Map
+	.global	gameScreen2Tiles
 	.section	.rodata
 	.align	2
-	.type	gameScreenPal, %object
-	.size	gameScreenPal, 512
-gameScreenPal:
+	.type	gameScreen2Pal, %object
+	.size	gameScreen2Pal, 512
+gameScreen2Pal:
 	.short	0
 	.short	448
 	.short	576
@@ -274,9 +274,9 @@ gameScreenPal:
 	.short	0
 	.short	0
 	.short	0
-	.type	gameScreenMap, %object
-	.size	gameScreenMap, 2048
-gameScreenMap:
+	.type	gameScreen2Map, %object
+	.size	gameScreen2Map, 2048
+gameScreen2Map:
 	.short	1
 	.short	1
 	.short	1
@@ -1301,9 +1301,9 @@ gameScreenMap:
 	.short	0
 	.short	0
 	.short	0
-	.type	gameScreenTiles, %object
-	.size	gameScreenTiles, 64
-gameScreenTiles:
+	.type	gameScreen2Tiles, %object
+	.size	gameScreen2Tiles, 64
+gameScreen2Tiles:
 	.short	0
 	.short	0
 	.short	0
@@ -1320,20 +1320,20 @@ gameScreenTiles:
 	.short	0
 	.short	0
 	.short	0
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
+	.short	-21846
+	.short	-21846
+	.short	-21846
+	.short	-21846
+	.short	-21846
+	.short	-21846
+	.short	-21846
+	.short	-21846
+	.short	-21846
+	.short	-21846
+	.short	-21846
+	.short	-21846
+	.short	-21846
+	.short	-21846
+	.short	-21846
+	.short	-21846
 	.ident	"GCC: (devkitARM release 53) 9.1.0"

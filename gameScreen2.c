@@ -1,29 +1,29 @@
 
-//{{BLOCK(gameScreen)
+//{{BLOCK(gameScreen2)
 
 //======================================================================
 //
-//	gameScreen, 256x256@4, 
+//	gameScreen2, 256x256@4, 
 //	+ palette 256 entries, not compressed
 //	+ 2 tiles (t|f|p reduced) not compressed
 //	+ regular map (in SBBs), not compressed, 32x32 
 //	Total size: 512 + 64 + 2048 = 2624
 //
-//	Time-stamp: 2020-04-04, 15:53:04
+//	Time-stamp: 2020-04-04, 16:02:38
 //	Exported by Cearn's GBA Image Transmogrifier, v0.8.3
 //	( http://www.coranac.com/projects/#grit )
 //
 //======================================================================
 
-const unsigned short gameScreenTiles[32] __attribute__((aligned(4)))=
+const unsigned short gameScreen2Tiles[32] __attribute__((aligned(4)))=
 {
 	0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,
 	0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,
-	0xBBBB,0xBBBB,0xBBBB,0xBBBB,0xBBBB,0xBBBB,0xBBBB,0xBBBB,
-	0xBBBB,0xBBBB,0xBBBB,0xBBBB,0xBBBB,0xBBBB,0xBBBB,0xBBBB,
+	0xAAAA,0xAAAA,0xAAAA,0xAAAA,0xAAAA,0xAAAA,0xAAAA,0xAAAA,
+	0xAAAA,0xAAAA,0xAAAA,0xAAAA,0xAAAA,0xAAAA,0xAAAA,0xAAAA,
 };
 
-const unsigned short gameScreenMap[1024] __attribute__((aligned(4)))=
+const unsigned short gameScreen2Map[1024] __attribute__((aligned(4)))=
 {
 	0x0001,0x0001,0x0001,0x0001,0x0001,0x0001,0x0001,0x0001,
 	0x0001,0x0001,0x0001,0x0001,0x0001,0x0001,0x0001,0x0001,
@@ -170,7 +170,7 @@ const unsigned short gameScreenMap[1024] __attribute__((aligned(4)))=
 	0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,
 };
 
-const unsigned short gameScreenPal[256] __attribute__((aligned(4)))=
+const unsigned short gameScreen2Pal[256] __attribute__((aligned(4)))=
 {
 	0x0000,0x01C0,0x0240,0x0010,0x217A,0x7C00,0x3FC0,0x5415,
 	0x7010,0x033B,0x599F,0x7FFF,0x00D0,0x3CDF,0x4211,0x5FA0,
@@ -209,4 +209,4 @@ const unsigned short gameScreenPal[256] __attribute__((aligned(4)))=
 	0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,
 };
 
-//}}BLOCK(gameScreen)
+//}}BLOCK(gameScreen2)
