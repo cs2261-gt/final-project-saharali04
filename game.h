@@ -35,6 +35,10 @@
     FOODSPRITE food[30];
     #define FOODCOUNT 30
 
+    // Basket variables
+    FOODSPRITE baskets[3];
+    #define BASKETCOUNT 3
+
     // If player has lost
     extern int hasLost;
 
@@ -49,3 +53,5 @@ void drawFood();
 void updateGame();
 void initGame();
 void initFood();
+void drawBaskets();
+void initBaskets();

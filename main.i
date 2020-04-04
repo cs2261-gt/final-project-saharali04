@@ -150,6 +150,10 @@ int collision(int colA, int rowA, int widthA, int heightA, int colB, int rowB, i
 
 
 
+    FOODSPRITE baskets[3];
+
+
+
     extern int hasLost;
 
 
@@ -163,17 +167,9 @@ void drawFood();
 void updateGame();
 void initGame();
 void initFood();
+void drawBaskets();
+void initBaskets();
 # 4 "main.c" 2
-# 1 "game2.h" 1
-# 22 "game2.h"
-extern const unsigned short game2Tiles[32];
-
-
-extern const unsigned short game2Map[1024];
-
-
-extern const unsigned short game2Pal[256];
-# 5 "main.c" 2
 # 1 "splashScreen.h" 1
 # 22 "splashScreen.h"
 extern const unsigned short splashScreenTiles[1536];
@@ -183,7 +179,7 @@ extern const unsigned short splashScreenMap[1024];
 
 
 extern const unsigned short splashScreenPal[256];
-# 6 "main.c" 2
+# 5 "main.c" 2
 # 1 "instructionsScreen.h" 1
 # 22 "instructionsScreen.h"
 extern const unsigned short instructionsScreenTiles[6432];
@@ -193,7 +189,7 @@ extern const unsigned short instructionsScreenMap[1024];
 
 
 extern const unsigned short instructionsScreenPal[256];
-# 7 "main.c" 2
+# 6 "main.c" 2
 # 1 "gameScreen.h" 1
 # 22 "gameScreen.h"
 extern const unsigned short gameScreenTiles[32];
@@ -203,7 +199,7 @@ extern const unsigned short gameScreenMap[1024];
 
 
 extern const unsigned short gameScreenPal[256];
-# 8 "main.c" 2
+# 7 "main.c" 2
 # 1 "gameScreen2.h" 1
 # 22 "gameScreen2.h"
 extern const unsigned short gameScreen2Tiles[32];
@@ -213,7 +209,7 @@ extern const unsigned short gameScreen2Map[1024];
 
 
 extern const unsigned short gameScreen2Pal[256];
-# 9 "main.c" 2
+# 8 "main.c" 2
 # 1 "pauseScreen.h" 1
 # 22 "pauseScreen.h"
 extern const unsigned short pauseScreenTiles[96];
@@ -223,7 +219,7 @@ extern const unsigned short pauseScreenMap[1024];
 
 
 extern const unsigned short pauseScreenPal[256];
-# 10 "main.c" 2
+# 9 "main.c" 2
 # 1 "winScreen.h" 1
 # 22 "winScreen.h"
 extern const unsigned short winScreenTiles[880];
@@ -233,7 +229,7 @@ extern const unsigned short winScreenMap[1024];
 
 
 extern const unsigned short winScreenPal[256];
-# 11 "main.c" 2
+# 10 "main.c" 2
 # 1 "loseScreen.h" 1
 # 22 "loseScreen.h"
 extern const unsigned short loseScreenTiles[944];
@@ -243,14 +239,14 @@ extern const unsigned short loseScreenMap[1024];
 
 
 extern const unsigned short loseScreenPal[256];
-# 12 "main.c" 2
+# 11 "main.c" 2
 # 1 "spriteSheet.h" 1
 # 21 "spriteSheet.h"
 extern const unsigned short spriteSheetTiles[16384];
 
 
 extern const unsigned short spriteSheetPal[256];
-# 13 "main.c" 2
+# 12 "main.c" 2
 # 1 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdlib.h" 1 3
 # 10 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdlib.h" 3
 # 1 "/opt/devkitpro/devkitARM/arm-none-eabi/include/machine/ieeefp.h" 1 3
@@ -1059,7 +1055,7 @@ extern long double _strtold_r (struct _reent *, const char *restrict, char **res
 extern long double strtold (const char *restrict, char **restrict);
 # 336 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdlib.h" 3
 
-# 14 "main.c" 2
+# 13 "main.c" 2
 # 1 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdio.h" 1 3
 # 36 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdio.h" 3
 # 1 "/opt/devkitpro/devkitARM/lib/gcc/arm-none-eabi/9.1.0/include/stddef.h" 1 3 4
@@ -1470,11 +1466,11 @@ _putchar_unlocked(int _c)
 }
 # 797 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdio.h" 3
 
-# 15 "main.c" 2
+# 14 "main.c" 2
 
 
 
-# 17 "main.c"
+# 16 "main.c"
 void goToSplash();
 void splash();
 void goToInstruction();
@@ -1700,6 +1696,7 @@ void game() {
 void goToGame2() {
 
     (*(unsigned short *)0x4000000) = 0 | (1<<9);
+    initBaskets();
     hideSprites();
     state = GAME2;
 
@@ -1707,13 +1704,6 @@ void goToGame2() {
 
 
 void game2() {
-
-    for (int i = 1; i < 128; i++)
-    {
-        shadowOAM[i].attr0 = 0;
-        shadowOAM[i].attr1 = 0;
-        shadowOAM[i].attr2 = 0;
-    }
 
     DMANow(3, shadowOAM, ((OBJ_ATTR*)(0x7000000)), 128 * 4);
 
@@ -1729,9 +1719,11 @@ void game2() {
     DMANow(3, gameScreen2Map, &((screenblock *)0x6000000)[31], 2048/2);
 
     (*(unsigned short *)0x4000000) = 0 | (1<<9) | (1<<12);
-    hideSprites();
+
     drawPanda();
-    hideSprites();
+    drawBaskets();
+    DMANow(3, shadowOAM, ((OBJ_ATTR*)(0x7000000)), 128 * 4);
+
 
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3)))))
     {

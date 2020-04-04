@@ -1,7 +1,6 @@
 // Header files
 #include "myLib.h"
 #include "game.h"
-#include "game2.h"
 #include "splashScreen.h"
 #include "instructionsScreen.h"
 #include "gameScreen.h"
@@ -239,6 +238,7 @@ void game() {
 void goToGame2() {
 
     REG_DISPCTL = MODE0 | BG1_ENABLE;
+    initBaskets();
     hideSprites();
     state = GAME2;
 
@@ -246,13 +246,6 @@ void goToGame2() {
 
 // Runs every frame of the game state
 void game2() {
-
-    for (int i = 1; i < SHADOWOAMLENGTH; i++) 
-    {
-        shadowOAM[i].attr0 = 0;
-        shadowOAM[i].attr1 = 0;
-        shadowOAM[i].attr2 = 0;
-    }
 
     DMANow(3, shadowOAM, OAM, 128 * 4);
     
@@ -270,6 +263,9 @@ void game2() {
     REG_DISPCTL = MODE0 | BG1_ENABLE | SPRITE_ENABLE;
     
     drawPanda();
+    drawBaskets();
+    DMANow(3, shadowOAM, OAM, 128 * 4);
+
     
     if (BUTTON_PRESSED(BUTTON_START)) 
     {

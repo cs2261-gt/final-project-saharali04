@@ -41,6 +41,10 @@
 
 
 
+    FOODSPRITE baskets[3];
+
+
+
     extern int hasLost;
 
 
@@ -54,6 +58,8 @@ void drawFood();
 void updateGame();
 void initGame();
 void initFood();
+void drawBaskets();
+void initBaskets();
 # 2 "game.c" 2
 # 1 "myLib.h" 1
 
@@ -1024,6 +1030,32 @@ void initFood() {
 
     }
 }
+
+void initBaskets() {
+    for (int i = 0; i < 3; i++)
+    {
+        baskets[i].active = 1;
+        baskets[i].width = 8;
+        baskets[i].height = 8;
+        baskets[i].col = 60 + i*60;
+        baskets[i].row = 80;
+        baskets[i].aniState = PANDANEUTRAL;
+
+    }
+}
+
+void drawBaskets() {
+    for (int i = 0; i < 3; i++)
+    {
+        if (baskets[i].active)
+        {
+            shadowOAM[i+32].attr0 = baskets[i].row | (0<<13) | (0<<14);
+            shadowOAM[i+32].attr1 = baskets[i].col | (0<<14);
+            shadowOAM[i+32].attr2 = ((0)*32+(baskets[i].aniState));
+        }
+    }
+}
+
 
 
 void updatePanda() {

@@ -52,6 +52,32 @@ void initFood() {
     }
 }
 
+void initBaskets() {
+    for (int i = 0; i < BASKETCOUNT; i++) 
+    {
+        baskets[i].active = 1;
+        baskets[i].width = 8;
+        baskets[i].height = 8;
+        baskets[i].col = 60 + i*60;
+        baskets[i].row = 80;
+        baskets[i].aniState = PANDANEUTRAL;
+        
+    }
+}
+
+void drawBaskets() {
+    for (int i = 0; i < BASKETCOUNT; i++) 
+    {
+        if (baskets[i].active) 
+        {
+            shadowOAM[i+32].attr0 = baskets[i].row | ATTR0_4BPP | ATTR0_SQUARE;
+            shadowOAM[i+32].attr1 = baskets[i].col | ATTR1_TINY;
+            shadowOAM[i+32].attr2 = ATTR2_TILEID(baskets[i].aniState, 0);
+        } 
+    }
+}
+
+
 // updates position of PANDA and checks for collision
 void updatePanda() {
 
