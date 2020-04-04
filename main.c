@@ -264,6 +264,7 @@ void game2() {
     
     drawPanda();
     drawBaskets();
+    drawFriendlyPandas();
     DMANow(3, shadowOAM, OAM, 128 * 4);
 
     

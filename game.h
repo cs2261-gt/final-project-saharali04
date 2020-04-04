@@ -55,3 +55,4 @@ void initGame();
 void initFood();
 void drawBaskets();
 void initBaskets();
+void drawFriendlyPandas();

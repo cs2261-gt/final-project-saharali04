@@ -60,6 +60,7 @@ void initGame();
 void initFood();
 void drawBaskets();
 void initBaskets();
+void drawFriendlyPandas();
 # 2 "game.c" 2
 # 1 "myLib.h" 1
 
@@ -1052,6 +1053,18 @@ void drawBaskets() {
             shadowOAM[i+32].attr0 = baskets[i].row | (0<<13) | (0<<14);
             shadowOAM[i+32].attr1 = baskets[i].col | (0<<14);
             shadowOAM[i+32].attr2 = ((0)*32+(baskets[i].aniState));
+        }
+    }
+}
+
+void drawFriendlyPandas() {
+    for (int i = 0; i < 3; i++)
+    {
+        if (baskets[i].active)
+        {
+            shadowOAM[i+36].attr0 = (baskets[i].row - 20) | (0<<13) | (0<<14);
+            shadowOAM[i+36].attr1 = (baskets[i].col) | (0<<14);
+            shadowOAM[i+36].attr2 = ((0)*32+(baskets[i].aniState));
         }
     }
 }

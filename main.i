@@ -169,6 +169,7 @@ void initGame();
 void initFood();
 void drawBaskets();
 void initBaskets();
+void drawFriendlyPandas();
 # 4 "main.c" 2
 # 1 "splashScreen.h" 1
 # 22 "splashScreen.h"
@@ -1722,6 +1723,7 @@ void game2() {
 
     drawPanda();
     drawBaskets();
+    drawFriendlyPandas();
     DMANow(3, shadowOAM, ((OBJ_ATTR*)(0x7000000)), 128 * 4);
 
 

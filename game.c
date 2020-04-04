@@ -77,6 +77,18 @@ void drawBaskets() {
     }
 }
 
+void drawFriendlyPandas() {
+    for (int i = 0; i < BASKETCOUNT; i++) 
+    {
+        if (baskets[i].active) 
+        {
+            shadowOAM[i+36].attr0 = (baskets[i].row - 20) | ATTR0_4BPP | ATTR0_SQUARE;
+            shadowOAM[i+36].attr1 = (baskets[i].col) | ATTR1_TINY;
+            shadowOAM[i+36].attr2 = ATTR2_TILEID(baskets[i].aniState, 0);
+        } 
+    }
+}
+
 
 // updates position of PANDA and checks for collision
 void updatePanda() {

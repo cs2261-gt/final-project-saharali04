@@ -517,44 +517,47 @@ game2:
 	ldr	r3, .L80+28
 	mov	lr, pc
 	bx	r3
+	ldr	r3, .L80+32
+	mov	lr, pc
+	bx	r3
 	mov	r3, #512
 	mov	r2, #117440512
 	mov	r0, #3
 	ldr	r1, .L80+4
 	mov	lr, pc
 	bx	r4
-	ldr	r3, .L80+32
+	ldr	r3, .L80+36
 	ldrh	r3, [r3]
 	tst	r3, #8
 	beq	.L66
-	ldr	r2, .L80+36
+	ldr	r2, .L80+40
 	ldrh	r2, [r2]
 	tst	r2, #8
 	moveq	r1, #4
-	ldreq	r2, .L80+40
+	ldreq	r2, .L80+44
 	streq	r1, [r2]
 .L66:
 	tst	r3, #4
 	beq	.L67
-	ldr	r3, .L80+36
+	ldr	r3, .L80+40
 	ldrh	r3, [r3]
 	tst	r3, #4
 	beq	.L79
 .L67:
-	ldr	r3, .L80+44
+	ldr	r3, .L80+48
 	ldr	r3, [r3, #8]
 	cmp	r3, #0
 	movne	r2, #6
-	ldrne	r3, .L80+40
+	ldrne	r3, .L80+44
 	pop	{r4, r5, r6, lr}
 	strne	r2, [r3]
 	bx	lr
 .L79:
-	ldr	r3, .L80+48
+	ldr	r3, .L80+52
 	mov	lr, pc
 	bx	r3
 	mov	r2, #2
-	ldr	r3, .L80+40
+	ldr	r3, .L80+44
 	str	r2, [r3]
 	b	.L67
 .L81:
@@ -568,6 +571,7 @@ game2:
 	.word	100726784
 	.word	drawPanda
 	.word	drawBaskets
+	.word	drawFriendlyPandas
 	.word	oldButtons
 	.word	buttons
 	.word	state
