@@ -17,8 +17,11 @@
         int prevAniState;
         int leavesCollected;
         int stemsCollected;
+        int leavesDelivered;
+        int stemsDelivered;
         int curFrame;
         int numFrames;
+
     } PANDASPRITE;
 
 
@@ -44,8 +47,12 @@
     FOODSPRITE baskets[3];
 
 
+    PANDASPRITE pandas[3];
+
+
 
     extern int hasLost;
+    extern int hasWon;
 
 
     enum { PANDANEUTRAL, PANDASAD, PANDAHAPPY, STEM, LEAF, BLACKBACKGROUND, PANDAIDLE};
@@ -56,11 +63,15 @@ void drawPanda();
 void updatePanda();
 void drawFood();
 void updateGame();
+void updateGame2();
 void initGame();
 void initFood();
 void drawBaskets();
 void initBaskets();
+void initPandas();
 void drawFriendlyPandas();
+void checkFoodCollected();
+void checkFoodDelivered();
 # 2 "game.c" 2
 # 1 "myLib.h" 1
 
@@ -984,6 +995,7 @@ extern long double strtold (const char *restrict, char **restrict);
 
 # 6 "game.c"
 int hasLost;
+int hasWon;
 
 
 void initGame() {
@@ -999,8 +1011,8 @@ void initPanda() {
     panda.height = 8;
     panda.col = 240/2 - (panda.width/2) - 40;
     panda.row = 160/2 - (panda.height/2) - 10;
-    panda.cdel = 2;
-    panda.rdel = 2;
+    panda.cdel = 8;
+    panda.rdel = 8;
     panda.aniCounter = 0;
     panda.aniState = PANDANEUTRAL;
     panda.leavesCollected = 0;
@@ -1045,27 +1057,38 @@ void initBaskets() {
     }
 }
 
+void initPandas() {
+    for (int i = 0; i < 3; i++)
+    {
+        pandas[i].width = 8;
+        pandas[i].height = 8;
+        pandas[i].col = 60 + i*60;
+        pandas[i].row = 50;
+        pandas[i].aniState = PANDANEUTRAL;
+        pandas[i].leavesCollected = 0;
+        pandas[i].stemsCollected = 0;
+
+    }
+
+}
+
 void drawBaskets() {
     for (int i = 0; i < 3; i++)
     {
-        if (baskets[i].active)
-        {
             shadowOAM[i+32].attr0 = baskets[i].row | (0<<13) | (0<<14);
             shadowOAM[i+32].attr1 = baskets[i].col | (0<<14);
             shadowOAM[i+32].attr2 = ((0)*32+(baskets[i].aniState));
-        }
+
     }
 }
 
 void drawFriendlyPandas() {
     for (int i = 0; i < 3; i++)
     {
-        if (baskets[i].active)
-        {
-            shadowOAM[i+36].attr0 = (baskets[i].row - 20) | (0<<13) | (0<<14);
-            shadowOAM[i+36].attr1 = (baskets[i].col) | (0<<14);
-            shadowOAM[i+36].attr2 = ((0)*32+(baskets[i].aniState));
-        }
+        shadowOAM[i+36].attr0 = pandas[i].row | (0<<13) | (0<<14);
+        shadowOAM[i+36].attr1 = pandas[i].col | (0<<14);
+        shadowOAM[i+36].attr2 = ((0)*32+(pandas[i].aniState));
+
     }
 }
 
@@ -1086,24 +1109,24 @@ void updatePanda() {
         panda.aniCounter++;
     }
 
-    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<6))))
+    if ((!(~(oldButtons)&((1<<6))) && (~buttons & ((1<<6)))))
     {
         panda.aniState = PANDAHAPPY;
         panda.row-=panda.rdel;
     }
 
-    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<7))))
+    if ((!(~(oldButtons)&((1<<7))) && (~buttons & ((1<<7)))))
     {
         panda.aniState = PANDAHAPPY;
         panda.row+=panda.rdel;
     }
-    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<5))))
+    if ((!(~(oldButtons)&((1<<5))) && (~buttons & ((1<<5)))))
     {
         panda.aniState = PANDASAD;
         panda.col-=panda.cdel;
     }
 
-    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<4))))
+    if ((!(~(oldButtons)&((1<<4))) && (~buttons & ((1<<4)))))
     {
         panda.aniState = PANDASAD;
         panda.col+=panda.cdel;
@@ -1119,7 +1142,15 @@ void updatePanda() {
         panda.aniCounter++;
     }
 
-    for (int i = 0; i < 30; i++) {
+    if ((panda.row > 152) | (panda.row < 0) | (panda.col < 0) | (panda.col > 232)) {
+        hasLost = 1;
+    }
+
+
+}
+
+void checkFoodCollected() {
+     for (int i = 0; i < 30; i++) {
         if (food[i].active && collision(panda.col, panda.row, panda.width, panda.height, food[i].col, food[i].row, food[i].width, food[i].height)) {
             shadowOAM[i+1].attr0 = food[i].row | (0<<13) | (0<<14);
             shadowOAM[i+1].attr1 = food[i].col | (0<<14);
@@ -1135,9 +1166,21 @@ void updatePanda() {
 
         }
     }
+}
 
-    if ((panda.row > 152) | (panda.row < 0) | (panda.col < 0) | (panda.col > 232)) {
-        hasLost = 1;
+void checkFoodDelivered() {
+    for (int i = 0; i < 3; i++) {
+        if ((!(~(oldButtons)&((1<<0))) && (~buttons & ((1<<0)))) && collision(panda.col, panda.row, panda.width, panda.height, baskets[i].col, baskets[i].row, baskets[i].width, baskets[i].height) && panda.leavesCollected > 0)
+        {
+            pandas[i].leavesCollected++;
+            panda.leavesCollected--;
+        }
+        if ((!(~(oldButtons)&((1<<1))) && (~buttons & ((1<<1)))) && collision(panda.col, panda.row, panda.width, panda.height, baskets[i].col, baskets[i].row, baskets[i].width, baskets[i].height))
+        {
+            pandas[i].stemsCollected++;
+            panda.stemsCollected--;
+
+        }
     }
 
 
@@ -1164,7 +1207,27 @@ void drawFood() {
 void updateGame() {
     updatePanda();
     drawPanda();
+    checkFoodCollected();
     drawFood();
+    waitForVBlank();
+    DMANow(3, shadowOAM, ((OBJ_ATTR*)(0x7000000)), 128 * 4);
+}
+
+void updateGame2() {
+
+    checkFoodDelivered();
+    updatePanda();
+    drawPanda();
+    drawBaskets();
+    drawFriendlyPandas();
+
+
+    if ((pandas[0].leavesCollected == 5 || pandas[0].stemsCollected == 3) && (pandas[1].leavesCollected == 5 || pandas[1].stemsCollected == 3) && (pandas[2].leavesCollected == 5 || pandas[2].stemsCollected == 3))
+    {
+        hasWon = 1;
+    }
+
+
     waitForVBlank();
     DMANow(3, shadowOAM, ((OBJ_ATTR*)(0x7000000)), 128 * 4);
 }

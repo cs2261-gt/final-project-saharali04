@@ -126,8 +126,11 @@ int collision(int colA, int rowA, int widthA, int heightA, int colB, int rowB, i
         int prevAniState;
         int leavesCollected;
         int stemsCollected;
+        int leavesDelivered;
+        int stemsDelivered;
         int curFrame;
         int numFrames;
+
     } PANDASPRITE;
 
 
@@ -153,8 +156,12 @@ int collision(int colA, int rowA, int widthA, int heightA, int colB, int rowB, i
     FOODSPRITE baskets[3];
 
 
+    PANDASPRITE pandas[3];
+
+
 
     extern int hasLost;
+    extern int hasWon;
 
 
     enum { PANDANEUTRAL, PANDASAD, PANDAHAPPY, STEM, LEAF, BLACKBACKGROUND, PANDAIDLE};
@@ -165,11 +172,15 @@ void drawPanda();
 void updatePanda();
 void drawFood();
 void updateGame();
+void updateGame2();
 void initGame();
 void initFood();
 void drawBaskets();
 void initBaskets();
+void initPandas();
 void drawFriendlyPandas();
+void checkFoodCollected();
+void checkFoodDelivered();
 # 4 "main.c" 2
 # 1 "splashScreen.h" 1
 # 22 "splashScreen.h"
@@ -1501,7 +1512,7 @@ void initialize();
 
 
     int hasLost = 0;
-
+    int hasWon = 0;
 
     OBJ_ATTR shadowOAM[128];
 
@@ -1572,6 +1583,7 @@ void goToSplash() {
 
     state = SPLASH;
     hasLost = 0;
+    hasWon = 0;
     seed = 0;
 
 }
@@ -1690,6 +1702,10 @@ void game() {
         goToLose();
     }
 
+    if (hasWon) {
+        goToWin();
+    }
+
 }
 
 
@@ -1698,6 +1714,7 @@ void goToGame2() {
 
     (*(unsigned short *)0x4000000) = 0 | (1<<9);
     initBaskets();
+    initPandas();
     hideSprites();
     state = GAME2;
 
@@ -1721,10 +1738,8 @@ void game2() {
 
     (*(unsigned short *)0x4000000) = 0 | (1<<9) | (1<<12);
 
-    drawPanda();
-    drawBaskets();
-    drawFriendlyPandas();
-    DMANow(3, shadowOAM, ((OBJ_ATTR*)(0x7000000)), 128 * 4);
+
+    updateGame2();
 
 
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3)))))
@@ -1738,6 +1753,10 @@ void game2() {
 
     if (hasLost) {
         goToLose();
+    }
+
+    if (hasWon) {
+        goToWin();
     }
 
 }

@@ -42,7 +42,7 @@ void initialize();
 
     // Keeps track if player lost
     int hasLost = 0;
-
+    int hasWon = 0;
     // shadowOAM variables
     OBJ_ATTR shadowOAM[128];
     #define SHADOWOAMLENGTH 128
@@ -113,6 +113,7 @@ void goToSplash() {
     
     state = SPLASH;
     hasLost = 0;
+    hasWon = 0;
     seed = 0;
 
 }
@@ -231,6 +232,10 @@ void game() {
         goToLose();
     }
 
+    if (hasWon) {
+        goToWin();
+    }
+
 }
 
 
@@ -239,6 +244,7 @@ void goToGame2() {
 
     REG_DISPCTL = MODE0 | BG1_ENABLE;
     initBaskets();
+    initPandas();
     hideSprites();
     state = GAME2;
 
@@ -262,10 +268,8 @@ void game2() {
     
     REG_DISPCTL = MODE0 | BG1_ENABLE | SPRITE_ENABLE;
     
-    drawPanda();
-    drawBaskets();
-    drawFriendlyPandas();
-    DMANow(3, shadowOAM, OAM, 128 * 4);
+    
+    updateGame2();
 
     
     if (BUTTON_PRESSED(BUTTON_START)) 
@@ -279,6 +283,10 @@ void game2() {
 
     if (hasLost) {
         goToLose();
+    }
+
+    if (hasWon) {
+        goToWin();
     }
 
 }
