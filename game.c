@@ -20,8 +20,8 @@ void initPanda() {
     panda.height = 8;
     panda.col = SCREENWIDTH/2 - (panda.width/2) - 40;
     panda.row = SCREENHEIGHT/2 - (panda.height/2) - 10;
-    panda.cdel = 8;
-    panda.rdel = 8;
+    panda.cdel = 1;
+    panda.rdel = 1;
     panda.aniCounter = 0;
     panda.aniState = PANDANEUTRAL;
     panda.leavesCollected = 0;
@@ -118,24 +118,24 @@ void updatePanda() {
         panda.aniCounter++;
     }
 
-    if (BUTTON_PRESSED(BUTTON_UP)) 
+    if (BUTTON_HELD(BUTTON_UP)) 
     {
         panda.aniState = PANDAHAPPY;
         panda.row-=panda.rdel;
     }
 
-    if (BUTTON_PRESSED(BUTTON_DOWN)) 
+    if (BUTTON_HELD(BUTTON_DOWN)) 
     {
         panda.aniState = PANDAHAPPY;
         panda.row+=panda.rdel;
     }
-    if (BUTTON_PRESSED(BUTTON_LEFT)) 
+    if (BUTTON_HELD(BUTTON_LEFT)) 
     {
         panda.aniState = PANDASAD;
         panda.col-=panda.cdel;
     }
 
-    if (BUTTON_PRESSED(BUTTON_RIGHT)) 
+    if (BUTTON_HELD(BUTTON_RIGHT)) 
     {
         panda.aniState = PANDASAD;
         panda.col+=panda.cdel;
@@ -172,6 +172,14 @@ void checkFoodCollected() {
             } else {
                 panda.stemsCollected++;
             }
+            if (panda.aniState == PANDAIDLE) 
+            {
+            panda.curFrame = 0;
+            panda.aniState = panda.prevAniState;
+            } else 
+            {
+            panda.aniCounter++;
+            }
         
         }
     }
@@ -184,12 +192,14 @@ void checkFoodDelivered() {
             pandas[i].leavesCollected++;
             panda.leavesCollected--;
         }
-        if (BUTTON_PRESSED(BUTTON_B) && collision(panda.col, panda.row, panda.width, panda.height, baskets[i].col, baskets[i].row, baskets[i].width, baskets[i].height)) 
+        if (BUTTON_PRESSED(BUTTON_B) && collision(panda.col, panda.row, panda.width, panda.height, baskets[i].col, baskets[i].row, baskets[i].width, baskets[i].height) && panda.stemsCollected > 0) 
         {
             pandas[i].stemsCollected++;
             panda.stemsCollected--;
         
         }
+
+        
     }
     
 

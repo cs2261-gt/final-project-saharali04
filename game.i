@@ -1015,8 +1015,8 @@ void initPanda() {
     panda.height = 8;
     panda.col = 240/2 - (panda.width/2) - 40;
     panda.row = 160/2 - (panda.height/2) - 10;
-    panda.cdel = 8;
-    panda.rdel = 8;
+    panda.cdel = 1;
+    panda.rdel = 1;
     panda.aniCounter = 0;
     panda.aniState = PANDANEUTRAL;
     panda.leavesCollected = 0;
@@ -1113,24 +1113,24 @@ void updatePanda() {
         panda.aniCounter++;
     }
 
-    if ((!(~(oldButtons)&((1<<6))) && (~buttons & ((1<<6)))))
+    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<6))))
     {
         panda.aniState = PANDAHAPPY;
         panda.row-=panda.rdel;
     }
 
-    if ((!(~(oldButtons)&((1<<7))) && (~buttons & ((1<<7)))))
+    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<7))))
     {
         panda.aniState = PANDAHAPPY;
         panda.row+=panda.rdel;
     }
-    if ((!(~(oldButtons)&((1<<5))) && (~buttons & ((1<<5)))))
+    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<5))))
     {
         panda.aniState = PANDASAD;
         panda.col-=panda.cdel;
     }
 
-    if ((!(~(oldButtons)&((1<<4))) && (~buttons & ((1<<4)))))
+    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<4))))
     {
         panda.aniState = PANDASAD;
         panda.col+=panda.cdel;
@@ -1167,6 +1167,14 @@ void checkFoodCollected() {
             } else {
                 panda.stemsCollected++;
             }
+            if (panda.aniState == PANDAIDLE)
+            {
+            panda.curFrame = 0;
+            panda.aniState = panda.prevAniState;
+            } else
+            {
+            panda.aniCounter++;
+            }
 
         }
     }
@@ -1179,12 +1187,14 @@ void checkFoodDelivered() {
             pandas[i].leavesCollected++;
             panda.leavesCollected--;
         }
-        if ((!(~(oldButtons)&((1<<1))) && (~buttons & ((1<<1)))) && collision(panda.col, panda.row, panda.width, panda.height, baskets[i].col, baskets[i].row, baskets[i].width, baskets[i].height))
+        if ((!(~(oldButtons)&((1<<1))) && (~buttons & ((1<<1)))) && collision(panda.col, panda.row, panda.width, panda.height, baskets[i].col, baskets[i].row, baskets[i].width, baskets[i].height) && panda.stemsCollected > 0)
         {
             pandas[i].stemsCollected++;
             panda.stemsCollected--;
 
         }
+
+
     }
 
 
