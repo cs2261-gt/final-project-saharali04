@@ -164,7 +164,7 @@ splash:
 	beq	.L11
 	ldr	r2, .L22+32
 	ldrh	r2, [r2]
-	tst	r2, #8
+	ands	r4, r2, #8
 	beq	.L21
 .L11:
 	tst	r3, #4
@@ -186,7 +186,9 @@ splash:
 	ldr	r3, .L22+44
 	mov	lr, pc
 	bx	r3
+	mov	r2, #67108864
 	ldr	r3, .L22+48
+	strh	r4, [r2]	@ movhi
 	mov	lr, pc
 	bx	r3
 	mov	r1, #2
@@ -405,7 +407,7 @@ game:
 	mov	lr, pc
 	bx	r4
 	mov	r2, #7936
-	mov	r3, #32
+	mov	r3, #496
 	mov	r0, #3
 	strh	r2, [r5, #10]	@ movhi
 	ldr	r1, .L67+8
@@ -495,7 +497,7 @@ game2:
 	bx	r4
 	mov	r5, #67108864
 	mov	r2, #7936
-	mov	r3, #32
+	mov	r3, #496
 	mov	r0, #3
 	strh	r2, [r5, #10]	@ movhi
 	ldr	r1, .L88+12

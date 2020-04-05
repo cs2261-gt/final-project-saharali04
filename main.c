@@ -151,6 +151,7 @@ void splash() {
     {
         srand(seed);
         initGame();
+        REG_DISPCTL = MODE0;
         goToGame(); 
     }
 
@@ -158,6 +159,7 @@ void splash() {
     {
         goToInstruction();
     }
+
 
 }
 void goToInstruction() {

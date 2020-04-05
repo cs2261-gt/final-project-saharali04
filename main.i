@@ -165,6 +165,9 @@ int collision(int colA, int rowA, int widthA, int heightA, int colB, int rowB, i
 
 
     enum { PANDANEUTRAL, PANDASAD, PANDAHAPPY, STEM, LEAF, BLACKBACKGROUND, PANDAIDLE};
+    enum { BASKET = 6, FRIENDLYPANDA};
+
+
 
 
 void initPanda();
@@ -181,6 +184,7 @@ void initPandas();
 void drawFriendlyPandas();
 void checkFoodCollected();
 void checkFoodDelivered();
+void drawScore();
 # 4 "main.c" 2
 # 1 "splashScreen.h" 1
 # 22 "splashScreen.h"
@@ -204,7 +208,7 @@ extern const unsigned short instructionsScreenPal[256];
 # 6 "main.c" 2
 # 1 "gameScreen.h" 1
 # 22 "gameScreen.h"
-extern const unsigned short gameScreenTiles[32];
+extern const unsigned short gameScreenTiles[496];
 
 
 extern const unsigned short gameScreenMap[1024];
@@ -214,7 +218,7 @@ extern const unsigned short gameScreenPal[256];
 # 7 "main.c" 2
 # 1 "gameScreen2.h" 1
 # 22 "gameScreen2.h"
-extern const unsigned short gameScreen2Tiles[32];
+extern const unsigned short gameScreen2Tiles[496];
 
 
 extern const unsigned short gameScreen2Map[1024];
@@ -1621,6 +1625,7 @@ void splash() {
     {
         srand(seed);
         initGame();
+        (*(unsigned short *)0x4000000) = 0;
         goToGame();
     }
 
@@ -1628,6 +1633,7 @@ void splash() {
     {
         goToInstruction();
     }
+
 
 }
 void goToInstruction() {
@@ -1682,7 +1688,7 @@ void game() {
     (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((31)<<8);
 
 
-    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 64/2);
+    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 992/2);
 
 
     DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[31], 2048/2);
@@ -1731,7 +1737,7 @@ void game2() {
     (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((31)<<8);
 
 
-    DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 64/2);
+    DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 992/2);
 
 
     DMANow(3, gameScreen2Map, &((screenblock *)0x6000000)[31], 2048/2);

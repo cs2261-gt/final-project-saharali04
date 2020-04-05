@@ -51,6 +51,7 @@
 
     // aniState enums
     enum { PANDANEUTRAL, PANDASAD, PANDAHAPPY, STEM, LEAF, BLACKBACKGROUND, PANDAIDLE};
+    enum { BASKET = 6, FRIENDLYPANDA};
 
     
 
@@ -69,3 +70,4 @@ void initPandas();
 void drawFriendlyPandas();
 void checkFoodCollected();
 void checkFoodDelivered();
+void drawScore();

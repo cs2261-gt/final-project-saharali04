@@ -38,7 +38,7 @@ void initFood() {
         food[i].width = 8;
         food[i].height = 8;
         food[i].col = (rand() % 232);
-        food[i].row = (rand() % 152);
+        food[i].row = (rand() % 133);
         food[i].cdel = 2;
         food[i].rdel = 2;
         if (i % 2) 
@@ -61,7 +61,7 @@ void initBaskets() {
         baskets[i].height = 8;
         baskets[i].col = 60 + i*60;
         baskets[i].row = 80;
-        baskets[i].aniState = PANDANEUTRAL;
+        baskets[i].aniState = BASKET;
         
     }
 }
@@ -73,7 +73,7 @@ void initPandas() {
         pandas[i].height = 8;
         pandas[i].col = 60 + i*60;
         pandas[i].row = 50;
-        pandas[i].aniState = PANDANEUTRAL;
+        pandas[i].aniState = FRIENDLYPANDA;
         pandas[i].leavesCollected = 0;
         pandas[i].stemsCollected = 0;
         
@@ -213,11 +213,25 @@ void drawFood() {
     }
 }
 
+void drawScore() {
+    shadowOAM[40].attr0 = 141 | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[40].attr1 = 82 | ATTR1_TINY;
+    shadowOAM[40].attr2 = ATTR2_TILEID(panda.stemsCollected + 8, 0);
+
+    shadowOAM[41].attr0 = 150 | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[41].attr1 = 87 | ATTR1_TINY;
+    shadowOAM[41].attr2 = ATTR2_TILEID(panda.leavesCollected + 8, 0);
+
+
+    
+}
+
 void updateGame() {
     updatePanda();
     drawPanda();
     checkFoodCollected();
     drawFood();
+    drawScore();
     waitForVBlank();
     DMANow(3, shadowOAM, OAM, 128 * 4);
 }
@@ -228,6 +242,7 @@ void updateGame2() {
     updatePanda();
     drawPanda();
     drawBaskets();
+    drawScore();
     drawFriendlyPandas();
 
     
