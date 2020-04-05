@@ -52,6 +52,8 @@
     // aniState enums
     enum { PANDANEUTRAL, PANDASAD, PANDAHAPPY, STEM, LEAF, BLACKBACKGROUND, PANDAIDLE};
 
+    
+
 // Function prototypes
 void initPanda();
 void drawPanda();
