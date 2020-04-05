@@ -1022,7 +1022,7 @@ void initPanda() {
     panda.leavesCollected = 0;
     panda.stemsCollected = 0;
     panda.curFrame = 0;
-    panda.numFrames = 2;
+    panda.numFrames = 3;
 
 }
 
@@ -1247,7 +1247,7 @@ void updateGame2() {
     }
     if ((pandas[0].leavesCollected == 5 || pandas[0].stemsCollected == 3) && (pandas[1].leavesCollected == 5 || pandas[1].stemsCollected == 3) && (pandas[2].leavesCollected == 5 || pandas[2].stemsCollected == 3))
     {
-        if (panda.leavesCollected == 0 || panda.stemsCollected == 0)
+        if (panda.leavesCollected != 0 || panda.stemsCollected != 0)
         {
             hasLost = 1;
         }

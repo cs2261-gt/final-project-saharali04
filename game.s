@@ -26,7 +26,7 @@ initPanda:
 	mov	r1, #8
 	mov	lr, #76
 	mov	ip, #66
-	mov	r0, #2
+	mov	r0, #3
 	ldr	r3, .L4
 	stm	r3, {ip, lr}
 	str	r1, [r3, #16]
@@ -124,7 +124,7 @@ initGame:
 	mov	lr, #76
 	mov	r2, #0
 	mov	r1, #8
-	mov	r0, #2
+	mov	r0, #3
 	ldr	r3, .L16
 	stm	r3, {ip, lr}
 	ldr	lr, [sp], #4
@@ -908,11 +908,10 @@ updateGame2:
 	cmp	r3, #3
 	bne	.L154
 .L164:
-	cmp	r5, #0
-	cmpne	r6, #0
-	moveq	r2, #1
-	ldreq	r3, .L206+28
-	streq	r2, [r3]
+	orrs	r3, r5, r6
+	movne	r2, #1
+	ldrne	r3, .L206+28
+	strne	r2, [r3]
 	b	.L154
 .L155:
 	ldr	r0, [r1, #156]
