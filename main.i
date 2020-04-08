@@ -185,6 +185,7 @@ void drawFriendlyPandas();
 void checkFoodCollected();
 void checkFoodDelivered();
 void drawScore();
+void resetAnimationFriendly();
 # 4 "main.c" 2
 # 1 "splashScreen.h" 1
 # 22 "splashScreen.h"
@@ -1579,6 +1580,8 @@ void initialize() {
     hOff = 0;
     vOff = 0;
     goToSplash();
+    initBaskets();
+    initPandas();
 
 }
 
@@ -1719,8 +1722,6 @@ void game() {
 void goToGame2() {
 
     (*(unsigned short *)0x4000000) = 0 | (1<<9);
-    initBaskets();
-    initPandas();
     hideSprites();
     state = GAME2;
 

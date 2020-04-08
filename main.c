@@ -105,6 +105,8 @@ void initialize() {
     hOff = 0;
     vOff = 0;
     goToSplash();
+    initBaskets();
+    initPandas();
 
 }
 
@@ -245,8 +247,6 @@ void game() {
 void goToGame2() {
 
     REG_DISPCTL = MODE0 | BG1_ENABLE;
-    initBaskets();
-    initPandas();
     hideSprites();
     state = GAME2;
 

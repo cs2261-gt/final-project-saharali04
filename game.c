@@ -6,13 +6,13 @@
 int hasLost;
 int hasWon;
 
-// initializes PANDA and food[i]s
+// initializes PANDA and food
 void initGame() {
     initPanda();
     initFood();
 }
 
-// initialize PANDA
+// initialize panda
 void initPanda() {
     
     // initialize teleporting panda
@@ -76,31 +76,12 @@ void initPandas() {
         pandas[i].aniState = FRIENDLYPANDA;
         pandas[i].leavesCollected = 0;
         pandas[i].stemsCollected = 0;
+        pandas[i].curFrame = 0;
+        pandas[i].numFrames = 2;
         
     }
 
 }
-
-void drawBaskets() {
-    for (int i = 0; i < BASKETCOUNT; i++) 
-    {
-            shadowOAM[i+32].attr0 = baskets[i].row | ATTR0_4BPP | ATTR0_SQUARE;
-            shadowOAM[i+32].attr1 = baskets[i].col | ATTR1_TINY;
-            shadowOAM[i+32].attr2 = ATTR2_TILEID(baskets[i].aniState, 0);
-        
-    }
-}
-
-void drawFriendlyPandas() {
-    for (int i = 0; i < PANDACOUNT; i++) 
-    {
-        shadowOAM[i+36].attr0 = pandas[i].row | ATTR0_4BPP | ATTR0_SQUARE;
-        shadowOAM[i+36].attr1 = pandas[i].col | ATTR1_TINY;
-        shadowOAM[i+36].attr2 = ATTR2_TILEID(pandas[i].aniState, 0);
-        
-    }
-}
-
 
 // updates position of PANDA and checks for collision
 void updatePanda() {
@@ -172,15 +153,8 @@ void checkFoodCollected() {
             } else {
                 panda.stemsCollected++;
             }
-            if (panda.aniState == PANDAIDLE) 
-            {
-            panda.curFrame = 0;
-            panda.aniState = panda.prevAniState;
-            } else 
-            {
-            panda.aniCounter++;
-            }
-        
+            
+	    
         }
     }
 }
@@ -191,19 +165,36 @@ void checkFoodDelivered() {
         {
             pandas[i].leavesCollected++;
             panda.leavesCollected--;
+            pandas[i].curFrame = 1;
+            pandas[0].aniCounter++;
+            
+            
+    
+        } else {
+            pandas[0].aniCounter++;
         }
+            
+            
         if (BUTTON_PRESSED(BUTTON_B) && collision(panda.col, panda.row, panda.width, panda.height, baskets[i].col, baskets[i].row, baskets[i].width, baskets[i].height) && panda.stemsCollected > 0) 
         {
             pandas[i].stemsCollected++;
             panda.stemsCollected--;
-        
+            pandas[i].curFrame = 1;
+            pandas[0].aniCounter++;
+
+        } else {
+            pandas[0].aniCounter++;
         }
 
-        
+     
     }
+    
+    
     
 
 }
+
+// Draw Functions
 
 void drawPanda() {
     shadowOAM[0].attr0 = panda.row | ATTR0_4BPP | ATTR0_SQUARE;
@@ -236,6 +227,27 @@ void drawScore() {
     
 }
 
+void drawBaskets() {
+    for (int i = 0; i < BASKETCOUNT; i++) 
+    {
+            shadowOAM[i+32].attr0 = baskets[i].row | ATTR0_4BPP | ATTR0_SQUARE;
+            shadowOAM[i+32].attr1 = baskets[i].col | ATTR1_TINY;
+            shadowOAM[i+32].attr2 = ATTR2_TILEID(baskets[i].aniState, 0);
+        
+    }
+}
+
+void drawFriendlyPandas() {
+    for (int i = 0; i < PANDACOUNT; i++) 
+    {
+        shadowOAM[i+36].attr0 = pandas[i].row | ATTR0_4BPP | ATTR0_SQUARE;
+        shadowOAM[i+36].attr1 = pandas[i].col | ATTR1_TINY;
+        shadowOAM[i+36].attr2 = ATTR2_TILEID(pandas[i].aniState, pandas[i].curFrame);
+        
+    }
+    
+}
+
 void updateGame() {
     updatePanda();
     drawPanda();
@@ -246,15 +258,26 @@ void updateGame() {
     DMANow(3, shadowOAM, OAM, 128 * 4);
 }
 
-void updateGame2() {
+void resetAnimationFriendly() {
+    pandas[0].curFrame = 0;
+    pandas[1].curFrame = 0;
+    pandas[2].curFrame = 0;
+    
+}
 
-    checkFoodDelivered();
+void updateGame2() {
+    
     updatePanda();
     drawPanda();
     drawBaskets();
     drawScore();
+    checkFoodDelivered();
     drawFriendlyPandas();
+    //pandas[0].aniCounter++;
 
+    if (pandas[0].aniCounter % 200) {
+        resetAnimationFriendly();
+    }
     
     if ((pandas[0].leavesCollected == 5 || pandas[0].stemsCollected == 3) && (pandas[1].leavesCollected == 5 || pandas[1].stemsCollected == 3) && (pandas[2].leavesCollected == 5 || pandas[2].stemsCollected == 3) && (panda.leavesCollected == 0) && (panda.stemsCollected == 0))
     {
@@ -272,6 +295,7 @@ void updateGame2() {
 
     waitForVBlank();
     DMANow(3, shadowOAM, OAM, 128 * 4);
+    resetAnimationFriendly();
 }
 
 

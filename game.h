@@ -71,3 +71,4 @@ void drawFriendlyPandas();
 void checkFoodCollected();
 void checkFoodDelivered();
 void drawScore();
+void resetAnimationFriendly();
