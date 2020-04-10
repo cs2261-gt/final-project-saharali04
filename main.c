@@ -11,6 +11,9 @@
 #include "spriteSheet.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include "gameSound.h"
+#include "splashSound.h"
+#include "gameSound2.h"
 
 // State Prototypes
 void goToSplash();
@@ -107,6 +110,8 @@ void initialize() {
     goToSplash();
     initBaskets();
     initPandas();
+    setupSounds();
+	setupInterrupts();
 
 }
 
@@ -117,6 +122,8 @@ void goToSplash() {
     hasLost = 0;
     hasWon = 0;
     seed = 0;
+    stopSound();
+	playSoundA(splashSound, SPLASHSOUNDLEN, 1);
 
 }
 
@@ -154,6 +161,8 @@ void splash() {
         srand(seed);
         initGame();
         REG_DISPCTL = MODE0;
+        stopSound();
+		playSoundA(gameSound, GAMESOUNDLEN, 1);
         goToGame(); 
     }
 
@@ -225,10 +234,14 @@ void game() {
 
     if (BUTTON_PRESSED(BUTTON_START)) 
     {
+        pauseSound();
         goToPause();
     }
     if (BUTTON_PRESSED(BUTTON_SELECT)) 
     {
+        stopSound();
+		stopSound();
+		playSoundA(gameSound2, GAMESOUND2LEN, 1);
         goToGame2();
     }
 
@@ -276,10 +289,14 @@ void game2() {
     
     if (BUTTON_PRESSED(BUTTON_START)) 
     {
+        pauseSound();
         goToPause();
+
     }
     if (BUTTON_PRESSED(BUTTON_SELECT)) 
     {
+        stopSound();
+		playSoundA(gameSound, GAMESOUNDLEN, 1);
         goToGame();
     }
 
@@ -316,6 +333,7 @@ void pause() {
     DMANow(3, pauseScreenMap, &SCREENBLOCK[31], pauseScreenMapLen/2);
 
     if (BUTTON_PRESSED(BUTTON_START)) {
+        unpauseSound();
         goToGame();
     }
     

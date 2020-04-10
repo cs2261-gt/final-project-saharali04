@@ -1484,10 +1484,31 @@ _putchar_unlocked(int _c)
 # 797 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdio.h" 3
 
 # 14 "main.c" 2
+# 1 "gameSound.h" 1
 
 
 
-# 16 "main.c"
+
+
+# 5 "gameSound.h"
+extern const signed char gameSound[1324512];
+# 15 "main.c" 2
+# 1 "splashSound.h" 1
+
+
+
+
+extern const signed char splashSound[291428];
+# 16 "main.c" 2
+# 1 "gameSound2.h" 1
+
+
+
+
+extern const signed char gameSound2[677952];
+# 17 "main.c" 2
+
+
 void goToSplash();
 void splash();
 void goToInstruction();
@@ -1582,6 +1603,8 @@ void initialize() {
     goToSplash();
     initBaskets();
     initPandas();
+    setupSounds();
+ setupInterrupts();
 
 }
 
@@ -1592,6 +1615,8 @@ void goToSplash() {
     hasLost = 0;
     hasWon = 0;
     seed = 0;
+    stopSound();
+ playSoundA(splashSound, 291428, 1);
 
 }
 
@@ -1629,6 +1654,8 @@ void splash() {
         srand(seed);
         initGame();
         (*(unsigned short *)0x4000000) = 0;
+        stopSound();
+  playSoundA(gameSound, 1324512, 1);
         goToGame();
     }
 
@@ -1700,10 +1727,14 @@ void game() {
 
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3)))))
     {
+        pauseSound();
         goToPause();
     }
     if ((!(~(oldButtons)&((1<<2))) && (~buttons & ((1<<2)))))
     {
+        stopSound();
+  stopSound();
+  playSoundA(gameSound2, 677952, 1);
         goToGame2();
     }
 
@@ -1751,10 +1782,14 @@ void game2() {
 
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3)))))
     {
+        pauseSound();
         goToPause();
+
     }
     if ((!(~(oldButtons)&((1<<2))) && (~buttons & ((1<<2)))))
     {
+        stopSound();
+  playSoundA(gameSound, 1324512, 1);
         goToGame();
     }
 
@@ -1791,6 +1826,7 @@ void pause() {
     DMANow(3, pauseScreenMap, &((screenblock *)0x6000000)[31], 2048/2);
 
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3))))) {
+        unpauseSound();
         goToGame();
     }
 
