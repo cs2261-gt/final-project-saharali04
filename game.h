@@ -1,8 +1,15 @@
+#define WORLDWIDTH 1024
+#define WORLDHEIGHT 256
+extern int hOff;
+extern int vOff;
+extern int screenBlock;
 // Structs
     // Panda struct
     typedef struct {
         int row;
         int col;
+        int worldRow;
+        int worldCol;
         int rdel;
         int cdel;
         int width; 

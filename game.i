@@ -5,9 +5,16 @@
 # 1 "game.h" 1
 
 
+extern int hOff;
+extern int vOff;
+extern int screenBlock;
+
+
     typedef struct {
         int row;
         int col;
+        int worldRow;
+        int worldCol;
         int rdel;
         int cdel;
         int width;
@@ -1008,8 +1015,17 @@ extern const signed char chewSound[21312];
 int hasLost;
 int hasWon;
 
+int hOff = 200;
+int vOff = 9;
+int playerHOff;
+int screenBlock;
+
 
 void initGame() {
+    vOff = 0;
+    hOff = 0;
+    playerHOff = 0;
+    screenBlock = 28;
     initPanda();
     initFood();
 }
@@ -1020,8 +1036,10 @@ void initPanda() {
 
     panda.width = 8;
     panda.height = 8;
-    panda.col = 240/2 - (panda.width/2) - 40;
-    panda.row = 160/2 - (panda.height/2) - 10;
+    panda.worldCol = 240/2 - (panda.width/2) - 40;
+    panda.worldRow = 160/2 - (panda.height/2) - 10;
+
+
     panda.cdel = 1;
     panda.rdel = 1;
     panda.aniCounter = 0;
@@ -1103,25 +1121,69 @@ void updatePanda() {
 
     if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<6))))
     {
-        panda.aniState = PANDAHAPPY;
-        panda.row-=panda.rdel;
+        if (panda.worldRow > 0) {
+
+            panda.aniState = PANDAHAPPY;
+            panda.worldRow-=panda.rdel;
+
+            if (vOff > 0 && panda.row + panda.height/2 == 160/2) {
+
+                vOff--;
+            }
+        }
+
     }
 
     if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<7))))
     {
-        panda.aniState = PANDAHAPPY;
-        panda.row+=panda.rdel;
+        if (panda.worldRow + panda.height < 256) {
+
+            panda.aniState = PANDAHAPPY;
+            panda.worldRow+=panda.rdel;
+
+            if (vOff + 160 < 256 && panda.row + panda.height/2 == 160/2) {
+
+                vOff++;
+            }
+        }
+
     }
     if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<5))))
     {
-        panda.aniState = PANDASAD;
-        panda.col-=panda.cdel;
+        if (panda.worldCol > 0) {
+            panda.worldCol--;
+
+
+        }
+        if (hOff > 0) {
+            hOff--;
+            playerHOff--;
+        }
+        if (screenBlock == 31) {
+            if (hOff == 0) {
+                hOff = 256;
+                screenBlock = 30;
+            }
+        }
+
+
+
+
     }
 
     if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<4))))
     {
+        if (panda.worldCol + panda.width < 1024 -1) {
+            panda.worldCol++;
+
+            if (screenBlock < 31 && hOff < (1024 - 240 -1) && panda.col >= 240 / 2) {
+                hOff++;
+                playerHOff++;
+            }
+        }
+
+
         panda.aniState = PANDASAD;
-        panda.col+=panda.cdel;
 
     }
 
@@ -1134,9 +1196,12 @@ void updatePanda() {
         panda.aniCounter++;
     }
 
-    if ((panda.row > 152) | (panda.row < 0) | (panda.col < 0) | (panda.col > 232)) {
-        hasLost = 1;
-    }
+
+
+
+
+    panda.col = panda.worldCol - playerHOff;
+    panda.row = panda.worldRow - vOff;
 
 
 }
@@ -1201,9 +1266,9 @@ void checkFoodDelivered() {
 
 
 void drawPanda() {
-    shadowOAM[0].attr0 = panda.row | (0<<13) | (0<<14);
-    shadowOAM[0].attr1 = panda.col | (0<<14);
-    shadowOAM[0].attr2 = ((panda.curFrame)*32+(panda.aniState));
+    shadowOAM[0].attr0 = (0xFF && panda.row) | (0<<13) | (0<<14);
+    shadowOAM[0].attr1 = (0x1FF && panda.col) | (0<<14);
+    shadowOAM[0].attr2 = ((0)<<12) | ((panda.curFrame)*32+(panda.aniState));
 }
 
 void drawFood() {
@@ -1253,13 +1318,32 @@ void drawFriendlyPandas() {
 }
 
 void updateGame() {
+    (*(volatile unsigned short*)0x400000A) = ((0)<<2) | ((screenBlock)<<8) | (1<<14);
+
+    if (hOff > 256) {
+        screenBlock++;
+        hOff-=256;
+        (*(volatile unsigned short*)0x400000A) = ((0)<<2) | ((screenBlock)<<8) | (1<<14);
+    }
+    if (screenBlock == 31) {
+
+    }
+
+    if (playerHOff > 512) {
+        playerHOff -= 512;
+    }
+
     updatePanda();
-    drawPanda();
+
     checkFoodCollected();
     drawFood();
     drawScore();
+    (*(volatile unsigned short *)0x04000014) = hOff;
+    (*(volatile unsigned short *)0x04000016) = vOff;
+
     waitForVBlank();
     DMANow(3, shadowOAM, ((OBJ_ATTR*)(0x7000000)), 128 * 4);
+
 }
 
 void resetAnimationFriendly() {

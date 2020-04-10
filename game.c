@@ -6,8 +6,17 @@
 int hasLost;
 int hasWon;
 
+int hOff = 200;   
+int vOff = 9;
+int playerHOff;
+int screenBlock;
+
 // initializes PANDA and food
 void initGame() {
+    vOff = 0;
+    hOff = 0;
+    playerHOff = 0;
+    screenBlock = 28;
     initPanda();
     initFood();
 }
@@ -18,8 +27,10 @@ void initPanda() {
     // initialize teleporting panda
     panda.width = 8;
     panda.height = 8;
-    panda.col = SCREENWIDTH/2 - (panda.width/2) - 40;
-    panda.row = SCREENHEIGHT/2 - (panda.height/2) - 10;
+    panda.worldCol = SCREENWIDTH/2 - (panda.width/2) - 40;
+    panda.worldRow = SCREENHEIGHT/2 - (panda.height/2) - 10;
+    //panda.row = 200;
+    //panda.col = 50;
     panda.cdel = 1;
     panda.rdel = 1;
     panda.aniCounter = 0;
@@ -101,25 +112,69 @@ void updatePanda() {
 
     if (BUTTON_HELD(BUTTON_UP)) 
     {
-        panda.aniState = PANDAHAPPY;
-        panda.row-=panda.rdel;
+        if (panda.worldRow > 0) {
+            
+            panda.aniState = PANDAHAPPY;
+            panda.worldRow-=panda.rdel;
+
+            if (vOff > 0 && panda.row + panda.height/2 == SCREENHEIGHT/2) {
+                // Update background offset variable if the above is true
+                vOff--;
+            }
+        }
+    
     }
 
     if (BUTTON_HELD(BUTTON_DOWN)) 
     {
-        panda.aniState = PANDAHAPPY;
-        panda.row+=panda.rdel;
+        if (panda.worldRow + panda.height < WORLDHEIGHT) {
+            
+            panda.aniState = PANDAHAPPY;
+            panda.worldRow+=panda.rdel;
+
+            if (vOff + SCREENHEIGHT < WORLDHEIGHT && panda.row + panda.height/2 == SCREENHEIGHT/2) {
+                // Update background offset variable if the above is true
+                vOff++;
+            }
+        }
+    
     }
     if (BUTTON_HELD(BUTTON_LEFT)) 
     {
-        panda.aniState = PANDASAD;
-        panda.col-=panda.cdel;
+        if (panda.worldCol > 0) {
+            panda.worldCol--;
+    
+        
+        }
+        if (hOff > 0) {
+            hOff--;
+            playerHOff--; 
+        }
+        if (screenBlock == 31) {
+            if (hOff == 0) {
+                hOff = 256;
+                screenBlock = 30;
+            }
+        }
+        
+
+        
+        
     }
 
     if (BUTTON_HELD(BUTTON_RIGHT)) 
     {
+        if (panda.worldCol + panda.width < WORLDWIDTH -1) {
+            panda.worldCol++;
+
+            if (screenBlock < 31 && hOff < (WORLDWIDTH - SCREENWIDTH -1) && panda.col >= SCREENWIDTH / 2) {
+                hOff++;
+                playerHOff++;
+            }
+        }
+
+        
         panda.aniState = PANDASAD;
-        panda.col+=panda.cdel;
     
     }
     
@@ -132,9 +187,12 @@ void updatePanda() {
         panda.aniCounter++;
     }
     
-    if ((panda.row > 152) | (panda.row < 0) | (panda.col < 0) | (panda.col > 232)) {
-        hasLost = 1;
-    }
+    //if ((panda.row > 152) | (panda.row < 0) | (panda.col < 0) | (panda.col > 232)) {
+    //    hasLost = 1;
+    //}
+
+    panda.col = panda.worldCol - playerHOff;
+    panda.row = panda.worldRow - vOff;
     
     
 }
@@ -199,9 +257,9 @@ void checkFoodDelivered() {
 // Draw Functions
 
 void drawPanda() {
-    shadowOAM[0].attr0 = panda.row | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[0].attr1 = panda.col | ATTR1_TINY;
-    shadowOAM[0].attr2 = ATTR2_TILEID(panda.aniState, panda.curFrame);
+    shadowOAM[0].attr0 = (ROWMASK && panda.row) | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[0].attr1 = (COLMASK && panda.col) | ATTR1_TINY;
+    shadowOAM[0].attr2 = ATTR2_PALROW(0) | ATTR2_TILEID(panda.aniState, panda.curFrame);
 }
 
 void drawFood() {
@@ -251,13 +309,32 @@ void drawFriendlyPandas() {
 }
 
 void updateGame() {
+    REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
+
+    if (hOff > 256) {
+        screenBlock++;
+        hOff-=256;
+        REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
+    }
+    if (screenBlock == 31) {
+
+    }
+
+    if (playerHOff > 512) {
+        playerHOff -= 512;
+    }
+    
     updatePanda();
-    drawPanda();
+    //drawPanda();
     checkFoodCollected();
     drawFood();
     drawScore();
+    REG_BG1HOFF = hOff;
+    REG_BG1VOFF = vOff;
+
     waitForVBlank();
     DMANow(3, shadowOAM, OAM, 128 * 4);
+
 }
 
 void resetAnimationFriendly() {

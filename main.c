@@ -38,11 +38,7 @@ void initialize();
     // Button Variables 
     unsigned short buttons;
     unsigned short oldButtons;
-
-    // hOff and vOff Variables
-    int hOff = 0;   
-    int vOff = 0;
-
+    
     // Keeps track if player lost
     int hasLost = 0;
     int hasWon = 0;
@@ -105,8 +101,6 @@ void initialize() {
     REG_DISPCTL = MODE0 | SPRITE_ENABLE;
     initGame();
     buttons = BUTTONS; 
-    hOff = 0;
-    vOff = 0;
     goToSplash();
     initBaskets();
     initPandas();
@@ -210,6 +204,10 @@ void instruction() {
 void goToGame() {
 
     hideSprites();
+    REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
+
+    REG_BG1VOFF = vOff;
+    REG_BG1HOFF = hOff;
     state = GAME;
 
 }
@@ -222,15 +220,16 @@ void game() {
     DMANow(3, gameScreenPal, PALETTE, gameScreenPalLen/2);
 
     // Set up bg 1 control register
-    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(31);
+    //REG_BG1CNT = BG_SIZE_WIDE | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28) | BG_SIZE_WIDE;
 
     // Load loseScreen tiles to charblock
     DMANow(3, gameScreenTiles, &CHARBLOCK[0], gameScreenTilesLen/2);
 
     // Load loseScreen map to screenblock
-    DMANow(3, gameScreenMap, &SCREENBLOCK[31], gameScreenMapLen/2);
+    DMANow(3, gameScreenMap, &SCREENBLOCK[28], gameScreenMapLen/2);
 
     updateGame();
+    
 
     if (BUTTON_PRESSED(BUTTON_START)) 
     {

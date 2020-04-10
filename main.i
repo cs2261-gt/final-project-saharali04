@@ -114,9 +114,16 @@ int collision(int colA, int rowA, int widthA, int heightA, int colB, int rowB, i
 # 1 "game.h" 1
 
 
+extern int hOff;
+extern int vOff;
+extern int screenBlock;
+
+
     typedef struct {
         int row;
         int col;
+        int worldRow;
+        int worldCol;
         int rdel;
         int cdel;
         int width;
@@ -209,10 +216,10 @@ extern const unsigned short instructionsScreenPal[256];
 # 6 "main.c" 2
 # 1 "gameScreen.h" 1
 # 22 "gameScreen.h"
-extern const unsigned short gameScreenTiles[496];
+extern const unsigned short gameScreenTiles[528];
 
 
-extern const unsigned short gameScreenMap[1024];
+extern const unsigned short gameScreenMap[4096];
 
 
 extern const unsigned short gameScreenPal[256];
@@ -1533,10 +1540,6 @@ void initialize();
     unsigned short oldButtons;
 
 
-    int hOff = 0;
-    int vOff = 0;
-
-
     int hasLost = 0;
     int hasWon = 0;
 
@@ -1598,8 +1601,6 @@ void initialize() {
     (*(unsigned short *)0x4000000) = 0 | (1<<12);
     initGame();
     buttons = (*(volatile unsigned short *)0x04000130);
-    hOff = 0;
-    vOff = 0;
     goToSplash();
     initBaskets();
     initPandas();
@@ -1703,6 +1704,10 @@ void instruction() {
 void goToGame() {
 
     hideSprites();
+    (*(volatile unsigned short*)0x400000A) = ((0)<<2) | ((screenBlock)<<8) | (1<<14);
+
+    (*(volatile unsigned short *)0x04000016) = vOff;
+    (*(volatile unsigned short *)0x04000014) = hOff;
     state = GAME;
 
 }
@@ -1715,15 +1720,16 @@ void game() {
     DMANow(3, gameScreenPal, ((unsigned short *)0x5000000), 512/2);
 
 
-    (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((31)<<8);
 
 
-    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 992/2);
+
+    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 1056/2);
 
 
-    DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[31], 2048/2);
+    DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[28], 8192/2);
 
     updateGame();
+
 
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3)))))
     {
