@@ -1159,7 +1159,7 @@ void updatePanda() {
             hOff--;
             playerHOff--;
         }
-# 163 "game.c"
+
     }
 
     if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<4))))

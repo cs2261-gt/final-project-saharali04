@@ -216,7 +216,7 @@ extern const unsigned short instructionsScreenPal[256];
 # 6 "main.c" 2
 # 1 "gameScreen.h" 1
 # 22 "gameScreen.h"
-extern const unsigned short gameScreenTiles[528];
+extern const unsigned short gameScreenTiles[64];
 
 
 extern const unsigned short gameScreenMap[4096];
@@ -273,7 +273,7 @@ extern const unsigned short spriteSheetPal[256];
 # 12 "main.c" 2
 # 1 "scoreBackground.h" 1
 # 22 "scoreBackground.h"
-extern const unsigned short scoreBackgroundTiles[688];
+extern const unsigned short scoreBackgroundTiles[448];
 
 
 extern const unsigned short scoreBackgroundMap[1024];
@@ -1733,14 +1733,14 @@ void game() {
     (*(volatile unsigned short*)0x4000008) = ((1)<<2) | ((25)<<8) | (0<<14);
 
 
-    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 1056/2);
+    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 128/2);
 
 
     DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[28], 8192/2);
 
     DMANow(3, scoreBackgroundPal, ((unsigned short *)0x5000000), 512/2);
 
-    DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[1], 1376/2);
+    DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[1], 896/2);
 
     DMANow(3, scoreBackgroundMap, &((screenblock *)0x6000000)[25], 2048/2);
 
@@ -1773,6 +1773,8 @@ void game() {
 
 
 void goToGame2() {
+    (*(volatile unsigned short *)0x04000016) = 0;
+    (*(volatile unsigned short *)0x04000014) = 0;
 
     (*(unsigned short *)0x4000000) = 0 | (1<<9);
     hideSprites();

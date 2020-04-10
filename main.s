@@ -400,7 +400,7 @@ game:
 	mov	lr, pc
 	bx	r4
 	ldr	r2, .L66+8
-	mov	r3, #528
+	mov	r3, #64
 	strh	r2, [r5, #8]	@ movhi
 	mov	r0, #3
 	mov	r2, #100663296
@@ -419,7 +419,7 @@ game:
 	ldr	r1, .L66+24
 	mov	lr, pc
 	bx	r4
-	mov	r3, #688
+	mov	r3, #448
 	mov	r0, #3
 	ldr	r2, .L66+28
 	ldr	r1, .L66+32
@@ -447,7 +447,7 @@ game:
 	beq	.L48
 	ldr	r3, .L66+52
 	ldrh	r3, [r3]
-	tst	r3, #4
+	ands	r4, r3, #4
 	beq	.L65
 .L48:
 	ldr	r3, .L66+56
@@ -464,21 +464,23 @@ game:
 	strne	r2, [r3]
 	bx	lr
 .L65:
-	ldr	r4, .L66+64
+	ldr	r5, .L66+64
 	mov	lr, pc
-	bx	r4
+	bx	r5
 	mov	lr, pc
-	bx	r4
+	bx	r5
 	mov	r2, #1
 	ldr	r1, .L66+68
 	ldr	r3, .L66+72
 	ldr	r0, .L66+76
 	mov	lr, pc
 	bx	r3
-	mov	r2, #67108864
-	mov	r1, #512
+	mov	r3, #67108864
+	mov	r2, #512
+	strh	r4, [r3, #22]	@ movhi
+	strh	r2, [r3]	@ movhi
+	strh	r4, [r3, #20]	@ movhi
 	ldr	r3, .L66+80
-	strh	r1, [r2]	@ movhi
 	mov	lr, pc
 	bx	r3
 	mov	r2, #3
@@ -530,13 +532,16 @@ goToGame2:
 	@ Function supports interworking.
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
-	mov	r2, #67108864
+	mov	r3, #67108864
+	mov	r2, #0
 	mov	r1, #512
 	push	{r4, lr}
-	ldr	r3, .L70
-	strh	r1, [r2]	@ movhi
+	strh	r2, [r3, #22]	@ movhi
+	strh	r1, [r3]	@ movhi
+	strh	r2, [r3, #20]	@ movhi
+	ldr	r1, .L70
 	mov	lr, pc
-	bx	r3
+	bx	r1
 	mov	r2, #3
 	ldr	r3, .L70+4
 	pop	{r4, lr}
