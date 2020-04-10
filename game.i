@@ -1313,7 +1313,7 @@ void updateGame() {
 
     if (hOff > 256) {
         screenBlock++;
-        hOff-=256;
+        hOff -= 256;
         (*(volatile unsigned short*)0x400000A) = ((0)<<2) | ((screenBlock)<<8) | (1<<14);
     }
     if (hOff == 0) {

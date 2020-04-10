@@ -304,7 +304,7 @@ void updateGame() {
 
     if (hOff > 256) {
         screenBlock++;
-        hOff-=256;
+        hOff -= 256;
         REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
     }
     if (hOff == 0) {

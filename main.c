@@ -133,13 +133,13 @@ void splash() {
     DMANow(3, splashScreenPal, PALETTE, splashScreenPalLen/2);
 
     // Set up bg 1 control register
-    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(31);
+    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
 
     // Load splashScreen tiles to charblock
     DMANow(3, splashScreenTiles, &CHARBLOCK[0], splashScreenTilesLen/2);
 
     // Load splashScreen map to screenblock
-    DMANow(3, splashScreenMap, &SCREENBLOCK[31], splashScreenMapLen/2);
+    DMANow(3, splashScreenMap, &SCREENBLOCK[11], splashScreenMapLen/2);
 
     for (int i = 0; i < SHADOWOAMLENGTH; i++) 
     {
@@ -180,13 +180,13 @@ void instruction() {
     DMANow(3, instructionsScreenPal, PALETTE, instructionsScreenPalLen/2);
 
     // Set up bg 1 control register
-    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(31);
+    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
 
     // Load instructionScreen tiles to charblock
     DMANow(3, instructionsScreenTiles, &CHARBLOCK[0], instructionsScreenTilesLen/2);
 
     // Load instructionScreen map to screenblock
-    DMANow(3, instructionsScreenMap, &SCREENBLOCK[31], instructionsScreenMapLen/2);
+    DMANow(3, instructionsScreenMap, &SCREENBLOCK[11], instructionsScreenMapLen/2);
 
     if (BUTTON_PRESSED(BUTTON_START)) 
     {
@@ -205,7 +205,7 @@ void instruction() {
 void goToGame() {
 
     hideSprites();
-    REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
+    //REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
 
     REG_BG1VOFF = vOff;
     REG_BG1HOFF = hOff;
@@ -220,9 +220,6 @@ void game() {
 
     DMANow(3, gameScreenPal, PALETTE, gameScreenPalLen/2);
 
-    // Set up bg 1 control register
-    REG_BG0CNT = BG_CHARBLOCK(1) | BG_SCREENBLOCK(25) | BG_SIZE_SMALL;
-    
     // Load loseScreen tiles to charblock
     DMANow(3, gameScreenTiles, &CHARBLOCK[0], gameScreenTilesLen/2);
 
@@ -234,7 +231,7 @@ void game() {
     DMANow(3, scoreBackgroundTiles, &CHARBLOCK[1], scoreBackgroundTilesLen/2);
 
     DMANow(3, scoreBackgroundMap, &SCREENBLOCK[25], scoreBackgroundMapLen/2);
-
+    REG_BG0CNT = BG_CHARBLOCK(1) | BG_SCREENBLOCK(25) | BG_SIZE_SMALL;
     updateGame();
     
 
@@ -281,13 +278,13 @@ void game2() {
     DMANow(3, gameScreen2Pal, PALETTE, gameScreen2PalLen/2);
 
     // Set up bg 1 control register
-    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(31);
+    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
 
     // Load loseScreen tiles to charblock
     DMANow(3, gameScreen2Tiles, &CHARBLOCK[0], gameScreen2TilesLen/2);
 
     // Load loseScreen map to screenblock
-    DMANow(3, gameScreen2Map, &SCREENBLOCK[31], gameScreen2MapLen/2);
+    DMANow(3, gameScreen2Map, &SCREENBLOCK[11], gameScreen2MapLen/2);
     
     REG_DISPCTL = MODE0 | BG1_ENABLE | SPRITE_ENABLE;
     
@@ -332,13 +329,13 @@ void pause() {
     DMANow(3, pauseScreenPal, PALETTE, pauseScreenPalLen/2);
 
     // Set up bg 1 control register
-    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(31);
+    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
 
     // Load pauseScreen tiles to charblock
     DMANow(3, pauseScreenTiles, &CHARBLOCK[0], pauseScreenTilesLen/2);
 
     // Load pauseScreen map to screenblock
-    DMANow(3, pauseScreenMap, &SCREENBLOCK[31], pauseScreenMapLen/2);
+    DMANow(3, pauseScreenMap, &SCREENBLOCK[11], pauseScreenMapLen/2);
 
     if (BUTTON_PRESSED(BUTTON_START)) {
         unpauseSound();
@@ -362,13 +359,13 @@ void win() {
     DMANow(3, winScreenPal, PALETTE, winScreenPalLen/2);
 
     // Set up bg 1 control register
-    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(31);
+    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
 
     // Load winScreen tiles to charblock
     DMANow(3, winScreenTiles, &CHARBLOCK[0], winScreenTilesLen/2);
     
     // Load winScreen map to screenblock
-    DMANow(3, winScreenMap, &SCREENBLOCK[31], winScreenMapLen/2);
+    DMANow(3, winScreenMap, &SCREENBLOCK[11], winScreenMapLen/2);
     
     if (BUTTON_PRESSED(BUTTON_START)) {
         goToSplash();
@@ -391,13 +388,13 @@ void lose() {
     DMANow(3, loseScreenPal, PALETTE, loseScreenPalLen/2);
 
     // Set up bg 1 control register
-    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(31);
+    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
 
     // Load loseScreen tiles to charblock
     DMANow(3, loseScreenTiles, &CHARBLOCK[0], loseScreenTilesLen/2);
 
     // Load loseScreen map to screenblock
-    DMANow(3, loseScreenMap, &SCREENBLOCK[31], loseScreenMapLen/2);
+    DMANow(3, loseScreenMap, &SCREENBLOCK[11], loseScreenMapLen/2);
 
     if (BUTTON_PRESSED(BUTTON_START)) {
         goToSplash();
