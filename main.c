@@ -264,6 +264,8 @@ void game() {
 
 // Sets up the game state
 void goToGame2() {
+    REG_BG1VOFF = 0;
+    REG_BG1HOFF = 0;
 
     REG_DISPCTL = MODE0 | BG1_ENABLE;
     hideSprites();

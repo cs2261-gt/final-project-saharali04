@@ -150,15 +150,6 @@ void updatePanda() {
             hOff--;
             playerHOff--; 
         }
-        //if (screenBlock == 31) {
-        //    if (hOff == 0) {
-         //       hOff = 256;
-        //        screenBlock = 30;
-        //    }
-       // }
-        
-
-        
         
     }
 
