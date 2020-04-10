@@ -995,10 +995,16 @@ extern long double strtold (const char *restrict, char **restrict);
 # 336 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdlib.h" 3
 
 # 4 "game.c" 2
+# 1 "chew.h" 1
 
 
 
-# 6 "game.c"
+
+
+# 5 "chew.h"
+extern const signed char chewSound[21312];
+# 5 "game.c" 2
+
 int hasLost;
 int hasWon;
 
@@ -1159,6 +1165,7 @@ void checkFoodDelivered() {
     for (int i = 0; i < 3; i++) {
         if ((!(~(oldButtons)&((1<<0))) && (~buttons & ((1<<0)))) && collision(panda.col, panda.row, panda.width, panda.height, baskets[i].col, baskets[i].row, baskets[i].width, baskets[i].height) && panda.leavesCollected > 0)
         {
+            playSoundB(chewSound, 21312, 0);
             pandas[i].leavesCollected++;
             panda.leavesCollected--;
             pandas[i].curFrame = 1;
@@ -1173,6 +1180,7 @@ void checkFoodDelivered() {
 
         if ((!(~(oldButtons)&((1<<1))) && (~buttons & ((1<<1)))) && collision(panda.col, panda.row, panda.width, panda.height, baskets[i].col, baskets[i].row, baskets[i].width, baskets[i].height) && panda.stemsCollected > 0)
         {
+            playSoundB(chewSound, 21312, 0);
             pandas[i].stemsCollected++;
             panda.stemsCollected--;
             pandas[i].curFrame = 1;

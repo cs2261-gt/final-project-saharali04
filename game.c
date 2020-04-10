@@ -1,7 +1,7 @@
 #include "game.h"
 #include "myLib.h"
 #include <stdlib.h>
-
+#include "chew.h"
 // keeps track if player has lost
 int hasLost;
 int hasWon;
@@ -163,6 +163,7 @@ void checkFoodDelivered() {
     for (int i = 0; i < BASKETCOUNT; i++) {
         if (BUTTON_PRESSED(BUTTON_A) && collision(panda.col, panda.row, panda.width, panda.height, baskets[i].col, baskets[i].row, baskets[i].width, baskets[i].height) && panda.leavesCollected > 0) 
         {
+            playSoundB(chewSound, CHEWSOUNDLEN, 0);
             pandas[i].leavesCollected++;
             panda.leavesCollected--;
             pandas[i].curFrame = 1;
@@ -177,6 +178,7 @@ void checkFoodDelivered() {
             
         if (BUTTON_PRESSED(BUTTON_B) && collision(panda.col, panda.row, panda.width, panda.height, baskets[i].col, baskets[i].row, baskets[i].width, baskets[i].height) && panda.stemsCollected > 0) 
         {
+            playSoundB(chewSound, CHEWSOUNDLEN, 0);
             pandas[i].stemsCollected++;
             panda.stemsCollected--;
             pandas[i].curFrame = 1;
