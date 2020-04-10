@@ -1155,20 +1155,11 @@ void updatePanda() {
 
 
         }
-        if (hOff > 0) {
+        if (hOff > 0 && screenBlock > 27) {
             hOff--;
             playerHOff--;
         }
-        if (screenBlock == 31) {
-            if (hOff == 0) {
-                hOff = 256;
-                screenBlock = 30;
-            }
-        }
-
-
-
-
+# 163 "game.c"
     }
 
     if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<4))))
@@ -1325,8 +1316,10 @@ void updateGame() {
         hOff-=256;
         (*(volatile unsigned short*)0x400000A) = ((0)<<2) | ((screenBlock)<<8) | (1<<14);
     }
-    if (screenBlock == 31) {
-
+    if (hOff == 0) {
+        screenBlock--;
+        hOff = 256;
+        (*(volatile unsigned short*)0x400000A) = ((0)<<2) | ((screenBlock)<<8) | (1<<14);
     }
 
     if (playerHOff > 512) {

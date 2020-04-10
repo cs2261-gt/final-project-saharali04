@@ -388,89 +388,109 @@ game:
 	@ Function supports interworking.
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
-	mov	r2, #67108864
-	mov	r1, #4608
 	push	{r4, r5, r6, lr}
-	mov	r3, #256
-	strh	r1, [r2]	@ movhi
+	mov	r2, #4864
+	mov	r5, #67108864
 	ldr	r4, .L66
+	strh	r2, [r5]	@ movhi
+	mov	r3, #256
 	mov	r2, #83886080
 	mov	r0, #3
 	ldr	r1, .L66+4
 	mov	lr, pc
 	bx	r4
+	ldr	r2, .L66+8
 	mov	r3, #528
-	mov	r2, #100663296
+	strh	r2, [r5, #8]	@ movhi
 	mov	r0, #3
-	ldr	r1, .L66+8
+	mov	r2, #100663296
+	ldr	r1, .L66+12
 	mov	lr, pc
 	bx	r4
-	ldr	r5, .L66+12
 	mov	r3, #4096
 	mov	r0, #3
 	ldr	r2, .L66+16
 	ldr	r1, .L66+20
 	mov	lr, pc
 	bx	r4
-	ldr	r3, .L66+24
+	mov	r3, #256
+	mov	r2, #83886080
+	mov	r0, #3
+	ldr	r1, .L66+24
+	mov	lr, pc
+	bx	r4
+	mov	r3, #688
+	mov	r0, #3
+	ldr	r2, .L66+28
+	ldr	r1, .L66+32
+	mov	lr, pc
+	bx	r4
+	ldr	r5, .L66+36
+	mov	r3, #1024
+	mov	r0, #3
+	ldr	r2, .L66+40
+	ldr	r1, .L66+44
+	mov	lr, pc
+	bx	r4
+	ldr	r3, .L66+48
 	mov	lr, pc
 	bx	r3
 	ldrh	r3, [r5]
 	tst	r3, #8
 	beq	.L47
-	ldr	r2, .L66+28
+	ldr	r2, .L66+52
 	ldrh	r2, [r2]
 	tst	r2, #8
 	beq	.L64
 .L47:
 	tst	r3, #4
 	beq	.L48
-	ldr	r3, .L66+28
+	ldr	r3, .L66+52
 	ldrh	r3, [r3]
 	tst	r3, #4
 	beq	.L65
 .L48:
-	ldr	r3, .L66+32
+	ldr	r3, .L66+56
 	ldr	r2, [r3]
 	cmp	r2, #0
 	movne	r1, #6
-	ldrne	r2, .L66+36
+	ldrne	r2, .L66+60
 	ldr	r3, [r3, #4]
 	strne	r1, [r2]
 	cmp	r3, #0
 	movne	r2, #5
-	ldrne	r3, .L66+36
+	ldrne	r3, .L66+60
 	pop	{r4, r5, r6, lr}
 	strne	r2, [r3]
 	bx	lr
 .L65:
-	ldr	r4, .L66+40
+	ldr	r4, .L66+64
 	mov	lr, pc
 	bx	r4
 	mov	lr, pc
 	bx	r4
 	mov	r2, #1
-	ldr	r1, .L66+44
-	ldr	r3, .L66+48
-	ldr	r0, .L66+52
+	ldr	r1, .L66+68
+	ldr	r3, .L66+72
+	ldr	r0, .L66+76
 	mov	lr, pc
 	bx	r3
 	mov	r2, #67108864
 	mov	r1, #512
-	ldr	r3, .L66+56
+	ldr	r3, .L66+80
 	strh	r1, [r2]	@ movhi
 	mov	lr, pc
 	bx	r3
 	mov	r2, #3
-	ldr	r3, .L66+36
+	ldr	r3, .L66+60
 	str	r2, [r3]
 	b	.L48
 .L64:
-	ldr	r3, .L66+60
+	ldr	r3, .L66+84
 	mov	lr, pc
 	bx	r3
 	mov	r1, #4
-	ldr	r2, .L66+36
+	ldr	r2, .L66+60
 	ldrh	r3, [r5]
 	str	r1, [r2]
 	b	.L47
@@ -479,10 +499,16 @@ game:
 .L66:
 	.word	DMANow
 	.word	gameScreenPal
+	.word	6404
 	.word	gameScreenTiles
-	.word	oldButtons
 	.word	100720640
 	.word	gameScreenMap
+	.word	scoreBackgroundPal
+	.word	100679680
+	.word	scoreBackgroundTiles
+	.word	oldButtons
+	.word	100714496
+	.word	scoreBackgroundMap
 	.word	updateGame
 	.word	buttons
 	.word	.LANCHOR0

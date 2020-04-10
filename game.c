@@ -146,16 +146,16 @@ void updatePanda() {
     
         
         }
-        if (hOff > 0) {
+        if (hOff > 0 && screenBlock > 27) {
             hOff--;
             playerHOff--; 
         }
-        if (screenBlock == 31) {
-            if (hOff == 0) {
-                hOff = 256;
-                screenBlock = 30;
-            }
-        }
+        //if (screenBlock == 31) {
+        //    if (hOff == 0) {
+         //       hOff = 256;
+        //        screenBlock = 30;
+        //    }
+       // }
         
 
         
@@ -316,8 +316,10 @@ void updateGame() {
         hOff-=256;
         REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
     }
-    if (screenBlock == 31) {
-
+    if (hOff == 0) {
+        screenBlock--;
+        hOff = 256;
+        REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
     }
 
     if (playerHOff > 512) {

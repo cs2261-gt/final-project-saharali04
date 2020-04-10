@@ -9,6 +9,7 @@
 #include "winScreen.h"
 #include "loseScreen.h"
 #include "spriteSheet.h"
+#include "scoreBackground.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include "gameSound.h"
@@ -215,18 +216,24 @@ void goToGame() {
 // Runs every frame of the game state
 void game() {
 
-    REG_DISPCTL = MODE0 | BG1_ENABLE | SPRITE_ENABLE;
+    REG_DISPCTL = MODE0 | BG1_ENABLE | SPRITE_ENABLE | BG0_ENABLE;
 
     DMANow(3, gameScreenPal, PALETTE, gameScreenPalLen/2);
 
     // Set up bg 1 control register
-    //REG_BG1CNT = BG_SIZE_WIDE | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28) | BG_SIZE_WIDE;
-
+    REG_BG0CNT = BG_CHARBLOCK(1) | BG_SCREENBLOCK(25) | BG_SIZE_SMALL;
+    
     // Load loseScreen tiles to charblock
     DMANow(3, gameScreenTiles, &CHARBLOCK[0], gameScreenTilesLen/2);
 
     // Load loseScreen map to screenblock
     DMANow(3, gameScreenMap, &SCREENBLOCK[28], gameScreenMapLen/2);
+
+    DMANow(3, scoreBackgroundPal, PALETTE, scoreBackgroundPalLen/2);
+
+    DMANow(3, scoreBackgroundTiles, &CHARBLOCK[1], scoreBackgroundTilesLen/2);
+
+    DMANow(3, scoreBackgroundMap, &SCREENBLOCK[25], scoreBackgroundMapLen/2);
 
     updateGame();
     

@@ -244,160 +244,152 @@ updatePanda:
 	@ Function supports interworking.
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
-	push	{r4, r5, r6, r7, r8, lr}
-	ldr	r4, .L50
+	push	{r4, r5, r6, lr}
+	ldr	r4, .L48
 	ldr	r3, [r4, #36]
 	cmp	r3, #6
 	movne	r2, #0
 	strne	r3, [r4, #40]
 	strne	r2, [r4, #36]
-	ldr	r1, .L50+4
+	ldr	r1, .L48+4
 	ldr	r2, [r4, #32]
-	ldr	r3, .L50+8
+	ldr	r3, .L48+8
 	mla	r3, r2, r3, r1
-	ldr	r1, .L50+12
+	ldr	r1, .L48+12
 	cmp	r3, r1
 	addhi	r2, r2, #1
 	strhi	r2, [r4, #32]
 	bhi	.L33
 	ldr	r0, [r4, #60]
-	ldr	r3, .L50+16
+	ldr	r3, .L48+16
 	ldr	r1, [r4, #64]
 	add	r0, r0, #1
 	mov	lr, pc
 	bx	r3
 	str	r1, [r4, #60]
 .L33:
-	ldr	r3, .L50+20
+	ldr	r3, .L48+20
 	ldrh	r3, [r3, #48]
-	ldr	r1, .L50+24
+	ldr	r1, .L48+24
 	tst	r3, #64
-	ldr	ip, [r1]
+	ldr	r0, [r1]
 	ldr	r3, [r4, #8]
 	bne	.L34
 	cmp	r3, #0
 	ble	.L34
 	mov	r2, #2
-	ldr	r0, [r4, #16]
-	cmp	ip, #0
-	sub	r3, r3, r0
+	ldr	ip, [r4, #16]
+	cmp	r0, #0
+	sub	r3, r3, ip
 	str	r3, [r4, #8]
 	str	r2, [r4, #36]
 	ble	.L34
 	ldr	r2, [r4, #28]
-	ldr	r0, [r4]
+	ldr	ip, [r4]
 	add	r2, r2, r2, lsr #31
-	add	r2, r0, r2, asr #1
+	add	r2, ip, r2, asr #1
 	cmp	r2, #80
-	subeq	ip, ip, #1
-	streq	ip, [r1]
+	subeq	r0, r0, #1
+	streq	r0, [r1]
 .L34:
-	ldr	r2, .L50+20
+	ldr	r2, .L48+20
 	ldrh	r2, [r2, #48]
 	tst	r2, #128
 	bne	.L35
 	ldr	r2, [r4, #28]
-	add	r0, r2, r3
-	cmp	r0, #255
-	ble	.L47
+	add	ip, r2, r3
+	cmp	ip, #255
+	ble	.L46
 .L35:
-	ldr	r2, .L50+20
+	ldr	r2, .L48+20
 	ldrh	r2, [r2, #48]
-	ldr	lr, .L50+28
+	ldr	lr, .L48+28
 	tst	r2, #32
-	ldr	r0, [lr]
+	ldr	ip, [lr]
 	ldr	r2, [r4, #12]
 	bne	.L36
-	ldr	r5, [r1, #4]
 	cmp	r2, #0
+	ldr	r5, [r1, #4]
 	subgt	r2, r2, #1
 	strgt	r2, [r4, #12]
 	cmp	r5, #0
+	ble	.L36
+	ldr	r6, .L48+32
+	ldr	r6, [r6]
+	cmp	r6, #27
 	subgt	r5, r5, #1
+	subgt	ip, ip, #1
 	strgt	r5, [r1, #4]
-	ldr	r5, .L50+32
-	ldr	r6, [r5]
-	subgt	r0, r0, #1
-	strgt	r0, [lr]
-	cmp	r6, #31
-	beq	.L48
+	strgt	ip, [lr]
 .L36:
-	ldr	r5, .L50+20
+	ldr	r5, .L48+20
 	ldrh	r5, [r5, #48]
 	tst	r5, #16
-	bne	.L39
+	bne	.L38
 	ldr	r5, [r4, #24]
-	ldr	r6, .L50+36
+	ldr	r6, .L48+36
 	add	r5, r2, r5
 	cmp	r5, r6
-	ble	.L49
-.L40:
+	ble	.L47
+.L39:
 	mov	r1, #1
 	str	r1, [r4, #36]
-.L41:
+.L40:
 	ldr	r1, [r4, #32]
 	add	r1, r1, #1
 	str	r1, [r4, #32]
-.L42:
-	sub	r2, r2, r0
-	sub	r3, r3, ip
+.L41:
+	sub	r2, r2, ip
+	sub	r3, r3, r0
 	str	r2, [r4, #4]
 	str	r3, [r4]
-	pop	{r4, r5, r6, r7, r8, lr}
+	pop	{r4, r5, r6, lr}
 	bx	lr
-.L39:
+.L38:
 	ldr	r1, [r4, #36]
 	cmp	r1, #6
-	bne	.L41
+	bne	.L40
 	mov	lr, #0
 	ldr	r1, [r4, #40]
 	str	lr, [r4, #60]
 	str	r1, [r4, #36]
-	b	.L42
+	b	.L41
 .L47:
-	mov	r0, #2
-	ldr	lr, [r4, #16]
-	cmp	ip, #95
-	add	r3, r3, lr
-	str	r3, [r4, #8]
-	str	r0, [r4, #36]
-	bgt	.L35
-	ldr	r0, [r4]
-	add	r2, r2, r2, lsr #31
-	add	r2, r0, r2, asr #1
-	cmp	r2, #80
-	addeq	ip, ip, #1
-	streq	ip, [r1]
-	b	.L35
-.L49:
-	ldr	r5, .L50+32
+	ldr	r5, .L48+32
 	ldr	r5, [r5]
 	add	r2, r2, #1
 	cmp	r5, #30
 	str	r2, [r4, #12]
-	bgt	.L40
+	bgt	.L39
 	ldr	r5, [r1, #4]
 	sub	r6, r6, #240
 	cmp	r5, r6
-	bgt	.L40
+	bgt	.L39
 	ldr	r6, [r4, #4]
 	cmp	r6, #119
 	addgt	r5, r5, #1
-	addgt	r0, r0, #1
+	addgt	ip, ip, #1
 	strgt	r5, [r1, #4]
-	strgt	r0, [lr]
-	b	.L40
-.L48:
-	ldr	r6, [r1, #4]
-	cmp	r6, #0
-	moveq	r7, #256
-	moveq	r6, #30
-	streq	r7, [r1, #4]
-	streq	r6, [r5]
-	b	.L36
-.L51:
+	strgt	ip, [lr]
+	b	.L39
+.L46:
+	mov	ip, #2
+	ldr	lr, [r4, #16]
+	cmp	r0, #95
+	add	r3, r3, lr
+	str	r3, [r4, #8]
+	str	ip, [r4, #36]
+	bgt	.L35
+	ldr	ip, [r4]
+	add	r2, r2, r2, lsr #31
+	add	r2, ip, r2, asr #1
+	cmp	r2, #80
+	addeq	r0, r0, #1
+	streq	r0, [r1]
+	b	.L35
+.L49:
 	.align	2
-.L50:
+.L48:
 	.word	panda
 	.word	85899345
 	.word	-1030792151
@@ -420,25 +412,25 @@ checkFoodCollected:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
-	ldr	r4, .L64
-	ldr	r5, .L64+4
+	ldr	r4, .L62
+	ldr	r5, .L62+4
 	mov	fp, #5
-	ldr	r6, .L64+8
-	ldr	r8, .L64+12
-	ldr	r10, .L64+16
+	ldr	r6, .L62+8
+	ldr	r8, .L62+12
+	ldr	r10, .L62+16
 	sub	sp, sp, #20
 	add	r7, r4, #960
 	sub	r9, r5, #8
-	b	.L57
-.L54:
+	b	.L55
+.L52:
 	add	r4, r4, #32
 	cmp	r4, r7
 	add	r5, r5, #8
-	beq	.L63
-.L57:
+	beq	.L61
+.L55:
 	ldr	r3, [r4, #28]
 	cmp	r3, #0
-	beq	.L54
+	beq	.L52
 	ldm	r4, {r2, r3}
 	ldr	r0, [r4, #20]
 	ldr	r1, [r4, #16]
@@ -453,7 +445,7 @@ checkFoodCollected:
 	mov	lr, pc
 	bx	r8
 	cmp	r0, #0
-	beq	.L54
+	beq	.L52
 	ldm	r4, {r0, ip}
 	mov	r3, #512
 	strh	r0, [r5]	@ movhi
@@ -477,15 +469,15 @@ checkFoodCollected:
 	strne	r3, [r6, #48]
 	cmp	r4, r7
 	add	r5, r5, #8
-	bne	.L57
-.L63:
+	bne	.L55
+.L61:
 	add	sp, sp, #20
 	@ sp needed
 	pop	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
 	bx	lr
-.L65:
+.L63:
 	.align	2
-.L64:
+.L62:
 	.word	food
 	.word	shadowOAM+8
 	.word	panda
@@ -503,45 +495,45 @@ checkFoodDelivered:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
-	ldr	r5, .L88
+	ldr	r5, .L86
 	mov	r6, r5
-	ldr	r4, .L88+4
-	ldr	r9, .L88+8
-	ldr	fp, .L88+12
-	ldr	r8, .L88+16
+	ldr	r4, .L86+4
+	ldr	r9, .L86+8
+	ldr	fp, .L86+12
+	ldr	r8, .L86+16
 	sub	sp, sp, #20
 	add	r10, r4, #96
-.L73:
+.L71:
 	ldrh	r2, [r9]
 	tst	r2, #1
-	beq	.L67
+	beq	.L65
 	ldrh	r7, [fp]
 	ands	r7, r7, #1
-	beq	.L85
-.L67:
+	beq	.L83
+.L65:
+	ldr	r3, [r5, #32]
+	add	r3, r3, #1
+	str	r3, [r5, #32]
+.L68:
+	tst	r2, #2
+	beq	.L69
+	ldrh	r2, [fp]
+	ands	r7, r2, #2
+	beq	.L84
+.L69:
 	ldr	r3, [r5, #32]
 	add	r3, r3, #1
 	str	r3, [r5, #32]
 .L70:
-	tst	r2, #2
-	beq	.L71
-	ldrh	r2, [fp]
-	ands	r7, r2, #2
-	beq	.L86
-.L71:
-	ldr	r3, [r5, #32]
-	add	r3, r3, #1
-	str	r3, [r5, #32]
-.L72:
 	add	r4, r4, #32
 	cmp	r10, r4
 	add	r6, r6, #68
-	bne	.L73
+	bne	.L71
 	add	sp, sp, #20
 	@ sp needed
 	pop	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
 	bx	lr
-.L85:
+.L83:
 	ldm	r4, {r2, r3}
 	ldr	r0, [r4, #20]
 	ldr	r1, [r4, #16]
@@ -553,41 +545,41 @@ checkFoodDelivered:
 	ldm	r2, {r2, r3}
 	ldr	r1, [r8]
 	ldr	r0, [r8, #4]
-	ldr	ip, .L88+20
+	ldr	ip, .L86+20
+	mov	lr, pc
+	bx	ip
+	cmp	r0, #0
+	beq	.L67
+	ldr	r3, [r8, #44]
+	cmp	r3, #0
+	bgt	.L85
+.L67:
+	ldrh	r2, [r9]
+	b	.L65
+.L84:
+	ldm	r4, {r2, r3}
+	ldr	r0, [r4, #20]
+	ldr	r1, [r4, #16]
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	str	r2, [sp, #4]
+	str	r3, [sp]
+	add	r2, r8, #24
+	ldm	r2, {r2, r3}
+	ldr	r1, [r8]
+	ldr	r0, [r8, #4]
+	ldr	ip, .L86+20
 	mov	lr, pc
 	bx	ip
 	cmp	r0, #0
 	beq	.L69
-	ldr	r3, [r8, #44]
-	cmp	r3, #0
-	bgt	.L87
-.L69:
-	ldrh	r2, [r9]
-	b	.L67
-.L86:
-	ldm	r4, {r2, r3}
-	ldr	r0, [r4, #20]
-	ldr	r1, [r4, #16]
-	str	r0, [sp, #12]
-	str	r1, [sp, #8]
-	str	r2, [sp, #4]
-	str	r3, [sp]
-	add	r2, r8, #24
-	ldm	r2, {r2, r3}
-	ldr	r1, [r8]
-	ldr	r0, [r8, #4]
-	ldr	ip, .L88+20
-	mov	lr, pc
-	bx	ip
-	cmp	r0, #0
-	beq	.L71
 	ldr	r3, [r8, #48]
 	cmp	r3, #0
-	ble	.L71
+	ble	.L69
 	mov	r2, r7
-	ldr	r3, .L88+24
-	ldr	r1, .L88+28
-	ldr	r0, .L88+32
+	ldr	r3, .L86+24
+	ldr	r1, .L86+28
+	ldr	r0, .L86+32
 	mov	lr, pc
 	bx	r3
 	mov	r2, #1
@@ -601,12 +593,12 @@ checkFoodDelivered:
 	add	r2, r2, #1
 	str	r2, [r5, #32]
 	str	r3, [r8, #48]
-	b	.L72
-.L87:
+	b	.L70
+.L85:
 	mov	r2, r7
-	ldr	r3, .L88+24
-	ldr	r1, .L88+28
-	ldr	r0, .L88+32
+	ldr	r3, .L86+24
+	ldr	r1, .L86+28
+	ldr	r0, .L86+32
 	mov	lr, pc
 	bx	r3
 	mov	r2, #1
@@ -621,10 +613,10 @@ checkFoodDelivered:
 	str	r2, [r5, #32]
 	str	r3, [r8, #44]
 	ldrh	r2, [r9]
-	b	.L70
-.L89:
+	b	.L68
+.L87:
 	.align	2
-.L88:
+.L86:
 	.word	pandas
 	.word	baskets
 	.word	oldButtons
@@ -646,7 +638,7 @@ drawPanda:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	@ link register save eliminated.
-	ldr	r3, .L91
+	ldr	r3, .L89
 	ldm	r3, {r0, r1}
 	subs	r0, r0, #0
 	movne	r0, #1
@@ -654,15 +646,15 @@ drawPanda:
 	movne	r1, #1
 	ldr	ip, [r3, #60]
 	ldr	r2, [r3, #36]
-	ldr	r3, .L91+4
+	ldr	r3, .L89+4
 	add	r2, r2, ip, lsl #5
 	strh	r0, [r3]	@ movhi
 	strh	r1, [r3, #2]	@ movhi
 	strh	r2, [r3, #4]	@ movhi
 	bx	lr
-.L92:
+.L90:
 	.align	2
-.L91:
+.L89:
 	.word	panda
 	.word	shadowOAM
 	.size	drawPanda, .-drawPanda
@@ -676,15 +668,15 @@ drawFood:
 	@ Function supports interworking.
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
-	ldr	r3, .L109
-	ldr	r2, .L109+4
+	ldr	r3, .L107
+	ldr	r2, .L107+4
 	add	r0, r3, #240
-.L101:
+.L99:
 	ldr	r1, [r2, #28]
 	cmp	r1, #0
-	beq	.L107
+	beq	.L105
 	str	lr, [sp, #-4]!
-.L102:
+.L100:
 	ldr	lr, [r2]
 	ldr	ip, [r2, #4]
 	ldr	r1, [r2, #24]
@@ -694,27 +686,27 @@ drawFood:
 	add	r3, r3, #8
 	cmp	r3, r0
 	add	r2, r2, #32
-	beq	.L108
-.L95:
+	beq	.L106
+.L93:
 	ldr	r1, [r2, #28]
 	cmp	r1, #0
-	bne	.L102
+	bne	.L100
 	add	r3, r3, #8
 	cmp	r3, r0
 	add	r2, r2, #32
-	bne	.L95
-.L108:
+	bne	.L93
+.L106:
 	ldr	lr, [sp], #4
 	bx	lr
-.L107:
+.L105:
 	add	r3, r3, #8
 	cmp	r3, r0
 	add	r2, r2, #32
-	bne	.L101
+	bne	.L99
 	bx	lr
-.L110:
+.L108:
 	.align	2
-.L109:
+.L107:
 	.word	shadowOAM
 	.word	food
 	.size	drawFood, .-drawFood
@@ -733,8 +725,8 @@ drawScore:
 	mov	r4, #141
 	mov	lr, #82
 	mov	r0, #87
-	ldr	r2, .L113
-	ldr	r3, .L113+4
+	ldr	r2, .L111
+	ldr	r3, .L111+4
 	ldr	r1, [r2, #48]
 	ldr	r2, [r2, #44]
 	add	r5, r3, #324
@@ -751,9 +743,9 @@ drawScore:
 	strh	r0, [r3, #2]	@ movhi
 	pop	{r4, r5, lr}
 	bx	lr
-.L114:
+.L112:
 	.align	2
-.L113:
+.L111:
 	.word	panda
 	.word	shadowOAM
 	.size	drawScore, .-drawScore
@@ -767,11 +759,11 @@ drawBaskets:
 	@ Function supports interworking.
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
-	ldr	r3, .L119
-	ldr	r2, .L119+4
+	ldr	r3, .L117
+	ldr	r2, .L117+4
 	str	lr, [sp, #-4]!
 	add	lr, r3, #24
-.L116:
+.L114:
 	ldr	ip, [r2]
 	ldr	r0, [r2, #4]
 	ldr	r1, [r2, #24]
@@ -781,12 +773,12 @@ drawBaskets:
 	add	r3, r3, #8
 	cmp	r3, lr
 	add	r2, r2, #32
-	bne	.L116
+	bne	.L114
 	ldr	lr, [sp], #4
 	bx	lr
-.L120:
+.L118:
 	.align	2
-.L119:
+.L117:
 	.word	shadowOAM+256
 	.word	baskets
 	.size	drawBaskets, .-drawBaskets
@@ -800,11 +792,11 @@ drawFriendlyPandas:
 	@ Function supports interworking.
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
-	ldr	r3, .L125
-	ldr	r2, .L125+4
+	ldr	r3, .L123
+	ldr	r2, .L123+4
 	push	{r4, lr}
 	add	r4, r3, #204
-.L122:
+.L120:
 	ldr	lr, [r3, #60]
 	ldr	r1, [r3, #36]
 	ldr	ip, [r3]
@@ -816,12 +808,12 @@ drawFriendlyPandas:
 	strh	ip, [r2]	@ movhi
 	strh	r0, [r2, #2]	@ movhi
 	add	r2, r2, #8
-	bne	.L122
+	bne	.L120
 	pop	{r4, lr}
 	bx	lr
-.L126:
+.L124:
 	.align	2
-.L125:
+.L123:
 	.word	pandas
 	.word	shadowOAM+288
 	.size	drawFriendlyPandas, .-drawFriendlyPandas
@@ -836,59 +828,59 @@ updateGame:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	mov	r0, #67108864
-	ldr	ip, .L137
+	ldr	ip, .L136
 	push	{r4, r5, r6, r7, r8, lr}
-	ldr	r2, [ip]
-	ldr	r5, .L137+4
-	lsl	r3, r2, #24
+	ldr	r3, [ip]
+	ldr	r5, .L136+4
+	lsl	r2, r3, #24
 	ldr	r1, [r5, #4]
-	orr	r3, r3, #1073741824
-	lsr	r3, r3, #16
+	orr	r2, r2, #1073741824
+	lsr	r2, r2, #16
 	cmp	r1, #256
-	strh	r3, [r0, #10]	@ movhi
-	ble	.L128
-	add	r2, r2, #1
-	lsl	r3, r2, #24
-	orr	r3, r3, #1073741824
-	lsr	r3, r3, #16
+	strh	r2, [r0, #10]	@ movhi
+	ble	.L126
+	add	r3, r3, #1
+	lsl	r2, r3, #24
+	orr	r2, r2, #1073741824
+	lsr	r2, r2, #16
 	sub	r1, r1, #256
-	str	r2, [ip]
+	str	r3, [ip]
 	str	r1, [r5, #4]
-	strh	r3, [r0, #10]	@ movhi
-.L128:
-	ldr	r2, .L137+8
+	strh	r2, [r0, #10]	@ movhi
+.L127:
+	ldr	r2, .L136+8
 	ldr	r3, [r2]
 	cmp	r3, #512
 	subgt	r3, r3, #512
 	strgt	r3, [r2]
 	bl	updatePanda
 	bl	checkFoodCollected
-	ldr	r3, .L137+12
-	ldr	r2, .L137+16
+	ldr	r3, .L136+12
+	ldr	r2, .L136+16
 	add	r0, r3, #240
-.L131:
+.L130:
 	ldr	r1, [r2, #28]
 	cmp	r1, #0
-	beq	.L130
+	beq	.L129
 	ldr	lr, [r2]
 	ldr	ip, [r2, #4]
 	ldr	r1, [r2, #24]
 	strh	lr, [r3, #8]	@ movhi
 	strh	ip, [r3, #10]	@ movhi
 	strh	r1, [r3, #12]	@ movhi
-.L130:
+.L129:
 	add	r3, r3, #8
 	cmp	r3, r0
 	add	r2, r2, #32
-	bne	.L131
-	ldr	r4, .L137+20
+	bne	.L130
+	ldr	r4, .L136+20
 	mov	lr, #150
 	mov	r3, r4
 	mov	r7, #141
 	mov	r6, #82
 	mov	ip, #87
 	mov	r1, #67108864
-	ldr	r0, .L137+24
+	ldr	r0, .L136+24
 	ldr	r2, [r0, #48]
 	add	r2, r2, #8
 	strh	r2, [r4, #4]	@ movhi
@@ -903,21 +895,33 @@ updateGame:
 	add	r3, r3, #8
 	strh	r2, [r1, #22]	@ movhi
 	strh	r3, [r4, #12]	@ movhi
-	ldr	r2, .L137+28
+	ldr	r2, .L136+28
 	mov	lr, pc
 	bx	r2
 	sub	r1, r4, #320
 	mov	r3, #512
-	ldr	r4, .L137+32
+	ldr	r4, .L136+32
 	mov	r2, #117440512
 	mov	r0, #3
 	mov	lr, pc
 	bx	r4
 	pop	{r4, r5, r6, r7, r8, lr}
 	bx	lr
-.L138:
-	.align	2
+.L126:
+	cmp	r1, #0
+	bne	.L127
+	mov	r1, #256
+	sub	r3, r3, #1
+	lsl	r2, r3, #24
+	orr	r2, r2, #1073741824
+	lsr	r2, r2, #16
+	str	r3, [ip]
+	str	r1, [r5, #4]
+	strh	r2, [r0, #10]	@ movhi
+	b	.L127
 .L137:
+	.align	2
+.L136:
 	.word	screenBlock
 	.word	.LANCHOR0
 	.word	playerHOff
@@ -940,14 +944,14 @@ resetAnimationFriendly:
 	@ frame_needed = 0, uses_anonymous_args = 0
 	@ link register save eliminated.
 	mov	r2, #0
-	ldr	r3, .L140
+	ldr	r3, .L139
 	str	r2, [r3, #60]
 	str	r2, [r3, #128]
 	str	r2, [r3, #196]
 	bx	lr
-.L141:
-	.align	2
 .L140:
+	.align	2
+.L139:
 	.word	pandas
 	.size	resetAnimationFriendly, .-resetAnimationFriendly
 	.align	2
@@ -961,24 +965,24 @@ updateGame2:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	push	{r4, r5, r6, lr}
-	ldr	r6, .L199
+	ldr	r6, .L198
 	bl	updatePanda
 	ldm	r6, {r0, r2}
 	subs	r0, r0, #0
 	movne	r0, #1
 	subs	r2, r2, #0
 	movne	r2, #1
-	ldr	r1, .L199+4
+	ldr	r1, .L198+4
 	ldr	ip, [r6, #60]
 	ldr	r3, [r6, #36]
 	strh	r2, [r1, #2]	@ movhi
 	add	r3, r3, ip, lsl #5
-	ldr	r2, .L199+8
+	ldr	r2, .L198+8
 	strh	r3, [r1, #4]	@ movhi
 	strh	r0, [r1]	@ movhi
 	add	r3, r1, #256
 	add	r1, r1, #280
-.L143:
+.L142:
 	ldr	lr, [r2]
 	ldr	ip, [r2, #4]
 	ldr	r0, [r2, #24]
@@ -988,8 +992,8 @@ updateGame2:
 	add	r3, r3, #8
 	cmp	r3, r1
 	add	r2, r2, #32
-	bne	.L143
-	ldr	r4, .L199+12
+	bne	.L142
+	ldr	r4, .L198+12
 	mov	lr, #141
 	mov	r2, r4
 	mov	ip, #82
@@ -1003,14 +1007,14 @@ updateGame2:
 	strh	ip, [r4, #2]	@ movhi
 	strh	r0, [r2, #8]!	@ movhi
 	add	r3, r3, #8
-	ldr	r5, .L199+16
+	ldr	r5, .L198+16
 	strh	r1, [r2, #2]	@ movhi
 	strh	r3, [r4, #12]	@ movhi
 	bl	checkFoodDelivered
 	mov	r2, r5
 	sub	r3, r4, #32
 	add	r4, r5, #204
-.L144:
+.L143:
 	ldr	lr, [r2, #60]
 	ldr	r1, [r2, #36]
 	ldr	ip, [r2]
@@ -1022,12 +1026,12 @@ updateGame2:
 	strh	ip, [r3]	@ movhi
 	strh	r0, [r3, #2]	@ movhi
 	add	r3, r3, #8
-	bne	.L144
-	ldr	r2, .L199+20
+	bne	.L143
+	ldr	r2, .L198+20
 	ldr	r3, [r5, #32]
-	ldr	r1, .L199+24
+	ldr	r1, .L198+24
 	mla	r3, r1, r3, r2
-	ldr	r2, .L199+28
+	ldr	r2, .L198+28
 	cmp	r2, r3, ror #3
 	movcc	r3, #0
 	strcc	r3, [r5, #60]
@@ -1035,19 +1039,19 @@ updateGame2:
 	strcc	r3, [r5, #196]
 	ldr	r3, [r5, #44]
 	cmp	r3, #5
-	beq	.L146
+	beq	.L145
 	ldr	r2, [r5, #48]
 	cmp	r2, #3
-	beq	.L146
-.L147:
-	ldr	r3, .L199+32
+	beq	.L145
+.L146:
+	ldr	r3, .L198+32
 	mov	lr, pc
 	bx	r3
-	ldr	r4, .L199+36
+	ldr	r4, .L198+36
 	mov	r3, #512
 	mov	r2, #117440512
 	mov	r0, #3
-	ldr	r1, .L199+4
+	ldr	r1, .L198+4
 	mov	lr, pc
 	bx	r4
 	mov	r3, #0
@@ -1056,75 +1060,75 @@ updateGame2:
 	str	r3, [r5, #196]
 	pop	{r4, r5, r6, lr}
 	bx	lr
-.L146:
+.L145:
 	ldr	r2, [r5, #112]
 	cmp	r2, #5
-	beq	.L148
+	beq	.L147
 	ldr	r1, [r5, #116]
 	cmp	r1, #3
-	beq	.L148
-	cmp	r3, #5
 	beq	.L147
+	cmp	r3, #5
+	beq	.L146
 	ldr	r3, [r5, #48]
 	cmp	r3, #3
-	bne	.L147
+	bne	.L146
 	ldr	r3, [r5, #116]
 	cmp	r3, #3
-	bne	.L147
-.L153:
+	bne	.L146
+.L152:
 	ldr	r3, [r5, #180]
 	cmp	r3, #5
-	beq	.L157
+	beq	.L156
 	ldr	r3, [r5, #184]
 	cmp	r3, #3
-	bne	.L147
-.L157:
+	bne	.L146
+.L156:
 	add	r2, r6, #44
 	ldmia	r2, {r2, r3}
 	orr	r3, r2, r3
 	cmp	r3, #0
 	movne	r2, #1
-	ldrne	r3, .L199+40
+	ldrne	r3, .L198+40
 	strne	r2, [r3]
-	b	.L147
-.L148:
+	b	.L146
+.L147:
 	ldr	r1, [r5, #180]
 	cmp	r1, #5
-	beq	.L150
+	beq	.L149
 	ldr	r1, [r5, #184]
 	cmp	r1, #3
-	beq	.L150
+	beq	.L149
 	cmp	r3, #5
-	bne	.L152
-.L155:
+	bne	.L151
+.L154:
 	cmp	r2, #5
-	beq	.L153
-.L198:
+	beq	.L152
+.L197:
 	ldr	r3, [r5, #116]
 	cmp	r3, #3
-	beq	.L153
-	b	.L147
-.L152:
+	beq	.L152
+	b	.L146
+.L151:
 	ldr	r3, [r5, #48]
 	cmp	r3, #3
-	bne	.L147
+	bne	.L146
 	cmp	r2, #5
-	beq	.L153
-	b	.L198
-.L150:
+	beq	.L152
+	b	.L197
+.L149:
 	add	r0, r6, #44
 	ldmia	r0, {r0, r1}
 	orr	r1, r0, r1
 	cmp	r1, #0
 	moveq	r0, #1
-	ldreq	r1, .L199+44
+	ldreq	r1, .L198+44
 	streq	r0, [r1]
 	cmp	r3, #5
-	beq	.L155
-	b	.L152
-.L200:
-	.align	2
+	beq	.L154
+	b	.L151
 .L199:
+	.align	2
+.L198:
 	.word	panda
 	.word	shadowOAM
 	.word	baskets

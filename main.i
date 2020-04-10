@@ -271,6 +271,16 @@ extern const unsigned short spriteSheetTiles[16384];
 
 extern const unsigned short spriteSheetPal[256];
 # 12 "main.c" 2
+# 1 "scoreBackground.h" 1
+# 22 "scoreBackground.h"
+extern const unsigned short scoreBackgroundTiles[688];
+
+
+extern const unsigned short scoreBackgroundMap[1024];
+
+
+extern const unsigned short scoreBackgroundPal[256];
+# 13 "main.c" 2
 # 1 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdlib.h" 1 3
 # 10 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdlib.h" 3
 # 1 "/opt/devkitpro/devkitARM/arm-none-eabi/include/machine/ieeefp.h" 1 3
@@ -1079,7 +1089,7 @@ extern long double _strtold_r (struct _reent *, const char *restrict, char **res
 extern long double strtold (const char *restrict, char **restrict);
 # 336 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdlib.h" 3
 
-# 13 "main.c" 2
+# 14 "main.c" 2
 # 1 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdio.h" 1 3
 # 36 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdio.h" 3
 # 1 "/opt/devkitpro/devkitARM/lib/gcc/arm-none-eabi/9.1.0/include/stddef.h" 1 3 4
@@ -1490,7 +1500,7 @@ _putchar_unlocked(int _c)
 }
 # 797 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdio.h" 3
 
-# 14 "main.c" 2
+# 15 "main.c" 2
 # 1 "gameSound.h" 1
 
 
@@ -1499,21 +1509,21 @@ _putchar_unlocked(int _c)
 
 # 5 "gameSound.h"
 extern const signed char gameSound[1324512];
-# 15 "main.c" 2
+# 16 "main.c" 2
 # 1 "splashSound.h" 1
 
 
 
 
 extern const signed char splashSound[291428];
-# 16 "main.c" 2
+# 17 "main.c" 2
 # 1 "gameSound2.h" 1
 
 
 
 
 extern const signed char gameSound2[677952];
-# 17 "main.c" 2
+# 18 "main.c" 2
 
 
 void goToSplash();
@@ -1715,18 +1725,24 @@ void goToGame() {
 
 void game() {
 
-    (*(unsigned short *)0x4000000) = 0 | (1<<9) | (1<<12);
+    (*(unsigned short *)0x4000000) = 0 | (1<<9) | (1<<12) | (1<<8);
 
     DMANow(3, gameScreenPal, ((unsigned short *)0x5000000), 512/2);
 
 
-
+    (*(volatile unsigned short*)0x4000008) = ((1)<<2) | ((25)<<8) | (0<<14);
 
 
     DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 1056/2);
 
 
     DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[28], 8192/2);
+
+    DMANow(3, scoreBackgroundPal, ((unsigned short *)0x5000000), 512/2);
+
+    DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[1], 1376/2);
+
+    DMANow(3, scoreBackgroundMap, &((screenblock *)0x6000000)[25], 2048/2);
 
     updateGame();
 
