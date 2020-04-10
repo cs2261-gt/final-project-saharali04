@@ -216,7 +216,11 @@ extern const unsigned short instructionsScreenPal[256];
 # 6 "main.c" 2
 # 1 "gameScreen.h" 1
 # 22 "gameScreen.h"
+<<<<<<< HEAD
 extern const unsigned short gameScreenTiles[96];
+=======
+extern const unsigned short gameScreenTiles[64];
+>>>>>>> 4655d93ce2afba0445a042485a503bbc5f46a15f
 
 
 extern const unsigned short gameScreenMap[4096];
@@ -1730,7 +1734,14 @@ void game() {
     DMANow(3, gameScreenPal, ((unsigned short *)0x5000000), 512/2);
 
 
+<<<<<<< HEAD
     DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 192/2);
+=======
+    (*(volatile unsigned short*)0x4000008) = ((1)<<2) | ((25)<<8) | (0<<14);
+
+
+    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 128/2);
+>>>>>>> 4655d93ce2afba0445a042485a503bbc5f46a15f
 
 
     DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[28], 8192/2);

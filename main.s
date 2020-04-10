@@ -421,7 +421,14 @@ game:
 	mov	r2, #83886080
 	mov	lr, pc
 	bx	r4
+<<<<<<< HEAD
 	mov	r3, #96
+=======
+	ldr	r2, .L66+8
+	mov	r3, #64
+	strh	r2, [r5, #8]	@ movhi
+	mov	r0, #3
+>>>>>>> 4655d93ce2afba0445a042485a503bbc5f46a15f
 	mov	r2, #100663296
 	mov	r0, #3
 	ldr	r1, .L66+8
