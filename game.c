@@ -6,8 +6,8 @@
 int hasLost;
 int hasWon;
 
-int hOff = 200;   
-int vOff = 9;
+int hOff = 0;   
+int vOff = 0;
 int playerHOff;
 int screenBlock;
 
@@ -29,8 +29,6 @@ void initPanda() {
     panda.height = 8;
     panda.worldCol = SCREENWIDTH/2 - (panda.width/2) - 40;
     panda.worldRow = SCREENHEIGHT/2 - (panda.height/2) - 10;
-    //panda.row = 200;
-    //panda.col = 50;
     panda.cdel = 1;
     panda.rdel = 1;
     panda.aniCounter = 0;
@@ -127,7 +125,7 @@ void updatePanda() {
 
     if (BUTTON_HELD(BUTTON_DOWN)) 
     {
-        if (panda.worldRow + panda.height < WORLDHEIGHT) {
+        if (panda.worldRow + panda.height < WORLDHEIGHT - 20) {
             
             panda.aniState = PANDAHAPPY;
             panda.worldRow+=panda.rdel;
@@ -155,7 +153,7 @@ void updatePanda() {
 
     if (BUTTON_HELD(BUTTON_RIGHT)) 
     {
-        if (panda.worldCol + panda.width < WORLDWIDTH -1) {
+        if (panda.worldCol + panda.width < WORLDWIDTH - 15) {
             panda.worldCol++;
 
             if (screenBlock < 31 && hOff < (WORLDWIDTH - SCREENWIDTH -1) && panda.col >= SCREENWIDTH / 2) {
@@ -248,8 +246,8 @@ void checkFoodDelivered() {
 // Draw Functions
 
 void drawPanda() {
-    shadowOAM[0].attr0 = (ROWMASK && panda.row) | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[0].attr1 = (COLMASK && panda.col) | ATTR1_TINY;
+    shadowOAM[0].attr0 = (ROWMASK & panda.row) | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[0].attr1 = (COLMASK & panda.col) | ATTR1_TINY;
     shadowOAM[0].attr2 = ATTR2_PALROW(0) | ATTR2_TILEID(panda.aniState, panda.curFrame);
 }
 
@@ -318,7 +316,7 @@ void updateGame() {
     }
     
     updatePanda();
-    //drawPanda();
+    drawPanda();
     checkFoodCollected();
     drawFood();
     drawScore();

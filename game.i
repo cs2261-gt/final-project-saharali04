@@ -1015,8 +1015,8 @@ extern const signed char chewSound[21312];
 int hasLost;
 int hasWon;
 
-int hOff = 200;
-int vOff = 9;
+int hOff = 0;
+int vOff = 0;
 int playerHOff;
 int screenBlock;
 
@@ -1038,8 +1038,6 @@ void initPanda() {
     panda.height = 8;
     panda.worldCol = 240/2 - (panda.width/2) - 40;
     panda.worldRow = 160/2 - (panda.height/2) - 10;
-
-
     panda.cdel = 1;
     panda.rdel = 1;
     panda.aniCounter = 0;
@@ -1136,7 +1134,7 @@ void updatePanda() {
 
     if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<7))))
     {
-        if (panda.worldRow + panda.height < 256) {
+        if (panda.worldRow + panda.height < 256 - 20) {
 
             panda.aniState = PANDAHAPPY;
             panda.worldRow+=panda.rdel;
@@ -1164,7 +1162,7 @@ void updatePanda() {
 
     if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<4))))
     {
-        if (panda.worldCol + panda.width < 1024 -1) {
+        if (panda.worldCol + panda.width < 1024 - 15) {
             panda.worldCol++;
 
             if (screenBlock < 31 && hOff < (1024 - 240 -1) && panda.col >= 240 / 2) {
@@ -1257,8 +1255,8 @@ void checkFoodDelivered() {
 
 
 void drawPanda() {
-    shadowOAM[0].attr0 = (0xFF && panda.row) | (0<<13) | (0<<14);
-    shadowOAM[0].attr1 = (0x1FF && panda.col) | (0<<14);
+    shadowOAM[0].attr0 = (0xFF & panda.row) | (0<<13) | (0<<14);
+    shadowOAM[0].attr1 = (0x1FF & panda.col) | (0<<14);
     shadowOAM[0].attr2 = ((0)<<12) | ((panda.curFrame)*32+(panda.aniState));
 }
 
@@ -1327,7 +1325,7 @@ void updateGame() {
     }
 
     updatePanda();
-
+    drawPanda();
     checkFoodCollected();
     drawFood();
     drawScore();
