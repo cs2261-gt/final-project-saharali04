@@ -1128,6 +1128,7 @@ void updatePanda() {
 
                 vOff--;
             }
+
         }
 
     }
@@ -1150,6 +1151,7 @@ void updatePanda() {
     {
         if (panda.worldCol > 0) {
             panda.worldCol--;
+            panda.aniState = PANDASAD;
 
 
         }
@@ -1164,8 +1166,9 @@ void updatePanda() {
     {
         if (panda.worldCol + panda.width < 1024 - 15) {
             panda.worldCol++;
+            panda.aniState = PANDASAD;
 
-            if (screenBlock < 31 && hOff < (1024 - 240 -1) && panda.col >= 240 / 2) {
+            if (screenBlock < 31 && hOff < (1024 - 240 -1) && panda.col >= 240 - 40) {
                 hOff++;
                 playerHOff++;
             }

@@ -119,6 +119,7 @@ void updatePanda() {
                 // Update background offset variable if the above is true
                 vOff--;
             }
+
         }
     
     }
@@ -141,6 +142,7 @@ void updatePanda() {
     {
         if (panda.worldCol > 0) {
             panda.worldCol--;
+            panda.aniState = PANDASAD;
     
         
         }
@@ -155,8 +157,9 @@ void updatePanda() {
     {
         if (panda.worldCol + panda.width < WORLDWIDTH - 15) {
             panda.worldCol++;
+            panda.aniState = PANDASAD;
 
-            if (screenBlock < 31 && hOff < (WORLDWIDTH - SCREENWIDTH -1) && panda.col >= SCREENWIDTH / 2) {
+            if (screenBlock < 31 && hOff < (WORLDWIDTH - SCREENWIDTH -1) && panda.col >= SCREENWIDTH - 40) {
                 hOff++;
                 playerHOff++;
             }

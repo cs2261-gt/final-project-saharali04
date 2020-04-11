@@ -309,6 +309,8 @@ updatePanda:
 	ldr	r2, [r4, #12]
 	bne	.L36
 	cmp	r2, #0
+	movgt	r5, #1
+	strgt	r5, [r4, #36]
 	ldr	r5, [r1, #4]
 	subgt	r2, r2, #1
 	strgt	r2, [r4, #12]
@@ -365,7 +367,7 @@ updatePanda:
 	cmp	r5, r6
 	bgt	.L39
 	ldr	r6, [r4, #4]
-	cmp	r6, #119
+	cmp	r6, #199
 	addgt	r5, r5, #1
 	addgt	ip, ip, #1
 	strgt	r5, [r1, #4]
