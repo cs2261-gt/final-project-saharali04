@@ -363,11 +363,10 @@ updatePanda:
 	str	r2, [r4, #12]
 	bgt	.L39
 	ldr	r5, [r1, #4]
-	ldr	r6, .L48+36
-	cmp	r5, r6
+	cmp	r5, #256
 	bgt	.L39
 	ldr	r6, [r4, #4]
-	cmp	r6, #199
+	cmp	r6, #109
 	addgt	r5, r5, #1
 	addgt	ip, ip, #1
 	strgt	r5, [r1, #4]
@@ -400,7 +399,6 @@ updatePanda:
 	.word	.LANCHOR0
 	.word	playerHOff
 	.word	screenBlock
-	.word	782
 	.size	updatePanda, .-updatePanda
 	.align	2
 	.global	updatePanda2

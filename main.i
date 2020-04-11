@@ -193,6 +193,7 @@ void checkFoodCollected();
 void checkFoodDelivered();
 void drawScore();
 void resetAnimationFriendly();
+void updatePanda2();
 # 4 "main.c" 2
 # 1 "splashScreen.h" 1
 # 22 "splashScreen.h"
@@ -216,11 +217,7 @@ extern const unsigned short instructionsScreenPal[256];
 # 6 "main.c" 2
 # 1 "gameScreen.h" 1
 # 22 "gameScreen.h"
-<<<<<<< HEAD
 extern const unsigned short gameScreenTiles[96];
-=======
-extern const unsigned short gameScreenTiles[64];
->>>>>>> 4655d93ce2afba0445a042485a503bbc5f46a15f
 
 
 extern const unsigned short gameScreenMap[4096];
@@ -230,7 +227,7 @@ extern const unsigned short gameScreenPal[256];
 # 7 "main.c" 2
 # 1 "gameScreen2.h" 1
 # 22 "gameScreen2.h"
-extern const unsigned short gameScreen2Tiles[496];
+extern const unsigned short gameScreen2Tiles[48];
 
 
 extern const unsigned short gameScreen2Map[1024];
@@ -1734,14 +1731,7 @@ void game() {
     DMANow(3, gameScreenPal, ((unsigned short *)0x5000000), 512/2);
 
 
-<<<<<<< HEAD
     DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 192/2);
-=======
-    (*(volatile unsigned short*)0x4000008) = ((1)<<2) | ((25)<<8) | (0<<14);
-
-
-    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 128/2);
->>>>>>> 4655d93ce2afba0445a042485a503bbc5f46a15f
 
 
     DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[28], 8192/2);
@@ -1801,12 +1791,19 @@ void game2() {
     (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((11)<<8);
 
 
-    DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 992/2);
+    DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 96/2);
+
+    DMANow(3, scoreBackgroundPal, ((unsigned short *)0x5000000), 512/2);
+
+    DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[1], 896/2);
+
+    DMANow(3, scoreBackgroundMap, &((screenblock *)0x6000000)[25], 2048/2);
+    (*(volatile unsigned short*)0x4000008) = ((1)<<2) | ((25)<<8) | (0<<14);
 
 
     DMANow(3, gameScreen2Map, &((screenblock *)0x6000000)[11], 2048/2);
 
-    (*(unsigned short *)0x4000000) = 0 | (1<<9) | (1<<12);
+    (*(unsigned short *)0x4000000) = 0 | (1<<9) | (1<<12) | (1<<8);
 
 
     updateGame2();

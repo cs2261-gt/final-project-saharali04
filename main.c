@@ -283,10 +283,17 @@ void game2() {
     // Load loseScreen tiles to charblock
     DMANow(3, gameScreen2Tiles, &CHARBLOCK[0], gameScreen2TilesLen/2);
 
+    DMANow(3, scoreBackgroundPal, PALETTE, scoreBackgroundPalLen/2);
+
+    DMANow(3, scoreBackgroundTiles, &CHARBLOCK[1], scoreBackgroundTilesLen/2);
+
+    DMANow(3, scoreBackgroundMap, &SCREENBLOCK[25], scoreBackgroundMapLen/2);
+    REG_BG0CNT = BG_CHARBLOCK(1) | BG_SCREENBLOCK(25) | BG_SIZE_SMALL;
+
     // Load loseScreen map to screenblock
     DMANow(3, gameScreen2Map, &SCREENBLOCK[11], gameScreen2MapLen/2);
     
-    REG_DISPCTL = MODE0 | BG1_ENABLE | SPRITE_ENABLE;
+    REG_DISPCTL = MODE0 | BG1_ENABLE | SPRITE_ENABLE | BG0_ENABLE;
     
     
     updateGame2();

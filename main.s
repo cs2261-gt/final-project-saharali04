@@ -421,14 +421,7 @@ game:
 	mov	r2, #83886080
 	mov	lr, pc
 	bx	r4
-<<<<<<< HEAD
 	mov	r3, #96
-=======
-	ldr	r2, .L66+8
-	mov	r3, #64
-	strh	r2, [r5, #8]	@ movhi
-	mov	r0, #3
->>>>>>> 4655d93ce2afba0445a042485a503bbc5f46a15f
 	mov	r2, #100663296
 	mov	r0, #3
 	ldr	r1, .L66+8
@@ -608,83 +601,103 @@ game2:
 	bx	r4
 	mov	r5, #67108864
 	mov	r2, #2816
-	mov	r3, #496
+	mov	r3, #48
 	mov	r0, #3
 	strh	r2, [r5, #10]	@ movhi
 	ldr	r1, .L92+12
 	mov	r2, #100663296
 	mov	lr, pc
 	bx	r4
-	mov	r3, #1024
+	mov	r3, #256
+	mov	r2, #83886080
 	mov	r0, #3
-	ldr	r2, .L92+16
-	ldr	r1, .L92+20
+	ldr	r1, .L92+16
 	mov	lr, pc
 	bx	r4
-	mov	r3, #4608
-	ldr	r4, .L92+24
+	mov	r3, #448
+	mov	r0, #3
+	ldr	r2, .L92+20
+	ldr	r1, .L92+24
+	mov	lr, pc
+	bx	r4
+	mov	r3, #1024
+	mov	r0, #3
+	ldr	r2, .L92+28
+	ldr	r1, .L92+32
+	mov	lr, pc
+	bx	r4
+	ldr	r2, .L92+36
+	mov	r3, #1024
+	mov	r0, #3
+	strh	r2, [r5, #8]	@ movhi
+	ldr	r1, .L92+40
+	ldr	r2, .L92+44
+	mov	lr, pc
+	bx	r4
+	mov	r3, #4864
+	ldr	r4, .L92+48
 	strh	r3, [r5]	@ movhi
-	ldr	r3, .L92+28
+	ldr	r3, .L92+52
 	mov	lr, pc
 	bx	r3
 	ldrh	r3, [r4]
 	tst	r3, #8
 	beq	.L73
-	ldr	r2, .L92+32
+	ldr	r2, .L92+56
 	ldrh	r2, [r2]
 	tst	r2, #8
 	beq	.L90
 .L73:
 	tst	r3, #4
 	beq	.L74
-	ldr	r3, .L92+32
+	ldr	r3, .L92+56
 	ldrh	r3, [r3]
 	tst	r3, #4
 	beq	.L91
 .L74:
-	ldr	r3, .L92+36
+	ldr	r3, .L92+60
 	ldr	r2, [r3]
 	cmp	r2, #0
 	movne	r1, #6
-	ldrne	r2, .L92+40
+	ldrne	r2, .L92+64
 	ldr	r3, [r3, #4]
 	strne	r1, [r2]
 	cmp	r3, #0
 	movne	r2, #5
-	ldrne	r3, .L92+40
+	ldrne	r3, .L92+64
 	pop	{r4, r5, r6, lr}
 	strne	r2, [r3]
 	bx	lr
 .L91:
-	ldr	r3, .L92+44
+	ldr	r3, .L92+68
 	mov	lr, pc
 	bx	r3
 	mov	r2, #1
-	ldr	r1, .L92+48
-	ldr	r3, .L92+52
-	ldr	r0, .L92+56
+	ldr	r1, .L92+72
+	ldr	r3, .L92+76
+	ldr	r0, .L92+80
 	mov	lr, pc
 	bx	r3
-	ldr	r3, .L92+60
+	ldr	r3, .L92+84
 	mov	lr, pc
 	bx	r3
 	mov	r3, #67108864
 	mov	r1, #2
-	ldr	r2, .L92+64
-	ldr	r0, .L92+68
+	ldr	r2, .L92+88
+	ldr	r0, .L92+92
 	ldrh	r2, [r2]
 	ldrh	r0, [r0]
 	strh	r2, [r3, #22]	@ movhi
-	ldr	r2, .L92+40
+	ldr	r2, .L92+64
 	strh	r0, [r3, #20]	@ movhi
 	str	r1, [r2]
 	b	.L74
 .L90:
-	ldr	r3, .L92+72
+	ldr	r3, .L92+96
 	mov	lr, pc
 	bx	r3
 	mov	r1, #4
-	ldr	r2, .L92+40
+	ldr	r2, .L92+64
 	ldrh	r3, [r4]
 	str	r1, [r2]
 	b	.L73
@@ -695,8 +708,14 @@ game2:
 	.word	shadowOAM
 	.word	gameScreen2Pal
 	.word	gameScreen2Tiles
-	.word	100685824
+	.word	scoreBackgroundPal
+	.word	100679680
+	.word	scoreBackgroundTiles
+	.word	100714496
+	.word	scoreBackgroundMap
+	.word	6404
 	.word	gameScreen2Map
+	.word	100685824
 	.word	oldButtons
 	.word	updateGame2
 	.word	buttons

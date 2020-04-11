@@ -159,7 +159,7 @@ void updatePanda() {
             panda.worldCol++;
             panda.aniState = PANDASAD;
 
-            if (screenBlock < 31 && hOff < (WORLDWIDTH - SCREENWIDTH -1) && panda.col >= SCREENWIDTH - 40) {
+            if (screenBlock < 31 && hOff < (257) && panda.col >= SCREENWIDTH - 130) {
                 hOff++;
                 playerHOff++;
             }
