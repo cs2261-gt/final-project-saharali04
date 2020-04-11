@@ -84,6 +84,7 @@ void checkFoodCollected();
 void checkFoodDelivered();
 void drawScore();
 void resetAnimationFriendly();
+void updatePanda2();
 # 2 "game.c" 2
 # 1 "myLib.h" 1
 
@@ -1198,6 +1199,76 @@ void updatePanda() {
 
 }
 
+void updatePanda2() {
+
+    if (panda.aniState != PANDAIDLE)
+    {
+        panda.prevAniState = panda.aniState;
+        panda.aniState = PANDANEUTRAL;
+    }
+
+    if(panda.aniCounter % 25 == 0)
+    {
+        panda.curFrame = (panda.curFrame + 1) % panda.numFrames;
+ } else {
+        panda.aniCounter++;
+    }
+
+    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<6))))
+    {
+
+        panda.aniState = PANDAHAPPY;
+        panda.row-=panda.rdel;
+
+    }
+
+    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<7))) && panda.row < 132)
+    {
+
+        panda.aniState = PANDAHAPPY;
+        panda.row+=panda.rdel;
+
+    }
+    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<5))))
+    {
+
+        panda.col--;
+        panda.aniState = PANDASAD;
+
+
+    }
+
+    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<4))))
+    {
+
+        panda.col++;
+        panda.aniState = PANDASAD;
+
+
+    }
+
+
+
+
+    if (panda.aniState == PANDAIDLE)
+    {
+            panda.curFrame = 0;
+            panda.aniState = panda.prevAniState;
+    } else
+    {
+        panda.aniCounter++;
+    }
+
+    if ((panda.row > 152) | (panda.row < 0) | (panda.col < 0) | (panda.col > 232)) {
+        hasLost = 1;
+    }
+
+
+
+
+}
+
+
 void checkFoodCollected() {
      for (int i = 0; i < 30; i++) {
         if (food[i].active && collision(panda.col, panda.row, panda.width, panda.height, food[i].col, food[i].row, food[i].width, food[i].height)) {
@@ -1349,7 +1420,7 @@ void resetAnimationFriendly() {
 
 void updateGame2() {
 
-    updatePanda();
+    updatePanda2();
     drawPanda();
     drawBaskets();
     drawScore();

@@ -79,3 +79,4 @@ void checkFoodCollected();
 void checkFoodDelivered();
 void drawScore();
 void resetAnimationFriendly();
+void updatePanda2();
