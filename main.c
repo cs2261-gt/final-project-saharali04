@@ -263,7 +263,10 @@ void game() {
 void goToGame2() {
     REG_BG1VOFF = 0;
     REG_BG1HOFF = 0;
-
+    vOff = 110;
+    hOff = 9;
+    panda.worldRow = 190;
+    panda.worldCol = 129;
     REG_DISPCTL = MODE0 | BG1_ENABLE;
     hideSprites();
     state = GAME2;
@@ -355,6 +358,7 @@ void pause() {
 void goToWin() {
 
     state = WIN;
+    stopSound();
 
 }
 
@@ -384,6 +388,7 @@ void win() {
 void goToLose() {
     
     state = LOSE;
+    stopSound();
 
 }
 

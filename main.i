@@ -114,6 +114,7 @@ int collision(int colA, int rowA, int widthA, int heightA, int colB, int rowB, i
 # 1 "game.h" 1
 
 
+
 extern int hOff;
 extern int vOff;
 extern int screenBlock;
@@ -1773,7 +1774,10 @@ void game() {
 void goToGame2() {
     (*(volatile unsigned short *)0x04000016) = 0;
     (*(volatile unsigned short *)0x04000014) = 0;
-
+    vOff = 110;
+    hOff = 9;
+    panda.worldRow = 190;
+    panda.worldCol = 129;
     (*(unsigned short *)0x4000000) = 0 | (1<<9);
     hideSprites();
     state = GAME2;
@@ -1865,6 +1869,7 @@ void pause() {
 void goToWin() {
 
     state = WIN;
+    stopSound();
 
 }
 
@@ -1894,6 +1899,7 @@ void win() {
 void goToLose() {
 
     state = LOSE;
+    stopSound();
 
 }
 

@@ -155,7 +155,7 @@ void updatePanda() {
 
     if (BUTTON_HELD(BUTTON_RIGHT)) 
     {
-        if (panda.worldCol + panda.width < WORLDWIDTH - 15) {
+        if (panda.worldCol + panda.width < WORLDWIDTH1 - 15) {
             panda.worldCol++;
             panda.aniState = PANDASAD;
 
@@ -206,35 +206,66 @@ void updatePanda2() {
 
     if (BUTTON_HELD(BUTTON_UP)) 
     {
+        if (panda.worldRow > 0) {
+             panda.aniState = PANDAHAPPY;
+             panda.worldRow-=panda.rdel;
+
+             if (vOff > 0 && panda.row + panda.height/2 == SCREENHEIGHT/2) {
+                // Update background offset variable if the above is true
+                vOff--;
+            }
+        }
         
-        panda.aniState = PANDAHAPPY;
-        panda.row-=panda.rdel;
+        
     
     }
 
     if (BUTTON_HELD(BUTTON_DOWN) && panda.row < 132) 
     {
+        if (panda.worldRow + panda.height < WORLDHEIGHT) {
+            panda.aniState = PANDAHAPPY;
+            panda.worldRow+=panda.rdel;
+
+            if (vOff + SCREENHEIGHT < WORLDHEIGHT && panda.row + panda.height/2 == SCREENHEIGHT/2) {
+                // Update background offset variable if the above is true
+                vOff++;
+            }
+        }
        
-        panda.aniState = PANDAHAPPY;
-        panda.row+=panda.rdel;
+        
     
     }
     if (BUTTON_HELD(BUTTON_LEFT)) 
     {
+         if (panda.worldCol > 0) {
+            panda.worldCol--;
+            panda.aniState = PANDASAD;
+
+             if ( hOff > 0 && panda.col <= SCREENWIDTH / 2) {
+                // Update background offset variable if the above is true
+                hOff--;
+            }
+        }
        
-        panda.col--;
-        panda.aniState = PANDASAD;
+        
     
         
     }
 
     if (BUTTON_HELD(BUTTON_RIGHT)) 
     {
-        
-        panda.col++;
-        panda.aniState = PANDASAD;
+        if (panda.worldCol + panda.width < WORLDWIDTH2) {
+            panda.worldCol++;
+            panda.aniState = PANDASAD;
 
-            
+            if (hOff + SCREENWIDTH < WORLDWIDTH2 && panda.col >= SCREENWIDTH / 2
+                ) {
+                // Update background offset variable if the above is true
+                hOff++;
+            }
+
+        }
+        
     }
 
         
@@ -249,9 +280,12 @@ void updatePanda2() {
         panda.aniCounter++;
     }
     
-    if ((panda.row > 152) | (panda.row < 0) | (panda.col < 0) | (panda.col > 232)) {
-        hasLost = 1;
-    }
+    //if ((panda.row > 152) | (panda.row < 0) | (panda.col < 0) | (panda.col > 232)) {
+    //    hasLost = 1;
+    //}
+
+    panda.col = panda.worldCol - hOff;
+    panda.row = panda.worldRow - vOff;
 
  
     
@@ -434,8 +468,9 @@ void updateGame2() {
         }
         
     }
+    REG_BG1HOFF = hOff;
+    REG_BG1VOFF = vOff;
     
-
     waitForVBlank();
     DMANow(3, shadowOAM, OAM, 128 * 4);
     resetAnimationFriendly();

@@ -5,6 +5,7 @@
 # 1 "game.h" 1
 
 
+
 extern int hOff;
 extern int vOff;
 extern int screenBlock;
@@ -1216,34 +1217,65 @@ void updatePanda2() {
 
     if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<6))))
     {
+        if (panda.worldRow > 0) {
+             panda.aniState = PANDAHAPPY;
+             panda.worldRow-=panda.rdel;
 
-        panda.aniState = PANDAHAPPY;
-        panda.row-=panda.rdel;
+             if (vOff > 0 && panda.row + panda.height/2 == 160/2) {
+
+                vOff--;
+            }
+        }
+
+
 
     }
 
     if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<7))) && panda.row < 132)
     {
+        if (panda.worldRow + panda.height < 256) {
+            panda.aniState = PANDAHAPPY;
+            panda.worldRow+=panda.rdel;
 
-        panda.aniState = PANDAHAPPY;
-        panda.row+=panda.rdel;
+            if (vOff + 160 < 256 && panda.row + panda.height/2 == 160/2) {
+
+                vOff++;
+            }
+        }
+
+
 
     }
     if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<5))))
     {
+         if (panda.worldCol > 0) {
+            panda.worldCol--;
+            panda.aniState = PANDASAD;
 
-        panda.col--;
-        panda.aniState = PANDASAD;
+             if ( hOff > 0 && panda.col <= 240 / 2) {
+
+                hOff--;
+            }
+        }
+
+
 
 
     }
 
     if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<4))))
     {
+        if (panda.worldCol + panda.width < 256) {
+            panda.worldCol++;
+            panda.aniState = PANDASAD;
 
-        panda.col++;
-        panda.aniState = PANDASAD;
+            if (hOff + 240 < 256 && panda.col >= 240 / 2
+                ) {
 
+                hOff++;
+            }
+
+        }
 
     }
 
@@ -1259,9 +1291,12 @@ void updatePanda2() {
         panda.aniCounter++;
     }
 
-    if ((panda.row > 152) | (panda.row < 0) | (panda.col < 0) | (panda.col > 232)) {
-        hasLost = 1;
-    }
+
+
+
+
+    panda.col = panda.worldCol - hOff;
+    panda.row = panda.worldRow - vOff;
 
 
 
@@ -1444,7 +1479,8 @@ void updateGame2() {
         }
 
     }
-
+    (*(volatile unsigned short *)0x04000014) = hOff;
+    (*(volatile unsigned short *)0x04000016) = vOff;
 
     waitForVBlank();
     DMANow(3, shadowOAM, ((OBJ_ATTR*)(0x7000000)), 128 * 4);
