@@ -324,22 +324,22 @@ spriteSheetTiles:
 	.short	-4373
 	.short	-4370
 	.short	-4370
-	.short	-16192
-	.short	3084
-	.short	-13312
-	.short	204
-	.short	-16384
-	.short	12
-	.short	-16192
-	.short	3084
-	.short	-13312
-	.short	204
-	.short	-16384
-	.short	12
-	.short	-16192
-	.short	3084
-	.short	-13312
-	.short	204
+	.short	-16352
+	.short	524
+	.short	-15872
+	.short	44
+	.short	-16352
+	.short	524
+	.short	-15872
+	.short	44
+	.short	-16352
+	.short	524
+	.short	-15872
+	.short	44
+	.short	-16352
+	.short	524
+	.short	-15872
+	.short	44
 	.short	-16384
 	.short	12
 	.short	8720
