@@ -6,6 +6,7 @@
 int hasLost;
 int hasWon;
 int cheatGame;
+int count;
 
 int hOff = 0;   
 int vOff = 0;
@@ -71,7 +72,7 @@ void initEnemies() {
         enemies[i].active = 1;
         enemies[i].width = 8;
         enemies[i].height = 8;
-        enemies[i].col = (rand() % 232);
+        enemies[i].col = (rand() % 222);
         enemies[i].row = (rand() % 133);
         enemies[i].cdel = 2;
         enemies[i].rdel = 2;
@@ -111,7 +112,7 @@ void initPandas() {
 
 // updates position of PANDA and checks for collision
 void updatePanda() {
-
+    
     if (panda.aniState != PANDAIDLE) 
     {
         panda.prevAniState = panda.aniState;
@@ -337,6 +338,16 @@ void checkFoodCollected() {
     }
 }
 
+void checkEnemyCollision() {
+     for (int i = 0; i < ENEMYCOUNT; i++) {
+        if (enemies[i].active && collision(panda.col, panda.row, panda.width, panda.height, enemies[i].col, enemies[i].row, enemies[i].width, enemies[i].height)) {
+            hasLost = 1;
+            
+	    
+        }
+    }
+}
+
 void checkFoodDelivered() {
     for (int i = 0; i < BASKETCOUNT; i++) {
         if (BUTTON_PRESSED(BUTTON_A) && collision(panda.col, panda.row, panda.width, panda.height, baskets[i].col, baskets[i].row, baskets[i].width, baskets[i].height) && panda.leavesCollected > 0) 
@@ -417,6 +428,20 @@ void drawEnemies() {
             shadowOAM[i+45].attr2 = ATTR2_TILEID(enemies[i].aniState, 1);
         } 
     }
+    if (count == 100) {
+        count = 0;
+    }
+}
+void moveEnemies() {
+    for (int i = 0; i < ENEMYCOUNT; i++) 
+    {
+        if (enemies[i].active) 
+        {
+            shadowOAM[i+45].attr0 = enemies[i].row | ATTR0_4BPP | ATTR0_SQUARE;
+            shadowOAM[i+45].attr1 = (enemies[i].col + 5) | ATTR1_TINY;
+            shadowOAM[i+45].attr2 = ATTR2_TILEID(enemies[i].aniState, 1);
+        } 
+    }
 }
 
 void clearEnemies() {
@@ -464,7 +489,7 @@ void drawFriendlyPandas() {
 }
 
 void updateGame() {
-
+    count++;
     REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
 
     if (hOff > 256) {
@@ -472,7 +497,7 @@ void updateGame() {
         hOff -= 256;
         REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
     }
-    if (hOff == 0) {
+    if (hOff == 0 && screenBlock > 28) {
         screenBlock--;
         hOff = 256;
         REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
@@ -487,9 +512,16 @@ void updateGame() {
         panda.stemsCollected = 15;
         panda.leavesCollected = 0;
     } else {
-        drawEnemies();
+        
+        if (count < 50) {
+            moveEnemies();  
+        } else {
+            drawEnemies();
+        }
+        
         drawFood();
         checkFoodCollected();
+        checkEnemyCollision();
 
     }
     updatePanda();

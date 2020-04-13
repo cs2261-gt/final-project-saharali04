@@ -52,7 +52,7 @@ extern int cheatGame;
     FOODSPRITE food[30];
 
 
-    FOODSPRITE enemies[10];
+    FOODSPRITE enemies[15];
 
 
 
@@ -78,6 +78,7 @@ void drawPanda();
 void updatePanda();
 void drawFood();
 void drawEnemies();
+void moveEnemies();
 void updateGame();
 void updateGame2();
 void initGame();
@@ -94,6 +95,7 @@ void resetAnimationFriendly();
 void updatePanda2();
 void cheat();
 void clearEnemies();
+void checkEnemyCollision();
 # 2 "game.c" 2
 # 1 "myLib.h" 1
 
@@ -1025,6 +1027,7 @@ extern const signed char chewSound[21312];
 int hasLost;
 int hasWon;
 int cheatGame;
+int count;
 
 int hOff = 0;
 int vOff = 0;
@@ -1085,12 +1088,12 @@ void initFood() {
 }
 
 void initEnemies() {
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 15; i++)
     {
         enemies[i].active = 1;
         enemies[i].width = 8;
         enemies[i].height = 8;
-        enemies[i].col = (rand() % 232);
+        enemies[i].col = (rand() % 222);
         enemies[i].row = (rand() % 133);
         enemies[i].cdel = 2;
         enemies[i].rdel = 2;
@@ -1356,6 +1359,16 @@ void checkFoodCollected() {
     }
 }
 
+void checkEnemyCollision() {
+     for (int i = 0; i < 15; i++) {
+        if (enemies[i].active && collision(panda.col, panda.row, panda.width, panda.height, enemies[i].col, enemies[i].row, enemies[i].width, enemies[i].height)) {
+            hasLost = 1;
+
+
+        }
+    }
+}
+
 void checkFoodDelivered() {
     for (int i = 0; i < 3; i++) {
         if ((!(~(oldButtons)&((1<<0))) && (~buttons & ((1<<0)))) && collision(panda.col, panda.row, panda.width, panda.height, baskets[i].col, baskets[i].row, baskets[i].width, baskets[i].height) && panda.leavesCollected > 0)
@@ -1427,7 +1440,7 @@ void clearFood() {
 
 
 void drawEnemies() {
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 15; i++)
     {
         if (enemies[i].active)
         {
@@ -1436,10 +1449,24 @@ void drawEnemies() {
             shadowOAM[i+45].attr2 = ((1)*32+(enemies[i].aniState));
         }
     }
+    if (count == 100) {
+        count = 0;
+    }
+}
+void moveEnemies() {
+    for (int i = 0; i < 15; i++)
+    {
+        if (enemies[i].active)
+        {
+            shadowOAM[i+45].attr0 = enemies[i].row | (0<<13) | (0<<14);
+            shadowOAM[i+45].attr1 = (enemies[i].col + 5) | (0<<14);
+            shadowOAM[i+45].attr2 = ((1)*32+(enemies[i].aniState));
+        }
+    }
 }
 
 void clearEnemies() {
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 15; i++)
     {
         shadowOAM[i+45].attr0 = enemies[i].row | (0<<13) | (0<<14);
         shadowOAM[i+45].attr1 = enemies[i].col | (0<<14);
@@ -1483,7 +1510,7 @@ void drawFriendlyPandas() {
 }
 
 void updateGame() {
-
+    count++;
     (*(volatile unsigned short*)0x400000A) = ((0)<<2) | ((screenBlock)<<8) | (1<<14);
 
     if (hOff > 256) {
@@ -1491,7 +1518,7 @@ void updateGame() {
         hOff -= 256;
         (*(volatile unsigned short*)0x400000A) = ((0)<<2) | ((screenBlock)<<8) | (1<<14);
     }
-    if (hOff == 0) {
+    if (hOff == 0 && screenBlock > 28) {
         screenBlock--;
         hOff = 256;
         (*(volatile unsigned short*)0x400000A) = ((0)<<2) | ((screenBlock)<<8) | (1<<14);
@@ -1506,9 +1533,16 @@ void updateGame() {
         panda.stemsCollected = 15;
         panda.leavesCollected = 0;
     } else {
-        drawEnemies();
+
+        if (count < 50) {
+            moveEnemies();
+        } else {
+            drawEnemies();
+        }
+
         drawFood();
         checkFoodCollected();
+        checkEnemyCollision();
 
     }
     updatePanda();

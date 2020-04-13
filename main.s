@@ -132,29 +132,29 @@ splash:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	push	{r4, r5, r6, r7, r8, lr}
-	mov	r2, #512
-	mov	r6, #67108864
+	mov	r6, #1024
+	mov	r7, #67108864
 	ldr	r5, .L23
 	ldr	r3, [r5]
 	add	r3, r3, #1
 	str	r3, [r5]
 	ldr	r4, .L23+4
 	mov	r3, #256
-	mov	r0, #3
-	strh	r2, [r6]	@ movhi
-	ldr	r1, .L23+8
 	mov	r2, #83886080
+	mov	r0, #3
+	ldr	r1, .L23+8
+	strh	r6, [r7]	@ movhi
 	mov	lr, pc
 	bx	r4
 	mov	r2, #2816
 	mov	r3, #1536
 	mov	r0, #3
-	strh	r2, [r6, #10]	@ movhi
+	strh	r2, [r7, #12]	@ movhi
 	ldr	r1, .L23+12
 	mov	r2, #100663296
 	mov	lr, pc
 	bx	r4
-	mov	r3, #1024
+	mov	r3, r6
 	ldr	r2, .L23+16
 	ldr	r1, .L23+20
 	mov	r0, #3
@@ -162,7 +162,7 @@ splash:
 	bx	r4
 	mov	r2, #0
 	ldr	r3, .L23+24
-	add	r1, r3, #1024
+	add	r1, r3, r6
 .L11:
 	strh	r2, [r3]	@ movhi
 	strh	r2, [r3, #2]	@ movhi
@@ -620,7 +620,7 @@ game2:
 	mov	r2, #2816
 	mov	r3, #48
 	mov	r0, #3
-	strh	r2, [r5, #10]	@ movhi
+	strh	r2, [r5, #12]	@ movhi
 	ldr	r1, .L96+12
 	mov	r2, #100663296
 	mov	lr, pc
@@ -651,7 +651,7 @@ game2:
 	ldr	r2, .L96+44
 	mov	lr, pc
 	bx	r4
-	mov	r3, #4864
+	mov	r3, #5376
 	ldr	r4, .L96+48
 	strh	r3, [r5]	@ movhi
 	ldr	r3, .L96+52
@@ -792,25 +792,25 @@ pause:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	push	{r4, r5, r6, lr}
-	mov	r2, #512
 	mov	r5, #67108864
+	mov	r6, #1024
 	ldr	r4, .L108
 	mov	r3, #256
-	mov	r0, #3
-	strh	r2, [r5]	@ movhi
-	ldr	r1, .L108+4
 	mov	r2, #83886080
+	mov	r0, #3
+	ldr	r1, .L108+4
+	strh	r6, [r5]	@ movhi
 	mov	lr, pc
 	bx	r4
 	mov	r2, #2816
 	mov	r3, #96
 	mov	r0, #3
-	strh	r2, [r5, #10]	@ movhi
+	strh	r2, [r5, #12]	@ movhi
 	ldr	r1, .L108+8
 	mov	r2, #100663296
 	mov	lr, pc
 	bx	r4
-	mov	r3, #1024
+	mov	r3, r6
 	mov	r0, #3
 	ldr	r2, .L108+12
 	ldr	r1, .L108+16
@@ -982,25 +982,25 @@ lose:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	push	{r4, r5, r6, lr}
-	mov	r2, #512
-	mov	r5, #67108864
+	mov	r6, #67108864
+	mov	r5, #1024
 	ldr	r4, .L134
 	mov	r3, #256
-	mov	r0, #3
-	strh	r2, [r5]	@ movhi
-	ldr	r1, .L134+4
 	mov	r2, #83886080
+	mov	r0, #3
+	ldr	r1, .L134+4
+	strh	r5, [r6]	@ movhi
 	mov	lr, pc
 	bx	r4
 	mov	r2, #2816
 	mov	r3, #944
 	mov	r0, #3
-	strh	r2, [r5, #10]	@ movhi
+	strh	r2, [r6, #12]	@ movhi
 	ldr	r1, .L134+8
 	mov	r2, #100663296
 	mov	lr, pc
 	bx	r4
-	mov	r3, #1024
+	mov	r3, r5
 	mov	r0, #3
 	ldr	r2, .L134+12
 	ldr	r1, .L134+16
@@ -1136,6 +1136,7 @@ main:
 	.comm	buttons,2,2
 	.comm	pandas,204,4
 	.comm	baskets,96,4
+	.comm	enemies,480,4
 	.comm	food,960,4
 	.comm	panda,68,4
 	.bss

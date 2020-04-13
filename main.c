@@ -127,13 +127,13 @@ void splash() {
 
     seed++;
     // Set up display control register
-    REG_DISPCTL = MODE0 | BG1_ENABLE;
+    REG_DISPCTL = MODE0 | BG2_ENABLE;
 
     // Load splashScreen tile palette
     DMANow(3, splashScreenPal, PALETTE, splashScreenPalLen/2);
 
     // Set up bg 1 control register
-    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
+    REG_BG2CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
 
     // Load splashScreen tiles to charblock
     DMANow(3, splashScreenTiles, &CHARBLOCK[0], splashScreenTilesLen/2);
@@ -281,7 +281,7 @@ void game2() {
     DMANow(3, gameScreen2Pal, PALETTE, gameScreen2PalLen/2);
 
     // Set up bg 1 control register
-    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
+    REG_BG2CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
 
     // Load loseScreen tiles to charblock
     DMANow(3, gameScreen2Tiles, &CHARBLOCK[0], gameScreen2TilesLen/2);
@@ -296,7 +296,7 @@ void game2() {
     // Load loseScreen map to screenblock
     DMANow(3, gameScreen2Map, &SCREENBLOCK[11], gameScreen2MapLen/2);
     
-    REG_DISPCTL = MODE0 | BG1_ENABLE | SPRITE_ENABLE | BG0_ENABLE;
+    REG_DISPCTL = MODE0 | BG2_ENABLE | SPRITE_ENABLE | BG0_ENABLE;
     
     
     updateGame2();
@@ -334,12 +334,12 @@ void goToPause() {
 // Runs every frame of the pause state
 void pause() {
 
-    REG_DISPCTL = MODE0 | BG1_ENABLE;
+    REG_DISPCTL = MODE0 | BG2_ENABLE;
 
     DMANow(3, pauseScreenPal, PALETTE, pauseScreenPalLen/2);
 
     // Set up bg 1 control register
-    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
+    REG_BG2CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
 
     // Load pauseScreen tiles to charblock
     DMANow(3, pauseScreenTiles, &CHARBLOCK[0], pauseScreenTilesLen/2);
@@ -395,12 +395,12 @@ void goToLose() {
 // Runs every frame of the lose state
 void lose() {
 
-    REG_DISPCTL = MODE0 | BG1_ENABLE;
+    REG_DISPCTL = MODE0 | BG2_ENABLE;
 
     DMANow(3, loseScreenPal, PALETTE, loseScreenPalLen/2);
 
     // Set up bg 1 control register
-    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
+    REG_BG2CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
 
     // Load loseScreen tiles to charblock
     DMANow(3, loseScreenTiles, &CHARBLOCK[0], loseScreenTilesLen/2);

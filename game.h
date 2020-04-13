@@ -47,8 +47,8 @@ extern int cheatGame;
     FOODSPRITE food[30];
     #define FOODCOUNT 30
 
-    FOODSPRITE enemies[10];
-    #define ENEMYCOUNT 10
+    FOODSPRITE enemies[15];
+    #define ENEMYCOUNT 15
 
     // Basket variables
     FOODSPRITE baskets[3];
@@ -73,6 +73,7 @@ void drawPanda();
 void updatePanda();
 void drawFood();
 void drawEnemies();
+void moveEnemies();
 void updateGame();
 void updateGame2();
 void initGame();
@@ -89,3 +90,4 @@ void resetAnimationFriendly();
 void updatePanda2();
 void cheat();
 void clearEnemies();
+void checkEnemyCollision();

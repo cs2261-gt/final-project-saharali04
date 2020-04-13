@@ -118,6 +118,7 @@ int collision(int colA, int rowA, int widthA, int heightA, int colB, int rowB, i
 extern int hOff;
 extern int vOff;
 extern int screenBlock;
+extern int cheatGame;
 
 
     typedef struct {
@@ -160,6 +161,9 @@ extern int screenBlock;
     FOODSPRITE food[30];
 
 
+    FOODSPRITE enemies[15];
+
+
 
     FOODSPRITE baskets[3];
 
@@ -182,10 +186,13 @@ void initPanda();
 void drawPanda();
 void updatePanda();
 void drawFood();
+void drawEnemies();
+void moveEnemies();
 void updateGame();
 void updateGame2();
 void initGame();
 void initFood();
+void initEnemies();
 void drawBaskets();
 void initBaskets();
 void initPandas();
@@ -195,6 +202,9 @@ void checkFoodDelivered();
 void drawScore();
 void resetAnimationFriendly();
 void updatePanda2();
+void cheat();
+void clearEnemies();
+void checkEnemyCollision();
 # 4 "main.c" 2
 # 1 "splashScreen.h" 1
 # 22 "splashScreen.h"
@@ -1638,13 +1648,13 @@ void splash() {
 
     seed++;
 
-    (*(unsigned short *)0x4000000) = 0 | (1<<9);
+    (*(unsigned short *)0x4000000) = 0 | (1<<10);
 
 
     DMANow(3, splashScreenPal, ((unsigned short *)0x5000000), 512/2);
 
 
-    (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((11)<<8);
+    (*(volatile unsigned short*)0x400000C) = (0<<14) | ((0)<<2) | ((11)<<8);
 
 
     DMANow(3, splashScreenTiles, &((charblock *)0x6000000)[0], 3072/2);
@@ -1792,7 +1802,7 @@ void game2() {
     DMANow(3, gameScreen2Pal, ((unsigned short *)0x5000000), 512/2);
 
 
-    (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((11)<<8);
+    (*(volatile unsigned short*)0x400000C) = (0<<14) | ((0)<<2) | ((11)<<8);
 
 
     DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 96/2);
@@ -1807,7 +1817,7 @@ void game2() {
 
     DMANow(3, gameScreen2Map, &((screenblock *)0x6000000)[11], 2048/2);
 
-    (*(unsigned short *)0x4000000) = 0 | (1<<9) | (1<<12) | (1<<8);
+    (*(unsigned short *)0x4000000) = 0 | (1<<10) | (1<<12) | (1<<8);
 
 
     updateGame2();
@@ -1845,12 +1855,12 @@ void goToPause() {
 
 void pause() {
 
-    (*(unsigned short *)0x4000000) = 0 | (1<<9);
+    (*(unsigned short *)0x4000000) = 0 | (1<<10);
 
     DMANow(3, pauseScreenPal, ((unsigned short *)0x5000000), 512/2);
 
 
-    (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((11)<<8);
+    (*(volatile unsigned short*)0x400000C) = (0<<14) | ((0)<<2) | ((11)<<8);
 
 
     DMANow(3, pauseScreenTiles, &((charblock *)0x6000000)[0], 192/2);
@@ -1906,12 +1916,12 @@ void goToLose() {
 
 void lose() {
 
-    (*(unsigned short *)0x4000000) = 0 | (1<<9);
+    (*(unsigned short *)0x4000000) = 0 | (1<<10);
 
     DMANow(3, loseScreenPal, ((unsigned short *)0x5000000), 512/2);
 
 
-    (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((11)<<8);
+    (*(volatile unsigned short*)0x400000C) = (0<<14) | ((0)<<2) | ((11)<<8);
 
 
     DMANow(3, loseScreenTiles, &((charblock *)0x6000000)[0], 1888/2);
