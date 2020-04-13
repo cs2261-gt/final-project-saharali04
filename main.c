@@ -263,7 +263,7 @@ void game() {
 void goToGame2() {
     REG_BG1VOFF = 0;
     REG_BG1HOFF = 0;
-    vOff = 110;
+    vOff = 60;
     hOff = 9;
     panda.worldRow = 190;
     panda.worldCol = 129;

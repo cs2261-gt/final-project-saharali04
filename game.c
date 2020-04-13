@@ -2,6 +2,7 @@
 #include "myLib.h"
 #include <stdlib.h>
 #include "chew.h"
+#include "collisionmap.h"
 // keeps track if player has lost
 int hasLost;
 int hasWon;
@@ -86,8 +87,8 @@ void initBaskets() {
         baskets[i].active = 1;
         baskets[i].width = 8;
         baskets[i].height = 8;
-        baskets[i].col = 60 + i*60;
-        baskets[i].row = 80;
+        baskets[i].worldCol = 105 + i*20;
+        baskets[i].worldRow = 130;
         baskets[i].aniState = BASKET;
         
     }
@@ -98,8 +99,8 @@ void initPandas() {
     {
         pandas[i].width = 8;
         pandas[i].height = 8;
-        pandas[i].col = 60 + i*60;
-        pandas[i].row = 50;
+        pandas[i].worldCol = 105 + i*20;
+        pandas[i].worldRow = 120;
         pandas[i].aniState = FRIENDLYPANDA;
         pandas[i].leavesCollected = 0;
         pandas[i].stemsCollected = 0;
@@ -162,16 +163,13 @@ void updatePanda() {
             panda.worldCol--;
             panda.aniState = PANDASAD;
 
-            if (hOff > 0 && screenBlock > 27 && panda.col <= SCREENWIDTH / 2 ) {
-            hOff--;
-            playerHOff--; 
-        }
+            if (hOff > 0 && screenBlock > 27) {
+                hOff--;
+                playerHOff--; 
+            }
         
         }
-        if (hOff > 0 && screenBlock > 27) {
-            hOff--;
-            playerHOff--; 
-        }
+        
         
     }
 
@@ -181,7 +179,7 @@ void updatePanda() {
             panda.worldCol++;
             panda.aniState = PANDASAD;
 
-            if (screenBlock < 31 && hOff < (257) && panda.col >= SCREENWIDTH - 130) {
+            if (screenBlock < 31 && hOff < (257)) {
                 hOff++;
                 playerHOff++;
             }
@@ -231,7 +229,8 @@ void updatePanda2() {
 
     if (BUTTON_HELD(BUTTON_UP)) 
     {
-        if (panda.worldRow > 0) {
+        if (panda.worldRow > 0 && collisionmapBitmap[OFFSET(panda.worldCol, panda.worldRow - panda.rdel, WORLDWIDTH2)]
+            && collisionmapBitmap[OFFSET(panda.worldCol + panda.width - panda.cdel, panda.worldRow - panda.rdel, WORLDWIDTH2)]) {
              panda.aniState = PANDAHAPPY;
              panda.worldRow-=panda.rdel;
 
@@ -247,7 +246,8 @@ void updatePanda2() {
 
     if (BUTTON_HELD(BUTTON_DOWN) && panda.row < 132) 
     {
-        if (panda.worldRow + panda.height < WORLDHEIGHT) {
+        if (panda.worldRow + panda.height < WORLDHEIGHT && collisionmapBitmap[OFFSET(panda.worldCol, panda.worldRow + panda.height, WORLDWIDTH2)]
+            && collisionmapBitmap[OFFSET(panda.worldCol + panda.width - panda.cdel, panda.worldRow + panda.height, WORLDWIDTH2)]) {
             panda.aniState = PANDAHAPPY;
             panda.worldRow+=panda.rdel;
 
@@ -262,7 +262,9 @@ void updatePanda2() {
     }
     if (BUTTON_HELD(BUTTON_LEFT)) 
     {
-         if (panda.worldCol > 0) {
+         if (panda.worldCol > 0 && (collisionmapBitmap[OFFSET((panda.worldCol - panda.cdel),panda.worldRow, WORLDWIDTH2)])
+            && (collisionmapBitmap[OFFSET((panda.worldCol - panda.cdel), (panda.worldRow + panda.height - panda.rdel) , WORLDWIDTH2)]
+            )) {
             panda.worldCol--;
             panda.aniState = PANDASAD;
 
@@ -279,12 +281,12 @@ void updatePanda2() {
 
     if (BUTTON_HELD(BUTTON_RIGHT)) 
     {
-        if (panda.worldCol + panda.width < WORLDWIDTH2) {
+        if (panda.worldCol + panda.width < WORLDWIDTH2 && (collisionmapBitmap[OFFSET((panda.worldCol + panda.width),panda.worldRow,WORLDWIDTH2)] == 0x7FFF)
+            && (collisionmapBitmap[OFFSET((panda.worldCol + panda.width),(panda.worldRow + panda.height - panda.rdel),WORLDWIDTH2)] == 0x7FFF)) {
             panda.worldCol++;
             panda.aniState = PANDASAD;
 
-            if (hOff + SCREENWIDTH < WORLDWIDTH2 && panda.col >= SCREENWIDTH / 2
-                ) {
+            if (hOff + SCREENWIDTH < WORLDWIDTH2 && panda.col >= SCREENWIDTH / 2) {
                 // Update background offset variable if the above is true
                 hOff++;
             }
@@ -470,18 +472,24 @@ void drawScore() {
 void drawBaskets() {
     for (int i = 0; i < BASKETCOUNT; i++) 
     {
-            shadowOAM[i+32].attr0 = baskets[i].row | ATTR0_4BPP | ATTR0_SQUARE;
-            shadowOAM[i+32].attr1 = baskets[i].col | ATTR1_TINY;
+            baskets[i].row = baskets[i].worldRow - vOff;
+            baskets[i].col = baskets[i].worldCol - hOff;
+            shadowOAM[i+32].attr0 = (baskets[i].row) | ATTR0_4BPP | ATTR0_SQUARE;
+            shadowOAM[i+32].attr1 = (baskets[i].col) | ATTR1_TINY;
             shadowOAM[i+32].attr2 = ATTR2_TILEID(baskets[i].aniState, 0);
         
     }
 }
 
 void drawFriendlyPandas() {
+    
     for (int i = 0; i < PANDACOUNT; i++) 
     {
-        shadowOAM[i+36].attr0 = pandas[i].row | ATTR0_4BPP | ATTR0_SQUARE;
-        shadowOAM[i+36].attr1 = pandas[i].col | ATTR1_TINY;
+        pandas[i].row = pandas[i].worldRow - vOff;
+        pandas[i].col = pandas[i].worldCol - hOff;
+
+        shadowOAM[i+36].attr0 = (pandas[i].row) | ATTR0_4BPP | ATTR0_SQUARE;
+        shadowOAM[i+36].attr1 = (pandas[i].col) | ATTR1_TINY;
         shadowOAM[i+36].attr2 = ATTR2_TILEID(pandas[i].aniState, pandas[i].curFrame);
         
     }
@@ -569,8 +577,8 @@ void updateGame2() {
         }
         
     }
-    REG_BG1HOFF = hOff;
-    REG_BG1VOFF = vOff;
+    REG_BG2HOFF = hOff;
+    REG_BG2VOFF = vOff;
     
     waitForVBlank();
     DMANow(3, shadowOAM, OAM, 128 * 4);

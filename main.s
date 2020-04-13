@@ -413,7 +413,7 @@ goToGame2:
 	mov	r3, #67108864
 	mov	r2, #0
 	push	{r4, lr}
-	mov	r4, #110
+	mov	r4, #60
 	mov	lr, #9
 	mov	ip, #512
 	mov	r0, #190

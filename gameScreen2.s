@@ -571,30 +571,30 @@ gameScreen2Map:
 	.short	1
 	.short	1
 	.short	1
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
 	.short	1
 	.short	1
 	.short	1
 	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	2
 	.short	2
 	.short	1
@@ -603,6 +603,7 @@ gameScreen2Map:
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
@@ -621,21 +622,20 @@ gameScreen2Map:
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
 	.short	1
-	.short	1
-	.short	1
 	.short	2
 	.short	2
-	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
@@ -654,21 +654,20 @@ gameScreen2Map:
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
 	.short	1
-	.short	1
 	.short	2
 	.short	2
-	.short	1
-	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
@@ -687,56 +686,56 @@ gameScreen2Map:
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	2
 	.short	2
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
 	.short	1
 	.short	1
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
 	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	2
 	.short	2
-	.short	1
-	.short	1
-	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
@@ -747,27 +746,28 @@ gameScreen2Map:
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
 	.short	1
-	.short	1
 	.short	2
 	.short	2
-	.short	1
-	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
@@ -778,6 +778,7 @@ gameScreen2Map:
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
@@ -786,20 +787,19 @@ gameScreen2Map:
 	.short	1
 	.short	1
 	.short	1
-	.short	1
 	.short	2
 	.short	2
-	.short	1
-	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
@@ -810,6 +810,7 @@ gameScreen2Map:
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
@@ -818,22 +819,19 @@ gameScreen2Map:
 	.short	1
 	.short	1
 	.short	1
-	.short	1
 	.short	2
 	.short	2
-	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
@@ -844,9 +842,11 @@ gameScreen2Map:
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
@@ -859,9 +859,11 @@ gameScreen2Map:
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
@@ -872,73 +874,47 @@ gameScreen2Map:
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
 	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	2
 	.short	2
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
 	.short	1
 	.short	1
 	.short	1
+	.short	0
 	.short	1
 	.short	1
 	.short	1
 	.short	1
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
-	.short	2
 	.short	2
 	.short	2
 	.short	2
@@ -947,6 +923,7 @@ gameScreen2Map:
 	.short	2
 	.short	2
 	.short	2
+	.short	0
 	.short	2
 	.short	2
 	.short	2
@@ -965,6 +942,7 @@ gameScreen2Map:
 	.short	2
 	.short	2
 	.short	2
+	.short	0
 	.short	2
 	.short	2
 	.short	2
@@ -977,6 +955,7 @@ gameScreen2Map:
 	.short	2
 	.short	2
 	.short	2
+	.short	0
 	.short	2
 	.short	2
 	.short	2
@@ -995,6 +974,7 @@ gameScreen2Map:
 	.short	2
 	.short	2
 	.short	2
+	.short	0
 	.short	2
 	.short	2
 	.short	2
@@ -1007,6 +987,26 @@ gameScreen2Map:
 	.short	2
 	.short	2
 	.short	2
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
 	.short	2
 	.short	2
 	.short	2

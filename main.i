@@ -1784,7 +1784,7 @@ void game() {
 void goToGame2() {
     (*(volatile unsigned short *)0x04000016) = 0;
     (*(volatile unsigned short *)0x04000014) = 0;
-    vOff = 110;
+    vOff = 60;
     hOff = 9;
     panda.worldRow = 190;
     panda.worldCol = 129;

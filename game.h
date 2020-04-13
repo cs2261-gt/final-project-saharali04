@@ -32,6 +32,8 @@ extern int cheatGame;
     typedef struct {
         int row;
         int col;
+        int worldRow;
+        int worldCol;
         int rdel;
         int cdel;
         int width; 
