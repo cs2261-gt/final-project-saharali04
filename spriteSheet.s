@@ -916,22 +916,22 @@ spriteSheetTiles:
 	.short	-4371
 	.short	-8466
 	.short	-4371
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
+	.short	-17483
+	.short	23483
+	.short	-17483
+	.short	23483
+	.short	23477
+	.short	21845
+	.short	-17483
+	.short	23483
+	.short	-17483
+	.short	23483
+	.short	23477
+	.short	21845
+	.short	-17483
+	.short	23483
+	.short	-17483
+	.short	23483
 	.short	0
 	.short	0
 	.short	0

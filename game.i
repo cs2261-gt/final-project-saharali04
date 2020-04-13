@@ -9,6 +9,7 @@
 extern int hOff;
 extern int vOff;
 extern int screenBlock;
+extern int cheatGame;
 
 
     typedef struct {
@@ -51,6 +52,9 @@ extern int screenBlock;
     FOODSPRITE food[30];
 
 
+    FOODSPRITE enemies[10];
+
+
 
     FOODSPRITE baskets[3];
 
@@ -73,10 +77,12 @@ void initPanda();
 void drawPanda();
 void updatePanda();
 void drawFood();
+void drawEnemies();
 void updateGame();
 void updateGame2();
 void initGame();
 void initFood();
+void initEnemies();
 void drawBaskets();
 void initBaskets();
 void initPandas();
@@ -86,6 +92,8 @@ void checkFoodDelivered();
 void drawScore();
 void resetAnimationFriendly();
 void updatePanda2();
+void cheat();
+void clearEnemies();
 # 2 "game.c" 2
 # 1 "myLib.h" 1
 
@@ -1016,6 +1024,7 @@ extern const signed char chewSound[21312];
 
 int hasLost;
 int hasWon;
+int cheatGame;
 
 int hOff = 0;
 int vOff = 0;
@@ -1030,6 +1039,8 @@ void initGame() {
     screenBlock = 28;
     initPanda();
     initFood();
+    initEnemies();
+    cheatGame = 0;
 }
 
 
@@ -1070,6 +1081,20 @@ void initFood() {
 
         }
 
+    }
+}
+
+void initEnemies() {
+    for (int i = 0; i < 10; i++)
+    {
+        enemies[i].active = 1;
+        enemies[i].width = 8;
+        enemies[i].height = 8;
+        enemies[i].col = (rand() % 232);
+        enemies[i].row = (rand() % 133);
+        enemies[i].cdel = 2;
+        enemies[i].rdel = 2;
+        enemies[i].aniState = 8;
     }
 }
 
@@ -1155,6 +1180,10 @@ void updatePanda() {
             panda.worldCol--;
             panda.aniState = PANDASAD;
 
+            if (hOff > 0 && screenBlock > 27 && panda.col <= 240 / 2 ) {
+            hOff--;
+            playerHOff--;
+        }
 
         }
         if (hOff > 0 && screenBlock > 27) {
@@ -1197,6 +1226,9 @@ void updatePanda() {
     panda.col = panda.worldCol - playerHOff;
     panda.row = panda.worldRow - vOff;
 
+    if ((!(~(oldButtons)&((1<<0))) && (~buttons & ((1<<0))))) {
+        cheatGame = 1;
+    }
 
 }
 
@@ -1381,6 +1413,41 @@ void drawFood() {
     }
 }
 
+void clearFood() {
+    for (int i = 0; i < 30; i++)
+    {
+        if (food[i].active)
+        {
+            shadowOAM[i+1].attr0 = food[i].row | (0<<13) | (0<<14);
+            shadowOAM[i+1].attr1 = food[i].col | (0<<14);
+            shadowOAM[i+1].attr2 = ((0)*32+(5));
+        }
+    }
+}
+
+
+void drawEnemies() {
+    for (int i = 0; i < 10; i++)
+    {
+        if (enemies[i].active)
+        {
+            shadowOAM[i+45].attr0 = enemies[i].row | (0<<13) | (0<<14);
+            shadowOAM[i+45].attr1 = enemies[i].col | (0<<14);
+            shadowOAM[i+45].attr2 = ((1)*32+(enemies[i].aniState));
+        }
+    }
+}
+
+void clearEnemies() {
+    for (int i = 0; i < 10; i++)
+    {
+        shadowOAM[i+45].attr0 = enemies[i].row | (0<<13) | (0<<14);
+        shadowOAM[i+45].attr1 = enemies[i].col | (0<<14);
+        shadowOAM[i+45].attr2 = ((0)*32+(5));
+
+    }
+}
+
 void drawScore() {
     shadowOAM[40].attr0 = 141 | (0<<13) | (0<<14);
     shadowOAM[40].attr1 = 82 | (0<<14);
@@ -1416,6 +1483,7 @@ void drawFriendlyPandas() {
 }
 
 void updateGame() {
+
     (*(volatile unsigned short*)0x400000A) = ((0)<<2) | ((screenBlock)<<8) | (1<<14);
 
     if (hOff > 256) {
@@ -1432,11 +1500,20 @@ void updateGame() {
     if (playerHOff > 512) {
         playerHOff -= 512;
     }
+    if (cheatGame) {
+        clearFood();
+        clearEnemies();
+        panda.stemsCollected = 15;
+        panda.leavesCollected = 0;
+    } else {
+        drawEnemies();
+        drawFood();
+        checkFoodCollected();
 
+    }
     updatePanda();
     drawPanda();
-    checkFoodCollected();
-    drawFood();
+
     drawScore();
     (*(volatile unsigned short *)0x04000014) = hOff;
     (*(volatile unsigned short *)0x04000016) = vOff;

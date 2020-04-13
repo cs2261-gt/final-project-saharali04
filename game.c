@@ -5,6 +5,7 @@
 // keeps track if player has lost
 int hasLost;
 int hasWon;
+int cheatGame;
 
 int hOff = 0;   
 int vOff = 0;
@@ -19,6 +20,8 @@ void initGame() {
     screenBlock = 28;
     initPanda();
     initFood();
+    initEnemies();
+    cheatGame = 0;
 }
 
 // initialize panda
@@ -59,6 +62,20 @@ void initFood() {
 
         }
         
+    }
+}
+
+void initEnemies() {
+    for (int i = 0; i < ENEMYCOUNT; i++) 
+    {
+        enemies[i].active = 1;
+        enemies[i].width = 8;
+        enemies[i].height = 8;
+        enemies[i].col = (rand() % 232);
+        enemies[i].row = (rand() % 133);
+        enemies[i].cdel = 2;
+        enemies[i].rdel = 2;
+        enemies[i].aniState = 8;       
     }
 }
 
@@ -143,7 +160,11 @@ void updatePanda() {
         if (panda.worldCol > 0) {
             panda.worldCol--;
             panda.aniState = PANDASAD;
-    
+
+            if (hOff > 0 && screenBlock > 27 && panda.col <= SCREENWIDTH / 2 ) {
+            hOff--;
+            playerHOff--; 
+        }
         
         }
         if (hOff > 0 && screenBlock > 27) {
@@ -186,6 +207,9 @@ void updatePanda() {
     panda.col = panda.worldCol - playerHOff;
     panda.row = panda.worldRow - vOff;
     
+    if (BUTTON_PRESSED(BUTTON_A)) {
+        cheatGame = 1;
+    }
     
 }
 
@@ -370,6 +394,41 @@ void drawFood() {
     }
 }
 
+void clearFood() {
+    for (int i = 0; i < FOODCOUNT; i++) 
+    {
+        if (food[i].active) 
+        {
+            shadowOAM[i+1].attr0 = food[i].row | ATTR0_4BPP | ATTR0_SQUARE;
+            shadowOAM[i+1].attr1 = food[i].col | ATTR1_TINY;
+            shadowOAM[i+1].attr2 = ATTR2_TILEID(5, 0);
+        } 
+    }
+}
+
+
+void drawEnemies() {
+    for (int i = 0; i < ENEMYCOUNT; i++) 
+    {
+        if (enemies[i].active) 
+        {
+            shadowOAM[i+45].attr0 = enemies[i].row | ATTR0_4BPP | ATTR0_SQUARE;
+            shadowOAM[i+45].attr1 = enemies[i].col | ATTR1_TINY;
+            shadowOAM[i+45].attr2 = ATTR2_TILEID(enemies[i].aniState, 1);
+        } 
+    }
+}
+
+void clearEnemies() {
+    for (int i = 0; i < ENEMYCOUNT; i++) 
+    {
+        shadowOAM[i+45].attr0 = enemies[i].row | ATTR0_4BPP | ATTR0_SQUARE;
+        shadowOAM[i+45].attr1 = enemies[i].col | ATTR1_TINY;
+        shadowOAM[i+45].attr2 = ATTR2_TILEID(5, 0);
+        
+    }
+}
+
 void drawScore() {
     shadowOAM[40].attr0 = 141 | ATTR0_4BPP | ATTR0_SQUARE;
     shadowOAM[40].attr1 = 82 | ATTR1_TINY;
@@ -405,6 +464,7 @@ void drawFriendlyPandas() {
 }
 
 void updateGame() {
+
     REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
 
     if (hOff > 256) {
@@ -421,11 +481,20 @@ void updateGame() {
     if (playerHOff > 512) {
         playerHOff -= 512;
     }
-    
+    if (cheatGame) {
+        clearFood();
+        clearEnemies();
+        panda.stemsCollected = 15;
+        panda.leavesCollected = 0;
+    } else {
+        drawEnemies();
+        drawFood();
+        checkFoodCollected();
+
+    }
     updatePanda();
     drawPanda();
-    checkFoodCollected();
-    drawFood();
+
     drawScore();
     REG_BG1HOFF = hOff;
     REG_BG1VOFF = vOff;

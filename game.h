@@ -4,6 +4,7 @@
 extern int hOff;
 extern int vOff;
 extern int screenBlock;
+extern int cheatGame;
 // Structs
     // Panda struct
     typedef struct {
@@ -46,6 +47,9 @@ extern int screenBlock;
     FOODSPRITE food[30];
     #define FOODCOUNT 30
 
+    FOODSPRITE enemies[10];
+    #define ENEMYCOUNT 10
+
     // Basket variables
     FOODSPRITE baskets[3];
     #define BASKETCOUNT 3
@@ -68,10 +72,12 @@ void initPanda();
 void drawPanda();
 void updatePanda();
 void drawFood();
+void drawEnemies();
 void updateGame();
 void updateGame2();
 void initGame();
 void initFood();
+void initEnemies();
 void drawBaskets();
 void initBaskets();
 void initPandas();
@@ -81,3 +87,5 @@ void checkFoodDelivered();
 void drawScore();
 void resetAnimationFriendly();
 void updatePanda2();
+void cheat();
+void clearEnemies();
