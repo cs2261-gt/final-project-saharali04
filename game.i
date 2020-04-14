@@ -1029,6 +1029,10 @@ extern const signed char chewSound[21312];
 # 20 "collisionmap.h"
 extern const unsigned short collisionmapBitmap[65536];
 # 6 "game.c" 2
+# 1 "collisionmap2.h" 1
+# 20 "collisionmap2.h"
+extern const unsigned short collisionmap2Bitmap[262144];
+# 7 "game.c" 2
 
 int hasLost;
 int hasWon;
@@ -1113,8 +1117,8 @@ void initBaskets() {
         baskets[i].active = 1;
         baskets[i].width = 8;
         baskets[i].height = 8;
-        baskets[i].worldCol = 105 + i*20;
-        baskets[i].worldRow = 130;
+        baskets[i].worldCol = 210;
+        baskets[i].worldRow = (47 + i*20);
         baskets[i].aniState = BASKET;
 
     }
@@ -1125,8 +1129,8 @@ void initPandas() {
     {
         pandas[i].width = 8;
         pandas[i].height = 8;
-        pandas[i].worldCol = 105 + i*20;
-        pandas[i].worldRow = 120;
+        pandas[i].worldCol = 220;
+        pandas[i].worldRow = (47 + i*20);
         pandas[i].aniState = FRIENDLYPANDA;
         pandas[i].leavesCollected = 0;
         pandas[i].stemsCollected = 0;
@@ -1153,7 +1157,8 @@ void updatePanda() {
         panda.aniCounter++;
     }
 
-    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<6))))
+    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<6))) && collisionmap2Bitmap[((panda.worldRow - panda.rdel)*(1024)+(panda.worldCol))]
+            && collisionmap2Bitmap[((panda.worldRow - panda.rdel)*(1024)+(panda.worldCol + panda.width - panda.cdel))])
     {
         if (panda.worldRow > 0) {
 
@@ -1171,7 +1176,8 @@ void updatePanda() {
 
     if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<7))))
     {
-        if (panda.worldRow + panda.height < 256 - 20) {
+        if (panda.worldRow + panda.height < 256 - 20 && collisionmap2Bitmap[((panda.worldRow + panda.height)*(1024)+(panda.worldCol))]
+            && collisionmap2Bitmap[((panda.worldRow + panda.height)*(1024)+(panda.worldCol + panda.width - panda.cdel))]) {
 
             panda.aniState = PANDAHAPPY;
             panda.worldRow+=panda.rdel;
@@ -1183,25 +1189,11 @@ void updatePanda() {
         }
 
     }
-    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<5))))
-    {
-        if (panda.worldCol > 0) {
-            panda.worldCol--;
-            panda.aniState = PANDASAD;
-
-            if (hOff > 0 && screenBlock > 27) {
-                hOff--;
-                playerHOff--;
-            }
-
-        }
-
-
-    }
 
     if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<4))))
     {
-        if (panda.worldCol + panda.width < 1024 - 15) {
+        if (panda.worldCol + panda.width < 1024 - 15 && (collisionmap2Bitmap[((panda.worldRow)*(1024)+((panda.worldCol + panda.width)))] == 0x7FFF)
+            && (collisionmap2Bitmap[(((panda.worldRow + panda.height - panda.rdel))*(1024)+((panda.worldCol + panda.width)))] == 0x7FFF)) {
             panda.worldCol++;
             panda.aniState = PANDASAD;
 
@@ -1225,16 +1217,10 @@ void updatePanda() {
         panda.aniCounter++;
     }
 
-
-
-
-
     panda.col = panda.worldCol - playerHOff;
     panda.row = panda.worldRow - vOff;
 
-    if ((!(~(oldButtons)&((1<<0))) && (~buttons & ((1<<0))))) {
-        cheatGame = 1;
-    }
+
 
 }
 
@@ -1265,8 +1251,6 @@ void updatePanda2() {
                 vOff--;
             }
         }
-
-
 
     }
 
@@ -1300,9 +1284,6 @@ void updatePanda2() {
             }
         }
 
-
-
-
     }
 
     if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<4))))
@@ -1321,9 +1302,6 @@ void updatePanda2() {
 
     }
 
-
-
-
     if (panda.aniState == PANDAIDLE)
     {
             panda.curFrame = 0;
@@ -1333,14 +1311,13 @@ void updatePanda2() {
         panda.aniCounter++;
     }
 
-
-
+    if ((!(~(oldButtons)&((1<<0))) && (~buttons & ((1<<0))))) {
+        cheatGame = 1;
+    }
 
 
     panda.col = panda.worldCol - hOff;
     panda.row = panda.worldRow - vOff;
-
-
 
 
 }
@@ -1378,7 +1355,7 @@ void checkEnemyCollision() {
 
 void checkFoodDelivered() {
     for (int i = 0; i < 3; i++) {
-        if ((!(~(oldButtons)&((1<<0))) && (~buttons & ((1<<0)))) && collision(panda.col, panda.row, panda.width, panda.height, baskets[i].col, baskets[i].row, baskets[i].width, baskets[i].height) && panda.leavesCollected > 0)
+        if ((!(~(oldButtons)&((1<<0))) && (~buttons & ((1<<0)))) && collision(panda.col, panda.row, panda.width, panda.height, 210, 47, baskets[i].width, baskets[i].height) && panda.leavesCollected > 0)
         {
             playSoundB(chewSound, 21312, 0);
             pandas[i].leavesCollected++;
@@ -1500,8 +1477,8 @@ void drawBaskets() {
     {
             baskets[i].row = baskets[i].worldRow - vOff;
             baskets[i].col = baskets[i].worldCol - hOff;
-            shadowOAM[i+32].attr0 = (baskets[i].row) | (0<<13) | (0<<14);
-            shadowOAM[i+32].attr1 = (baskets[i].col) | (0<<14);
+            shadowOAM[i+32].attr0 = baskets[i].row | (0<<13) | (0<<14);
+            shadowOAM[i+32].attr1 = baskets[i].col | (0<<14);
             shadowOAM[i+32].attr2 = ((0)*32+(baskets[i].aniState));
 
     }
@@ -1514,8 +1491,8 @@ void drawFriendlyPandas() {
         pandas[i].row = pandas[i].worldRow - vOff;
         pandas[i].col = pandas[i].worldCol - hOff;
 
-        shadowOAM[i+36].attr0 = (pandas[i].row) | (0<<13) | (0<<14);
-        shadowOAM[i+36].attr1 = (pandas[i].col) | (0<<14);
+        shadowOAM[i+36].attr0 = pandas[i].row | (0<<13) | (0<<14);
+        shadowOAM[i+36].attr1 = pandas[i].col | (0<<14);
         shadowOAM[i+36].attr2 = ((pandas[i].curFrame)*32+(pandas[i].aniState));
 
     }
@@ -1523,7 +1500,7 @@ void drawFriendlyPandas() {
 }
 
 void updateGame() {
-    count++;
+    (*(volatile unsigned short*)0x400000A) = 0;
     (*(volatile unsigned short*)0x400000A) = ((0)<<2) | ((screenBlock)<<8) | (1<<14);
 
     if (hOff > 256) {
@@ -1531,15 +1508,43 @@ void updateGame() {
         hOff -= 256;
         (*(volatile unsigned short*)0x400000A) = ((0)<<2) | ((screenBlock)<<8) | (1<<14);
     }
-    if (hOff == 0 && screenBlock > 28) {
-        screenBlock--;
-        hOff = 256;
-        (*(volatile unsigned short*)0x400000A) = ((0)<<2) | ((screenBlock)<<8) | (1<<14);
+
+    if (screenBlock == 31 || (screenBlock == 30 && hOff > 230)) {
+        drawFriendlyPandas();
+        drawBaskets();
     }
 
     if (playerHOff > 512) {
         playerHOff -= 512;
     }
+
+    updatePanda();
+    drawPanda();
+    checkFoodDelivered();
+    drawScore();
+    (*(volatile unsigned short *)0x04000014) = hOff;
+    (*(volatile unsigned short *)0x04000016) = vOff;
+
+    waitForVBlank();
+    DMANow(3, shadowOAM, ((OBJ_ATTR*)(0x7000000)), 128 * 4);
+
+}
+
+void resetAnimationFriendly() {
+    pandas[0].curFrame = 0;
+    pandas[1].curFrame = 0;
+    pandas[2].curFrame = 0;
+
+}
+
+void updateGame2() {
+    count++;
+    updatePanda2();
+    drawPanda();
+
+    drawScore();
+
+
     if (cheatGame) {
         clearFood();
         clearEnemies();
@@ -1558,34 +1563,6 @@ void updateGame() {
         checkEnemyCollision();
 
     }
-    updatePanda();
-    drawPanda();
-
-    drawScore();
-    (*(volatile unsigned short *)0x04000014) = hOff;
-    (*(volatile unsigned short *)0x04000016) = vOff;
-
-    waitForVBlank();
-    DMANow(3, shadowOAM, ((OBJ_ATTR*)(0x7000000)), 128 * 4);
-
-}
-
-void resetAnimationFriendly() {
-    pandas[0].curFrame = 0;
-    pandas[1].curFrame = 0;
-    pandas[2].curFrame = 0;
-
-}
-
-void updateGame2() {
-
-    updatePanda2();
-    drawPanda();
-    drawBaskets();
-    drawScore();
-    checkFoodDelivered();
-    drawFriendlyPandas();
-
 
     if (pandas[0].aniCounter % 200) {
         resetAnimationFriendly();

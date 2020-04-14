@@ -230,7 +230,7 @@ extern const unsigned short instructionsScreenPal[256];
 # 6 "main.c" 2
 # 1 "gameScreen.h" 1
 # 22 "gameScreen.h"
-extern const unsigned short gameScreenTiles[96];
+extern const unsigned short gameScreenTiles[128];
 
 
 extern const unsigned short gameScreenMap[4096];
@@ -287,7 +287,7 @@ extern const unsigned short spriteSheetPal[256];
 # 12 "main.c" 2
 # 1 "scoreBackground.h" 1
 # 22 "scoreBackground.h"
-extern const unsigned short scoreBackgroundTiles[448];
+extern const unsigned short scoreBackgroundTiles[512];
 
 
 extern const unsigned short scoreBackgroundMap[1024];
@@ -1619,7 +1619,7 @@ int main() {
 
 void initialize() {
 
-    DMANow(3, spriteSheetPal, ((unsigned short *)0x5000200), 512/2);
+    DMANow(3, &spriteSheetPal, ((unsigned short *)0x5000200), 512/2);
     DMANow(3, spriteSheetTiles, &((charblock *)0x6000000)[4], 32768/2);
     hideSprites();
     (*(unsigned short *)0x4000000) = 0 | (1<<12);
@@ -1650,13 +1650,13 @@ void splash() {
 
     seed++;
 
-    (*(unsigned short *)0x4000000) = 0 | (1<<10);
+    (*(unsigned short *)0x4000000) = 0 | (1<<9);
 
 
-    DMANow(3, splashScreenPal, ((unsigned short *)0x5000000), 512/2);
+    DMANow(3, &splashScreenPal, ((unsigned short *)0x5000000), 512/2);
 
 
-    (*(volatile unsigned short*)0x400000C) = (0<<14) | ((0)<<2) | ((11)<<8);
+    (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((11)<<8);
 
 
     DMANow(3, splashScreenTiles, &((charblock *)0x6000000)[0], 3072/2);
@@ -1681,7 +1681,7 @@ void splash() {
         (*(unsigned short *)0x4000000) = 0;
         stopSound();
   playSoundA(gameSound, 1324512, 1);
-        goToGame();
+        goToGame2();
     }
 
     if ((!(~(oldButtons)&((1<<2))) && (~buttons & ((1<<2)))))
@@ -1700,7 +1700,7 @@ void goToInstruction() {
 void instruction() {
     (*(unsigned short *)0x4000000) = 0 | (1<<9);
 
-    DMANow(3, instructionsScreenPal, ((unsigned short *)0x5000000), 512/2);
+    DMANow(3, &instructionsScreenPal, ((unsigned short *)0x5000000), 512/2);
 
 
     (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((11)<<8);
@@ -1728,8 +1728,6 @@ void instruction() {
 void goToGame() {
 
     hideSprites();
-
-
     (*(volatile unsigned short *)0x04000016) = vOff;
     (*(volatile unsigned short *)0x04000014) = hOff;
     state = GAME;
@@ -1738,23 +1736,22 @@ void goToGame() {
 
 
 void game() {
+    (*(unsigned short *)0x4000000) = 0;
+    (*(unsigned short *)0x4000000) = 0 | (1<<12) | (1<<8) | (1<<9);
 
-    (*(unsigned short *)0x4000000) = 0 | (1<<9) | (1<<12) | (1<<8);
+    DMANow(3, &gameScreenPal, ((unsigned short *)0x5000000), 512/2);
 
-    DMANow(3, gameScreenPal, ((unsigned short *)0x5000000), 512/2);
-
-
-    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 192/2);
-
+    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 256/2);
 
     DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[28], 8192/2);
 
     DMANow(3, scoreBackgroundPal, ((unsigned short *)0x5000000), 512/2);
 
-    DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[1], 896/2);
+    DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[1], 1024/2);
 
-    DMANow(3, scoreBackgroundMap, &((screenblock *)0x6000000)[25], 2048/2);
-    (*(volatile unsigned short*)0x4000008) = ((1)<<2) | ((25)<<8) | (0<<14);
+    DMANow(3, scoreBackgroundMap, &((screenblock *)0x6000000)[17], 2048/2);
+
+    (*(volatile unsigned short*)0x4000008) = ((1)<<2) | ((17)<<8) | (0<<14);
     updateGame();
 
 
@@ -1798,28 +1795,30 @@ void goToGame2() {
 
 
 void game2() {
+    (*(unsigned short *)0x4000000) = 0;
+    (*(unsigned short *)0x4000000) = 0 | (1<<10) | (1<<12) | (1<<8);
 
     DMANow(3, shadowOAM, ((OBJ_ATTR*)(0x7000000)), 128 * 4);
 
-    DMANow(3, gameScreen2Pal, ((unsigned short *)0x5000000), 512/2);
+    DMANow(3, &gameScreen2Pal, ((unsigned short *)0x5000000), 512/2);
 
 
-    (*(volatile unsigned short*)0x400000C) = (0<<14) | ((0)<<2) | ((11)<<8);
+    (*(volatile unsigned short*)0x400000C) = (0<<14) | ((0)<<2) | ((31)<<8);
+    DMANow(3, gameScreen2Map, &((screenblock *)0x6000000)[31], 2048/2);
+
 
 
     DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 96/2);
 
     DMANow(3, scoreBackgroundPal, ((unsigned short *)0x5000000), 512/2);
 
-    DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[1], 896/2);
+    DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[1], 1024/2);
 
-    DMANow(3, scoreBackgroundMap, &((screenblock *)0x6000000)[25], 2048/2);
-    (*(volatile unsigned short*)0x4000008) = ((1)<<2) | ((25)<<8) | (0<<14);
+    DMANow(3, scoreBackgroundMap, &((screenblock *)0x6000000)[17], 2048/2);
+    (*(volatile unsigned short*)0x4000008) = ((1)<<2) | ((17)<<8) | (0<<14);
 
 
-    DMANow(3, gameScreen2Map, &((screenblock *)0x6000000)[11], 2048/2);
 
-    (*(unsigned short *)0x4000000) = 0 | (1<<10) | (1<<12) | (1<<8);
 
 
     updateGame2();
@@ -1858,12 +1857,12 @@ void goToPause() {
 
 void pause() {
 
-    (*(unsigned short *)0x4000000) = 0 | (1<<10);
+    (*(unsigned short *)0x4000000) = 0 | (1<<8);
 
-    DMANow(3, pauseScreenPal, ((unsigned short *)0x5000000), 512/2);
+    DMANow(3, &pauseScreenPal, ((unsigned short *)0x5000000), 512/2);
 
 
-    (*(volatile unsigned short*)0x400000C) = (0<<14) | ((0)<<2) | ((11)<<8);
+    (*(volatile unsigned short*)0x4000008) = (0<<14) | ((0)<<2) | ((11)<<8);
 
 
     DMANow(3, pauseScreenTiles, &((charblock *)0x6000000)[0], 192/2);
@@ -1891,7 +1890,7 @@ void win() {
 
     (*(unsigned short *)0x4000000) = 0 | (1<<9);
 
-    DMANow(3, winScreenPal, ((unsigned short *)0x5000000), 512/2);
+    DMANow(3, &winScreenPal, ((unsigned short *)0x5000000), 512/2);
 
 
     (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((11)<<8);
@@ -1919,12 +1918,12 @@ void goToLose() {
 
 void lose() {
 
-    (*(unsigned short *)0x4000000) = 0 | (1<<10);
+    (*(unsigned short *)0x4000000) = 0 | (1<<8);
 
-    DMANow(3, loseScreenPal, ((unsigned short *)0x5000000), 512/2);
+    DMANow(3, &loseScreenPal, ((unsigned short *)0x5000000), 512/2);
 
 
-    (*(volatile unsigned short*)0x400000C) = (0<<14) | ((0)<<2) | ((11)<<8);
+    (*(volatile unsigned short*)0x4000008) = (0<<14) | ((0)<<2) | ((11)<<8);
 
 
     DMANow(3, loseScreenTiles, &((charblock *)0x6000000)[0], 1888/2);
