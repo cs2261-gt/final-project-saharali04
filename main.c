@@ -326,7 +326,8 @@ void game2() {
 }
 // Sets up the pause state
 void goToPause() {
-
+    REG_BG2HOFF = 0;
+    REG_BG2VOFF = 0;
     state = PAUSE;
 
 }

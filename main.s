@@ -497,17 +497,17 @@ game:
 	mov	lr, pc
 	bx	r4
 	ldr	r3, .L72+40
-	ldr	r4, .L72+44
+	ldr	r6, .L72+44
 	strh	r3, [r5, #8]	@ movhi
 	ldr	r3, .L72+48
 	mov	lr, pc
 	bx	r3
-	ldrh	r3, [r4]
+	ldrh	r3, [r6]
 	tst	r3, #8
 	beq	.L51
 	ldr	r2, .L72+52
 	ldrh	r2, [r2]
-	tst	r2, #8
+	ands	r4, r2, #8
 	beq	.L68
 .L51:
 	tst	r3, #4
@@ -562,10 +562,12 @@ game:
 	ldr	r3, .L72+80
 	mov	lr, pc
 	bx	r3
-	mov	r1, #4
-	ldr	r2, .L72+60
-	ldrh	r3, [r4]
-	str	r1, [r2]
+	mov	r2, #4
+	strh	r4, [r5, #24]	@ movhi
+	ldr	r3, .L72+60
+	strh	r4, [r5, #26]	@ movhi
+	str	r2, [r3]
+	ldrh	r3, [r6]
 	b	.L51
 .L73:
 	.align	2
@@ -652,17 +654,17 @@ game2:
 	mov	lr, pc
 	bx	r4
 	mov	r3, #5376
-	ldr	r4, .L96+48
+	ldr	r6, .L96+48
 	strh	r3, [r5]	@ movhi
 	ldr	r3, .L96+52
 	mov	lr, pc
 	bx	r3
-	ldrh	r3, [r4]
+	ldrh	r3, [r6]
 	tst	r3, #8
 	beq	.L75
 	ldr	r2, .L96+56
 	ldrh	r2, [r2]
-	tst	r2, #8
+	ands	r4, r2, #8
 	beq	.L92
 .L75:
 	tst	r3, #4
@@ -727,10 +729,12 @@ game2:
 	ldr	r3, .L96+96
 	mov	lr, pc
 	bx	r3
-	mov	r1, #4
-	ldr	r2, .L96+64
-	ldrh	r3, [r4]
-	str	r1, [r2]
+	mov	r2, #4
+	strh	r4, [r5, #24]	@ movhi
+	ldr	r3, .L96+64
+	strh	r4, [r5, #26]	@ movhi
+	str	r2, [r3]
+	ldrh	r3, [r6]
 	b	.L75
 .L97:
 	.align	2
@@ -772,9 +776,13 @@ goToPause:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	@ link register save eliminated.
-	mov	r2, #4
-	ldr	r3, .L99
-	str	r2, [r3]
+	mov	r3, #67108864
+	mov	r2, #0
+	mov	r0, #4
+	ldr	r1, .L99
+	strh	r2, [r3, #24]	@ movhi
+	strh	r2, [r3, #26]	@ movhi
+	str	r0, [r1]
 	bx	lr
 .L100:
 	.align	2
@@ -1135,9 +1143,9 @@ main:
 	.comm	oldButtons,2,2
 	.comm	buttons,2,2
 	.comm	pandas,204,4
-	.comm	baskets,96,4
-	.comm	enemies,480,4
-	.comm	food,960,4
+	.comm	baskets,120,4
+	.comm	enemies,600,4
+	.comm	food,1200,4
 	.comm	panda,68,4
 	.bss
 	.align	2

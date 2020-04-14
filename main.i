@@ -146,6 +146,8 @@ extern int cheatGame;
     typedef struct {
         int row;
         int col;
+        int worldRow;
+        int worldCol;
         int rdel;
         int cdel;
         int width;
@@ -1847,7 +1849,8 @@ void game2() {
 }
 
 void goToPause() {
-
+    (*(volatile unsigned short *)0x04000018) = 0;
+    (*(volatile unsigned short *)0x0400001A) = 0;
     state = PAUSE;
 
 }
