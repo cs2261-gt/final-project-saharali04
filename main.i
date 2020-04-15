@@ -160,10 +160,10 @@ extern int cheatGame;
     PANDASPRITE panda;
 
 
-    FOODSPRITE food[30];
+    FOODSPRITE food[37];
 
 
-    FOODSPRITE enemies[15];
+    FOODSPRITE enemies[37];
 
 
 
@@ -240,7 +240,7 @@ extern const unsigned short gameScreenPal[256];
 # 7 "main.c" 2
 # 1 "gameScreen2.h" 1
 # 22 "gameScreen2.h"
-extern const unsigned short gameScreen2Tiles[48];
+extern const unsigned short gameScreen2Tiles[64];
 
 
 extern const unsigned short gameScreen2Map[1024];
@@ -1554,6 +1554,8 @@ void goToWin();
 void win();
 void goToLose();
 void lose();
+void goToTest();
+void test();
 
 
 void initialize();
@@ -1574,7 +1576,7 @@ void initialize();
     int seed;
 
 
-    enum {SPLASH, INSTRUCTION, GAME, GAME2, PAUSE, WIN, LOSE};
+    enum {SPLASH, INSTRUCTION, GAME, GAME2, PAUSE, WIN, LOSE, TEST};
     int state;
 
 int main() {
@@ -1606,6 +1608,9 @@ int main() {
                 break;
             case LOSE:
                 lose();
+                break;
+            case TEST:
+                test();
                 break;
         }
 
@@ -1730,6 +1735,8 @@ void goToGame() {
     hideSprites();
     (*(volatile unsigned short *)0x04000016) = vOff;
     (*(volatile unsigned short *)0x04000014) = hOff;
+    panda.worldCol = 120;
+    panda.worldRow = 70;
     state = GAME;
 
 }
@@ -1760,14 +1767,7 @@ void game() {
         pauseSound();
         goToPause();
     }
-    if ((!(~(oldButtons)&((1<<2))) && (~buttons & ((1<<2)))))
-    {
-        stopSound();
-  stopSound();
-  playSoundA(gameSound2, 677952, 1);
-        goToGame2();
-    }
-
+# 255 "main.c"
     if (hasLost) {
         goToLose();
     }
@@ -1781,12 +1781,10 @@ void game() {
 
 
 void goToGame2() {
-    (*(volatile unsigned short *)0x04000016) = 0;
-    (*(volatile unsigned short *)0x04000014) = 0;
-    vOff = 60;
-    hOff = 9;
-    panda.worldRow = 190;
-    panda.worldCol = 129;
+    hOff = 0;
+    vOff = 0;
+    panda.worldRow = 140;
+    panda.worldCol = 120;
     (*(unsigned short *)0x4000000) = 0 | (1<<9);
     hideSprites();
     state = GAME2;
@@ -1808,7 +1806,7 @@ void game2() {
 
 
 
-    DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 96/2);
+    DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 128/2);
 
     DMANow(3, scoreBackgroundPal, ((unsigned short *)0x5000000), 512/2);
 
@@ -1934,5 +1932,14 @@ void lose() {
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3))))) {
         goToSplash();
     }
+
+}
+
+void goToTest() {
+    state = TEST;
+}
+
+void test() {
+    (*(unsigned short *)0x4000000) = 4;
 
 }

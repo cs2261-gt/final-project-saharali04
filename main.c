@@ -31,6 +31,8 @@ void goToWin();
 void win();
 void goToLose();
 void lose();
+void goToTest();
+void test();
 
 // Prototypes
 void initialize();
@@ -51,7 +53,7 @@ void initialize();
     int seed;
 
     // States
-    enum {SPLASH, INSTRUCTION, GAME, GAME2, PAUSE, WIN, LOSE};
+    enum {SPLASH, INSTRUCTION, GAME, GAME2, PAUSE, WIN, LOSE, TEST};
     int state;
 
 int main() {
@@ -83,6 +85,9 @@ int main() {
                 break;
             case LOSE:
                 lose();
+                break;
+            case TEST:
+                test();
                 break;
         }
 
@@ -207,6 +212,8 @@ void goToGame() {
     hideSprites();
     REG_BG1VOFF = vOff;
     REG_BG1HOFF = hOff;
+    panda.worldCol = 120;
+    panda.worldRow = 70;
     state = GAME;
 
 }
@@ -237,13 +244,13 @@ void game() {
         pauseSound();
         goToPause();
     }
-    if (BUTTON_PRESSED(BUTTON_SELECT)) 
-    {
-        stopSound();
-		stopSound();
-		playSoundA(gameSound2, GAMESOUND2LEN, 1);
-        goToGame2();
-    }
+    //if (BUTTON_PRESSED(BUTTON_SELECT)) 
+    //{
+    //    stopSound();
+	//	stopSound();
+	//	playSoundA(gameSound2, GAMESOUND2LEN, 1);
+    //    goToGame2();
+    //}
 
     if (hasLost) {
         goToLose();
@@ -258,12 +265,10 @@ void game() {
 
 // Sets up the game state
 void goToGame2() {
-    REG_BG1VOFF = 0;
-    REG_BG1HOFF = 0;
-    vOff = 60;
-    hOff = 9;
-    panda.worldRow = 190;
-    panda.worldCol = 129;
+    hOff = 0;
+    vOff = 0;
+    panda.worldRow = 140;
+    panda.worldCol = 120;
     REG_DISPCTL = MODE0 | BG1_ENABLE;
     hideSprites();
     state = GAME2;
@@ -414,3 +419,11 @@ void lose() {
 
 }
 
+void goToTest() {
+    state = TEST;
+}
+
+void test() {
+    REG_DISPCTL = MODE4;
+    
+}

@@ -46,11 +46,11 @@ extern int cheatGame;
     PANDASPRITE panda;
 
     // Food variables
-    FOODSPRITE food[30];
-    #define FOODCOUNT 30
+    FOODSPRITE food[37];
+    #define FOODCOUNT 37
 
-    FOODSPRITE enemies[15];
-    #define ENEMYCOUNT 15
+    FOODSPRITE enemies[37];
+    #define ENEMYCOUNT 37
 
     // Basket variables
     FOODSPRITE baskets[3];
