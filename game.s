@@ -455,18 +455,18 @@ updatePanda:
 	ldrh	r3, [r3, #48]
 	ldr	r5, .L94+24
 	tst	r3, #64
-	add	r3, r4, #8
 	ldr	ip, [r5]
-	ldm	r3, {r3, lr}
+	ldr	r3, [r4, #8]
+	ldr	r0, [r4, #12]
 	bne	.L62
-	ldr	r1, [r4, #16]
-	sub	r1, r3, r1
-	ldr	r6, .L94+28
-	add	r2, lr, r1, lsl #10
-	lsl	r2, r2, #1
-	ldrh	r2, [r6, r2]
-	cmp	r2, #0
-	lsl	r2, r1, #10
+	ldr	r2, [r4, #16]
+	sub	r2, r3, r2
+	ldr	lr, .L94+28
+	add	r1, r0, r2, lsl #10
+	lsl	r1, r1, #1
+	ldrh	r1, [lr, r1]
+	cmp	r1, #0
+	lsl	r6, r2, #10
 	bne	.L92
 .L62:
 	ldr	r2, .L94+20
@@ -477,17 +477,17 @@ updatePanda:
 	add	r2, r1, r3
 	cmp	r2, #235
 	bgt	.L63
-	add	r0, lr, r2, lsl #10
+	add	lr, r0, r2, lsl #10
 	ldr	r7, .L94+28
-	lsl	r0, r0, #1
-	ldrh	r0, [r7, r0]
-	cmp	r0, #0
+	lsl	lr, lr, #1
+	ldrh	lr, [r7, lr]
+	cmp	lr, #0
 	lsl	r2, r2, #10
 	beq	.L63
-	ldr	r0, [r4, #24]
-	ldr	r6, [r4, #20]
-	add	r0, lr, r0
-	sub	r6, r0, r6
+	add	r6, r4, #20
+	ldm	r6, {r6, lr}
+	add	lr, r0, lr
+	sub	r6, lr, r6
 	add	r2, r6, r2
 	lsl	r2, r2, #1
 	ldrh	r2, [r7, r2]
@@ -521,17 +521,16 @@ updatePanda:
 	tst	r2, #16
 	ldr	r2, [r1]
 	bne	.L65
-	ldr	r0, [r4, #24]
-	add	r0, lr, r0
+	ldr	lr, [r4, #24]
+	add	lr, r0, lr
 .L69:
-	ldr	r6, .L94+36
-	cmp	r0, r6
-	bgt	.L66
+	cmp	lr, #1004
+	bge	.L66
 	ldr	r7, .L94+28
-	add	r6, r0, r3, lsl #10
+	add	r6, lr, r3, lsl #10
 	lsl	r6, r6, #1
 	ldrh	r8, [r7, r6]
-	ldr	r6, .L94+40
+	ldr	r6, .L94+36
 	cmp	r8, r6
 	beq	.L93
 .L66:
@@ -546,71 +545,76 @@ updatePanda:
 	ldr	r1, [r4, #36]
 	cmp	r1, #6
 	bne	.L67
-	mov	r0, #0
+	mov	lr, #0
 	ldr	r1, [r4, #40]
-	str	r0, [r4, #60]
+	str	lr, [r4, #60]
 	str	r1, [r4, #36]
 .L68:
-	sub	r2, lr, r2
+	sub	r2, r0, r2
 	sub	r3, r3, ip
 	str	r2, [r4, #4]
 	str	r3, [r4]
 	pop	{r4, r5, r6, r7, r8, r9, r10, lr}
 	bx	lr
 .L92:
-	ldr	r0, [r4, #24]
+	ldr	r1, [r4, #24]
 	ldr	r7, [r4, #20]
-	add	r0, lr, r0
-	sub	r0, r0, r7
-	add	r0, r0, r2
-	lsl	r0, r0, #1
-	ldrh	r2, [r6, r0]
-	cmp	r2, #0
+	add	r1, r0, r1
+	sub	r1, r1, r7
+	add	r1, r1, r6
+	lsl	r1, r1, #1
+	ldrh	r1, [lr, r1]
+	cmp	r1, #0
 	cmpne	r3, #0
 	ble	.L62
 	mov	r3, #2
 	cmp	ip, #0
-	str	r1, [r4, #8]
+	str	r2, [r4, #8]
 	str	r3, [r4, #36]
 	ble	.L71
 	ldr	r3, [r4, #28]
-	ldr	r2, [r4]
+	ldr	r1, [r4]
 	add	r3, r3, r3, lsr #31
-	add	r3, r2, r3, asr #1
+	add	r3, r1, r3, asr #1
 	cmp	r3, #80
 	subeq	ip, ip, #1
-	moveq	r3, r1
+	moveq	r3, r2
 	streq	ip, [r5]
 	beq	.L62
 .L71:
-	mov	r3, r1
+	mov	r3, r2
 	b	.L62
 .L93:
 	ldr	r6, [r4, #28]
 	ldr	r9, [r4, #16]
 	add	r6, r3, r6
 	sub	r6, r6, r9
-	add	r0, r0, r6, lsl #10
-	lsl	r0, r0, #1
-	ldrh	r0, [r7, r0]
-	cmp	r0, r8
+	add	lr, lr, r6, lsl #10
+	lsl	lr, lr, #1
+	ldrh	lr, [r7, lr]
+	cmp	lr, r8
 	bne	.L66
-	ldr	r0, .L94+44
-	ldr	r0, [r0]
-	add	lr, lr, #1
-	cmp	r0, #31
-	str	lr, [r4, #12]
+	ldr	lr, .L94+40
+	ldr	lr, [lr]
+	add	r0, r0, #1
+	cmp	lr, #30
+	str	r0, [r4, #12]
 	bgt	.L66
-	ldr	r0, [r5, #4]
-	ldr	r6, .L94+48
-	cmp	r0, r6
+	ldr	lr, [r5, #4]
+	ldr	r6, .L94+44
+	cmp	lr, r6
 	bgt	.L66
 	ldr	r6, [r4, #4]
 	cmp	r6, #120
-	addgt	r0, r0, #1
-	addgt	r2, r2, #1
-	strgt	r0, [r5, #4]
-	strgt	r2, [r1]
+	ble	.L66
+	ldr	r7, .L94+48
+	ldr	r6, [r7]
+	add	lr, lr, #1
+	add	r2, r2, #1
+	add	r6, r6, #1
+	str	lr, [r5, #4]
+	str	r2, [r1]
+	str	r6, [r7]
 	b	.L66
 .L95:
 	.align	2
@@ -624,10 +628,10 @@ updatePanda:
 	.word	.LANCHOR0
 	.word	collisionmap2Bitmap
 	.word	playerHOff
-	.word	973
 	.word	32767
 	.word	screenBlock
 	.word	782
+	.word	totalHOff
 	.size	updatePanda, .-updatePanda
 	.align	2
 	.global	updatePanda2
@@ -1006,18 +1010,18 @@ checkFoodDelivered:
 	sub	sp, sp, #20
 	add	r10, r4, #120
 .L175:
-	ldrh	r0, [r9]
-	tst	r0, #1
+	ldrh	r2, [r9]
+	tst	r2, #1
 	beq	.L169
-	ldrh	r1, [fp]
-	ands	r7, r1, #1
+	ldrh	r7, [fp]
+	ands	r7, r7, #1
 	beq	.L187
 .L169:
 	ldr	r3, [r5, #32]
 	add	r3, r3, #1
 	str	r3, [r5, #32]
 .L172:
-	tst	r0, #2
+	tst	r2, #2
 	beq	.L173
 	ldrh	r2, [fp]
 	ands	r7, r2, #2
@@ -1036,18 +1040,22 @@ checkFoodDelivered:
 	pop	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
 	bx	lr
 .L187:
-	ldm	r4, {r2, r3}
-	ldr	r0, [r4, #28]
-	ldr	r1, [r4, #24]
-	str	r0, [sp, #12]
+	ldr	r3, .L190+20
+	ldr	r0, [r8, #12]
+	ldr	r3, [r3]
+	add	r1, r4, #24
+	ldm	r1, {r1, ip}
+	ldr	r2, [r4]
+	sub	r0, r0, r3
+	ldr	r3, [r4, #4]
+	str	ip, [sp, #12]
 	str	r1, [sp, #8]
 	str	r2, [sp, #4]
 	str	r3, [sp]
 	add	r2, r8, #24
-	mov	r1, r7
-	mov	r0, #230
 	ldm	r2, {r2, r3}
-	ldr	ip, .L190+20
+	ldr	r1, [r8]
+	ldr	ip, .L190+24
 	mov	lr, pc
 	bx	ip
 	cmp	r0, #0
@@ -1056,21 +1064,25 @@ checkFoodDelivered:
 	cmp	r3, #0
 	bgt	.L189
 .L171:
-	ldrh	r0, [r9]
+	ldrh	r2, [r9]
 	b	.L169
 .L188:
-	ldm	r4, {r2, r3}
-	ldr	r0, [r4, #28]
-	ldr	r1, [r4, #24]
-	str	r0, [sp, #12]
+	ldr	r3, .L190+20
+	ldr	r0, [r8, #12]
+	ldr	r3, [r3]
+	add	r1, r4, #24
+	ldm	r1, {r1, ip}
+	ldr	r2, [r4]
+	sub	r0, r0, r3
+	ldr	r3, [r4, #4]
+	str	ip, [sp, #12]
 	str	r1, [sp, #8]
 	str	r2, [sp, #4]
 	str	r3, [sp]
 	add	r2, r8, #24
 	ldm	r2, {r2, r3}
 	ldr	r1, [r8]
-	ldr	r0, [r8, #4]
-	ldr	ip, .L190+20
+	ldr	ip, .L190+24
 	mov	lr, pc
 	bx	ip
 	cmp	r0, #0
@@ -1079,9 +1091,9 @@ checkFoodDelivered:
 	cmp	r3, #0
 	ble	.L173
 	mov	r2, r7
-	ldr	r3, .L190+24
-	ldr	r1, .L190+28
-	ldr	r0, .L190+32
+	ldr	r3, .L190+28
+	ldr	r1, .L190+32
+	ldr	r0, .L190+36
 	mov	lr, pc
 	bx	r3
 	mov	r2, #1
@@ -1098,9 +1110,9 @@ checkFoodDelivered:
 	b	.L174
 .L189:
 	mov	r2, r7
-	ldr	r3, .L190+24
-	ldr	r1, .L190+28
-	ldr	r0, .L190+32
+	ldr	r3, .L190+28
+	ldr	r1, .L190+32
+	ldr	r0, .L190+36
 	mov	lr, pc
 	bx	r3
 	mov	r2, #1
@@ -1114,7 +1126,7 @@ checkFoodDelivered:
 	add	r2, r2, #1
 	str	r2, [r5, #32]
 	str	r3, [r8, #44]
-	ldrh	r0, [r9]
+	ldrh	r2, [r9]
 	b	.L172
 .L191:
 	.align	2
@@ -1124,6 +1136,7 @@ checkFoodDelivered:
 	.word	oldButtons
 	.word	buttons
 	.word	panda
+	.word	totalHOff
 	.word	collision
 	.word	playSoundB
 	.word	21312
@@ -1451,13 +1464,18 @@ drawBaskets:
 	@ Function supports interworking.
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
-	mov	r1, #120
-	mov	r0, #80
-	ldr	r3, .L277
-	ldr	r2, .L277+4
-	str	lr, [sp, #-4]!
-	add	lr, r3, r1
+	ldr	r2, .L277
+	ldr	r3, .L277+4
+	push	{r4, r5, lr}
+	ldr	r5, [r2]
+	ldr	r4, [r2, #4]
+	ldr	r2, .L277+8
+	add	lr, r3, #120
 .L274:
+	add	r0, r3, #8
+	ldm	r0, {r0, r1}
+	sub	r0, r0, r5
+	sub	r1, r1, r4
 	ldr	ip, [r3, #32]
 	stm	r3, {r0, r1}
 	add	r3, r3, #40
@@ -1467,11 +1485,12 @@ drawBaskets:
 	strh	ip, [r2, #4]	@ movhi
 	add	r2, r2, #8
 	bne	.L274
-	ldr	lr, [sp], #4
+	pop	{r4, r5, lr}
 	bx	lr
 .L278:
 	.align	2
 .L277:
+	.word	.LANCHOR0
 	.word	baskets
 	.word	shadowOAM+256
 	.size	drawBaskets, .-drawBaskets
@@ -1529,10 +1548,10 @@ updateGame:
 	@ frame_needed = 0, uses_anonymous_args = 0
 	mov	r1, #67108864
 	mov	r3, #0
-	ldr	ip, .L298
-	push	{r4, r5, r6, r7, r8, lr}
+	ldr	ip, .L308
+	push	{r4, r5, r6, lr}
 	ldr	r2, [ip]
-	ldr	r6, .L298+4
+	ldr	r6, .L308+4
 	strh	r3, [r1, #10]	@ movhi
 	ldr	r0, [r6, #4]
 	lsl	r3, r2, #24
@@ -1553,11 +1572,11 @@ updateGame:
 	cmp	r2, #31
 	beq	.L287
 	cmp	r2, #30
-	beq	.L288
-.L291:
-	ldr	r2, .L298+8
+	beq	.L307
+.L288:
+	ldr	r2, .L308+8
 	ldr	r3, [r2]
-	ldr	r5, .L298+12
+	ldr	r5, .L308+12
 	cmp	r3, #512
 	subgt	r3, r3, #512
 	strgt	r3, [r2]
@@ -1565,7 +1584,7 @@ updateGame:
 	ldr	r1, [r5, #60]
 	ldr	r3, [r5, #4]
 	ldr	r2, [r5, #36]
-	ldr	r4, .L298+16
+	ldr	r4, .L308+16
 	add	r2, r2, r1, lsl #5
 	lsl	r3, r3, #23
 	ldrb	r1, [r5]	@ zero_extendqisi2
@@ -1574,75 +1593,88 @@ updateGame:
 	strh	r1, [r4]	@ movhi
 	strh	r2, [r4, #4]	@ movhi
 	bl	checkFoodDelivered
-	mov	r1, #67108864
-	mov	lr, #82
-	mov	ip, #150
-	mov	r0, #87
-	mov	r7, #141
-	ldr	r2, [r5, #48]
-	ldr	r3, [r5, #44]
-	ldrh	r5, [r6, #4]
-	ldrh	r6, [r6]
-	strh	r5, [r1, #20]	@ movhi
-	add	r2, r2, #8
+	mov	lr, #141
+	mov	ip, #82
+	mov	r0, #150
+	mov	r1, #87
+	add	r2, r5, #44
+	ldm	r2, {r2, r3}
 	add	r5, r4, #324
-	strh	r6, [r1, #22]	@ movhi
 	add	r3, r3, #8
+	strh	r3, [r5]	@ movhi
+	add	r2, r2, #8
+	add	r5, r4, #332
+	ldr	r3, .L308+20
 	strh	r2, [r5]	@ movhi
-	add	r2, r4, #332
-	strh	r3, [r2]	@ movhi
-	add	r3, r4, #328
 	add	r2, r4, #320
-	strh	lr, [r2, #2]	@ movhi
-	strh	r7, [r2]	@ movhi
-	strh	ip, [r3]	@ movhi
-	strh	r0, [r3, #2]	@ movhi
-	ldr	r2, .L298+20
+	strh	lr, [r2]	@ movhi
+	strh	ip, [r2, #2]	@ movhi
+	ldr	r2, [r3, #44]
+	add	r4, r4, #328
+	cmp	r2, #5
+	strh	r0, [r4]	@ movhi
+	strh	r1, [r4, #2]	@ movhi
+	beq	.L290
+	ldr	r2, [r3, #48]
+	cmp	r2, #3
+	beq	.L290
+.L291:
+	mov	r3, #67108864
+	ldrh	r2, [r6, #4]
+	ldrh	r1, [r6]
+	strh	r2, [r3, #20]	@ movhi
+	strh	r1, [r3, #22]	@ movhi
+	ldr	r2, .L308+24
 	mov	lr, pc
 	bx	r2
-	mov	r1, r4
+	ldr	r4, .L308+28
 	mov	r3, #512
-	ldr	r4, .L298+24
 	mov	r2, #117440512
 	mov	r0, #3
+	ldr	r1, .L308+16
 	mov	lr, pc
 	bx	r4
-	pop	{r4, r5, r6, r7, r8, lr}
+	pop	{r4, r5, r6, lr}
 	bx	lr
-.L288:
+.L290:
+	ldr	r2, [r3, #112]
+	cmp	r2, #5
+	beq	.L292
+	ldr	r2, [r3, #116]
+	cmp	r2, #3
+	bne	.L291
+.L292:
+	ldr	r2, [r3, #180]
+	cmp	r2, #5
+	beq	.L293
+	ldr	r3, [r3, #184]
+	cmp	r3, #3
+	bne	.L291
+.L293:
+	mov	r2, #1
+	ldr	r3, .L308+32
+	str	r2, [r3]
+	b	.L291
+.L307:
 	ldr	r3, [r6, #4]
 	cmp	r3, #230
-	ble	.L291
+	ble	.L288
 .L287:
 	bl	drawFriendlyPandas
-	mov	r1, #120
-	mov	r0, #80
-	ldr	r3, .L298+28
-	ldr	r2, .L298+32
-	add	lr, r3, r1
-.L292:
-	ldr	ip, [r3, #32]
-	stm	r3, {r0, r1}
-	add	r3, r3, #40
-	cmp	r3, lr
-	strh	r0, [r2]	@ movhi
-	strh	r1, [r2, #2]	@ movhi
-	strh	ip, [r2, #4]	@ movhi
-	add	r2, r2, #8
-	bne	.L292
-	b	.L291
-.L299:
+	bl	drawBaskets
+	b	.L288
+.L309:
 	.align	2
-.L298:
+.L308:
 	.word	screenBlock
 	.word	.LANCHOR0
 	.word	playerHOff
 	.word	panda
 	.word	shadowOAM
+	.word	pandas
 	.word	waitForVBlank
 	.word	DMANow
-	.word	baskets
-	.word	shadowOAM+256
+	.word	hasWon
 	.size	updateGame, .-updateGame
 	.align	2
 	.global	resetAnimationFriendly
@@ -1656,14 +1688,14 @@ resetAnimationFriendly:
 	@ frame_needed = 0, uses_anonymous_args = 0
 	@ link register save eliminated.
 	mov	r2, #0
-	ldr	r3, .L301
+	ldr	r3, .L311
 	str	r2, [r3, #60]
 	str	r2, [r3, #128]
 	str	r2, [r3, #196]
 	bx	lr
-.L302:
+.L312:
 	.align	2
-.L301:
+.L311:
 	.word	pandas
 	.size	resetAnimationFriendly, .-resetAnimationFriendly
 	.align	2
@@ -1677,7 +1709,7 @@ updateGame2:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	push	{r4, r5, r6, r7, r8, lr}
-	ldr	r5, .L380
+	ldr	r5, .L340
 	ldr	r3, [r5]
 	add	r3, r3, #1
 	str	r3, [r5]
@@ -1686,9 +1718,9 @@ updateGame2:
 	mov	lr, #82
 	mov	ip, #150
 	mov	r0, #87
-	ldr	r4, .L380+4
+	ldr	r4, .L340+4
 	ldr	r3, [r4, #4]
-	ldr	r2, .L380+8
+	ldr	r2, .L340+8
 	lsl	r3, r3, #23
 	lsr	r3, r3, #23
 	ldr	r7, [r4, #60]
@@ -1706,7 +1738,7 @@ updateGame2:
 	add	r1, r2, #332
 	add	r3, r3, #8
 	strh	r3, [r1]	@ movhi
-	ldr	r3, .L380+12
+	ldr	r3, .L340+12
 	ldr	r1, [r3]
 	add	r3, r2, #320
 	strh	r6, [r3]	@ movhi
@@ -1715,12 +1747,12 @@ updateGame2:
 	add	r3, r2, #328
 	strh	ip, [r3]	@ movhi
 	strh	r0, [r3, #2]	@ movhi
-	beq	.L304
+	beq	.L314
 	mov	lr, #5
-	ldr	r3, .L380+16
+	ldr	r3, .L340+16
 	add	r0, r3, #1472
 	add	r0, r0, #8
-.L306:
+.L316:
 	ldr	r1, [r3, #36]
 	cmp	r1, #0
 	ldrne	ip, [r3]
@@ -1731,103 +1763,64 @@ updateGame2:
 	strhne	r1, [r2, #10]	@ movhi
 	cmp	r3, r0
 	add	r2, r2, #8
-	bne	.L306
+	bne	.L316
 	mov	lr, #5
-	ldr	r3, .L380+20
-	ldr	r2, .L380+24
+	ldr	r3, .L340+20
+	ldr	r2, .L340+24
 	add	ip, r3, #1472
 	add	ip, ip, #8
-.L307:
+.L317:
 	ldm	r3, {r0, r1}
 	add	r3, r3, #40
-	cmp	ip, r3
+	cmp	r3, ip
 	strh	lr, [r2, #4]	@ movhi
 	strh	r0, [r2]	@ movhi
 	strh	r1, [r2, #2]	@ movhi
 	add	r2, r2, #8
-	bne	.L307
-	mov	r2, #15
-	mov	r3, #0
-	str	r2, [r4, #48]
+	bne	.L317
+	mov	r3, #15
+	str	r3, [r4, #48]
 	str	r3, [r4, #44]
-.L308:
-	ldr	r5, .L380+28
-	ldr	r2, .L380+32
-	ldr	r1, .L380+36
-	ldr	r3, [r5, #32]
+.L318:
+	ldr	r4, .L340+28
+	ldr	r1, .L340+32
+	ldr	r3, [r4, #32]
+	ldr	r2, .L340+36
 	mla	r3, r1, r3, r2
-	ldr	r2, .L380+40
+	ldr	r2, .L340+40
 	cmp	r2, r3, ror #3
 	movcc	r3, #0
-	strcc	r3, [r5, #60]
-	strcc	r3, [r5, #128]
-	strcc	r3, [r5, #196]
-	ldr	r3, [r5, #44]
-	cmp	r3, #5
-	beq	.L316
-	ldr	r2, [r5, #48]
-	cmp	r2, #3
-	beq	.L316
-.L317:
-	ldr	r3, .L380+44
+	strcc	r3, [r4, #60]
+	strcc	r3, [r4, #128]
+	strcc	r3, [r4, #196]
+	ldr	r3, .L340+44
 	mov	lr, pc
 	bx	r3
-	ldr	r4, .L380+48
+	ldr	r5, .L340+48
 	mov	r3, #512
 	mov	r2, #117440512
 	mov	r0, #3
-	ldr	r1, .L380+8
+	ldr	r1, .L340+8
 	mov	lr, pc
-	bx	r4
+	bx	r5
 	mov	r3, #0
-	str	r3, [r5, #60]
-	str	r3, [r5, #128]
-	str	r3, [r5, #196]
+	str	r3, [r4, #60]
+	str	r3, [r4, #128]
+	str	r3, [r4, #196]
 	pop	{r4, r5, r6, r7, r8, lr}
 	bx	lr
-.L316:
-	ldr	r2, [r5, #112]
-	cmp	r2, #5
-	beq	.L318
-	ldr	r1, [r5, #116]
-	cmp	r1, #3
-	beq	.L318
-	cmp	r3, #5
-	beq	.L317
-	ldr	r3, [r5, #48]
-	cmp	r3, #3
-	bne	.L317
-	ldr	r3, [r5, #116]
-	cmp	r3, #3
-	bne	.L317
-.L323:
-	ldr	r3, [r5, #180]
-	cmp	r3, #5
-	beq	.L327
-	ldr	r3, [r5, #184]
-	cmp	r3, #3
-	bne	.L317
-.L327:
-	add	r2, r4, #44
-	ldmia	r2, {r2, r3}
-	orr	r3, r2, r3
-	cmp	r3, #0
-	movne	r2, #1
-	ldrne	r3, .L380+52
-	strne	r2, [r3]
-	b	.L317
-.L304:
+.L314:
 	ldr	r3, [r5]
 	cmp	r3, #49
-	bgt	.L309
-	ldr	r3, .L380+20
+	bgt	.L319
+	ldr	r3, .L340+20
 	add	ip, r3, #1472
 	add	r2, r2, #360
 	add	ip, ip, #8
-.L311:
+.L321:
 	ldr	r1, [r3, #36]
 	cmp	r1, #0
-	beq	.L310
+	beq	.L320
 	ldr	r0, [r3]
 	ldr	r1, [r3, #32]
 	ldr	lr, [r3, #4]
@@ -1836,75 +1829,40 @@ updateGame2:
 	strh	r0, [r2]	@ movhi
 	strh	r1, [r2, #4]	@ movhi
 	strh	lr, [r2, #2]	@ movhi
-.L310:
+.L320:
 	add	r3, r3, #40
 	cmp	r3, ip
 	add	r2, r2, #8
-	bne	.L311
-.L312:
-	ldr	r3, .L380+16
-	ldr	r2, .L380+8
+	bne	.L321
+.L322:
+	ldr	r3, .L340+16
+	ldr	r2, .L340+8
 	add	r0, r3, #1472
 	add	r0, r0, #8
-.L314:
+.L324:
 	ldr	r1, [r3, #36]
 	cmp	r1, #0
-	beq	.L313
+	beq	.L323
 	ldr	lr, [r3]
 	ldr	ip, [r3, #4]
 	ldr	r1, [r3, #32]
 	strh	lr, [r2, #8]	@ movhi
 	strh	ip, [r2, #10]	@ movhi
 	strh	r1, [r2, #12]	@ movhi
-.L313:
+.L323:
 	add	r3, r3, #40
 	cmp	r3, r0
 	add	r2, r2, #8
-	bne	.L314
+	bne	.L324
 	bl	checkFoodCollected
 	bl	checkEnemyCollision
-	b	.L308
-.L318:
-	ldr	r1, [r5, #180]
-	cmp	r1, #5
-	beq	.L320
-	ldr	r1, [r5, #184]
-	cmp	r1, #3
-	beq	.L320
-	cmp	r3, #5
-	bne	.L322
-.L325:
-	cmp	r2, #5
-	beq	.L323
-.L379:
-	ldr	r3, [r5, #116]
-	cmp	r3, #3
-	beq	.L323
-	b	.L317
-.L309:
+	b	.L318
+.L319:
 	bl	drawEnemies
-	b	.L312
-.L322:
-	ldr	r3, [r5, #48]
-	cmp	r3, #3
-	bne	.L317
-	cmp	r2, #5
-	beq	.L323
-	b	.L379
-.L320:
-	add	r0, r4, #44
-	ldmia	r0, {r0, r1}
-	orr	r1, r0, r1
-	cmp	r1, #0
-	moveq	r0, #1
-	ldreq	r1, .L380+56
-	streq	r0, [r1]
-	cmp	r3, #5
-	beq	.L325
 	b	.L322
-.L381:
+.L341:
 	.align	2
-.L380:
+.L340:
 	.word	count
 	.word	panda
 	.word	shadowOAM
@@ -1913,14 +1871,13 @@ updateGame2:
 	.word	enemies
 	.word	shadowOAM+360
 	.word	pandas
-	.word	85899344
 	.word	-1030792151
+	.word	85899344
 	.word	21474836
 	.word	waitForVBlank
 	.word	DMANow
-	.word	hasLost
-	.word	hasWon
 	.size	updateGame2, .-updateGame2
+	.comm	totalHOff,4,4
 	.comm	screenBlock,4,4
 	.comm	playerHOff,4,4
 	.global	vOff

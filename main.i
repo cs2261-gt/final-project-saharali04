@@ -1640,7 +1640,8 @@ void initialize() {
 
 
 void goToSplash() {
-
+    (*(volatile unsigned short *)0x04000014) = 0;
+    (*(volatile unsigned short *)0x04000016) = 0;
     state = SPLASH;
     hasLost = 0;
     hasWon = 0;
@@ -1731,7 +1732,7 @@ void instruction() {
 
 
 void goToGame() {
-
+    initPandas();
     hideSprites();
     (*(volatile unsigned short *)0x04000016) = vOff;
     (*(volatile unsigned short *)0x04000014) = hOff;
@@ -1767,7 +1768,7 @@ void game() {
         pauseSound();
         goToPause();
     }
-# 255 "main.c"
+# 256 "main.c"
     if (hasLost) {
         goToLose();
     }
@@ -1846,8 +1847,8 @@ void game2() {
 }
 
 void goToPause() {
-    (*(volatile unsigned short *)0x04000018) = 0;
-    (*(volatile unsigned short *)0x0400001A) = 0;
+    (*(volatile unsigned short *)0x04000010) = 0;
+    (*(volatile unsigned short *)0x04000012) = 0;
     state = PAUSE;
 
 }
@@ -1877,7 +1878,8 @@ void pause() {
 
 
 void goToWin() {
-
+    (*(volatile unsigned short *)0x04000014) = 0;
+    (*(volatile unsigned short *)0x04000016) = 0;
     state = WIN;
     stopSound();
 
@@ -1885,6 +1887,7 @@ void goToWin() {
 
 
 void win() {
+
 
     (*(unsigned short *)0x4000000) = 0 | (1<<9);
 
@@ -1907,7 +1910,8 @@ void win() {
 
 
 void goToLose() {
-
+    (*(volatile unsigned short *)0x04000010) = 0;
+    (*(volatile unsigned short *)0x04000012) = 0;
     state = LOSE;
     stopSound();
 

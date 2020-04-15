@@ -117,7 +117,8 @@ void initialize() {
 
 // Sets up the splash state
 void goToSplash() {
-    
+    REG_BG1HOFF = 0;
+    REG_BG1VOFF = 0;
     state = SPLASH;
     hasLost = 0;
     hasWon = 0;
@@ -208,7 +209,7 @@ void instruction() {
 
 // Sets up the game state
 void goToGame() {
-
+    initPandas();
     hideSprites();
     REG_BG1VOFF = vOff;
     REG_BG1HOFF = hOff;
@@ -330,8 +331,8 @@ void game2() {
 }
 // Sets up the pause state
 void goToPause() {
-    REG_BG2HOFF = 0;
-    REG_BG2VOFF = 0;
+    REG_BG0HOFF = 0;
+    REG_BG0VOFF = 0;
     state = PAUSE;
 
 }
@@ -361,7 +362,8 @@ void pause() {
 
 // Sets up the win state
 void goToWin() {
-
+    REG_BG1HOFF = 0;
+    REG_BG1VOFF = 0;
     state = WIN;
     stopSound();
 
@@ -369,6 +371,7 @@ void goToWin() {
 
 
 void win() {
+    
 
     REG_DISPCTL = MODE0 | BG1_ENABLE;
 
@@ -391,7 +394,8 @@ void win() {
 
 // Sets up the lose state
 void goToLose() {
-    
+    REG_BG0HOFF = 0;
+    REG_BG0VOFF = 0;
     state = LOSE;
     stopSound();
 
