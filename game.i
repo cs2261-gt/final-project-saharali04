@@ -1208,51 +1208,95 @@ void updatePanda() {
         panda.aniCounter++;
     }
 
-    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<6))) && collisionmap2Bitmap[((panda.worldRow - panda.rdel)*(1024)+(panda.worldCol))]
-            && collisionmap2Bitmap[((panda.worldRow - panda.rdel)*(1024)+(panda.worldCol + panda.width - panda.cdel))])
+    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<6))))
     {
-        if (panda.worldRow > 0) {
+        if (collisionmap2Bitmap[((panda.worldRow - panda.rdel)*(1024)+(panda.worldCol))]
+            && collisionmap2Bitmap[((panda.worldRow - panda.rdel)*(1024)+(panda.worldCol + panda.width - panda.cdel))]) {
+                if (panda.worldRow > 0) {
 
-            panda.aniState = PANDAHAPPY;
-            panda.worldRow-=panda.rdel;
+                    panda.aniState = PANDAHAPPY;
+                    panda.worldRow-=panda.rdel;
 
-            if (vOff > 0 && panda.row + panda.height/2 == 160/2) {
+                    if (vOff > 0 && panda.row + panda.height/2 == 160/2) {
 
-                vOff--;
-            }
+                        vOff--;
+                    }
 
+                }
+        } else {
+            panda.col = 120;
+            panda.row = 70;
+            panda.worldCol = 120;
+            panda.worldRow = 70;
+            hOff = 0;
+            vOff = 0;
+            playerHOff = 0;
+            totalHOff = 0;
+            screenBlock = 28;
         }
+
 
     }
 
     if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<7))))
     {
-        if (panda.worldRow + panda.height < 256 - 20 && collisionmap2Bitmap[((panda.worldRow + panda.height)*(1024)+(panda.worldCol))]
-            && collisionmap2Bitmap[((panda.worldRow + panda.height)*(1024)+(panda.worldCol + panda.width - panda.cdel))]) {
+        if (panda.worldRow + panda.height < 256 - 20)
+        {
+            if (collisionmap2Bitmap[((panda.worldRow + panda.height)*(1024)+(panda.worldCol))]
+                && collisionmap2Bitmap[((panda.worldRow + panda.height)*(1024)+(panda.worldCol + panda.width - panda.cdel))])
+            {
+                panda.aniState = PANDAHAPPY;
+                panda.worldRow+=panda.rdel;
 
-            panda.aniState = PANDAHAPPY;
-            panda.worldRow+=panda.rdel;
+                if (vOff + 160 < 256 && panda.row + panda.height/2 == 160/2)
+                {
 
-            if (vOff + 160 < 256 && panda.row + panda.height/2 == 160/2) {
+                    vOff++;
+                }
 
-                vOff++;
+            } else {
+                panda.col = 120;
+                panda.row = 70;
+                panda.worldCol = 120;
+                panda.worldRow = 70;
+                hOff = 0;
+                vOff = 0;
+                playerHOff = 0;
+                totalHOff = 0;
+                screenBlock = 28;
             }
+
         }
 
     }
 
     if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<4))))
     {
-        if (panda.worldCol + panda.width < 1024 - 20 && (collisionmap2Bitmap[((panda.worldRow)*(1024)+((panda.worldCol + panda.width)))] == 0x7FFF)
-            && (collisionmap2Bitmap[(((panda.worldRow + panda.height - panda.rdel))*(1024)+((panda.worldCol + panda.width)))] == 0x7FFF)) {
-            panda.worldCol++;
-            panda.aniState = PANDASAD;
+        if (panda.worldCol + panda.width < 1024 - 20) {
+            if ((collisionmap2Bitmap[((panda.worldRow)*(1024)+((panda.worldCol + panda.width)))] == 0x7FFF)
+            && (collisionmap2Bitmap[(((panda.worldRow + panda.height - panda.rdel))*(1024)+((panda.worldCol + panda.width)))] == 0x7FFF))
+            {
+                panda.worldCol++;
+                panda.aniState = PANDASAD;
 
-            if (screenBlock < 31 && hOff < (1024 - 240 -1) && panda.col > 240 / 2) {
-                hOff++;
-                playerHOff++;
-                totalHOff++;
+                if (screenBlock < 31 && hOff < (1024 - 240 -1) && panda.col > 240 / 2) {
+                    hOff++;
+                    playerHOff++;
+                    totalHOff++;
+                }
+
+            } else {
+                panda.col = 120;
+                panda.row = 70;
+                panda.worldCol = 120;
+                panda.worldRow = 70;
+                hOff = 0;
+                vOff = 0;
+                playerHOff = 0;
+                totalHOff = 0;
+                screenBlock = 28;
             }
+
 
 
         }
@@ -1549,7 +1593,7 @@ void updateGame() {
         (*(volatile unsigned short*)0x400000A) = ((0)<<2) | ((screenBlock)<<8) | (1<<14);
     }
 
-    if (screenBlock == 31 || (screenBlock == 30 && hOff > 230)) {
+    if (screenBlock == 31 || (screenBlock == 30 && hOff > 255)) {
         drawFriendlyPandas();
         drawBaskets();
     }

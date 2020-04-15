@@ -2,7 +2,7 @@
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "main.c"
-
+# 10 "main.c"
 # 1 "myLib.h" 1
 
 
@@ -110,7 +110,7 @@ typedef struct{
 
 
 int collision(int colA, int rowA, int widthA, int heightA, int colB, int rowB, int widthB, int heightB);
-# 3 "main.c" 2
+# 11 "main.c" 2
 # 1 "game.h" 1
 
 
@@ -207,7 +207,7 @@ void updatePanda2();
 void cheat();
 void clearEnemies();
 void checkEnemyCollision();
-# 4 "main.c" 2
+# 12 "main.c" 2
 # 1 "splashScreen.h" 1
 # 22 "splashScreen.h"
 extern const unsigned short splashScreenTiles[1536];
@@ -217,7 +217,7 @@ extern const unsigned short splashScreenMap[1024];
 
 
 extern const unsigned short splashScreenPal[256];
-# 5 "main.c" 2
+# 13 "main.c" 2
 # 1 "instructionsScreen.h" 1
 # 22 "instructionsScreen.h"
 extern const unsigned short instructionsScreenTiles[6432];
@@ -227,7 +227,7 @@ extern const unsigned short instructionsScreenMap[1024];
 
 
 extern const unsigned short instructionsScreenPal[256];
-# 6 "main.c" 2
+# 14 "main.c" 2
 # 1 "gameScreen.h" 1
 # 22 "gameScreen.h"
 extern const unsigned short gameScreenTiles[128];
@@ -237,7 +237,7 @@ extern const unsigned short gameScreenMap[4096];
 
 
 extern const unsigned short gameScreenPal[256];
-# 7 "main.c" 2
+# 15 "main.c" 2
 # 1 "gameScreen2.h" 1
 # 22 "gameScreen2.h"
 extern const unsigned short gameScreen2Tiles[64];
@@ -247,7 +247,7 @@ extern const unsigned short gameScreen2Map[1024];
 
 
 extern const unsigned short gameScreen2Pal[256];
-# 8 "main.c" 2
+# 16 "main.c" 2
 # 1 "pauseScreen.h" 1
 # 22 "pauseScreen.h"
 extern const unsigned short pauseScreenTiles[96];
@@ -257,7 +257,7 @@ extern const unsigned short pauseScreenMap[1024];
 
 
 extern const unsigned short pauseScreenPal[256];
-# 9 "main.c" 2
+# 17 "main.c" 2
 # 1 "winScreen.h" 1
 # 22 "winScreen.h"
 extern const unsigned short winScreenTiles[880];
@@ -267,7 +267,7 @@ extern const unsigned short winScreenMap[1024];
 
 
 extern const unsigned short winScreenPal[256];
-# 10 "main.c" 2
+# 18 "main.c" 2
 # 1 "loseScreen.h" 1
 # 22 "loseScreen.h"
 extern const unsigned short loseScreenTiles[944];
@@ -277,14 +277,14 @@ extern const unsigned short loseScreenMap[1024];
 
 
 extern const unsigned short loseScreenPal[256];
-# 11 "main.c" 2
+# 19 "main.c" 2
 # 1 "spriteSheet.h" 1
 # 21 "spriteSheet.h"
 extern const unsigned short spriteSheetTiles[16384];
 
 
 extern const unsigned short spriteSheetPal[256];
-# 12 "main.c" 2
+# 20 "main.c" 2
 # 1 "scoreBackground.h" 1
 # 22 "scoreBackground.h"
 extern const unsigned short scoreBackgroundTiles[512];
@@ -294,7 +294,7 @@ extern const unsigned short scoreBackgroundMap[1024];
 
 
 extern const unsigned short scoreBackgroundPal[256];
-# 13 "main.c" 2
+# 21 "main.c" 2
 # 1 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdlib.h" 1 3
 # 10 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdlib.h" 3
 # 1 "/opt/devkitpro/devkitARM/arm-none-eabi/include/machine/ieeefp.h" 1 3
@@ -1103,7 +1103,7 @@ extern long double _strtold_r (struct _reent *, const char *restrict, char **res
 extern long double strtold (const char *restrict, char **restrict);
 # 336 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdlib.h" 3
 
-# 14 "main.c" 2
+# 22 "main.c" 2
 # 1 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdio.h" 1 3
 # 36 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdio.h" 3
 # 1 "/opt/devkitpro/devkitARM/lib/gcc/arm-none-eabi/9.1.0/include/stddef.h" 1 3 4
@@ -1514,7 +1514,7 @@ _putchar_unlocked(int _c)
 }
 # 797 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdio.h" 3
 
-# 15 "main.c" 2
+# 23 "main.c" 2
 # 1 "gameSound.h" 1
 
 
@@ -1523,21 +1523,21 @@ _putchar_unlocked(int _c)
 
 # 5 "gameSound.h"
 extern const signed char gameSound[1324512];
-# 16 "main.c" 2
+# 24 "main.c" 2
 # 1 "splashSound.h" 1
 
 
 
 
 extern const signed char splashSound[291428];
-# 17 "main.c" 2
+# 25 "main.c" 2
 # 1 "gameSound2.h" 1
 
 
 
 
 extern const signed char gameSound2[677952];
-# 18 "main.c" 2
+# 26 "main.c" 2
 
 
 void goToSplash();
@@ -1768,7 +1768,7 @@ void game() {
         pauseSound();
         goToPause();
     }
-# 256 "main.c"
+# 264 "main.c"
     if (hasLost) {
         goToLose();
     }

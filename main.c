@@ -1,3 +1,11 @@
+// M3 - The player can collect the food but must not collide with the enemies (BLUE E). Once the 
+// player has collected the items they need, they can switch to the other screen by pressing select. Here they
+// must go through the maze to reach the 3 hungry pandas at the end and cannot collide with the maze boundries. The previous requirement
+// of not having any stems/leaves leftover after delivering the right amount has been taken out. Each panda must receive 5 leaves or 3 stems (there can be 
+// stems and leaves left over) and the win state is reached. The lose state is reached if the player collides with the enemies. If the player collides with 
+// the maze boundries, they just start the maze over again, they do not lose. The cheat still needs to be complete. Currently, pressing A on the 
+// China screen will collect all the items but I plan to give the panda a sheild that protects it from the enemies for the cheat requirement.
+
 // Header files
 #include "myLib.h"
 #include "game.h"
