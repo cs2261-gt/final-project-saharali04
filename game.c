@@ -385,7 +385,7 @@ void updatePanda2() {
 
     if (BUTTON_HELD(BUTTON_UP)) 
     {
-        if (panda.worldRow > 0 && collisionmap2Bitmap[OFFSET(panda.worldCol, panda.worldRow - panda.rdel, WORLDWIDTH2)]
+        if (panda.worldRow > 4 && collisionmap2Bitmap[OFFSET(panda.worldCol, panda.worldRow - panda.rdel, WORLDWIDTH2)]
             && collisionmap2Bitmap[OFFSET(panda.worldCol + panda.width - panda.cdel, panda.worldRow - panda.rdel, WORLDWIDTH2)]) {
                 panda.aniState = PANDAHAPPY;
                 panda.worldRow-=panda.rdel;
