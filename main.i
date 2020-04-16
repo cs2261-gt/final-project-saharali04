@@ -201,7 +201,8 @@ void initPandas();
 void drawFriendlyPandas();
 void checkFoodCollected();
 void checkFoodDelivered();
-void drawScore();
+void drawScore1();
+void drawScore2();
 void resetAnimationFriendly();
 void updatePanda2();
 void cheat();
@@ -287,7 +288,7 @@ extern const unsigned short spriteSheetPal[256];
 # 20 "main.c" 2
 # 1 "scoreBackground.h" 1
 # 22 "scoreBackground.h"
-extern const unsigned short scoreBackgroundTiles[512];
+extern const unsigned short scoreBackgroundTiles[544];
 
 
 extern const unsigned short scoreBackgroundMap[1024];
@@ -1538,6 +1539,16 @@ extern const signed char splashSound[291428];
 
 extern const signed char gameSound2[677952];
 # 26 "main.c" 2
+# 1 "scoreBackground2.h" 1
+# 22 "scoreBackground2.h"
+extern const unsigned short scoreBackground2Tiles[544];
+
+
+extern const unsigned short scoreBackground2Map[1024];
+
+
+extern const unsigned short scoreBackground2Pal[256];
+# 27 "main.c" 2
 
 
 void goToSplash();
@@ -1758,7 +1769,7 @@ void game() {
 
     DMANow(3, scoreBackgroundPal, ((unsigned short *)0x5000000), 512/2);
 
-    DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[1], 1024/2);
+    DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[1], 1088/2);
 
     DMANow(3, scoreBackgroundMap, &((screenblock *)0x6000000)[17], 2048/2);
 
@@ -1771,7 +1782,7 @@ void game() {
         pauseSound();
         goToPause();
     }
-# 267 "main.c"
+
     if (hasLost) {
         goToLose();
     }
@@ -1788,7 +1799,7 @@ void goToGame2() {
     game1 = 0;
     hOff = 0;
     vOff = 0;
-    panda.worldRow = 140;
+    panda.worldRow = 60;
     panda.worldCol = 120;
     (*(unsigned short *)0x4000000) = 0 | (1<<9);
     hideSprites();
@@ -1813,11 +1824,11 @@ void game2() {
 
     DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 128/2);
 
-    DMANow(3, scoreBackgroundPal, ((unsigned short *)0x5000000), 512/2);
+    DMANow(3, scoreBackground2Pal, ((unsigned short *)0x5000000), 512/2);
 
-    DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[1], 1024/2);
+    DMANow(3, scoreBackground2Tiles, &((charblock *)0x6000000)[1], 1088/2);
 
-    DMANow(3, scoreBackgroundMap, &((screenblock *)0x6000000)[17], 2048/2);
+    DMANow(3, scoreBackground2Map, &((screenblock *)0x6000000)[17], 2048/2);
     (*(volatile unsigned short*)0x4000008) = ((1)<<2) | ((17)<<8) | (0<<14);
 
 

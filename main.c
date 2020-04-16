@@ -1,4 +1,4 @@
-// M3 - The player can collect the food but must not collide with the enemies (BLUE E). Once the 
+// M4 - The player can collect the food but must not collide with the enemies (BLUE E). Once the 
 // player has collected the items they need, they can switch to the other screen by pressing select. Here they
 // must go through the maze to reach the 3 hungry pandas at the end and cannot collide with the maze boundries. The previous requirement
 // of not having any stems/leaves leftover after delivering the right amount has been taken out. Each panda must receive 5 leaves or 3 stems (there can be 
@@ -23,6 +23,7 @@
 #include "gameSound.h"
 #include "splashSound.h"
 #include "gameSound2.h"
+#include "scoreBackground2.h"
 
 // State Prototypes
 void goToSplash();
@@ -256,13 +257,6 @@ void game() {
         pauseSound();
         goToPause();
     }
-    //if (BUTTON_PRESSED(BUTTON_SELECT)) 
-    //{
-    //    stopSound();
-	//	stopSound();
-	//	playSoundA(gameSound2, GAMESOUND2LEN, 1);
-    //    goToGame2();
-    //}
 
     if (hasLost) {
         goToLose();
@@ -280,7 +274,7 @@ void goToGame2() {
     game1 = 0;
     hOff = 0;
     vOff = 0;
-    panda.worldRow = 140;
+    panda.worldRow = 60;
     panda.worldCol = 120;
     REG_DISPCTL = MODE0 | BG1_ENABLE;
     hideSprites();
@@ -305,11 +299,11 @@ void game2() {
     // Load loseScreen tiles to charblock
     DMANow(3, gameScreen2Tiles, &CHARBLOCK[0], gameScreen2TilesLen/2);
 
-    DMANow(3, scoreBackgroundPal, PALETTE, scoreBackgroundPalLen/2);
+    DMANow(3, scoreBackground2Pal, PALETTE, scoreBackgroundPalLen/2);
 
-    DMANow(3, scoreBackgroundTiles, &CHARBLOCK[1], scoreBackgroundTilesLen/2);
+    DMANow(3, scoreBackground2Tiles, &CHARBLOCK[1], scoreBackgroundTilesLen/2);
 
-    DMANow(3, scoreBackgroundMap, &SCREENBLOCK[17], scoreBackgroundMapLen/2);
+    DMANow(3, scoreBackground2Map, &SCREENBLOCK[17], scoreBackgroundMapLen/2);
     REG_BG0CNT = BG_CHARBLOCK(1) | BG_SCREENBLOCK(17) | BG_SIZE_SMALL;
 
     

@@ -219,7 +219,7 @@ splash:
 	mov	lr, pc
 	bx	r3
 	mov	r2, #512
-	mov	ip, #140
+	mov	ip, #60
 	mov	r0, #120
 	ldr	r3, .L23+64
 	ldr	r1, .L23+68
@@ -346,7 +346,7 @@ instruction:
 	ldr	r0, [r2]
 	mov	lr, pc
 	bx	r3
-	mov	ip, #140
+	mov	ip, #60
 	mov	r0, #120
 	ldr	r3, .L40+40
 	str	r4, [r3]
@@ -473,7 +473,7 @@ game:
 	ldr	r1, .L63+20
 	mov	lr, pc
 	bx	r4
-	mov	r3, #512
+	mov	r3, #544
 	mov	r0, #3
 	ldr	r2, .L63+24
 	ldr	r1, .L63+28
@@ -579,7 +579,7 @@ goToGame2:
 	mov	r3, #0
 	mov	r2, #67108864
 	mov	r1, #512
-	mov	ip, #140
+	mov	ip, #60
 	mov	r0, #120
 	push	{r4, lr}
 	ldr	lr, .L67
@@ -657,7 +657,7 @@ game2:
 	ldr	r1, .L91+24
 	mov	lr, pc
 	bx	r4
-	mov	r3, #512
+	mov	r3, #544
 	mov	r0, #3
 	ldr	r2, .L91+28
 	ldr	r1, .L91+32
@@ -757,11 +757,11 @@ game2:
 	.word	gameScreen2Map
 	.word	100726784
 	.word	gameScreen2Tiles
-	.word	scoreBackgroundPal
+	.word	scoreBackground2Pal
 	.word	100679680
-	.word	scoreBackgroundTiles
+	.word	scoreBackground2Tiles
 	.word	100698112
-	.word	scoreBackgroundMap
+	.word	scoreBackground2Map
 	.word	4356
 	.word	oldButtons
 	.word	updateGame2
@@ -853,7 +853,7 @@ pause:
 	mov	lr, pc
 	bx	r3
 	mov	r3, #512
-	mov	r0, #140
+	mov	r0, #60
 	mov	r1, #120
 	ldr	r2, .L103+36
 	str	r4, [r2]

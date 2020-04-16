@@ -9,6 +9,8 @@ int hasLost;
 int hasWon;
 int cheatGame;
 int count;
+int totalStemsDelivered;
+int totalLeavesDelivered;
 
 int hOff = 0;   
 int vOff = 0;
@@ -514,18 +516,32 @@ void clearEnemies() {
     }
 }
 
-void drawScore() {
-    shadowOAM[40].attr0 = 141 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[40].attr1 = 82 | ATTR1_TINY;
+void drawFoodCollected() {
+    totalStemsDelivered = pandas[0].stemsCollected + pandas[1].stemsCollected + pandas[2].stemsCollected;
+    totalLeavesDelivered = pandas[0].leavesCollected + pandas[1].leavesCollected + pandas[2].leavesCollected;
+    shadowOAM[40].attr0 = 139 | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[40].attr1 = 159 | ATTR1_TINY;
+    shadowOAM[40].attr2 = ATTR2_TILEID(totalStemsDelivered + 8, 0);
+
+    shadowOAM[41].attr0 = 149 | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[41].attr1 = 159 | ATTR1_TINY;
+    shadowOAM[41].attr2 = ATTR2_TILEID(totalLeavesDelivered + 8, 0);
+
+
+}
+
+void drawFoodDelivered() {
+    shadowOAM[40].attr0 = 139 | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[40].attr1 = 159 | ATTR1_TINY;
     shadowOAM[40].attr2 = ATTR2_TILEID(panda.stemsCollected + 8, 0);
 
-    shadowOAM[41].attr0 = 150 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[41].attr1 = 87 | ATTR1_TINY;
+    shadowOAM[41].attr0 = 149 | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[41].attr1 = 159 | ATTR1_TINY;
     shadowOAM[41].attr2 = ATTR2_TILEID(panda.leavesCollected + 8, 0);
-
-
-    
+   
 }
+
+
 
 void drawBaskets() {
     for (int i = 0; i < BASKETCOUNT; i++) 
@@ -557,7 +573,7 @@ void drawFriendlyPandas() {
 void updateGame() {
     REG_BG1CNT = 0; 
     REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
-
+    
     if (hOff > 256) {
         screenBlock++;
         hOff -= 256;
@@ -567,6 +583,7 @@ void updateGame() {
     if (screenBlock == 31 || (screenBlock == 30 && hOff > 255)) {
         drawFriendlyPandas();
         drawBaskets();
+        drawFoodDelivered();
     }
 
     if (playerHOff > 512) {
@@ -576,22 +593,14 @@ void updateGame() {
     updatePanda();
     drawPanda();
     checkFoodDelivered();
-    drawScore();
-    if ((pandas[0].leavesCollected == 5 || pandas[0].stemsCollected == 3) && (pandas[1].leavesCollected == 5 || pandas[1].stemsCollected == 3) && (pandas[2].leavesCollected == 5 || pandas[2].stemsCollected == 3))// && (panda.leavesCollected == 0) && (panda.stemsCollected == 0))
+   
+    if ((pandas[0].leavesCollected == 5 || pandas[0].stemsCollected == 3) && (pandas[1].leavesCollected == 5 || pandas[1].stemsCollected == 3) && (pandas[2].leavesCollected == 5 || pandas[2].stemsCollected == 3))
     {
         hasWon = 1;
     }
-    if ((pandas[0].leavesCollected == 5 || pandas[0].stemsCollected == 3) && (pandas[1].leavesCollected == 5 || pandas[1].stemsCollected == 3) && (pandas[2].leavesCollected == 5 || pandas[2].stemsCollected == 3))
-    {
-        if (panda.leavesCollected != 0 || panda.stemsCollected != 0)
-        {
-            //hasLost = 1;
-        }
-        
-    }
+    
     REG_BG1HOFF = hOff;
     REG_BG1VOFF = vOff;
-
     waitForVBlank();
     DMANow(3, shadowOAM, OAM, 128 * 4);
 
@@ -609,7 +618,7 @@ void updateGame2() {
     updatePanda2();
     drawPanda();
     
-    drawScore();
+    drawFoodCollected();
     
     
     if (cheatGame) {
