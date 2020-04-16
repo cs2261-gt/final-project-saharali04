@@ -341,8 +341,7 @@ void updatePanda() {
                     totalHOff++;
                 } 
 
-            } 
-            
+            }        
                 
         }    
         
@@ -494,10 +493,8 @@ void checkFoodDelivered() {
             pandas[i].leavesCollected++;
             panda.leavesCollected--;
             pandas[i].curFrame = 1;
-       
+            
     
-        } else {
-            pandas[0].aniCounter++;
         }
             
             
@@ -507,16 +504,10 @@ void checkFoodDelivered() {
             pandas[i].stemsCollected++;
             panda.stemsCollected--;
             pandas[i].curFrame = 1;
-            
-
-        } else {
-            pandas[0].aniCounter++;
         }
 
      
     }
-    
-    
     
 
 }
@@ -678,13 +669,19 @@ void updateGame() {
     if (playerHOff > 512) {
         playerHOff -= 512;
     }
+    for (int i = 0; i < PANDACOUNT; i++) {
+        if (pandas[i].curFrame == 1) 
+        {
+            pandas[i].aniCounter++;
+        }
+        if (pandas[i].aniCounter == 15)
+        {
+            pandas[i].aniCounter = 0;
+            pandas[i].curFrame = 0;
 
-    if (pandas[0].aniCounter % 1000)
-    {
-        pandas[0].curFrame = 0;
-        pandas[1].curFrame = 0;
-        pandas[2].curFrame = 0;
+        }
     }
+    
     
     updatePanda();
     drawPanda();
@@ -699,6 +696,7 @@ void updateGame() {
     REG_BG1VOFF = vOff;
     waitForVBlank();
     DMANow(3, shadowOAM, OAM, 128 * 4);
+    
 
 }
 
@@ -748,9 +746,7 @@ void updateGame2() {
 
     }
 
-    if (pandas[0].aniCounter % 200) {
-        resetAnimationFriendly();
-    }
+    
 
     
     
