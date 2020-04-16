@@ -210,7 +210,7 @@ void checkEnemyCollision();
 # 12 "main.c" 2
 # 1 "splashScreen.h" 1
 # 22 "splashScreen.h"
-extern const unsigned short splashScreenTiles[1536];
+extern const unsigned short splashScreenTiles[2096];
 
 
 extern const unsigned short splashScreenMap[1024];
@@ -220,7 +220,7 @@ extern const unsigned short splashScreenPal[256];
 # 13 "main.c" 2
 # 1 "instructionsScreen.h" 1
 # 22 "instructionsScreen.h"
-extern const unsigned short instructionsScreenTiles[6432];
+extern const unsigned short instructionsScreenTiles[5792];
 
 
 extern const unsigned short instructionsScreenMap[1024];
@@ -250,7 +250,7 @@ extern const unsigned short gameScreen2Pal[256];
 # 16 "main.c" 2
 # 1 "pauseScreen.h" 1
 # 22 "pauseScreen.h"
-extern const unsigned short pauseScreenTiles[96];
+extern const unsigned short pauseScreenTiles[1168];
 
 
 extern const unsigned short pauseScreenMap[1024];
@@ -260,7 +260,7 @@ extern const unsigned short pauseScreenPal[256];
 # 17 "main.c" 2
 # 1 "winScreen.h" 1
 # 22 "winScreen.h"
-extern const unsigned short winScreenTiles[880];
+extern const unsigned short winScreenTiles[1440];
 
 
 extern const unsigned short winScreenMap[1024];
@@ -270,7 +270,7 @@ extern const unsigned short winScreenPal[256];
 # 18 "main.c" 2
 # 1 "loseScreen.h" 1
 # 22 "loseScreen.h"
-extern const unsigned short loseScreenTiles[944];
+extern const unsigned short loseScreenTiles[1440];
 
 
 extern const unsigned short loseScreenMap[1024];
@@ -1572,12 +1572,14 @@ void initialize();
     OBJ_ATTR shadowOAM[128];
 
 
+    int game1 = 0;
 
     int seed;
 
 
     enum {SPLASH, INSTRUCTION, GAME, GAME2, PAUSE, WIN, LOSE, TEST};
     int state;
+
 
 int main() {
 
@@ -1665,7 +1667,7 @@ void splash() {
     (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((11)<<8);
 
 
-    DMANow(3, splashScreenTiles, &((charblock *)0x6000000)[0], 3072/2);
+    DMANow(3, splashScreenTiles, &((charblock *)0x6000000)[0], 4192/2);
 
 
     DMANow(3, splashScreenMap, &((screenblock *)0x6000000)[11], 2048/2);
@@ -1690,7 +1692,7 @@ void splash() {
         goToGame2();
     }
 
-    if ((!(~(oldButtons)&((1<<2))) && (~buttons & ((1<<2)))))
+    if ((!(~(oldButtons)&((1<<0))) && (~buttons & ((1<<0)))))
     {
         goToInstruction();
     }
@@ -1712,7 +1714,7 @@ void instruction() {
     (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((11)<<8);
 
 
-    DMANow(3, instructionsScreenTiles, &((charblock *)0x6000000)[0], 12864/2);
+    DMANow(3, instructionsScreenTiles, &((charblock *)0x6000000)[0], 11584/2);
 
 
     DMANow(3, instructionsScreenMap, &((screenblock *)0x6000000)[11], 2048/2);
@@ -1720,10 +1722,10 @@ void instruction() {
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3)))))
     {
         srand(seed);
-        goToGame();
+        goToGame2();
     }
 
-    if ((!(~(oldButtons)&((1<<2))) && (~buttons & ((1<<2)))))
+    if ((!(~(oldButtons)&((1<<0))) && (~buttons & ((1<<0)))))
     {
         goToSplash();
     }
@@ -1732,6 +1734,7 @@ void instruction() {
 
 
 void goToGame() {
+    game1 = 1;
     initPandas();
     hideSprites();
     (*(volatile unsigned short *)0x04000016) = vOff;
@@ -1768,7 +1771,7 @@ void game() {
         pauseSound();
         goToPause();
     }
-# 264 "main.c"
+# 267 "main.c"
     if (hasLost) {
         goToLose();
     }
@@ -1782,6 +1785,7 @@ void game() {
 
 
 void goToGame2() {
+    game1 = 0;
     hOff = 0;
     vOff = 0;
     panda.worldRow = 140;
@@ -1864,15 +1868,22 @@ void pause() {
     (*(volatile unsigned short*)0x4000008) = (0<<14) | ((0)<<2) | ((11)<<8);
 
 
-    DMANow(3, pauseScreenTiles, &((charblock *)0x6000000)[0], 192/2);
+    DMANow(3, pauseScreenTiles, &((charblock *)0x6000000)[0], 2336/2);
 
 
     DMANow(3, pauseScreenMap, &((screenblock *)0x6000000)[11], 2048/2);
 
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3))))) {
-        unpauseSound();
-        goToGame();
+        if (game1) {
+            unpauseSound();
+            goToGame();
+        } else {
+            unpauseSound();
+            goToGame2();
+        }
+
     }
+
 
 }
 
@@ -1897,7 +1908,7 @@ void win() {
     (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((11)<<8);
 
 
-    DMANow(3, winScreenTiles, &((charblock *)0x6000000)[0], 1760/2);
+    DMANow(3, winScreenTiles, &((charblock *)0x6000000)[0], 2880/2);
 
 
     DMANow(3, winScreenMap, &((screenblock *)0x6000000)[11], 2048/2);
@@ -1928,7 +1939,7 @@ void lose() {
     (*(volatile unsigned short*)0x4000008) = (0<<14) | ((0)<<2) | ((11)<<8);
 
 
-    DMANow(3, loseScreenTiles, &((charblock *)0x6000000)[0], 1888/2);
+    DMANow(3, loseScreenTiles, &((charblock *)0x6000000)[0], 2880/2);
 
 
     DMANow(3, loseScreenMap, &((screenblock *)0x6000000)[11], 2048/2);

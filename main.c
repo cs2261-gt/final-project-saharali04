@@ -57,12 +57,14 @@ void initialize();
     OBJ_ATTR shadowOAM[128];
     #define SHADOWOAMLENGTH 128
 
+    int game1 = 0;
     // For random
     int seed;
 
     // States
     enum {SPLASH, INSTRUCTION, GAME, GAME2, PAUSE, WIN, LOSE, TEST};
     int state;
+
 
 int main() {
 
@@ -175,7 +177,7 @@ void splash() {
         goToGame2(); 
     }
 
-    if (BUTTON_PRESSED(BUTTON_SELECT)) 
+    if (BUTTON_PRESSED(BUTTON_A)) 
     {
         goToInstruction();
     }
@@ -205,10 +207,10 @@ void instruction() {
     if (BUTTON_PRESSED(BUTTON_START)) 
     {
         srand(seed);
-        goToGame(); 
+        goToGame2(); 
     }
 
-    if (BUTTON_PRESSED(BUTTON_SELECT)) 
+    if (BUTTON_PRESSED(BUTTON_A)) 
     {
         goToSplash();
     }
@@ -217,6 +219,7 @@ void instruction() {
 
 // Sets up the game state
 void goToGame() {
+    game1 = 1;
     initPandas();
     hideSprites();
     REG_BG1VOFF = vOff;
@@ -274,6 +277,7 @@ void game() {
 
 // Sets up the game state
 void goToGame2() {
+    game1 = 0;
     hOff = 0;
     vOff = 0;
     panda.worldRow = 140;
@@ -362,9 +366,16 @@ void pause() {
     DMANow(3, pauseScreenMap, &SCREENBLOCK[11], pauseScreenMapLen/2);
 
     if (BUTTON_PRESSED(BUTTON_START)) {
-        unpauseSound();
-        goToGame();
+        if (game1) {
+            unpauseSound();
+            goToGame();
+        } else {
+            unpauseSound();
+            goToGame2();
+        }
+        
     }
+   
     
 }
 

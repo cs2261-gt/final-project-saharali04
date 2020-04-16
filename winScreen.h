@@ -5,11 +5,11 @@
 //
 //	winScreen, 256x256@4, 
 //	+ palette 256 entries, not compressed
-//	+ 55 tiles (t|f|p reduced) not compressed
+//	+ 90 tiles (t|f|p reduced) not compressed
 //	+ regular map (in SBBs), not compressed, 32x32 
-//	Total size: 512 + 1760 + 2048 = 4320
+//	Total size: 512 + 2880 + 2048 = 5440
 //
-//	Time-stamp: 2020-04-04, 10:27:14
+//	Time-stamp: 2020-04-16, 13:06:20
 //	Exported by Cearn's GBA Image Transmogrifier, v0.8.3
 //	( http://www.coranac.com/projects/#grit )
 //
@@ -18,8 +18,8 @@
 #ifndef GRIT_WINSCREEN_H
 #define GRIT_WINSCREEN_H
 
-#define winScreenTilesLen 1760
-extern const unsigned short winScreenTiles[880];
+#define winScreenTilesLen 2880
+extern const unsigned short winScreenTiles[1440];
 
 #define winScreenMapLen 2048
 extern const unsigned short winScreenMap[1024];
