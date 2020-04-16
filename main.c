@@ -274,8 +274,8 @@ void goToGame2() {
     game1 = 0;
     hOff = 0;
     vOff = 0;
-    panda.worldRow = 60;
-    panda.worldCol = 120;
+    panda.worldRow = 5;
+    panda.worldCol = 4;
     REG_DISPCTL = MODE0 | BG1_ENABLE;
     hideSprites();
     state = GAME2;
@@ -319,7 +319,7 @@ void game2() {
         goToPause();
 
     }
-    if (BUTTON_PRESSED(BUTTON_SELECT)) 
+    if (goToMaze) 
     {
         stopSound();
 		playSoundA(gameSound, GAMESOUNDLEN, 1);

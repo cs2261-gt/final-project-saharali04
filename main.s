@@ -219,8 +219,8 @@ splash:
 	mov	lr, pc
 	bx	r3
 	mov	r2, #512
-	mov	ip, #60
-	mov	r0, #120
+	mov	ip, #5
+	mov	r0, #4
 	ldr	r3, .L23+64
 	ldr	r1, .L23+68
 	str	r4, [r3]
@@ -346,8 +346,8 @@ instruction:
 	ldr	r0, [r2]
 	mov	lr, pc
 	bx	r3
-	mov	ip, #60
-	mov	r0, #120
+	mov	ip, #5
+	mov	r0, #4
 	ldr	r3, .L40+40
 	str	r4, [r3]
 	ldr	r3, .L40+44
@@ -579,8 +579,8 @@ goToGame2:
 	mov	r3, #0
 	mov	r2, #67108864
 	mov	r1, #512
-	mov	ip, #60
-	mov	r0, #120
+	mov	ip, #5
+	mov	r0, #4
 	push	{r4, lr}
 	ldr	lr, .L67
 	str	r3, [lr]
@@ -669,28 +669,26 @@ game2:
 	ldr	r1, .L91+40
 	mov	lr, pc
 	bx	r4
-	ldr	r3, .L91+44
-	ldr	r6, .L91+48
-	strh	r3, [r5, #8]	@ movhi
-	ldr	r3, .L91+52
+	ldr	r2, .L91+44
+	ldr	r3, .L91+48
+	strh	r2, [r5, #8]	@ movhi
 	mov	lr, pc
 	bx	r3
-	ldrh	r3, [r6]
+	ldr	r3, .L91+52
+	ldrh	r3, [r3]
 	tst	r3, #8
 	beq	.L70
-	ldr	r2, .L91+56
-	ldrh	r2, [r2]
-	ands	r4, r2, #8
-	beq	.L87
-.L70:
-	tst	r3, #4
-	beq	.L71
 	ldr	r3, .L91+56
 	ldrh	r3, [r3]
-	tst	r3, #4
-	beq	.L88
+	ands	r4, r3, #8
+	beq	.L87
+.L70:
+	ldr	r3, .L91+60
+	ldr	r3, [r3]
+	cmp	r3, #0
+	bne	.L88
 .L71:
-	ldr	r4, .L91+60
+	ldr	r4, .L91+64
 	ldr	r3, [r4]
 	cmp	r3, #0
 	bne	.L89
@@ -704,9 +702,9 @@ game2:
 	mov	r3, #67108864
 	mov	r2, #0
 	mov	ip, #5
-	ldr	r0, .L91+64
+	ldr	r0, .L91+68
 	strh	r2, [r3, #20]	@ movhi
-	ldr	r1, .L91+68
+	ldr	r1, .L91+72
 	strh	r2, [r3, #22]	@ movhi
 	str	ip, [r0]
 	mov	lr, pc
@@ -717,36 +715,35 @@ game2:
 	mov	r3, #67108864
 	mov	r2, #0
 	mov	r0, #6
-	ldr	r1, .L91+64
+	ldr	r1, .L91+68
 	strh	r2, [r3, #16]	@ movhi
 	strh	r2, [r3, #18]	@ movhi
-	ldr	r3, .L91+68
+	ldr	r3, .L91+72
 	str	r0, [r1]
 	mov	lr, pc
 	bx	r3
 	b	.L72
 .L88:
-	ldr	r3, .L91+68
+	ldr	r3, .L91+72
 	mov	lr, pc
 	bx	r3
 	mov	r2, #1
-	ldr	r1, .L91+72
-	ldr	r3, .L91+76
-	ldr	r0, .L91+80
+	ldr	r1, .L91+76
+	ldr	r3, .L91+80
+	ldr	r0, .L91+84
 	mov	lr, pc
 	bx	r3
 	bl	goToGame
 	b	.L71
 .L87:
-	ldr	r3, .L91+84
+	ldr	r3, .L91+88
 	mov	lr, pc
 	bx	r3
 	mov	r2, #4
+	ldr	r3, .L91+68
 	strh	r4, [r5, #16]	@ movhi
-	ldr	r3, .L91+64
 	strh	r4, [r5, #18]	@ movhi
 	str	r2, [r3]
-	ldrh	r3, [r6]
 	b	.L70
 .L92:
 	.align	2
@@ -763,9 +760,10 @@ game2:
 	.word	100698112
 	.word	scoreBackground2Map
 	.word	4356
-	.word	oldButtons
 	.word	updateGame2
+	.word	oldButtons
 	.word	buttons
+	.word	goToMaze
 	.word	.LANCHOR0
 	.word	state
 	.word	stopSound
@@ -853,8 +851,8 @@ pause:
 	mov	lr, pc
 	bx	r3
 	mov	r3, #512
-	mov	r0, #60
-	mov	r1, #120
+	mov	r0, #5
+	mov	r1, #4
 	ldr	r2, .L103+36
 	str	r4, [r2]
 	ldr	r2, .L103+40
@@ -1225,6 +1223,7 @@ test:
 	.comm	baskets,120,4
 	.comm	enemies,1480,4
 	.comm	food,1480,4
+	.comm	door,40,4
 	.comm	panda,68,4
 	.bss
 	.align	2

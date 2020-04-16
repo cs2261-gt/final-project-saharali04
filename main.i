@@ -119,6 +119,7 @@ extern int hOff;
 extern int vOff;
 extern int screenBlock;
 extern int cheatGame;
+extern int goToMaze;
 
 
     typedef struct {
@@ -154,20 +155,22 @@ extern int cheatGame;
         int height;
         int aniState;
         int active;
-    } FOODSPRITE;
+    } SPRITE;
 
 
     PANDASPRITE panda;
-
-
-    FOODSPRITE food[37];
-
-
-    FOODSPRITE enemies[37];
+    SPRITE door;
 
 
 
-    FOODSPRITE baskets[3];
+    SPRITE food[37];
+
+
+    SPRITE enemies[37];
+
+
+
+    SPRITE baskets[3];
 
 
     PANDASPRITE pandas[3];
@@ -189,6 +192,7 @@ void drawPanda();
 void updatePanda();
 void drawFood();
 void drawEnemies();
+void drawDoor();
 void moveEnemies();
 void updateGame();
 void updateGame2();
@@ -201,8 +205,8 @@ void initPandas();
 void drawFriendlyPandas();
 void checkFoodCollected();
 void checkFoodDelivered();
-void drawScore1();
-void drawScore2();
+void drawFoodDelivered();
+void drawScoreCollected();
 void resetAnimationFriendly();
 void updatePanda2();
 void cheat();
@@ -1799,8 +1803,8 @@ void goToGame2() {
     game1 = 0;
     hOff = 0;
     vOff = 0;
-    panda.worldRow = 60;
-    panda.worldCol = 120;
+    panda.worldRow = 5;
+    panda.worldCol = 4;
     (*(unsigned short *)0x4000000) = 0 | (1<<9);
     hideSprites();
     state = GAME2;
@@ -1844,7 +1848,7 @@ void game2() {
         goToPause();
 
     }
-    if ((!(~(oldButtons)&((1<<2))) && (~buttons & ((1<<2)))))
+    if (goToMaze)
     {
         stopSound();
   playSoundA(gameSound, 1324512, 1);
