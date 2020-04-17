@@ -271,6 +271,7 @@ void game() {
 
 // Sets up the game state
 void goToGame2() {
+    count = 0;
     game1 = 0;
     hOff = 0;
     vOff = 0;

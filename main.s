@@ -125,146 +125,6 @@ initialize:
 	.word	setupInterrupts
 	.size	initialize, .-initialize
 	.align	2
-	.global	splash
-	.syntax unified
-	.arm
-	.fpu softvfp
-	.type	splash, %function
-splash:
-	@ Function supports interworking.
-	@ args = 0, pretend = 0, frame = 0
-	@ frame_needed = 0, uses_anonymous_args = 0
-	push	{r4, r5, r6, r7, r8, lr}
-	mov	r2, #512
-	mov	r6, #67108864
-	ldr	r5, .L23
-	ldr	r3, [r5]
-	add	r3, r3, #1
-	str	r3, [r5]
-	ldr	r4, .L23+4
-	mov	r3, #256
-	mov	r0, #3
-	strh	r2, [r6]	@ movhi
-	ldr	r1, .L23+8
-	mov	r2, #83886080
-	mov	lr, pc
-	bx	r4
-	mov	r2, #2816
-	mov	r3, #2096
-	mov	r0, #3
-	strh	r2, [r6, #10]	@ movhi
-	ldr	r1, .L23+12
-	mov	r2, #100663296
-	mov	lr, pc
-	bx	r4
-	mov	r3, #1024
-	ldr	r2, .L23+16
-	ldr	r1, .L23+20
-	mov	r0, #3
-	mov	lr, pc
-	bx	r4
-	mov	r2, #0
-	ldr	r3, .L23+24
-	add	r1, r3, #1024
-.L11:
-	strh	r2, [r3]	@ movhi
-	strh	r2, [r3, #2]	@ movhi
-	strh	r2, [r3, #4]	@ movhi
-	add	r3, r3, #8
-	cmp	r3, r1
-	bne	.L11
-	ldr	r6, .L23+28
-	mov	r3, #512
-	mov	r2, #117440512
-	mov	r0, #3
-	ldr	r1, .L23+24
-	mov	lr, pc
-	bx	r4
-	ldrh	r3, [r6]
-	tst	r3, #8
-	beq	.L12
-	ldr	r2, .L23+32
-	ldrh	r2, [r2]
-	ands	r4, r2, #8
-	beq	.L22
-.L12:
-	tst	r3, #1
-	beq	.L10
-	ldr	r3, .L23+32
-	ldrh	r3, [r3]
-	tst	r3, #1
-	moveq	r2, #1
-	ldreq	r3, .L23+36
-	streq	r2, [r3]
-.L10:
-	pop	{r4, r5, r6, r7, r8, lr}
-	bx	lr
-.L22:
-	mov	r7, #67108864
-	ldr	r0, [r5]
-	ldr	r3, .L23+40
-	mov	lr, pc
-	bx	r3
-	ldr	r3, .L23+44
-	mov	lr, pc
-	bx	r3
-	ldr	r3, .L23+48
-	strh	r4, [r7]	@ movhi
-	mov	lr, pc
-	bx	r3
-	mov	r2, #1
-	ldr	r1, .L23+52
-	ldr	r3, .L23+56
-	ldr	r0, .L23+60
-	mov	lr, pc
-	bx	r3
-	mov	r2, #512
-	mov	ip, #5
-	mov	r0, #4
-	ldr	r3, .L23+64
-	ldr	r1, .L23+68
-	str	r4, [r3]
-	str	r4, [r1]
-	ldr	r3, .L23+72
-	ldr	r1, .L23+76
-	strh	r2, [r7]	@ movhi
-	ldr	r2, .L23+80
-	str	ip, [r3, #8]
-	str	r0, [r3, #12]
-	str	r4, [r1, #8]
-	mov	lr, pc
-	bx	r2
-	mov	r1, #3
-	ldr	r2, .L23+36
-	ldrh	r3, [r6]
-	str	r1, [r2]
-	b	.L12
-.L24:
-	.align	2
-.L23:
-	.word	seed
-	.word	DMANow
-	.word	splashScreenPal
-	.word	splashScreenTiles
-	.word	100685824
-	.word	splashScreenMap
-	.word	shadowOAM
-	.word	oldButtons
-	.word	buttons
-	.word	state
-	.word	srand
-	.word	initGame
-	.word	stopSound
-	.word	1324512
-	.word	playSoundA
-	.word	gameSound
-	.word	hOff
-	.word	vOff
-	.word	panda
-	.word	.LANCHOR0
-	.word	hideSprites
-	.size	splash, .-splash
-	.align	2
 	.global	goToInstruction
 	.syntax unified
 	.arm
@@ -276,116 +136,14 @@ goToInstruction:
 	@ frame_needed = 0, uses_anonymous_args = 0
 	@ link register save eliminated.
 	mov	r2, #1
-	ldr	r3, .L26
+	ldr	r3, .L11
 	str	r2, [r3]
 	bx	lr
-.L27:
+.L12:
 	.align	2
-.L26:
+.L11:
 	.word	state
 	.size	goToInstruction, .-goToInstruction
-	.align	2
-	.global	instruction
-	.syntax unified
-	.arm
-	.fpu softvfp
-	.type	instruction, %function
-instruction:
-	@ Function supports interworking.
-	@ args = 0, pretend = 0, frame = 0
-	@ frame_needed = 0, uses_anonymous_args = 0
-	push	{r4, r5, r6, r7, r8, lr}
-	mov	r5, #67108864
-	mov	r7, #512
-	ldr	r4, .L40
-	mov	r3, #256
-	mov	r2, #83886080
-	mov	r0, #3
-	ldr	r1, .L40+4
-	strh	r7, [r5]	@ movhi
-	mov	lr, pc
-	bx	r4
-	mov	r2, #2816
-	mov	r0, #3
-	ldr	r3, .L40+8
-	strh	r2, [r5, #10]	@ movhi
-	ldr	r1, .L40+12
-	mov	r2, #100663296
-	ldr	r6, .L40+16
-	mov	lr, pc
-	bx	r4
-	mov	r3, #1024
-	mov	r0, #3
-	ldr	r2, .L40+20
-	ldr	r1, .L40+24
-	mov	lr, pc
-	bx	r4
-	ldrh	r3, [r6]
-	tst	r3, #8
-	beq	.L29
-	ldr	r2, .L40+28
-	ldrh	r2, [r2]
-	ands	r4, r2, #8
-	beq	.L38
-.L29:
-	tst	r3, #1
-	beq	.L28
-	ldr	r3, .L40+28
-	ldrh	r3, [r3]
-	tst	r3, #1
-	beq	.L39
-.L28:
-	pop	{r4, r5, r6, r7, r8, lr}
-	bx	lr
-.L39:
-	pop	{r4, r5, r6, r7, r8, lr}
-	b	goToSplash
-.L38:
-	ldr	r2, .L40+32
-	ldr	r3, .L40+36
-	ldr	r0, [r2]
-	mov	lr, pc
-	bx	r3
-	mov	ip, #5
-	mov	r0, #4
-	ldr	r3, .L40+40
-	str	r4, [r3]
-	ldr	r3, .L40+44
-	ldr	r1, .L40+48
-	str	r4, [r3]
-	ldr	r3, .L40+52
-	strh	r7, [r5]	@ movhi
-	ldr	r2, .L40+56
-	str	ip, [r3, #8]
-	str	r0, [r3, #12]
-	str	r4, [r1, #8]
-	mov	lr, pc
-	bx	r2
-	mov	r1, #3
-	ldr	r2, .L40+60
-	ldrh	r3, [r6]
-	str	r1, [r2]
-	b	.L29
-.L41:
-	.align	2
-.L40:
-	.word	DMANow
-	.word	instructionsScreenPal
-	.word	5792
-	.word	instructionsScreenTiles
-	.word	oldButtons
-	.word	100685824
-	.word	instructionsScreenMap
-	.word	buttons
-	.word	seed
-	.word	srand
-	.word	hOff
-	.word	vOff
-	.word	.LANCHOR0
-	.word	panda
-	.word	hideSprites
-	.word	state
-	.size	instruction, .-instruction
 	.align	2
 	.global	goToGame
 	.syntax unified
@@ -397,35 +155,35 @@ goToGame:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	mov	r1, #1
-	ldr	r2, .L44
+	ldr	r2, .L15
 	push	{r4, lr}
-	ldr	r3, .L44+4
+	ldr	r3, .L15+4
 	str	r1, [r2, #8]
 	mov	lr, pc
 	bx	r3
-	ldr	r3, .L44+8
+	ldr	r3, .L15+8
 	mov	lr, pc
 	bx	r3
 	mov	r2, #67108864
 	mov	ip, #120
 	mov	r0, #70
 	mov	r1, #2
-	ldr	r3, .L44+12
+	ldr	r3, .L15+12
 	ldrh	r3, [r3]
 	strh	r3, [r2, #22]	@ movhi
-	ldr	r3, .L44+16
+	ldr	r3, .L15+16
 	ldrh	lr, [r3]
-	ldr	r3, .L44+20
+	ldr	r3, .L15+20
 	strh	lr, [r2, #20]	@ movhi
-	ldr	r2, .L44+24
+	ldr	r2, .L15+24
 	str	ip, [r3, #12]
 	str	r0, [r3, #8]
 	str	r1, [r2]
 	pop	{r4, lr}
 	bx	lr
-.L45:
+.L16:
 	.align	2
-.L44:
+.L15:
 	.word	.LANCHOR0
 	.word	initPandas
 	.word	hideSprites
@@ -447,106 +205,106 @@ game:
 	push	{r4, r5, r6, lr}
 	mov	r2, #4864
 	mov	r5, #67108864
-	ldr	r4, .L63
+	ldr	r4, .L34
 	mov	r3, #16
 	mov	r0, #3
 	strh	r2, [r5]	@ movhi
-	ldr	r1, .L63+4
+	ldr	r1, .L34+4
 	mov	r2, #83886080
 	mov	lr, pc
 	bx	r4
 	mov	r3, #25600
 	mov	r2, #100663296
 	mov	r0, #3
-	ldr	r1, .L63+8
+	ldr	r1, .L34+8
 	mov	lr, pc
 	bx	r4
 	mov	r3, #4096
 	mov	r0, #3
-	ldr	r2, .L63+12
-	ldr	r1, .L63+16
+	ldr	r2, .L34+12
+	ldr	r1, .L34+16
 	mov	lr, pc
 	bx	r4
 	mov	r3, #16
 	mov	r2, #83886080
 	mov	r0, #3
-	ldr	r1, .L63+20
+	ldr	r1, .L34+20
 	mov	lr, pc
 	bx	r4
 	mov	r3, #512
 	mov	r0, #3
-	ldr	r2, .L63+24
-	ldr	r1, .L63+28
+	ldr	r2, .L34+24
+	ldr	r1, .L34+28
 	mov	lr, pc
 	bx	r4
 	mov	r3, #1024
 	mov	r0, #3
-	ldr	r2, .L63+32
-	ldr	r1, .L63+36
+	ldr	r2, .L34+32
+	ldr	r1, .L34+36
 	mov	lr, pc
 	bx	r4
-	ldr	r2, .L63+40
-	ldr	r3, .L63+44
+	ldr	r2, .L34+40
+	ldr	r3, .L34+44
 	strh	r2, [r5, #8]	@ movhi
 	mov	lr, pc
 	bx	r3
-	ldr	r3, .L63+48
+	ldr	r3, .L34+48
 	ldrh	r3, [r3]
 	tst	r3, #8
-	beq	.L47
-	ldr	r3, .L63+52
+	beq	.L18
+	ldr	r3, .L34+52
 	ldrh	r3, [r3]
 	ands	r4, r3, #8
-	beq	.L60
-.L47:
-	ldr	r4, .L63+56
+	beq	.L31
+.L18:
+	ldr	r4, .L34+56
 	ldr	r3, [r4]
 	cmp	r3, #0
-	bne	.L61
-.L48:
+	bne	.L32
+.L19:
 	ldr	r3, [r4, #4]
 	cmp	r3, #0
-	bne	.L62
+	bne	.L33
 	pop	{r4, r5, r6, lr}
 	bx	lr
-.L62:
+.L33:
 	mov	r3, #67108864
 	mov	r2, #0
 	mov	ip, #5
-	ldr	r0, .L63+60
+	ldr	r0, .L34+60
 	strh	r2, [r3, #20]	@ movhi
-	ldr	r1, .L63+64
+	ldr	r1, .L34+64
 	strh	r2, [r3, #22]	@ movhi
 	str	ip, [r0]
 	mov	lr, pc
 	bx	r1
 	pop	{r4, r5, r6, lr}
 	bx	lr
-.L61:
+.L32:
 	mov	r3, #67108864
 	mov	r2, #0
 	mov	r0, #6
-	ldr	r1, .L63+60
+	ldr	r1, .L34+60
 	strh	r2, [r3, #16]	@ movhi
 	strh	r2, [r3, #18]	@ movhi
-	ldr	r3, .L63+64
+	ldr	r3, .L34+64
 	str	r0, [r1]
 	mov	lr, pc
 	bx	r3
-	b	.L48
-.L60:
-	ldr	r3, .L63+68
+	b	.L19
+.L31:
+	ldr	r3, .L34+68
 	mov	lr, pc
 	bx	r3
 	mov	r2, #4
-	ldr	r3, .L63+60
+	ldr	r3, .L34+60
 	strh	r4, [r5, #16]	@ movhi
 	strh	r4, [r5, #18]	@ movhi
 	str	r2, [r3]
-	b	.L47
-.L64:
+	b	.L18
+.L35:
 	.align	2
-.L63:
+.L34:
 	.word	DMANow
 	.word	gameScreenPal
 	.word	gameScreenTiles
@@ -582,27 +340,30 @@ goToGame2:
 	mov	ip, #5
 	mov	r0, #4
 	push	{r4, lr}
-	ldr	lr, .L67
+	ldr	lr, .L38
 	str	r3, [lr]
-	ldr	lr, .L67+4
+	ldr	lr, .L38+4
+	str	r3, [lr]
+	ldr	lr, .L38+8
 	str	r3, [lr]
 	strh	r1, [r2]	@ movhi
-	ldr	lr, .L67+8
-	ldr	r2, .L67+12
-	ldr	r1, .L67+16
+	ldr	lr, .L38+12
+	ldr	r2, .L38+16
+	ldr	r1, .L38+20
 	str	r3, [lr, #8]
 	str	ip, [r2, #8]
 	str	r0, [r2, #12]
 	mov	lr, pc
 	bx	r1
 	mov	r2, #3
-	ldr	r3, .L67+20
+	ldr	r3, .L38+24
 	pop	{r4, lr}
 	str	r2, [r3]
 	bx	lr
-.L68:
+.L39:
 	.align	2
-.L67:
+.L38:
+	.word	count
 	.word	hOff
 	.word	vOff
 	.word	.LANCHOR0
@@ -610,6 +371,202 @@ goToGame2:
 	.word	hideSprites
 	.word	state
 	.size	goToGame2, .-goToGame2
+	.align	2
+	.global	splash
+	.syntax unified
+	.arm
+	.fpu softvfp
+	.type	splash, %function
+splash:
+	@ Function supports interworking.
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	push	{r4, r5, r6, lr}
+	mov	r2, #512
+	mov	r6, #67108864
+	ldr	r5, .L53
+	ldr	r3, [r5]
+	add	r3, r3, #1
+	str	r3, [r5]
+	ldr	r4, .L53+4
+	mov	r3, #256
+	mov	r0, #3
+	strh	r2, [r6]	@ movhi
+	ldr	r1, .L53+8
+	mov	r2, #83886080
+	mov	lr, pc
+	bx	r4
+	mov	r2, #2816
+	mov	r3, #2096
+	mov	r0, #3
+	strh	r2, [r6, #10]	@ movhi
+	ldr	r1, .L53+12
+	mov	r2, #100663296
+	mov	lr, pc
+	bx	r4
+	mov	r3, #1024
+	ldr	r2, .L53+16
+	ldr	r1, .L53+20
+	mov	r0, #3
+	mov	lr, pc
+	bx	r4
+	mov	r2, #0
+	ldr	r3, .L53+24
+	add	r1, r3, #1024
+.L41:
+	strh	r2, [r3]	@ movhi
+	strh	r2, [r3, #2]	@ movhi
+	strh	r2, [r3, #4]	@ movhi
+	add	r3, r3, #8
+	cmp	r3, r1
+	bne	.L41
+	ldr	r6, .L53+28
+	mov	r3, #512
+	mov	r2, #117440512
+	mov	r0, #3
+	ldr	r1, .L53+24
+	mov	lr, pc
+	bx	r4
+	ldrh	r3, [r6]
+	tst	r3, #8
+	beq	.L42
+	ldr	r2, .L53+32
+	ldrh	r2, [r2]
+	ands	r4, r2, #8
+	beq	.L52
+.L42:
+	tst	r3, #1
+	beq	.L40
+	ldr	r3, .L53+32
+	ldrh	r3, [r3]
+	tst	r3, #1
+	moveq	r2, #1
+	ldreq	r3, .L53+36
+	streq	r2, [r3]
+.L40:
+	pop	{r4, r5, r6, lr}
+	bx	lr
+.L52:
+	ldr	r0, [r5]
+	ldr	r3, .L53+40
+	mov	lr, pc
+	bx	r3
+	ldr	r3, .L53+44
+	mov	lr, pc
+	bx	r3
+	mov	r2, #67108864
+	ldr	r3, .L53+48
+	strh	r4, [r2]	@ movhi
+	mov	lr, pc
+	bx	r3
+	ldr	r3, .L53+52
+	mov	r2, #1
+	ldr	r1, .L53+56
+	ldr	r0, .L53+60
+	mov	lr, pc
+	bx	r3
+	bl	goToGame2
+	ldrh	r3, [r6]
+	b	.L42
+.L54:
+	.align	2
+.L53:
+	.word	seed
+	.word	DMANow
+	.word	splashScreenPal
+	.word	splashScreenTiles
+	.word	100685824
+	.word	splashScreenMap
+	.word	shadowOAM
+	.word	oldButtons
+	.word	buttons
+	.word	state
+	.word	srand
+	.word	initGame
+	.word	stopSound
+	.word	playSoundA
+	.word	1324512
+	.word	gameSound
+	.size	splash, .-splash
+	.align	2
+	.global	instruction
+	.syntax unified
+	.arm
+	.fpu softvfp
+	.type	instruction, %function
+instruction:
+	@ Function supports interworking.
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	push	{r4, r5, r6, lr}
+	mov	r2, #512
+	mov	r5, #67108864
+	ldr	r4, .L67
+	strh	r2, [r5]	@ movhi
+	mov	r3, #256
+	mov	r2, #83886080
+	mov	r0, #3
+	ldr	r1, .L67+4
+	mov	lr, pc
+	bx	r4
+	mov	r2, #2816
+	mov	r0, #3
+	strh	r2, [r5, #10]	@ movhi
+	ldr	r3, .L67+8
+	mov	r2, #100663296
+	ldr	r1, .L67+12
+	ldr	r5, .L67+16
+	mov	lr, pc
+	bx	r4
+	mov	r3, #1024
+	mov	r0, #3
+	ldr	r2, .L67+20
+	ldr	r1, .L67+24
+	mov	lr, pc
+	bx	r4
+	ldrh	r3, [r5]
+	tst	r3, #8
+	beq	.L56
+	ldr	r2, .L67+28
+	ldrh	r2, [r2]
+	tst	r2, #8
+	beq	.L65
+.L56:
+	tst	r3, #1
+	beq	.L55
+	ldr	r3, .L67+28
+	ldrh	r3, [r3]
+	tst	r3, #1
+	beq	.L66
+.L55:
+	pop	{r4, r5, r6, lr}
+	bx	lr
+.L66:
+	pop	{r4, r5, r6, lr}
+	b	goToSplash
+.L65:
+	ldr	r2, .L67+32
+	ldr	r3, .L67+36
+	ldr	r0, [r2]
+	mov	lr, pc
+	bx	r3
+	bl	goToGame2
+	ldrh	r3, [r5]
+	b	.L56
+.L68:
+	.align	2
+.L67:
+	.word	DMANow
+	.word	instructionsScreenPal
+	.word	5792
+	.word	instructionsScreenTiles
+	.word	oldButtons
+	.word	100685824
+	.word	instructionsScreenMap
+	.word	buttons
+	.word	seed
+	.word	srand
+	.size	instruction, .-instruction
 	.align	2
 	.global	game2
 	.syntax unified
@@ -849,39 +806,23 @@ pause:
 	ldrh	r3, [r3]
 	tst	r3, #8
 	bne	.L101
-	ldr	r6, .L108+28
-	ldr	r4, [r6, #8]
-	cmp	r4, #0
+	ldr	r3, .L108+28
+	ldr	r3, [r3, #8]
+	cmp	r3, #0
 	ldr	r3, .L108+32
 	beq	.L103
 	mov	lr, pc
 	bx	r3
 	pop	{r4, r5, r6, lr}
 	b	goToGame
-.L103:
-	mov	lr, pc
-	bx	r3
-	mov	r3, #512
-	mov	r0, #5
-	mov	r1, #4
-	ldr	r2, .L108+36
-	str	r4, [r2]
-	ldr	r2, .L108+40
-	str	r4, [r2]
-	strh	r3, [r5]	@ movhi
-	ldr	r3, .L108+44
-	ldr	r2, .L108+48
-	str	r0, [r3, #8]
-	str	r1, [r3, #12]
-	str	r4, [r6, #8]
-	mov	lr, pc
-	bx	r2
-	mov	r2, #3
-	ldr	r3, .L108+52
-	str	r2, [r3]
 .L101:
 	pop	{r4, r5, r6, lr}
 	bx	lr
+.L103:
+	mov	lr, pc
+	bx	r3
+	pop	{r4, r5, r6, lr}
+	b	goToGame2
 .L109:
 	.align	2
 .L108:
@@ -894,11 +835,6 @@ pause:
 	.word	buttons
 	.word	.LANCHOR0
 	.word	unpauseSound
-	.word	hOff
-	.word	vOff
-	.word	panda
-	.word	hideSprites
-	.word	state
 	.size	pause, .-pause
 	.align	2
 	.global	goToWin

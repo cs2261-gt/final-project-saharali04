@@ -120,6 +120,7 @@ extern int vOff;
 extern int screenBlock;
 extern int hasShield;
 extern int goToMaze;
+extern int count;
 
 
     typedef struct {
@@ -193,7 +194,8 @@ void updatePanda();
 void drawFood();
 void drawEnemies();
 void drawDoor();
-void moveEnemies();
+void drawEnemiesRight();
+void drawEnemiesLeft();
 void updateGame();
 void updateGame2();
 void initGame();
@@ -1802,6 +1804,7 @@ void game() {
 
 
 void goToGame2() {
+    count = 0;
     game1 = 0;
     hOff = 0;
     vOff = 0;

@@ -11,6 +11,7 @@ extern int vOff;
 extern int screenBlock;
 extern int hasShield;
 extern int goToMaze;
+extern int count;
 
 
     typedef struct {
@@ -54,10 +55,10 @@ extern int goToMaze;
 
 
 
-    SPRITE food[37];
+    SPRITE food[35];
 
 
-    SPRITE enemies[37];
+    SPRITE enemies[34];
 
 
 
@@ -84,7 +85,8 @@ void updatePanda();
 void drawFood();
 void drawEnemies();
 void drawDoor();
-void moveEnemies();
+void drawEnemiesRight();
+void drawEnemiesLeft();
 void updateGame();
 void updateGame2();
 void initGame();
@@ -1087,7 +1089,7 @@ void initPanda() {
 }
 
 void initFood() {
-    for (int i = 0; i < 37; i++)
+    for (int i = 0; i < 35; i++)
     {
         food[i].active = 1;
         food[i].width = 8;
@@ -1096,30 +1098,30 @@ void initFood() {
         food[i].row = (rand() % 133);
         food[i].cdel = 2;
         food[i].rdel = 2;
-        if (i < 5) {
-            food[i].col = 32;
+        if (i < 4) {
+            food[i].col = 31;
             food[i].row = (i*30) + 15;
         }
-        if (i >= 5 && i < 10) {
-            food[i].col = 65;
-            food[i].row = ((i-5)*30);
+        if (i >= 4 && i < 9) {
+            food[i].col = 64;
+            food[i].row = ((i-4)*30);
         }
 
-        if (i >= 10 && i < 16) {
-            food[i].col = 105;
-            food[i].row = (i-10)*25 + 15;
+        if (i >= 9 && i < 14) {
+            food[i].col = 102;
+            food[i].row = (i-9)*25 + 12;
         }
-        if (i >= 16 && i < 22) {
-            food[i].col = 145;
-            food[i].row = ((i-16)*25);
+        if (i >= 14 && i < 20) {
+            food[i].col = 141;
+            food[i].row = ((i-14)*25);
         }
-        if (i >= 22 && i < 29) {
-            food[i].col = 185;
-            food[i].row = (i-22)*20 + 10;
+        if (i >= 20 && i < 27) {
+            food[i].col = 181;
+            food[i].row = (i-20)*20 + 10;
         }
-        if (i >= 29 && i < 37) {
-            food[i].col = 215;
-            food[i].row = ((i-29)*17) + 2;
+        if (i >= 27 && i < 35) {
+            food[i].col = 214;
+            food[i].row = 1 + ((i-27)*18);
         }
         if (i % 2)
         {
@@ -1134,7 +1136,7 @@ void initFood() {
 }
 
 void initEnemies() {
-    for (int i = 0; i < 37; i++)
+    for (int i = 0; i < 34; i++)
     {
         enemies[i].active = 1;
         enemies[i].width = 6;
@@ -1144,30 +1146,31 @@ void initEnemies() {
         enemies[i].aniState = 7;
 
 
+
         if (i < 5) {
-            enemies[i].col = 32;
+            enemies[i].col = 30;
             enemies[i].row = i*30;
         }
-        if (i >= 5 && i < 10) {
-            enemies[i].col = 65;
-            enemies[i].row = 9 + (i-5)*30;
+        if (i >= 5 && i < 9) {
+            enemies[i].col = 63;
+            enemies[i].row = 16 + (i-5)*30;
         }
 
-        if (i >= 10 && i < 16) {
-            enemies[i].col = 105;
-            enemies[i].row = (i-10)*25;
+        if (i >= 9 && i < 15) {
+            enemies[i].col = 101;
+            enemies[i].row = (i-9)*25;
         }
-        if (i >= 16 && i < 22) {
-            enemies[i].col = 145;
-            enemies[i].row = 9 + (i-16)*25;
+        if (i >= 15 && i < 20) {
+            enemies[i].col = 140;
+            enemies[i].row = 13 + (i-15)*25;
         }
-        if (i >= 22 && i < 29) {
-            enemies[i].col = 185;
-            enemies[i].row = (i-22)*20;
+        if (i >= 20 && i < 27) {
+            enemies[i].col = 180;
+            enemies[i].row = (i-20)*20;
         }
-        if (i >= 29 && i < 37) {
-            enemies[i].col = 215;
-            enemies[i].row = 9 + (i-29)*17;
+        if (i >= 27 && i < 34) {
+            enemies[i].col = 213;
+            enemies[i].row = 10 + (i-27)*18;
         }
 
 
@@ -1492,7 +1495,7 @@ void updatePanda2() {
 
 
 void checkFoodCollected() {
-     for (int i = 0; i < 37; i++) {
+     for (int i = 0; i < 35; i++) {
         if (food[i].active && collision(panda.col, panda.row, panda.width, panda.height, food[i].col, food[i].row, food[i].width, food[i].height)) {
             shadowOAM[i+1].attr0 = food[i].row | (0<<13) | (0<<14);
             shadowOAM[i+1].attr1 = food[i].col | (0<<14);
@@ -1512,7 +1515,7 @@ void checkFoodCollected() {
 }
 
 void checkEnemyCollision() {
-     for (int i = 0; i < 37; i++) {
+     for (int i = 0; i < 34; i++) {
         if (enemies[i].active && collision(panda.col, panda.row, panda.width, panda.height, enemies[i].col, enemies[i].row, enemies[i].width, enemies[i].height)) {
             hasLost = 1;
 
@@ -1557,7 +1560,7 @@ void drawPanda() {
 }
 
 void drawFood() {
-    for (int i = 0; i < 37; i++)
+    for (int i = 0; i < 35; i++)
     {
         if (food[i].active)
         {
@@ -1574,7 +1577,7 @@ void drawDoor() {
 }
 
 void clearFood() {
-    for (int i = 0; i < 37; i++)
+    for (int i = 0; i < 35; i++)
     {
         if (food[i].active)
         {
@@ -1587,8 +1590,9 @@ void clearFood() {
 
 
 void drawEnemies() {
-    for (int i = 0; i < 37; i++)
+    for (int i = 0; i < 34; i++)
     {
+        enemies[i].col+=1;
         if (enemies[i].active)
         {
             shadowOAM[i+45].attr0 = enemies[i].row | (0<<13) | (0<<14);
@@ -1596,24 +1600,37 @@ void drawEnemies() {
             shadowOAM[i+45].attr2 = ((2)*32+(enemies[i].aniState));
         }
     }
-    if (count == 100) {
-        count = 0;
-    }
+
 }
-void moveEnemies() {
-    for (int i = 0; i < 37; i++)
+void drawEnemiesLeft() {
+    for (int i = 0; i < 34; i++)
     {
+
         if (enemies[i].active)
         {
-            shadowOAM[i+45].attr0 = (enemies[i].row + 3) | (0<<13) | (0<<14);
+            shadowOAM[i+45].attr0 = (enemies[i].row) | (0<<13) | (0<<14);
             shadowOAM[i+45].attr1 = (enemies[i].col) | (0<<14);
             shadowOAM[i+45].attr2 = ((3)*32+(enemies[i].aniState));
         }
     }
 }
 
+void drawEnemiesRight() {
+
+    for (int i = 0; i < 34; i++)
+    {
+        enemies[i].col+=1;
+        if (enemies[i].active)
+        {
+            shadowOAM[i+45].attr0 = (enemies[i].row) | (0<<13) | (0<<14);
+            shadowOAM[i+45].attr1 = (enemies[i].col) | (0<<14);
+            shadowOAM[i+45].attr2 = ((4)*32+(enemies[i].aniState));
+        }
+    }
+}
+
 void clearEnemies() {
-    for (int i = 0; i < 37; i++)
+    for (int i = 0; i < 34; i++)
     {
         shadowOAM[i+45].attr0 = enemies[i].row | (0<<13) | (0<<14);
         shadowOAM[i+45].attr1 = enemies[i].col | (0<<14);
@@ -1755,31 +1772,37 @@ void updateGame2() {
     drawFoodCollected();
 
 
-
-
-
     if (hasShield) {
         drawShield();
         checkFoodCollected();
 
-        if (count < 50) {
-            moveEnemies();
-        } else {
+        if (count < 33) {
+            drawEnemiesLeft();
+        } else if (count == 66) {
             drawEnemies();
+        } else if (count == 100) {
+            drawEnemiesRight();
         }
 
     } else {
 
-        if (count < 50) {
-            moveEnemies();
-        } else {
+        if (count < 33) {
+            drawEnemiesLeft();
+        } else if (count == 67) {
             drawEnemies();
+        } else if (count == 100) {
+            drawEnemiesRight();
         }
-
         drawFood();
         checkFoodCollected();
         checkEnemyCollision();
 
+    }
+    if (count == 133) {
+        count = 0;
+        for (int i = 0; i < 34; i++) {
+            enemies[i].col-=2;
+        }
     }
 
 

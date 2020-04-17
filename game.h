@@ -6,6 +6,7 @@ extern int vOff;
 extern int screenBlock;
 extern int hasShield;
 extern int goToMaze;
+extern int count;
 // Structs
     // Panda struct
     typedef struct {
@@ -49,11 +50,11 @@ extern int goToMaze;
 
 
     // Food variables
-    SPRITE food[37];
-    #define FOODCOUNT 37
+    SPRITE food[35];
+    #define FOODCOUNT 35
 
-    SPRITE enemies[37];
-    #define ENEMYCOUNT 37
+    SPRITE enemies[34];
+    #define ENEMYCOUNT 34
 
     // Basket variables
     SPRITE baskets[3];
@@ -79,7 +80,8 @@ void updatePanda();
 void drawFood();
 void drawEnemies();
 void drawDoor();
-void moveEnemies();
+void drawEnemiesRight();
+void drawEnemiesLeft();
 void updateGame();
 void updateGame2();
 void initGame();
