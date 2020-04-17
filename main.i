@@ -164,10 +164,10 @@ extern int count;
 
 
 
-    SPRITE food[37];
+    SPRITE food[35];
 
 
-    SPRITE enemies[37];
+    SPRITE enemies[34];
 
 
 
@@ -249,13 +249,13 @@ extern const unsigned short gameScreenPal[16];
 # 15 "main.c" 2
 # 1 "gameScreen2.h" 1
 # 22 "gameScreen2.h"
-extern const unsigned short gameScreen2Tiles[128];
+extern const unsigned short gameScreen2Tiles[416];
 
 
 extern const unsigned short gameScreen2Map[1024];
 
 
-extern const unsigned short gameScreen2Pal[256];
+extern const unsigned short gameScreen2Pal[16];
 # 16 "main.c" 2
 # 1 "pauseScreen.h" 1
 # 22 "pauseScreen.h"
@@ -1555,7 +1555,7 @@ extern const unsigned short scoreBackground2Tiles[544];
 extern const unsigned short scoreBackground2Map[1024];
 
 
-extern const unsigned short scoreBackground2Pal[16];
+extern const unsigned short scoreBackground2Pal[256];
 # 27 "main.c" 2
 
 
@@ -1823,7 +1823,7 @@ void game2() {
 
     DMANow(3, shadowOAM, ((OBJ_ATTR*)(0x7000000)), 128 * 4);
 
-    DMANow(3, &gameScreen2Pal, ((unsigned short *)0x5000000), 512/2);
+    DMANow(3, &gameScreen2Pal, ((unsigned short *)0x5000000), 32/2);
 
 
     (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((31)<<8);
@@ -1831,7 +1831,7 @@ void game2() {
 
 
 
-    DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 256/2);
+    DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 832/2);
 
     DMANow(3, scoreBackground2Pal, ((unsigned short *)0x5000000), 32/2);
 

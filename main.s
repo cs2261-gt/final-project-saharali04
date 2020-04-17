@@ -588,7 +588,7 @@ game2:
 	mov	r2, #117440512
 	mov	lr, pc
 	bx	r4
-	mov	r3, #256
+	mov	r3, #16
 	mov	r2, #83886080
 	mov	r0, #3
 	ldr	r1, .L96+8
@@ -602,7 +602,7 @@ game2:
 	ldr	r2, .L96+16
 	mov	lr, pc
 	bx	r4
-	mov	r3, #128
+	mov	r3, #416
 	mov	r2, #100663296
 	mov	r0, #3
 	ldr	r1, .L96+20
@@ -1168,8 +1168,8 @@ test:
 	.comm	buttons,2,2
 	.comm	pandas,204,4
 	.comm	baskets,120,4
-	.comm	enemies,1480,4
-	.comm	food,1480,4
+	.comm	enemies,1360,4
+	.comm	food,1400,4
 	.comm	door,40,4
 	.comm	panda,68,4
 	.bss
