@@ -118,7 +118,7 @@ int collision(int colA, int rowA, int widthA, int heightA, int colB, int rowB, i
 extern int hOff;
 extern int vOff;
 extern int screenBlock;
-extern int cheatGame;
+extern int hasShield;
 extern int goToMaze;
 
 
@@ -198,6 +198,7 @@ void updateGame();
 void updateGame2();
 void initGame();
 void initFood();
+void initDoor();
 void initEnemies();
 void drawBaskets();
 void initBaskets();
@@ -212,6 +213,7 @@ void updatePanda2();
 void cheat();
 void clearEnemies();
 void checkEnemyCollision();
+void drawShield();
 # 12 "main.c" 2
 # 1 "splashScreen.h" 1
 # 22 "splashScreen.h"
@@ -235,7 +237,7 @@ extern const unsigned short instructionsScreenPal[256];
 # 14 "main.c" 2
 # 1 "gameScreen.h" 1
 # 22 "gameScreen.h"
-extern const unsigned short gameScreenTiles[128];
+extern const unsigned short gameScreenTiles[2400];
 
 
 extern const unsigned short gameScreenMap[4096];
@@ -1767,7 +1769,7 @@ void game() {
 
     DMANow(3, &gameScreenPal, ((unsigned short *)0x5000000), 512/2);
 
-    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 256/2);
+    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 4800/2);
 
     DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[28], 8192/2);
 
@@ -1852,6 +1854,9 @@ void game2() {
     {
         stopSound();
   playSoundA(gameSound, 1324512, 1);
+        goToGame();
+    }
+    if ((!(~(oldButtons)&((1<<2))) && (~buttons & ((1<<2))))) {
         goToGame();
     }
 

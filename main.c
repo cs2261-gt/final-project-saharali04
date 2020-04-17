@@ -325,6 +325,9 @@ void game2() {
 		playSoundA(gameSound, GAMESOUNDLEN, 1);
         goToGame();
     }
+    if (BUTTON_PRESSED(BUTTON_SELECT)) {
+        goToGame();
+    }
 
     if (hasLost) {
         goToLose();
