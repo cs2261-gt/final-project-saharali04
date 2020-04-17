@@ -285,14 +285,14 @@ void goToGame2() {
 // Runs every frame of the game state
 void game2() {
     REG_DISPCTL = 0;
-    REG_DISPCTL = MODE0 | BG2_ENABLE | SPRITE_ENABLE | BG0_ENABLE;
+    REG_DISPCTL = MODE0 | BG1_ENABLE | SPRITE_ENABLE | BG0_ENABLE;
 
     DMANow(3, shadowOAM, OAM, 128 * 4);
     
     DMANow(3, &gameScreen2Pal, PALETTE, gameScreen2PalLen/2);
 
     // Set up bg 1 control register
-    REG_BG2CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(31);
+    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(31);
     DMANow(3, gameScreen2Map, &SCREENBLOCK[31], gameScreen2MapLen/2);
      
 

@@ -448,7 +448,7 @@ game:
 	mov	r2, #4864
 	mov	r5, #67108864
 	ldr	r4, .L63
-	mov	r3, #256
+	mov	r3, #16
 	mov	r0, #3
 	strh	r2, [r5]	@ movhi
 	ldr	r1, .L63+4
@@ -467,7 +467,7 @@ game:
 	ldr	r1, .L63+16
 	mov	lr, pc
 	bx	r4
-	mov	r3, #256
+	mov	r3, #16
 	mov	r2, #83886080
 	mov	r0, #3
 	ldr	r1, .L63+20
@@ -621,7 +621,7 @@ game2:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	push	{r4, r5, r6, lr}
-	mov	r2, #5376
+	mov	r2, #4864
 	mov	r5, #67108864
 	ldr	r4, .L96
 	mov	r3, #512
@@ -640,18 +640,18 @@ game2:
 	mov	r2, #7936
 	mov	r3, #1024
 	mov	r0, #3
-	strh	r2, [r5, #12]	@ movhi
+	strh	r2, [r5, #10]	@ movhi
 	ldr	r1, .L96+12
 	ldr	r2, .L96+16
 	mov	lr, pc
 	bx	r4
-	mov	r3, #64
+	mov	r3, #128
 	mov	r2, #100663296
 	mov	r0, #3
 	ldr	r1, .L96+20
 	mov	lr, pc
 	bx	r4
-	mov	r3, #256
+	mov	r3, #16
 	mov	r2, #83886080
 	mov	r0, #3
 	ldr	r1, .L96+24

@@ -243,11 +243,11 @@ extern const unsigned short gameScreenTiles[25600];
 extern const unsigned short gameScreenMap[4096];
 
 
-extern const unsigned short gameScreenPal[256];
+extern const unsigned short gameScreenPal[16];
 # 15 "main.c" 2
 # 1 "gameScreen2.h" 1
 # 22 "gameScreen2.h"
-extern const unsigned short gameScreen2Tiles[64];
+extern const unsigned short gameScreen2Tiles[128];
 
 
 extern const unsigned short gameScreen2Map[1024];
@@ -300,7 +300,7 @@ extern const unsigned short scoreBackgroundTiles[512];
 extern const unsigned short scoreBackgroundMap[1024];
 
 
-extern const unsigned short scoreBackgroundPal[256];
+extern const unsigned short scoreBackgroundPal[16];
 # 21 "main.c" 2
 # 1 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdlib.h" 1 3
 # 10 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdlib.h" 3
@@ -1553,7 +1553,7 @@ extern const unsigned short scoreBackground2Tiles[544];
 extern const unsigned short scoreBackground2Map[1024];
 
 
-extern const unsigned short scoreBackground2Pal[256];
+extern const unsigned short scoreBackground2Pal[16];
 # 27 "main.c" 2
 
 
@@ -1767,13 +1767,13 @@ void game() {
     (*(unsigned short *)0x4000000) = 0;
     (*(unsigned short *)0x4000000) = 0 | (1<<12) | (1<<8) | (1<<9);
 
-    DMANow(3, &gameScreenPal, ((unsigned short *)0x5000000), 512/2);
+    DMANow(3, &gameScreenPal, ((unsigned short *)0x5000000), 32/2);
 
     DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 51200/2);
 
     DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[28], 8192/2);
 
-    DMANow(3, scoreBackgroundPal, ((unsigned short *)0x5000000), 512/2);
+    DMANow(3, scoreBackgroundPal, ((unsigned short *)0x5000000), 32/2);
 
     DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[1], 1024/2);
 
@@ -1816,21 +1816,21 @@ void goToGame2() {
 
 void game2() {
     (*(unsigned short *)0x4000000) = 0;
-    (*(unsigned short *)0x4000000) = 0 | (1<<10) | (1<<12) | (1<<8);
+    (*(unsigned short *)0x4000000) = 0 | (1<<9) | (1<<12) | (1<<8);
 
     DMANow(3, shadowOAM, ((OBJ_ATTR*)(0x7000000)), 128 * 4);
 
     DMANow(3, &gameScreen2Pal, ((unsigned short *)0x5000000), 512/2);
 
 
-    (*(volatile unsigned short*)0x400000C) = (0<<14) | ((0)<<2) | ((31)<<8);
+    (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((31)<<8);
     DMANow(3, gameScreen2Map, &((screenblock *)0x6000000)[31], 2048/2);
 
 
 
-    DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 128/2);
+    DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 256/2);
 
-    DMANow(3, scoreBackground2Pal, ((unsigned short *)0x5000000), 512/2);
+    DMANow(3, scoreBackground2Pal, ((unsigned short *)0x5000000), 32/2);
 
     DMANow(3, scoreBackground2Tiles, &((charblock *)0x6000000)[1], 1024/2);
 
