@@ -1758,8 +1758,8 @@ void goToGame() {
     hideSprites();
     (*(volatile unsigned short *)0x04000016) = vOff;
     (*(volatile unsigned short *)0x04000014) = hOff;
-    panda.worldCol = 120;
-    panda.worldRow = 70;
+    panda.worldCol = 73;
+    panda.worldRow = 64;
     state = GAME;
 
 }

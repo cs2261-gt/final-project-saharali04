@@ -165,8 +165,8 @@ goToGame:
 	mov	lr, pc
 	bx	r3
 	mov	r2, #67108864
-	mov	ip, #120
-	mov	r0, #70
+	mov	ip, #73
+	mov	r0, #64
 	mov	r1, #2
 	ldr	r3, .L15+12
 	ldrh	r3, [r3]

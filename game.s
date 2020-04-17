@@ -715,8 +715,8 @@ updatePanda:
 	beq	.L135
 .L75:
 	mov	ip, #0
-	mov	r5, #120
-	mov	lr, #70
+	mov	r5, #73
+	mov	lr, #64
 	mov	r6, #28
 	str	ip, [r0]
 	str	ip, [r1]
@@ -732,8 +732,8 @@ updatePanda:
 	b	.L74
 .L68:
 	mov	ip, #0
-	mov	r2, #120
-	mov	r3, #70
+	mov	r2, #73
+	mov	r3, #64
 	mov	r5, #28
 	ldr	lr, .L136+52
 	ldr	r0, .L136+28
@@ -800,9 +800,9 @@ updatePanda:
 	str	r1, [r4, #36]
 	b	.L83
 .L70:
-	mov	r5, #120
+	mov	r5, #73
 	mov	ip, #0
-	mov	lr, #70
+	mov	lr, #64
 	mov	r6, #28
 	mov	r2, r5
 	str	r5, [r4, #4]

@@ -1247,10 +1247,10 @@ void updatePanda() {
 
                     }
             } else {
-                panda.col = 120;
-                panda.row = 70;
-                panda.worldCol = 120;
-                panda.worldRow = 70;
+                panda.col = 73;
+                panda.row = 64;
+                panda.worldCol = 73;
+                panda.worldRow = 64;
                 hOff = 0;
                 vOff = 0;
                 playerHOff = 0;
@@ -1278,10 +1278,10 @@ void updatePanda() {
                     }
 
                 } else {
-                    panda.col = 120;
-                    panda.row = 70;
-                    panda.worldCol = 120;
-                    panda.worldRow = 70;
+                    panda.col = 73;
+                    panda.row = 64;
+                    panda.worldCol = 73;
+                    panda.worldRow = 64;
                     hOff = 0;
                     vOff = 0;
                     playerHOff = 0;
@@ -1309,10 +1309,10 @@ void updatePanda() {
                     }
 
                     } else {
-                        panda.col = 120;
-                        panda.row = 70;
-                        panda.worldCol = 120;
-                        panda.worldRow = 70;
+                        panda.col = 73;
+                        panda.row = 64;
+                        panda.worldCol = 73;
+                        panda.worldRow = 64;
                         hOff = 0;
                         vOff = 0;
                         playerHOff = 0;

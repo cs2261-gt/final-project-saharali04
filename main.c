@@ -225,8 +225,8 @@ void goToGame() {
     hideSprites();
     REG_BG1VOFF = vOff;
     REG_BG1HOFF = hOff;
-    panda.worldCol = 120;
-    panda.worldRow = 70;
+    panda.worldCol = 73;
+    panda.worldRow = 64;
     state = GAME;
 
 }
