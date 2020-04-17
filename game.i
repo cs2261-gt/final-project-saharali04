@@ -1434,7 +1434,7 @@ void updatePanda2() {
 
     }
 
-    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<7))) && panda.row < 132)
+    if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<7))) && panda.row < 126)
     {
         if (panda.worldRow + panda.height < 256 && collisionmap2Bitmap[((panda.worldRow + panda.height)*(256)+(panda.worldCol))]
             && collisionmap2Bitmap[((panda.worldRow + panda.height)*(256)+(panda.worldCol + panda.width - panda.cdel))]) {

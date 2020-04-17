@@ -396,7 +396,7 @@ void updatePanda2() {
         
     }
 
-    if (BUTTON_HELD(BUTTON_DOWN) && panda.row < 132) 
+    if (BUTTON_HELD(BUTTON_DOWN) && panda.row < 126) 
     {
         if (panda.worldRow + panda.height < WORLDHEIGHT && collisionmap2Bitmap[OFFSET(panda.worldCol, panda.worldRow + panda.height, WORLDWIDTH2)]
             && collisionmap2Bitmap[OFFSET(panda.worldCol + panda.width - panda.cdel, panda.worldRow + panda.height, WORLDWIDTH2)]) {

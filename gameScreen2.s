@@ -1371,61 +1371,61 @@ gameScreen2Tiles:
 	.short	-8739
 	.short	-8739
 	.short	-8739
-	.short	-17477
-	.short	-8739
-	.short	-21845
-	.short	-8739
-	.short	-21845
-	.short	-8739
-	.short	-21845
-	.short	-8739
-	.short	-21845
-	.short	-8739
-	.short	-17477
-	.short	-8739
-	.short	-17477
 	.short	-8739
 	.short	-8739
-	.short	-17477
-	.short	-8773
-	.short	-21829
-	.short	-8774
-	.short	-21829
-	.short	-8774
-	.short	-21829
-	.short	-8774
-	.short	-21829
-	.short	-8774
-	.short	27579
-	.short	-8778
-	.short	27579
-	.short	-8778
+	.short	-8787
 	.short	-8739
-	.short	-21845
+	.short	-8787
 	.short	-8739
-	.short	-21845
+	.short	-8787
 	.short	-8739
-	.short	-21845
-	.short	-8739
-	.short	-21845
-	.short	-8739
-	.short	-17477
+	.short	-8787
 	.short	-8739
 	.short	-8739
 	.short	-8739
 	.short	-8739
 	.short	-8739
 	.short	-8739
-	.short	-21829
-	.short	-8774
-	.short	-21829
-	.short	-8774
-	.short	-21829
-	.short	-8774
-	.short	-21829
-	.short	-8774
-	.short	-17477
-	.short	-8773
+	.short	-8739
+	.short	-8739
+	.short	-21795
+	.short	-8742
+	.short	-21795
+	.short	-8742
+	.short	-21795
+	.short	-8742
+	.short	-21795
+	.short	-8742
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-8787
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-21795
+	.short	-8739
+	.short	-9507
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-8739
+	.short	-8739
 	.short	-8739
 	.short	-8739
 	.short	-8739

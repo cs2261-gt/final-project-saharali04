@@ -947,7 +947,7 @@ updatePanda2:
 	tst	r1, #128
 	bne	.L143
 	ldr	r1, [r4]
-	cmp	r1, #131
+	cmp	r1, #125
 	ble	.L178
 .L143:
 	ldr	r1, .L181+20
