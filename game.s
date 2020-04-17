@@ -173,7 +173,7 @@ initFood:
 	b	.L11
 .L20:
 	mov	r3, #25
-	mov	r2, #102
+	mov	r2, #101
 	mul	r3, r5, r3
 	sub	r3, r3, #213
 	str	r3, [r4]
@@ -280,7 +280,7 @@ initEnemies:
 	b	.L33
 .L39:
 	mov	ip, #25
-	mov	r10, #101
+	mov	r10, #100
 	mul	ip, r3, ip
 	sub	ip, ip, #225
 	str	ip, [r2]

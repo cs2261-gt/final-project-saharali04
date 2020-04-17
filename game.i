@@ -1108,7 +1108,7 @@ void initFood() {
         }
 
         if (i >= 9 && i < 14) {
-            food[i].col = 102;
+            food[i].col = 101;
             food[i].row = (i-9)*25 + 12;
         }
         if (i >= 14 && i < 20) {
@@ -1157,7 +1157,7 @@ void initEnemies() {
         }
 
         if (i >= 9 && i < 15) {
-            enemies[i].col = 101;
+            enemies[i].col = 100;
             enemies[i].row = (i-9)*25;
         }
         if (i >= 15 && i < 20) {
