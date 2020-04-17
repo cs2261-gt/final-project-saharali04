@@ -4,12 +4,12 @@
 //======================================================================
 //
 //	gameScreen, 1024x256@4, 
-//	+ palette 256 entries, not compressed
-//	+ 128 tiles (t|f|p reduced) not compressed
+//	+ palette 16 entries, not compressed
+//	+ 1600 tiles (t|f|p reduced) not compressed
 //	+ regular map (in SBBs), not compressed, 128x32 
-//	Total size: 512 + 4096 + 8192 = 12800
+//	Total size: 32 + 51200 + 8192 = 59424
 //
-//	Time-stamp: 2020-04-16, 20:16:52
+//	Time-stamp: 2020-04-16, 22:43:19
 //	Exported by Cearn's GBA Image Transmogrifier, v0.8.3
 //	( http://www.coranac.com/projects/#grit )
 //
@@ -18,14 +18,14 @@
 #ifndef GRIT_GAMESCREEN_H
 #define GRIT_GAMESCREEN_H
 
-#define gameScreenTilesLen 4096
-extern const unsigned short gameScreenTiles[2048];
+#define gameScreenTilesLen 51200
+extern const unsigned short gameScreenTiles[25600];
 
 #define gameScreenMapLen 8192
 extern const unsigned short gameScreenMap[4096];
 
-#define gameScreenPalLen 512
-extern const unsigned short gameScreenPal[256];
+#define gameScreenPalLen 32
+extern const unsigned short gameScreenPal[16];
 
 #endif // GRIT_GAMESCREEN_H
 

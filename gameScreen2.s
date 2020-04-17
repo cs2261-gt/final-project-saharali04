@@ -19,18 +19,18 @@
 	.size	gameScreen2Pal, 512
 gameScreen2Pal:
 	.short	32767
-	.short	448
-	.short	576
-	.short	16
-	.short	8570
-	.short	31744
-	.short	16320
-	.short	21525
-	.short	28688
-	.short	827
-	.short	22943
+	.short	12751
+	.short	10604
+	.short	7433
+	.short	11521
 	.short	0
-	.short	208
+	.short	9740
+	.short	5347
+	.short	7559
+	.short	8683
+	.short	5424
+	.short	3309
+	.short	32767
 	.short	15583
 	.short	16913
 	.short	24480
@@ -787,12 +787,8 @@ gameScreen2Map:
 	.short	1
 	.short	1
 	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	2
-	.short	1
+	.short	4
+	.short	5
 	.short	1
 	.short	1
 	.short	2
@@ -800,7 +796,6 @@ gameScreen2Map:
 	.short	1
 	.short	1
 	.short	2
-	.short	1
 	.short	1
 	.short	1
 	.short	1
@@ -819,8 +814,13 @@ gameScreen2Map:
 	.short	1
 	.short	1
 	.short	1
+	.short	2
 	.short	1
 	.short	1
+	.short	1
+	.short	1
+	.short	6
+	.short	7
 	.short	1
 	.short	1
 	.short	1
@@ -1302,7 +1302,7 @@ gameScreen2Map:
 	.short	1
 	.short	1
 	.type	gameScreen2Tiles, %object
-	.size	gameScreen2Tiles, 128
+	.size	gameScreen2Tiles, 256
 gameScreen2Tiles:
 	.short	0
 	.short	0
@@ -1320,52 +1320,116 @@ gameScreen2Tiles:
 	.short	0
 	.short	0
 	.short	0
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-21846
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	21845
+	.short	4369
+	.short	4369
+	.short	4369
 	.short	-17477
+	.short	4369
+	.short	-21845
+	.short	4369
+	.short	-21845
+	.short	4369
+	.short	-21845
+	.short	4369
+	.short	-21845
+	.short	4369
 	.short	-17477
+	.short	4369
 	.short	-17477
+	.short	4369
+	.short	4369
 	.short	-17477
+	.short	4539
+	.short	-21829
+	.short	4538
+	.short	-21829
+	.short	4538
+	.short	-21829
+	.short	4538
+	.short	-21829
+	.short	4538
+	.short	27579
+	.short	4534
+	.short	27579
+	.short	4534
+	.short	4369
+	.short	-21845
+	.short	4369
+	.short	-21845
+	.short	4369
+	.short	-21845
+	.short	4369
+	.short	-21845
+	.short	4369
 	.short	-17477
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	-21829
+	.short	4538
+	.short	-21829
+	.short	4538
+	.short	-21829
+	.short	4538
+	.short	-21829
+	.short	4538
 	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-21846
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
-	.short	-17477
+	.short	4539
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
+	.short	4369
 	.ident	"GCC: (devkitARM release 53) 9.1.0"

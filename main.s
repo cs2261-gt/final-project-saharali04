@@ -455,7 +455,7 @@ game:
 	mov	r2, #83886080
 	mov	lr, pc
 	bx	r4
-	mov	r3, #2400
+	mov	r3, #25600
 	mov	r2, #100663296
 	mov	r0, #3
 	ldr	r1, .L63+8
@@ -473,7 +473,7 @@ game:
 	ldr	r1, .L63+20
 	mov	lr, pc
 	bx	r4
-	mov	r3, #544
+	mov	r3, #512
 	mov	r0, #3
 	ldr	r2, .L63+24
 	ldr	r1, .L63+28
@@ -657,7 +657,7 @@ game2:
 	ldr	r1, .L96+24
 	mov	lr, pc
 	bx	r4
-	mov	r3, #544
+	mov	r3, #512
 	mov	r0, #3
 	ldr	r2, .L96+28
 	ldr	r1, .L96+32

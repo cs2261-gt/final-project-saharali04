@@ -1137,11 +1137,11 @@ void initEnemies() {
     for (int i = 0; i < 37; i++)
     {
         enemies[i].active = 1;
-        enemies[i].width = 8;
-        enemies[i].height = 8;
+        enemies[i].width = 6;
+        enemies[i].height = 6;
         enemies[i].cdel = 2;
         enemies[i].rdel = 2;
-        enemies[i].aniState = 8;
+        enemies[i].aniState = 7;
 
 
         if (i < 5) {
@@ -1593,7 +1593,7 @@ void drawEnemies() {
         {
             shadowOAM[i+45].attr0 = enemies[i].row | (0<<13) | (0<<14);
             shadowOAM[i+45].attr1 = enemies[i].col | (0<<14);
-            shadowOAM[i+45].attr2 = ((1)*32+(enemies[i].aniState));
+            shadowOAM[i+45].attr2 = ((2)*32+(enemies[i].aniState));
         }
     }
     if (count == 100) {
@@ -1607,7 +1607,7 @@ void moveEnemies() {
         {
             shadowOAM[i+45].attr0 = (enemies[i].row + 3) | (0<<13) | (0<<14);
             shadowOAM[i+45].attr1 = (enemies[i].col) | (0<<14);
-            shadowOAM[i+45].attr2 = ((1)*32+(enemies[i].aniState));
+            shadowOAM[i+45].attr2 = ((3)*32+(enemies[i].aniState));
         }
     }
 }

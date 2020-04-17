@@ -237,7 +237,7 @@ extern const unsigned short instructionsScreenPal[256];
 # 14 "main.c" 2
 # 1 "gameScreen.h" 1
 # 22 "gameScreen.h"
-extern const unsigned short gameScreenTiles[2400];
+extern const unsigned short gameScreenTiles[25600];
 
 
 extern const unsigned short gameScreenMap[4096];
@@ -294,7 +294,7 @@ extern const unsigned short spriteSheetPal[256];
 # 20 "main.c" 2
 # 1 "scoreBackground.h" 1
 # 22 "scoreBackground.h"
-extern const unsigned short scoreBackgroundTiles[544];
+extern const unsigned short scoreBackgroundTiles[512];
 
 
 extern const unsigned short scoreBackgroundMap[1024];
@@ -1769,13 +1769,13 @@ void game() {
 
     DMANow(3, &gameScreenPal, ((unsigned short *)0x5000000), 512/2);
 
-    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 4800/2);
+    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 51200/2);
 
     DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[28], 8192/2);
 
     DMANow(3, scoreBackgroundPal, ((unsigned short *)0x5000000), 512/2);
 
-    DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[1], 1088/2);
+    DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[1], 1024/2);
 
     DMANow(3, scoreBackgroundMap, &((screenblock *)0x6000000)[17], 2048/2);
 
@@ -1832,7 +1832,7 @@ void game2() {
 
     DMANow(3, scoreBackground2Pal, ((unsigned short *)0x5000000), 512/2);
 
-    DMANow(3, scoreBackground2Tiles, &((charblock *)0x6000000)[1], 1088/2);
+    DMANow(3, scoreBackground2Tiles, &((charblock *)0x6000000)[1], 1024/2);
 
     DMANow(3, scoreBackground2Map, &((screenblock *)0x6000000)[17], 2048/2);
     (*(volatile unsigned short*)0x4000008) = ((1)<<2) | ((17)<<8) | (0<<14);
