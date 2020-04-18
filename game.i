@@ -1139,8 +1139,8 @@ void initEnemies() {
     for (int i = 0; i < 34; i++)
     {
         enemies[i].active = 1;
-        enemies[i].width = 6;
-        enemies[i].height = 6;
+        enemies[i].width = 8;
+        enemies[i].height = 8;
         enemies[i].cdel = 2;
         enemies[i].rdel = 2;
         enemies[i].aniState = 7;
