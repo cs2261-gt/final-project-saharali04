@@ -4,12 +4,21 @@
 //======================================================================
 //
 //	gameScreen2, 256x256@4, 
+<<<<<<< HEAD
+//	+ palette 256 entries, not compressed
+//	+ 26 tiles (t|f|p reduced) not compressed
+//	+ regular map (in SBBs), not compressed, 32x32 
+//	Total size: 512 + 832 + 2048 = 3392
+//
+//	Time-stamp: 2020-04-19, 11:41:35
+=======
 //	+ palette 16 entries, not compressed
 //	+ 26 tiles (t|f|p reduced) not compressed
 //	+ regular map (in SBBs), not compressed, 32x32 
 //	Total size: 32 + 832 + 2048 = 2912
 //
 //	Time-stamp: 2020-04-17, 12:00:04
+>>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
 //	Exported by Cearn's GBA Image Transmogrifier, v0.8.3
 //	( http://www.coranac.com/projects/#grit )
 //

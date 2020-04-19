@@ -111,71 +111,63 @@ int main() {
 
 // Initialize the game on first launch
 void initialize() {
+    REG_DISPCTL = MODE0 | SPRITE_ENABLE;
+
+    // Set up bg1 and bg0 control register
+    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28);
+    REG_BG0CNT = BG_CHARBLOCK(2) | BG_SCREENBLOCK(25) | BG_SIZE_SMALL;
 
     DMANow(3, &spriteSheetPal, SPRITEPALETTE, spriteSheetPalLen/2);
-    DMANow(3, spriteSheetTiles, &CHARBLOCK[4], spriteSheetTilesLen/2);
-    hideSprites();
-    REG_DISPCTL = MODE0 | SPRITE_ENABLE;
-    initGame();
+    DMANow(3, spriteSheetTiles, &CHARBLOCK[4], spriteSheetTilesLen/2);    
+
     buttons = BUTTONS; 
-    goToSplash();
+
+    initGame();
     initBaskets();
     initPandas();
+    
     setupSounds();
 	setupInterrupts();
 
+    goToSplash();
 }
 
 // Sets up the splash state
 void goToSplash() {
+    REG_DISPCTL = MODE0 | BG1_ENABLE;
+
+    DMANow(3, &splashScreenPal, PALETTE, splashScreenPalLen/2);
+    DMANow(3, splashScreenTiles, &CHARBLOCK[0], splashScreenTilesLen/2);
+    DMANow(3, splashScreenMap, &SCREENBLOCK[28], splashScreenMapLen/2);
+
     REG_BG1HOFF = 0;
     REG_BG1VOFF = 0;
-    state = SPLASH;
     hasLost = 0;
     hasWon = 0;
     seed = 0;
+
     stopSound();
 	playSoundA(splashSound, SPLASHSOUNDLEN, 1);
+
+    hideSprites();
+    waitForVBlank();
+    DMANow(3, shadowOAM, OAM, 512);
+
+    state = SPLASH;
 
 }
 
 // Runs every frame of the splash state
 void splash() {
-
     seed++;
-    // Set up display control register
-    REG_DISPCTL = MODE0 | BG1_ENABLE;
-
-    // Load splashScreen tile palette
-    DMANow(3, &splashScreenPal, PALETTE, splashScreenPalLen/2);
-
-    // Set up bg 1 control register
-    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
-
-    // Load splashScreen tiles to charblock
-    DMANow(3, splashScreenTiles, &CHARBLOCK[0], splashScreenTilesLen/2);
-
-    // Load splashScreen map to screenblock
-    DMANow(3, splashScreenMap, &SCREENBLOCK[11], splashScreenMapLen/2);
-
-    for (int i = 0; i < SHADOWOAMLENGTH; i++) 
-    {
-        shadowOAM[i].attr0 = 0;
-        shadowOAM[i].attr1 = 0;
-        shadowOAM[i].attr2 = 0;
-    }
-
-
-    DMANow(3, shadowOAM, OAM, 128 * 4);
 
     if (BUTTON_PRESSED(BUTTON_START)) 
     {
         srand(seed);
         initGame();
-        REG_DISPCTL = MODE0;
         stopSound();
 		playSoundA(gameSound, GAMESOUNDLEN, 1);
-        goToGame2(); 
+        goToGame2();
     }
 
     if (BUTTON_PRESSED(BUTTON_A)) 
@@ -186,29 +178,24 @@ void splash() {
 
 }
 void goToInstruction() {
-
-    state = INSTRUCTION;
-
-}
-
-void instruction() {
     REG_DISPCTL = MODE0 | BG1_ENABLE;
 
     DMANow(3, &instructionsScreenPal, PALETTE, instructionsScreenPalLen/2);
-
-    // Set up bg 1 control register
-    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
-
-    // Load instructionScreen tiles to charblock
     DMANow(3, instructionsScreenTiles, &CHARBLOCK[0], instructionsScreenTilesLen/2);
+    DMANow(3, instructionsScreenMap, &SCREENBLOCK[28], instructionsScreenMapLen/2);
 
-    // Load instructionScreen map to screenblock
-    DMANow(3, instructionsScreenMap, &SCREENBLOCK[11], instructionsScreenMapLen/2);
+    state = INSTRUCTION;
+}
 
+void instruction() {
     if (BUTTON_PRESSED(BUTTON_START)) 
     {
         srand(seed);
+<<<<<<< HEAD
+        goToGame();
+=======
         goToGame2(); 
+>>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
     }
 
     if (BUTTON_PRESSED(BUTTON_A)) 
@@ -220,43 +207,60 @@ void instruction() {
 
 // Sets up the game state
 void goToGame() {
+<<<<<<< HEAD
+    REG_BG1CNT = BG_SIZE_WIDE | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28);
+
+    // bg 1 - displayed behind bg0
+    // use palette of game bc it has both the score palette and game palette
+    DMANow(3, &gameScreenPal, PALETTE, gameScreenPalLen/2);
+    DMANow(3, gameScreenTiles, &CHARBLOCK[0], gameScreenTilesLen/2);
+    DMANow(3, gameScreenMap, &SCREENBLOCK[28], gameScreenMapLen/2);
+
+    // bg 0
+    DMANow(3, scoreBackgroundTiles, &CHARBLOCK[2], scoreBackgroundTilesLen/2);
+    DMANow(3, scoreBackgroundMap, &SCREENBLOCK[25], scoreBackgroundMapLen/2);
+
+=======
     game1 = 1;
     initPandas();
+>>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
     hideSprites();
+    waitForVBlank();
+    DMANow(3, shadowOAM, OAM, 512);
+
+    // likely these inits can be done elsewhere to be cleaner
+    game1 = 1;
+    initPandas();
     REG_BG1VOFF = vOff;
     REG_BG1HOFF = hOff;
+<<<<<<< HEAD
+    panda.worldCol = 73; // you should set this up likely in initPanda
+    panda.worldRow = 64;
+
+=======
     panda.worldCol = 73;
     panda.worldRow = 64;
+>>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
     state = GAME;
 
 }
 
 // Runs every frame of the game state
 void game() {
-    REG_DISPCTL = 0;
-    REG_DISPCTL = MODE0 | SPRITE_ENABLE | BG0_ENABLE | BG1_ENABLE;
-
-    DMANow(3, &gameScreenPal, PALETTE, gameScreenPalLen/2);
-
-    DMANow(3, gameScreenTiles, &CHARBLOCK[0], gameScreenTilesLen/2);
-
-    DMANow(3, gameScreenMap, &SCREENBLOCK[28], gameScreenMapLen/2);
-
-    DMANow(3, scoreBackgroundPal, PALETTE, scoreBackgroundPalLen/2);
-
-    DMANow(3, scoreBackgroundTiles, &CHARBLOCK[1], scoreBackgroundTilesLen/2);
-
-    DMANow(3, scoreBackgroundMap, &SCREENBLOCK[17], scoreBackgroundMapLen/2);
-
-    REG_BG0CNT = BG_CHARBLOCK(1) | BG_SCREENBLOCK(17) | BG_SIZE_SMALL;
     updateGame();
     
-
     if (BUTTON_PRESSED(BUTTON_START)) 
     {
         pauseSound();
         goToPause();
     }
+<<<<<<< HEAD
+    if (BUTTON_PRESSED(BUTTON_SELECT))
+    {
+        goToGame2();
+    }
+=======
+>>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
 
     if (hasLost) {
         goToLose();
@@ -265,12 +269,16 @@ void game() {
     if (hasWon) {
         goToWin();
     }
-
 }
 
 
 // Sets up the game state
 void goToGame2() {
+<<<<<<< HEAD
+    REG_DISPCTL = MODE0 | SPRITE_ENABLE | BG0_ENABLE | BG1_ENABLE;
+    
+    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28);
+=======
     count = 0;
     game1 = 0;
     hOff = 0;
@@ -296,21 +304,43 @@ void game2() {
     REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(31);
     DMANow(3, gameScreen2Map, &SCREENBLOCK[31], gameScreen2MapLen/2);
      
+>>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
 
-    // Load loseScreen tiles to charblock
+    // bg 1 - displayed behind bg 0
+    // use palette of game bc it has both the score palette and game palette
+    DMANow(3, &gameScreen2Pal, PALETTE, gameScreen2PalLen/2);
+    DMANow(3, gameScreen2Map, &SCREENBLOCK[28], gameScreen2MapLen/2);
     DMANow(3, gameScreen2Tiles, &CHARBLOCK[0], gameScreen2TilesLen/2);
 
+<<<<<<< HEAD
+    // bg0
+    DMANow(3, scoreBackground2Tiles, &CHARBLOCK[2], scoreBackgroundTilesLen/2);
+    DMANow(3, scoreBackground2Map, &SCREENBLOCK[25], scoreBackgroundMapLen/2);
+
+    count = 0;
+    game1 = 0;
+    hOff = 0;
+    vOff = 0;
+    panda.worldRow = 5;
+    panda.worldCol = 4;
+
+    hideSprites();
+    waitForVBlank();
+    DMANow(3, shadowOAM, OAM, 512);
+=======
     DMANow(3, scoreBackground2Pal, PALETTE, scoreBackgroundPalLen/2);
 
     DMANow(3, scoreBackground2Tiles, &CHARBLOCK[1], scoreBackgroundTilesLen/2);
 
     DMANow(3, scoreBackground2Map, &SCREENBLOCK[17], scoreBackgroundMapLen/2);
     REG_BG0CNT = BG_CHARBLOCK(1) | BG_SCREENBLOCK(17) | BG_SIZE_SMALL;
+>>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
 
-    
-    
-    
-    
+    state = GAME2;
+}
+
+// Runs every frame of the game state
+void game2() {    
     updateGame2();
 
     
@@ -341,6 +371,12 @@ void game2() {
 }
 // Sets up the pause state
 void goToPause() {
+    REG_DISPCTL = MODE0 | BG0_ENABLE;
+
+    DMANow(3, &pauseScreenPal, PALETTE, pauseScreenPalLen/2);
+    DMANow(3, pauseScreenTiles, &CHARBLOCK[2], pauseScreenTilesLen/2);
+    DMANow(3, pauseScreenMap, &SCREENBLOCK[25], pauseScreenMapLen/2);
+
     REG_BG0HOFF = 0;
     REG_BG0VOFF = 0;
     state = PAUSE;
@@ -349,20 +385,6 @@ void goToPause() {
 
 // Runs every frame of the pause state
 void pause() {
-
-    REG_DISPCTL = MODE0 | BG0_ENABLE;
-
-    DMANow(3, &pauseScreenPal, PALETTE, pauseScreenPalLen/2);
-
-    // Set up bg 1 control register
-    REG_BG0CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
-
-    // Load pauseScreen tiles to charblock
-    DMANow(3, pauseScreenTiles, &CHARBLOCK[0], pauseScreenTilesLen/2);
-
-    // Load pauseScreen map to screenblock
-    DMANow(3, pauseScreenMap, &SCREENBLOCK[11], pauseScreenMapLen/2);
-
     if (BUTTON_PRESSED(BUTTON_START)) {
         if (game1) {
             unpauseSound();
@@ -373,36 +395,30 @@ void pause() {
         }
         
     }
+<<<<<<< HEAD
+=======
    
     
+>>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
 }
 
 // Sets up the win state
 void goToWin() {
+    REG_DISPCTL = MODE0 | BG0_ENABLE;
+
+    DMANow(3, &winScreenPal, PALETTE, winScreenPalLen/2);
+    DMANow(3, winScreenTiles, &CHARBLOCK[2], winScreenTilesLen/2);
+    DMANow(3, winScreenMap, &SCREENBLOCK[25], winScreenMapLen/2);
+
     REG_BG1HOFF = 0;
     REG_BG1VOFF = 0;
-    state = WIN;
     stopSound();
 
+    state = WIN;
 }
 
 
 void win() {
-    
-
-    REG_DISPCTL = MODE0 | BG1_ENABLE;
-
-    DMANow(3, &winScreenPal, PALETTE, winScreenPalLen/2);
-
-    // Set up bg 1 control register
-    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
-
-    // Load winScreen tiles to charblock
-    DMANow(3, winScreenTiles, &CHARBLOCK[0], winScreenTilesLen/2);
-    
-    // Load winScreen map to screenblock
-    DMANow(3, winScreenMap, &SCREENBLOCK[11], winScreenMapLen/2);
-    
     if (BUTTON_PRESSED(BUTTON_START)) {
         goToSplash();
     }
@@ -411,33 +427,24 @@ void win() {
 
 // Sets up the lose state
 void goToLose() {
+    REG_DISPCTL = MODE0 | BG0_ENABLE;
+
+    DMANow(3, &loseScreenPal, PALETTE, loseScreenPalLen/2);
+    DMANow(3, loseScreenTiles, &CHARBLOCK[2], loseScreenTilesLen/2);
+    DMANow(3, loseScreenMap, &SCREENBLOCK[25], loseScreenMapLen/2);
+
     REG_BG0HOFF = 0;
     REG_BG0VOFF = 0;
-    state = LOSE;
     stopSound();
 
+    state = LOSE;
 }
 
 // Runs every frame of the lose state
 void lose() {
-
-    REG_DISPCTL = MODE0 | BG0_ENABLE;
-
-    DMANow(3, &loseScreenPal, PALETTE, loseScreenPalLen/2);
-
-    // Set up bg 1 control register
-    REG_BG0CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(11);
-
-    // Load loseScreen tiles to charblock
-    DMANow(3, loseScreenTiles, &CHARBLOCK[0], loseScreenTilesLen/2);
-
-    // Load loseScreen map to screenblock
-    DMANow(3, loseScreenMap, &SCREENBLOCK[11], loseScreenMapLen/2);
-
     if (BUTTON_PRESSED(BUTTON_START)) {
         goToSplash();
     }
-
 }
 
 void goToTest() {
