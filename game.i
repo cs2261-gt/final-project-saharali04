@@ -1642,12 +1642,12 @@ void clearEnemies() {
 void drawFoodDelivered() {
     totalStemsDelivered = pandas[0].stemsCollected + pandas[1].stemsCollected + pandas[2].stemsCollected;
     totalLeavesDelivered = pandas[0].leavesCollected + pandas[1].leavesCollected + pandas[2].leavesCollected;
-    shadowOAM[40].attr0 = 139 | (0<<13) | (0<<14);
-    shadowOAM[40].attr1 = 159 | (0<<14);
+    shadowOAM[40].attr0 = 136 | (0<<13) | (0<<14);
+    shadowOAM[40].attr1 = 163 | (0<<14);
     shadowOAM[40].attr2 = ((0)*32+(totalStemsDelivered + 8));
 
-    shadowOAM[41].attr0 = 149 | (0<<13) | (0<<14);
-    shadowOAM[41].attr1 = 159 | (0<<14);
+    shadowOAM[41].attr0 = 146 | (0<<13) | (0<<14);
+    shadowOAM[41].attr1 = 163 | (0<<14);
     shadowOAM[41].attr2 = ((0)*32+(totalLeavesDelivered + 8));
 
 
@@ -1663,8 +1663,6 @@ void drawFoodCollected() {
     shadowOAM[41].attr2 = ((0)*32+(panda.leavesCollected + 8));
 
 }
-
-
 
 void drawBaskets() {
     for (int i = 0; i < 3; i++)

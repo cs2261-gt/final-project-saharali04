@@ -1714,9 +1714,9 @@ drawFoodDelivered:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	push	{r4, r5, r6, lr}
-	mov	ip, #159
-	mov	r4, #139
-	mov	lr, #149
+	mov	ip, #163
+	mov	r4, #136
+	mov	lr, #146
 	ldr	r0, .L313
 	ldr	r1, [r0, #116]
 	ldr	r2, [r0, #48]
