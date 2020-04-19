@@ -191,11 +191,7 @@ void instruction() {
     if (BUTTON_PRESSED(BUTTON_START)) 
     {
         srand(seed);
-<<<<<<< HEAD
-        goToGame();
-=======
         goToGame2(); 
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
     }
 
     if (BUTTON_PRESSED(BUTTON_A)) 
@@ -207,7 +203,6 @@ void instruction() {
 
 // Sets up the game state
 void goToGame() {
-<<<<<<< HEAD
     REG_BG1CNT = BG_SIZE_WIDE | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28);
 
     // bg 1 - displayed behind bg0
@@ -220,10 +215,6 @@ void goToGame() {
     DMANow(3, scoreBackgroundTiles, &CHARBLOCK[2], scoreBackgroundTilesLen/2);
     DMANow(3, scoreBackgroundMap, &SCREENBLOCK[25], scoreBackgroundMapLen/2);
 
-=======
-    game1 = 1;
-    initPandas();
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
     hideSprites();
     waitForVBlank();
     DMANow(3, shadowOAM, OAM, 512);
@@ -233,14 +224,9 @@ void goToGame() {
     initPandas();
     REG_BG1VOFF = vOff;
     REG_BG1HOFF = hOff;
-<<<<<<< HEAD
     panda.worldCol = 73; // you should set this up likely in initPanda
     panda.worldRow = 64;
 
-=======
-    panda.worldCol = 73;
-    panda.worldRow = 64;
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
     state = GAME;
 
 }
@@ -254,13 +240,10 @@ void game() {
         pauseSound();
         goToPause();
     }
-<<<<<<< HEAD
     if (BUTTON_PRESSED(BUTTON_SELECT))
     {
         goToGame2();
     }
-=======
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
 
     if (hasLost) {
         goToLose();
@@ -274,37 +257,9 @@ void game() {
 
 // Sets up the game state
 void goToGame2() {
-<<<<<<< HEAD
     REG_DISPCTL = MODE0 | SPRITE_ENABLE | BG0_ENABLE | BG1_ENABLE;
     
     REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28);
-=======
-    count = 0;
-    game1 = 0;
-    hOff = 0;
-    vOff = 0;
-    panda.worldRow = 5;
-    panda.worldCol = 4;
-    REG_DISPCTL = MODE0 | BG1_ENABLE;
-    hideSprites();
-    state = GAME2;
-
-}
-
-// Runs every frame of the game state
-void game2() {
-    REG_DISPCTL = 0;
-    REG_DISPCTL = MODE0 | BG1_ENABLE | SPRITE_ENABLE | BG0_ENABLE;
-
-    DMANow(3, shadowOAM, OAM, 128 * 4);
-    
-    DMANow(3, &gameScreen2Pal, PALETTE, gameScreen2PalLen/2);
-
-    // Set up bg 1 control register
-    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(31);
-    DMANow(3, gameScreen2Map, &SCREENBLOCK[31], gameScreen2MapLen/2);
-     
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
 
     // bg 1 - displayed behind bg 0
     // use palette of game bc it has both the score palette and game palette
@@ -312,7 +267,6 @@ void game2() {
     DMANow(3, gameScreen2Map, &SCREENBLOCK[28], gameScreen2MapLen/2);
     DMANow(3, gameScreen2Tiles, &CHARBLOCK[0], gameScreen2TilesLen/2);
 
-<<<<<<< HEAD
     // bg0
     DMANow(3, scoreBackground2Tiles, &CHARBLOCK[2], scoreBackgroundTilesLen/2);
     DMANow(3, scoreBackground2Map, &SCREENBLOCK[25], scoreBackgroundMapLen/2);
@@ -327,14 +281,6 @@ void game2() {
     hideSprites();
     waitForVBlank();
     DMANow(3, shadowOAM, OAM, 512);
-=======
-    DMANow(3, scoreBackground2Pal, PALETTE, scoreBackgroundPalLen/2);
-
-    DMANow(3, scoreBackground2Tiles, &CHARBLOCK[1], scoreBackgroundTilesLen/2);
-
-    DMANow(3, scoreBackground2Map, &SCREENBLOCK[17], scoreBackgroundMapLen/2);
-    REG_BG0CNT = BG_CHARBLOCK(1) | BG_SCREENBLOCK(17) | BG_SIZE_SMALL;
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
 
     state = GAME2;
 }
@@ -395,11 +341,6 @@ void pause() {
         }
         
     }
-<<<<<<< HEAD
-=======
-   
-    
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
 }
 
 // Sets up the win state

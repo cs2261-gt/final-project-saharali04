@@ -238,7 +238,28 @@ extern const unsigned short instructionsScreenMap[1024];
 extern const unsigned short instructionsScreenPal[256];
 # 14 "main.c" 2
 # 1 "gameScreen.h" 1
-# 22 "gameScreen.h"
+
+
+
+
+
+
+<<<<<<< HEAD
+
+
+
+
+
+
+=======
+
+
+
+
+
+
+>>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
+# 31 "gameScreen.h"
 extern const unsigned short gameScreenTiles[25600];
 
 
@@ -248,7 +269,28 @@ extern const unsigned short gameScreenMap[4096];
 extern const unsigned short gameScreenPal[16];
 # 15 "main.c" 2
 # 1 "gameScreen2.h" 1
-# 22 "gameScreen2.h"
+
+
+
+
+
+
+<<<<<<< HEAD
+
+
+
+
+
+
+=======
+
+
+
+
+
+
+>>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
+# 31 "gameScreen2.h"
 extern const unsigned short gameScreen2Tiles[416];
 
 
@@ -295,7 +337,13 @@ extern const unsigned short spriteSheetTiles[16384];
 extern const unsigned short spriteSheetPal[256];
 # 20 "main.c" 2
 # 1 "scoreBackground.h" 1
-# 22 "scoreBackground.h"
+# 12 "scoreBackground.h"
+<<<<<<< HEAD
+
+=======
+
+>>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
+# 26 "scoreBackground.h"
 extern const unsigned short scoreBackgroundTiles[512];
 
 
@@ -1548,7 +1596,13 @@ extern const signed char splashSound[291428];
 extern const signed char gameSound2[677952];
 # 26 "main.c" 2
 # 1 "scoreBackground2.h" 1
-# 22 "scoreBackground2.h"
+# 12 "scoreBackground2.h"
+<<<<<<< HEAD
+
+=======
+
+>>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
+# 26 "scoreBackground2.h"
 extern const unsigned short scoreBackground2Tiles[544];
 
 
@@ -1694,33 +1748,6 @@ void goToSplash() {
 void splash() {
     seed++;
 
-<<<<<<< HEAD
-=======
-    (*(unsigned short *)0x4000000) = 0 | (1<<9);
-
-
-    DMANow(3, &splashScreenPal, ((unsigned short *)0x5000000), 512/2);
-
-
-    (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((11)<<8);
-
-
-    DMANow(3, splashScreenTiles, &((charblock *)0x6000000)[0], 4192/2);
-
-
-    DMANow(3, splashScreenMap, &((screenblock *)0x6000000)[11], 2048/2);
-
-    for (int i = 0; i < 128; i++)
-    {
-        shadowOAM[i].attr0 = 0;
-        shadowOAM[i].attr1 = 0;
-        shadowOAM[i].attr2 = 0;
-    }
-
-
-    DMANow(3, shadowOAM, ((OBJ_ATTR*)(0x7000000)), 128 * 4);
-
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3)))))
     {
         srand(seed);
@@ -1747,18 +1774,7 @@ void goToInstruction() {
     state = INSTRUCTION;
 }
 
-<<<<<<< HEAD
 void instruction() {
-=======
-    (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((11)<<8);
-
-
-    DMANow(3, instructionsScreenTiles, &((charblock *)0x6000000)[0], 11584/2);
-
-
-    DMANow(3, instructionsScreenMap, &((screenblock *)0x6000000)[11], 2048/2);
-
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3)))))
     {
         srand(seed);
@@ -1774,46 +1790,21 @@ void instruction() {
 
 
 void goToGame() {
-<<<<<<< HEAD
     (*(volatile unsigned short*)0x400000A) = (1<<14) | ((0)<<2) | ((28)<<8);
-=======
-    game1 = 1;
-    initPandas();
-    hideSprites();
-    (*(volatile unsigned short *)0x04000016) = vOff;
-    (*(volatile unsigned short *)0x04000014) = hOff;
-    panda.worldCol = 73;
-    panda.worldRow = 64;
-    state = GAME;
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
 
 
 
-<<<<<<< HEAD
-    DMANow(3, &gameScreenPal, ((unsigned short *)0x5000000), 512/2);
+    DMANow(3, &gameScreenPal, ((unsigned short *)0x5000000), 32/2);
     DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 51200/2);
     DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[28], 8192/2);
 
-=======
-void game() {
-    (*(unsigned short *)0x4000000) = 0;
-    (*(unsigned short *)0x4000000) = 0 | (1<<12) | (1<<8) | (1<<9);
-
-    DMANow(3, &gameScreenPal, ((unsigned short *)0x5000000), 32/2);
-
-    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 51200/2);
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
 
     DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[2], 1024/2);
     DMANow(3, scoreBackgroundMap, &((screenblock *)0x6000000)[25], 2048/2);
 
-<<<<<<< HEAD
     hideSprites();
     waitForVBlank();
     DMANow(3, shadowOAM, ((OBJ_ATTR*)(0x7000000)), 512);
-=======
-    DMANow(3, scoreBackgroundPal, ((unsigned short *)0x5000000), 32/2);
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
 
 
     game1 = 1;
@@ -1836,13 +1827,10 @@ void game() {
         pauseSound();
         goToPause();
     }
-<<<<<<< HEAD
     if ((!(~(oldButtons)&((1<<2))) && (~buttons & ((1<<2)))))
     {
         goToGame2();
     }
-=======
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
 
     if (hasLost) {
         goToLose();
@@ -1856,58 +1844,19 @@ void game() {
 
 
 void goToGame2() {
-<<<<<<< HEAD
     (*(unsigned short *)0x4000000) = 0 | (1<<12) | (1<<8) | (1<<9);
-=======
-    count = 0;
-    game1 = 0;
-    hOff = 0;
-    vOff = 0;
-    panda.worldRow = 5;
-    panda.worldCol = 4;
-    (*(unsigned short *)0x4000000) = 0 | (1<<9);
-    hideSprites();
-    state = GAME2;
-
-}
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
 
     (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((28)<<8);
 
-<<<<<<< HEAD
-=======
-void game2() {
-    (*(unsigned short *)0x4000000) = 0;
-    (*(unsigned short *)0x4000000) = 0 | (1<<9) | (1<<12) | (1<<8);
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
 
 
-<<<<<<< HEAD
-    DMANow(3, &gameScreen2Pal, ((unsigned short *)0x5000000), 512/2);
+    DMANow(3, &gameScreen2Pal, ((unsigned short *)0x5000000), 32/2);
     DMANow(3, gameScreen2Map, &((screenblock *)0x6000000)[28], 2048/2);
     DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 832/2);
 
 
     DMANow(3, scoreBackground2Tiles, &((charblock *)0x6000000)[2], 1024/2);
     DMANow(3, scoreBackground2Map, &((screenblock *)0x6000000)[25], 2048/2);
-=======
-    DMANow(3, &gameScreen2Pal, ((unsigned short *)0x5000000), 32/2);
-
-
-    (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((31)<<8);
-    DMANow(3, gameScreen2Map, &((screenblock *)0x6000000)[31], 2048/2);
-
-
-
-    DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 832/2);
-
-    DMANow(3, scoreBackground2Pal, ((unsigned short *)0x5000000), 32/2);
-
-    DMANow(3, scoreBackground2Tiles, &((charblock *)0x6000000)[1], 1024/2);
-
-    DMANow(3, scoreBackground2Map, &((screenblock *)0x6000000)[17], 2048/2);
-    (*(volatile unsigned short*)0x4000008) = ((1)<<2) | ((17)<<8) | (0<<14);
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
 
     count = 0;
     game1 = 0;
@@ -1969,23 +1918,6 @@ void goToPause() {
 
 
 void pause() {
-<<<<<<< HEAD
-=======
-
-    (*(unsigned short *)0x4000000) = 0 | (1<<8);
-
-    DMANow(3, &pauseScreenPal, ((unsigned short *)0x5000000), 512/2);
-
-
-    (*(volatile unsigned short*)0x4000008) = (0<<14) | ((0)<<2) | ((11)<<8);
-
-
-    DMANow(3, pauseScreenTiles, &((charblock *)0x6000000)[0], 2336/2);
-
-
-    DMANow(3, pauseScreenMap, &((screenblock *)0x6000000)[11], 2048/2);
-
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3))))) {
         if (game1) {
             unpauseSound();
@@ -1994,15 +1926,8 @@ void pause() {
             unpauseSound();
             goToGame2();
         }
-<<<<<<< HEAD
 
     }
-=======
-
-    }
-
-
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
 }
 
 
@@ -2022,24 +1947,6 @@ void goToWin() {
 
 
 void win() {
-<<<<<<< HEAD
-=======
-
-
-    (*(unsigned short *)0x4000000) = 0 | (1<<9);
-
-    DMANow(3, &winScreenPal, ((unsigned short *)0x5000000), 512/2);
-
-
-    (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((11)<<8);
-
-
-    DMANow(3, winScreenTiles, &((charblock *)0x6000000)[0], 2880/2);
-
-
-    DMANow(3, winScreenMap, &((screenblock *)0x6000000)[11], 2048/2);
-
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3))))) {
         goToSplash();
     }
@@ -2063,23 +1970,6 @@ void goToLose() {
 
 
 void lose() {
-<<<<<<< HEAD
-=======
-
-    (*(unsigned short *)0x4000000) = 0 | (1<<8);
-
-    DMANow(3, &loseScreenPal, ((unsigned short *)0x5000000), 512/2);
-
-
-    (*(volatile unsigned short*)0x4000008) = (0<<14) | ((0)<<2) | ((11)<<8);
-
-
-    DMANow(3, loseScreenTiles, &((charblock *)0x6000000)[0], 2880/2);
-
-
-    DMANow(3, loseScreenMap, &((screenblock *)0x6000000)[11], 2048/2);
-
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3))))) {
         goToSplash();
     }
