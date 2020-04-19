@@ -616,12 +616,12 @@ void drawFoodDelivered() {
 }
 
 void drawFoodCollected() {
-    shadowOAM[40].attr0 = 139 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[40].attr1 = 159 | ATTR1_TINY;
+    shadowOAM[40].attr0 = 136 | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[40].attr1 = 165 | ATTR1_TINY;
     shadowOAM[40].attr2 = ATTR2_TILEID(panda.stemsCollected + 8, 0);
 
-    shadowOAM[41].attr0 = 149 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[41].attr1 = 159 | ATTR1_TINY;
+    shadowOAM[41].attr0 = 146 | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[41].attr1 = 165 | ATTR1_TINY;
     shadowOAM[41].attr2 = ATTR2_TILEID(panda.leavesCollected + 8, 0);
    
 }
@@ -662,17 +662,10 @@ void drawFriendlyPandas() {
     
 }
 
-<<<<<<< HEAD
 void updateGame() { 
     if (screenBlock == 28) {
         REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
     }   
-=======
-void updateGame() {
-    REG_BG1CNT = 0; 
-    REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
-    
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
     if (hasShield) {
         drawShield();
     }
