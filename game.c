@@ -662,10 +662,17 @@ void drawFriendlyPandas() {
     
 }
 
+<<<<<<< HEAD
+void updateGame() { 
+    if (screenBlock == 28) {
+        REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
+    }   
+=======
 void updateGame() {
     REG_BG1CNT = 0; 
     REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
     
+>>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
     if (hasShield) {
         drawShield();
     }
