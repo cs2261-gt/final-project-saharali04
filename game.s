@@ -995,8 +995,17 @@ updatePanda2:
 	ldr	r2, [r4, #12]
 	ldr	r3, [r4, #8]
 	bne	.L144
-	cmp	r3, #4
-	bgt	.L179
+	cmp	r3, #0
+	ble	.L144
+	ldr	r1, [r4, #16]
+	sub	r1, r3, r1
+	ldr	r0, .L183+24
+	add	ip, r2, r1, lsl #8
+	lsl	ip, ip, #1
+	ldrh	ip, [r0, ip]
+	cmp	ip, #0
+	lsl	lr, r1, #8
+	bne	.L179
 .L144:
 	ldr	r1, .L183+20
 	ldrh	r1, [r1, #48]
@@ -1125,16 +1134,13 @@ updatePanda2:
 	strne	r3, [r4, #8]
 	strne	r1, [r4, #36]
 	b	.L145
+.L182:
+	mov	r0, #0
+	ldr	r1, [r4, #40]
+	str	r0, [r4, #60]
+	str	r1, [r4, #36]
+	b	.L150
 .L179:
-	ldr	r1, [r4, #16]
-	sub	r1, r3, r1
-	ldr	r0, .L183+24
-	add	ip, r2, r1, lsl #8
-	lsl	ip, ip, #1
-	ldrh	ip, [r0, ip]
-	cmp	ip, #0
-	lsl	lr, r1, #8
-	beq	.L144
 	add	r5, r4, #20
 	ldm	r5, {r5, ip}
 	add	ip, r2, ip
@@ -1148,12 +1154,6 @@ updatePanda2:
 	strne	r1, [r4, #8]
 	strne	r0, [r4, #36]
 	b	.L144
-.L182:
-	mov	r0, #0
-	ldr	r1, [r4, #40]
-	str	r0, [r4, #60]
-	str	r1, [r4, #36]
-	b	.L150
 .L184:
 	.align	2
 .L183:

@@ -1429,7 +1429,7 @@ void updatePanda2() {
 
     if ((~((*(volatile unsigned short *)0x04000130)) & ((1<<6))))
     {
-        if (panda.worldRow > 4 && collisionmap2Bitmap[((panda.worldRow - panda.rdel)*(256)+(panda.worldCol))]
+        if (panda.worldRow > 0 && collisionmap2Bitmap[((panda.worldRow - panda.rdel)*(256)+(panda.worldCol))]
             && collisionmap2Bitmap[((panda.worldRow - panda.rdel)*(256)+(panda.worldCol + panda.width - panda.cdel))]) {
                 panda.aniState = PANDAHAPPY;
                 panda.worldRow-=panda.rdel;
