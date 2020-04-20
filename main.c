@@ -115,7 +115,7 @@ void initialize() {
 
     // Set up bg1 and bg0 control register
     REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28);
-    REG_BG0CNT = BG_CHARBLOCK(2) | BG_SCREENBLOCK(25) | BG_SIZE_SMALL;
+    REG_BG0CNT = BG_CHARBLOCK(2) | BG_SCREENBLOCK(27) | BG_SIZE_SMALL;
 
     DMANow(3, &spriteSheetPal, SPRITEPALETTE, spriteSheetPalLen/2);
     DMANow(3, spriteSheetTiles, &CHARBLOCK[4], spriteSheetTilesLen/2);    
@@ -218,7 +218,7 @@ void goToGame() {
 
     // bg 0
     DMANow(3, scoreBackgroundTiles, &CHARBLOCK[2], scoreBackgroundTilesLen/2);
-    DMANow(3, scoreBackgroundMap, &SCREENBLOCK[25], scoreBackgroundMapLen/2);
+    DMANow(3, scoreBackgroundMap, &SCREENBLOCK[27], scoreBackgroundMapLen/2);
 
     hideSprites();
     waitForVBlank();
@@ -286,7 +286,7 @@ void goToGame2() {
 
     // bg0
     DMANow(3, scoreBackground2Tiles, &CHARBLOCK[2], scoreBackgroundTilesLen/2);
-    DMANow(3, scoreBackground2Map, &SCREENBLOCK[25], scoreBackgroundMapLen/2);
+    DMANow(3, scoreBackground2Map, &SCREENBLOCK[27], scoreBackgroundMapLen/2);
 
     count = 0;
     game1 = 0;
@@ -339,7 +339,7 @@ void goToPause() {
 
     DMANow(3, &pauseScreenPal, PALETTE, pauseScreenPalLen/2);
     DMANow(3, pauseScreenTiles, &CHARBLOCK[2], pauseScreenTilesLen/2);
-    DMANow(3, pauseScreenMap, &SCREENBLOCK[25], pauseScreenMapLen/2);
+    DMANow(3, pauseScreenMap, &SCREENBLOCK[27], pauseScreenMapLen/2);
 
     REG_BG0HOFF = 0;
     REG_BG0VOFF = 0;
@@ -367,7 +367,7 @@ void goToWin() {
 
     DMANow(3, &winScreenPal, PALETTE, winScreenPalLen/2);
     DMANow(3, winScreenTiles, &CHARBLOCK[2], winScreenTilesLen/2);
-    DMANow(3, winScreenMap, &SCREENBLOCK[25], winScreenMapLen/2);
+    DMANow(3, winScreenMap, &SCREENBLOCK[27], winScreenMapLen/2);
 
     REG_BG1HOFF = 0;
     REG_BG1VOFF = 0;
@@ -390,7 +390,7 @@ void goToLose() {
 
     DMANow(3, &loseScreenPal, PALETTE, loseScreenPalLen/2);
     DMANow(3, loseScreenTiles, &CHARBLOCK[2], loseScreenTilesLen/2);
-    DMANow(3, loseScreenMap, &SCREENBLOCK[25], loseScreenMapLen/2);
+    DMANow(3, loseScreenMap, &SCREENBLOCK[27], loseScreenMapLen/2);
 
     REG_BG0HOFF = 0;
     REG_BG0VOFF = 0;

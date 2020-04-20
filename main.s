@@ -163,7 +163,7 @@ initialize:
 .L9:
 	.align	2
 .L8:
-	.word	6408
+	.word	6920
 	.word	DMANow
 	.word	83886592
 	.word	spriteSheetPal
@@ -272,7 +272,7 @@ goToGame:
 	ldr	r1, .L20+4
 	mov	lr, pc
 	bx	r4
-	mov	r3, #25600
+	mov	r3, #19968
 	mov	r2, #100663296
 	mov	r0, #3
 	ldr	r1, .L20+8
@@ -355,7 +355,7 @@ goToGame:
 	.word	gameScreenMap
 	.word	100696064
 	.word	scoreBackgroundTiles
-	.word	100714496
+	.word	100718592
 	.word	scoreBackgroundMap
 	.word	hideSprites
 	.word	waitForVBlank
@@ -464,7 +464,7 @@ goToGame2:
 	.word	gameScreen2Tiles
 	.word	100696064
 	.word	scoreBackground2Tiles
-	.word	100714496
+	.word	100718592
 	.word	scoreBackground2Map
 	.word	count
 	.word	.LANCHOR0
@@ -642,7 +642,7 @@ goToPause:
 	.word	pauseScreenPal
 	.word	100696064
 	.word	pauseScreenTiles
-	.word	100714496
+	.word	100718592
 	.word	pauseScreenMap
 	.word	state
 	.size	goToPause, .-goToPause
@@ -737,7 +737,7 @@ goToWin:
 	.word	winScreenPal
 	.word	100696064
 	.word	winScreenTiles
-	.word	100714496
+	.word	100718592
 	.word	winScreenMap
 	.word	stopSound
 	.word	state
@@ -813,7 +813,7 @@ goToLose:
 	.word	loseScreenPal
 	.word	100696064
 	.word	loseScreenTiles
-	.word	100714496
+	.word	100718592
 	.word	loseScreenMap
 	.word	stopSound
 	.word	state

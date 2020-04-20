@@ -18,7 +18,7 @@
 	.type	gameScreen2Pal, %object
 	.size	gameScreen2Pal, 32
 gameScreen2Pal:
-	.short	32767
+	.short	32736
 	.short	12751
 	.short	10604
 	.short	7433

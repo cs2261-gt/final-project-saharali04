@@ -1815,9 +1815,9 @@ drawFoodCollected:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	push	{r4, lr}
-	mov	r0, #164
-	mov	lr, #137
-	mov	ip, #147
+	mov	r0, #142
+	mov	lr, #105
+	mov	ip, #210
 	ldr	r2, .L319
 	ldr	r3, .L319+4
 	ldr	r1, [r2, #48]
@@ -1830,11 +1830,11 @@ drawFoodCollected:
 	strh	r2, [r1]	@ movhi
 	add	r2, r3, #320
 	add	r3, r3, #328
-	strh	lr, [r2]	@ movhi
-	strh	r0, [r2, #2]	@ movhi
+	strh	lr, [r2, #2]	@ movhi
+	strh	r0, [r2]	@ movhi
 	pop	{r4, lr}
-	strh	r0, [r3, #2]	@ movhi
-	strh	ip, [r3]	@ movhi
+	strh	r0, [r3]	@ movhi
+	strh	ip, [r3, #2]	@ movhi
 	bx	lr
 .L320:
 	.align	2
@@ -2228,9 +2228,9 @@ updateGame2:
 	cmp	r0, #0
 	movne	r2, #1
 	mov	r9, #96
-	mov	lr, #164
-	mov	r8, #137
-	mov	r7, #147
+	mov	lr, #142
+	mov	r8, #105
+	mov	r7, #210
 	ldrne	r3, .L430+16
 	strne	r2, [r3]
 	ldrh	r3, [r5, #4]
@@ -2259,15 +2259,15 @@ updateGame2:
 	ldr	r2, [r5, #44]
 	ldr	r0, [r5, #48]
 	add	r5, r1, #320
-	strh	lr, [r5, #2]	@ movhi
-	strh	r8, [r5]	@ movhi
+	strh	lr, [r5]	@ movhi
+	strh	r8, [r5, #2]	@ movhi
 	add	r5, r1, #328
-	strh	lr, [r5, #2]	@ movhi
+	strh	lr, [r5]	@ movhi
 	add	r0, r0, #8
 	add	r2, r2, #8
 	add	r6, r1, #324
 	add	lr, r1, #332
-	strh	r7, [r5]	@ movhi
+	strh	r7, [r5, #2]	@ movhi
 	strh	r0, [r6]	@ movhi
 	strh	r2, [lr]	@ movhi
 	beq	.L387

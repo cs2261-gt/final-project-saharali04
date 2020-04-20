@@ -9,7 +9,7 @@
 //	+ regular map (in SBBs), not compressed, 32x32 
 //	Total size: 32 + 832 + 2048 = 2912
 //
-//	Time-stamp: 2020-04-17, 12:00:04
+//	Time-stamp: 2020-04-20, 13:17:46
 //	Exported by Cearn's GBA Image Transmogrifier, v0.8.3
 //	( http://www.coranac.com/projects/#grit )
 //
@@ -226,7 +226,7 @@ const unsigned short gameScreen2Map[1024] __attribute__((aligned(4)))=
 
 const unsigned short gameScreen2Pal[16] __attribute__((aligned(4)))=
 {
-	0x7FFF,0x31CF,0x296C,0x1D09,0x2D01,0x0000,0x260C,0x14E3,
+	0x7FE0,0x31CF,0x296C,0x1D09,0x2D01,0x0000,0x260C,0x14E3,
 	0x1D87,0x21EB,0x1530,0x0CED,0x7FFF,0x7EAC,0x4211,0x5FA0,
 };
 
