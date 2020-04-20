@@ -1,4 +1,4 @@
-#define WORLDWIDTH1 1024
+#define WORLDWIDTH1 768
 #define WORLDWIDTH2 256
 #define WORLDHEIGHT 256
 extern int hOff;

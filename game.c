@@ -266,7 +266,7 @@ void updatePanda() {
                     panda.worldCol++;
                     panda.aniState = PANDASAD;
 
-                    if (screenBlock < 31 && hOff < (WORLDWIDTH1 - SCREENWIDTH -1) && panda.col > SCREENWIDTH / 2) {
+                    if (screenBlock < 30 && hOff < (WORLDWIDTH1 - SCREENWIDTH -1) && panda.col > SCREENWIDTH / 2) {
                         hOff++;
                         playerHOff++;
                         totalHOff++;
@@ -338,7 +338,7 @@ void updatePanda() {
                 panda.worldCol++;
                 panda.aniState = PANDASAD;
 
-                if (screenBlock < 31 && hOff < (WORLDWIDTH1 - SCREENWIDTH -1) && panda.col > SCREENWIDTH / 2) {
+                if (screenBlock < 30 && hOff < (WORLDWIDTH1 - SCREENWIDTH -1) && panda.col > SCREENWIDTH / 2) {
                     hOff++;
                     playerHOff++;
                     totalHOff++;
@@ -675,7 +675,7 @@ void updateGame() {
         REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
     }
 
-    if (screenBlock == 31 || (screenBlock == 30 && hOff > 256)) {
+    if (screenBlock == 30 || (screenBlock == 29 && hOff > 256)) {
         drawFriendlyPandas();
         drawBaskets();
         drawDoor();

@@ -589,23 +589,24 @@ updatePanda:
 	tst	r1, #64
 	ldr	r1, [r0]
 	bne	.L82
-	ldr	lr, [r4, #16]
-	sub	lr, r3, lr
-	ldr	r5, .L138+36
-	add	ip, r2, lr, lsl #10
-	lsl	ip, ip, #1
-	ldrh	ip, [r5, ip]
-	cmp	ip, #0
-	lsl	r6, lr, #10
+	ldr	ip, [r4, #16]
+	sub	ip, r3, ip
+	add	lr, ip, ip, lsl #1
+	ldr	r6, .L138+36
+	add	r5, r2, lr, lsl #8
+	lsl	r5, r5, #1
+	ldrh	r5, [r6, r5]
+	cmp	r5, #0
+	lsl	r5, lr, #8
 	beq	.L82
 	add	r7, r4, #20
-	ldm	r7, {r7, ip}
-	add	ip, r2, ip
-	sub	ip, ip, r7
-	add	ip, ip, r6
-	lsl	ip, ip, #1
-	ldrh	ip, [r5, ip]
-	cmp	ip, #0
+	ldm	r7, {r7, lr}
+	add	lr, r2, lr
+	sub	lr, lr, r7
+	add	lr, lr, r5
+	lsl	lr, lr, #1
+	ldrh	lr, [r6, lr]
+	cmp	lr, #0
 	cmpne	r3, #0
 	bgt	.L133
 .L82:
@@ -617,12 +618,13 @@ updatePanda:
 	add	ip, r5, r3
 	cmp	ip, #235
 	bgt	.L83
-	add	lr, r2, ip, lsl #10
+	add	ip, ip, ip, lsl #1
+	add	lr, r2, ip, lsl #8
 	ldr	r6, .L138+36
 	lsl	lr, lr, #1
 	ldrh	lr, [r6, lr]
 	cmp	lr, #0
-	lsl	ip, ip, #10
+	lsl	ip, ip, #8
 	beq	.L83
 	add	r7, r4, #20
 	ldm	r7, {r7, lr}
@@ -669,28 +671,30 @@ updatePanda:
 .L134:
 	ldr	ip, [r4, #24]
 	add	ip, r2, ip
-	cmp	ip, #1004
+	cmp	ip, #748
 	bge	.L84
+	add	lr, r3, r3, lsl #1
 	ldr	r7, .L138+36
-	add	lr, ip, r3, lsl #10
+	add	lr, ip, lr, lsl #8
 	lsl	lr, lr, #1
-	ldrh	lr, [r7, lr]
-	ldr	r8, .L138+40
-	cmp	lr, r8
+	ldrh	r8, [r7, lr]
+	ldr	lr, .L138+40
+	cmp	r8, lr
 	bne	.L84
-	ldr	r8, [r4, #28]
+	ldr	lr, [r4, #28]
 	ldr	r9, [r4, #16]
-	add	r8, r3, r8
-	sub	r8, r8, r9
-	add	ip, ip, r8, lsl #10
+	add	lr, r3, lr
+	sub	lr, lr, r9
+	add	lr, lr, lr, lsl #1
+	add	ip, ip, lr, lsl #8
 	lsl	ip, ip, #1
 	ldrh	ip, [r7, ip]
-	cmp	ip, lr
+	cmp	ip, r8
 	bne	.L84
 	ldr	ip, .L138+44
 	ldr	ip, [ip]
 	add	r2, r2, #1
-	cmp	ip, #30
+	cmp	ip, #29
 	str	r2, [r4, #12]
 	bgt	.L84
 	ldr	ip, [r0, #4]
@@ -712,20 +716,21 @@ updatePanda:
 .L124:
 	ldr	ip, [r4, #16]
 	sub	ip, r3, ip
-	ldr	r0, .L138+36
-	add	r1, r2, ip, lsl #10
-	lsl	r1, r1, #1
-	ldrh	r1, [r0, r1]
-	cmp	r1, #0
-	lsl	lr, ip, #10
+	add	r1, ip, ip, lsl #1
+	ldr	lr, .L138+36
+	add	r0, r2, r1, lsl #8
+	lsl	r0, r0, #1
+	ldrh	r0, [lr, r0]
+	cmp	r0, #0
+	lsl	r0, r1, #8
 	beq	.L70
 	ldr	r1, [r4, #24]
 	ldr	r5, [r4, #20]
 	add	r1, r2, r1
 	sub	r1, r1, r5
-	add	r1, r1, lr
+	add	r1, r1, r0
 	lsl	r1, r1, #1
-	ldrh	r1, [r0, r1]
+	ldrh	r1, [lr, r1]
 	cmp	r1, #0
 	beq	.L70
 	cmp	r3, #0
@@ -751,10 +756,11 @@ updatePanda:
 	ldr	lr, [r4, #24]
 	add	lr, r2, lr
 .L87:
-	cmp	lr, #1004
+	cmp	lr, #748
 	bge	.L136
+	add	ip, r3, r3, lsl #1
 	ldr	r5, .L138+36
-	add	ip, lr, r3, lsl #10
+	add	ip, lr, ip, lsl #8
 	lsl	ip, ip, #1
 	ldrh	r6, [r5, ip]
 	ldr	ip, .L138+40
@@ -797,12 +803,13 @@ updatePanda:
 	str	r5, [lr]
 	b	.L69
 .L131:
-	add	lr, r2, ip, lsl #10
+	add	ip, ip, ip, lsl #1
+	add	lr, r2, ip, lsl #8
 	ldr	r6, .L138+36
 	lsl	lr, lr, #1
 	ldrh	lr, [r6, lr]
 	cmp	lr, #0
-	lsl	ip, ip, #10
+	lsl	ip, ip, #8
 	beq	.L72
 	add	r7, r4, #20
 	ldm	r7, {r7, lr}
@@ -868,27 +875,28 @@ updatePanda:
 .L133:
 	mov	r3, #2
 	cmp	r1, #0
-	str	lr, [r4, #8]
+	str	ip, [r4, #8]
 	str	r3, [r4, #36]
 	ble	.L91
 	ldr	r3, [r4, #28]
-	ldr	ip, [r4]
+	ldr	lr, [r4]
 	add	r3, r3, r3, lsr #31
-	add	r3, ip, r3, asr #1
+	add	r3, lr, r3, asr #1
 	cmp	r3, #80
 	subeq	r1, r1, #1
-	moveq	r3, lr
+	moveq	r3, ip
 	streq	r1, [r0]
 	beq	.L82
 .L91:
-	mov	r3, lr
+	mov	r3, ip
 	b	.L82
 .L137:
 	ldr	ip, [r4, #28]
 	ldr	r7, [r4, #16]
 	add	ip, r3, ip
 	sub	ip, ip, r7
-	add	lr, lr, ip, lsl #10
+	add	ip, ip, ip, lsl #1
+	add	lr, lr, ip, lsl #8
 	lsl	lr, lr, #1
 	ldrh	ip, [r5, lr]
 	cmp	ip, r6
@@ -896,7 +904,7 @@ updatePanda:
 	ldr	ip, .L138+44
 	ldr	ip, [ip]
 	ldr	lr, [r0]
-	cmp	ip, #30
+	cmp	ip, #29
 	add	ip, r2, #1
 	sub	r3, r3, lr
 	str	ip, [r4, #12]
@@ -943,7 +951,7 @@ updatePanda:
 	.word	collisionmapBitmap
 	.word	32767
 	.word	screenBlock
-	.word	782
+	.word	526
 	.word	totalHOff
 	.size	updatePanda, .-updatePanda
 	.align	2
@@ -1992,9 +2000,9 @@ updateGame:
 	str	r2, [r7, #4]
 	strh	r1, [ip, #10]	@ movhi
 .L339:
-	cmp	r3, #31
-	beq	.L340
 	cmp	r3, #30
+	beq	.L340
+	cmp	r3, #29
 	beq	.L341
 .L343:
 	ldr	r3, .L380+16
