@@ -203,11 +203,11 @@ initEnemies:
 	mov	r0, #8
 	mov	r1, #2
 	mov	lr, #7
-	mov	r9, #213
+	mov	r9, #214
 	mov	r8, #18
-	mov	r7, #180
+	mov	r7, #181
 	mov	r6, #20
-	mov	r5, #140
+	mov	r5, #141
 	ldr	r2, .L43
 	b	.L36
 .L28:
@@ -246,7 +246,7 @@ initEnemies:
 	str	r1, [r2, #16]
 	str	lr, [r2, #32]
 	bgt	.L28
-	mov	r10, #30
+	mov	r10, #29
 	rsb	ip, r3, r3, lsl #4
 	lsl	ip, ip, #1
 	str	ip, [r2]
@@ -257,7 +257,7 @@ initEnemies:
 	bx	lr
 .L38:
 	mov	ip, #30
-	mov	r10, #63
+	mov	r10, #64
 	mul	ip, r3, ip
 	sub	ip, ip, #134
 	str	ip, [r2]
@@ -280,7 +280,7 @@ initEnemies:
 	b	.L33
 .L39:
 	mov	ip, #25
-	mov	r10, #100
+	mov	r10, #101
 	mul	ip, r3, ip
 	sub	ip, ip, #225
 	str	ip, [r2]

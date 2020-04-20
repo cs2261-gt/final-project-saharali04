@@ -1153,28 +1153,28 @@ void initEnemies() {
 
 
         if (i < 5) {
-            enemies[i].col = 30;
+            enemies[i].col = 29;
             enemies[i].row = i*30;
         }
         if (i >= 5 && i < 9) {
-            enemies[i].col = 63;
+            enemies[i].col = 64;
             enemies[i].row = 16 + (i-5)*30;
         }
 
         if (i >= 9 && i < 15) {
-            enemies[i].col = 100;
+            enemies[i].col = 101;
             enemies[i].row = (i-9)*25;
         }
         if (i >= 15 && i < 20) {
-            enemies[i].col = 140;
+            enemies[i].col = 141;
             enemies[i].row = 13 + (i-15)*25;
         }
         if (i >= 20 && i < 27) {
-            enemies[i].col = 180;
+            enemies[i].col = 181;
             enemies[i].row = (i-20)*20;
         }
         if (i >= 27 && i < 34) {
-            enemies[i].col = 213;
+            enemies[i].col = 214;
             enemies[i].row = 10 + (i-27)*18;
         }
 
