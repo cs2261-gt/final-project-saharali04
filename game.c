@@ -656,7 +656,7 @@ void drawFriendlyPandas() {
 
         shadowOAM[i+36].attr0 =  pandas[i].row | ATTR0_4BPP | ATTR0_SQUARE;
         shadowOAM[i+36].attr1 =  pandas[i].col | ATTR1_TINY;
-        shadowOAM[i+36].attr2 = ATTR2_TILEID(7, pandas[i].curFrame);
+        shadowOAM[i+36].attr2 = ATTR2_TILEID(pandas[i].aniState, pandas[i].curFrame);
         
     }
     
@@ -706,10 +706,18 @@ void updateGame() {
     drawPanda();
     checkFoodDelivered();
    
+    
+    for (int i = 0; i < PANDACOUNT; i++) {
+        if (pandas[i].leavesCollected == 5 || pandas[i].stemsCollected == 3) {
+            pandas[i].aniState = 8;
+            pandas[i].curFrame = 1;
+        }
+    }
     if ((pandas[0].leavesCollected == 5 || pandas[0].stemsCollected == 3) && (pandas[1].leavesCollected == 5 || pandas[1].stemsCollected == 3) && (pandas[2].leavesCollected == 5 || pandas[2].stemsCollected == 3))
     {
         hasWon = 1;
     }
+   
     
     REG_BG1HOFF = hOff;
     REG_BG1VOFF = vOff;
