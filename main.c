@@ -227,7 +227,7 @@ void goToGame() {
     // likely these inits can be done elsewhere to be cleaner
     game1 = 1;
     screenBlock = 28;                       
-    initPandas();
+    //initPandas();
     REG_BG1VOFF = vOff;
     REG_BG1HOFF = hOff;
     panda.worldCol = 73; // you should set this up likely in initPanda

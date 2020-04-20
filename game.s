@@ -2064,7 +2064,7 @@ updateGame:
 	cmp	r3, #5
 	beq	.L349
 	ldr	r3, [r4, #48]
-	cmp	r3, #3
+	cmp	r3, #5
 	beq	.L349
 .L350:
 	add	r4, r4, #68
@@ -2074,7 +2074,7 @@ updateGame:
 	cmp	r3, #5
 	beq	.L352
 	ldr	r3, [r8, #48]
-	cmp	r3, #3
+	cmp	r3, #5
 	beq	.L352
 .L353:
 	mov	r3, #67108864
@@ -2101,14 +2101,14 @@ updateGame:
 	cmp	r3, #5
 	beq	.L354
 	ldr	r3, [r8, #116]
-	cmp	r3, #3
+	cmp	r3, #5
 	bne	.L353
 .L354:
 	ldr	r3, [r8, #180]
 	cmp	r3, #5
 	beq	.L355
 	ldr	r3, [r8, #184]
-	cmp	r3, #3
+	cmp	r3, #5
 	bne	.L353
 .L355:
 	mov	r2, #1

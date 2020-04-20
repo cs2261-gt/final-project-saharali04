@@ -1749,12 +1749,12 @@ void updateGame() {
 
 
     for (int i = 0; i < 3; i++) {
-        if (pandas[i].leavesCollected == 5 || pandas[i].stemsCollected == 3) {
+        if (pandas[i].leavesCollected == 5 || pandas[i].stemsCollected == 5) {
             pandas[i].aniState = 8;
             pandas[i].curFrame = 1;
         }
     }
-    if ((pandas[0].leavesCollected == 5 || pandas[0].stemsCollected == 3) && (pandas[1].leavesCollected == 5 || pandas[1].stemsCollected == 3) && (pandas[2].leavesCollected == 5 || pandas[2].stemsCollected == 3))
+    if ((pandas[0].leavesCollected == 5 || pandas[0].stemsCollected == 5) && (pandas[1].leavesCollected == 5 || pandas[1].stemsCollected == 5) && (pandas[2].leavesCollected == 5 || pandas[2].stemsCollected == 5))
     {
         hasWon = 1;
     }

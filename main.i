@@ -1763,7 +1763,7 @@ void goToGame() {
 
     game1 = 1;
     screenBlock = 28;
-    initPandas();
+
     (*(volatile unsigned short *)0x04000016) = vOff;
     (*(volatile unsigned short *)0x04000014) = hOff;
     panda.worldCol = 73;

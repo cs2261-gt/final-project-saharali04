@@ -308,45 +308,41 @@ goToGame:
 	ldr	r1, .L20+44
 	mov	lr, pc
 	bx	r4
+	mov	r3, #0
+	mov	r8, #1
+	mov	r2, #64
+	mov	r1, #73
 	mov	r7, #28
-	mov	r4, #0
-	mov	r1, #1
-	ldr	r0, .L20+48
-	ldr	r2, .L20+52
-	ldr	r6, .L20+56
-	ldr	r3, .L20+60
-	str	r4, [r0]
-	str	r1, [r2, #8]
-	mov	r9, #225
-	mov	r8, #5
-	str	r7, [r6]
-	mov	lr, pc
-	bx	r3
-	mov	r0, #73
-	mov	r1, #64
+	mov	r6, #225
+	mov	r4, #5
 	mov	lr, #2
-	ldr	r3, .L20+64
-	ldr	r2, .L20+68
-	ldrh	ip, [r3]
-	strh	ip, [r5, #22]	@ movhi
-	ldrh	ip, [r2]
-	strh	ip, [r5, #20]	@ movhi
-	str	r4, [r3]
-	str	r4, [r2]
+	ldr	r0, .L20+48
+	ldr	ip, .L20+52
+	ldrh	r9, [r0]
+	str	r3, [ip]
+	ldr	ip, .L20+56
+	strh	r9, [r5, #22]	@ movhi
+	ldrh	r9, [ip]
+	strh	r9, [r5, #20]	@ movhi
+	str	r3, [r0]
+	ldr	r0, .L20+60
+	str	r3, [r0]
+	ldr	r0, .L20+64
+	str	r3, [ip]
+	str	r3, [r0]
+	ldr	r3, .L20+68
+	str	r8, [r3, #8]
 	ldr	r3, .L20+72
-	ldr	r2, .L20+76
-	str	r4, [r3]
-	str	r4, [r2]
+	ldr	r0, .L20+76
+	stmib	r3, {r1, r2}
+	str	r1, [r3, #12]
+	str	r2, [r3]
 	ldr	r3, .L20+80
 	ldr	r2, .L20+84
-	ldr	ip, .L20+88
-	str	r7, [r6]
-	str	r9, [r2, #12]
-	str	r8, [r2, #8]
-	str	lr, [ip]
-	stmib	r3, {r0, r1}
-	str	r0, [r3, #12]
-	str	r1, [r3]
+	str	r7, [r0]
+	str	r6, [r3, #12]
+	str	r4, [r3, #8]
+	str	lr, [r2]
 	pop	{r4, r5, r6, r7, r8, r9, r10, lr}
 	bx	lr
 .L21:
@@ -364,15 +360,14 @@ goToGame:
 	.word	hideSprites
 	.word	waitForVBlank
 	.word	shadowOAM
-	.word	goToMaze
-	.word	.LANCHOR0
-	.word	screenBlock
-	.word	initPandas
 	.word	vOff
+	.word	goToMaze
 	.word	hOff
 	.word	playerHOff
 	.word	totalHOff
+	.word	.LANCHOR0
 	.word	panda
+	.word	screenBlock
 	.word	door
 	.word	state
 	.size	goToGame, .-goToGame
