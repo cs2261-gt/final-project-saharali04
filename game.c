@@ -116,24 +116,24 @@ void initEnemies() {
             enemies[i].row = i*30;
         }
         if (i >= 5 && i < 9) {
-            enemies[i].col = 64;
+            enemies[i].col = 62;
             enemies[i].row = 16 + (i-5)*30;
         }
 
         if (i >= 9 && i < 15) {
-            enemies[i].col = 101;
+            enemies[i].col = 99;
             enemies[i].row = (i-9)*25;
         } 
         if (i >= 15 && i < 20) {
-            enemies[i].col = 141;
+            enemies[i].col = 139;
             enemies[i].row = 13 + (i-15)*25;
         }
         if (i >= 20 && i < 27) {
-            enemies[i].col = 181;
+            enemies[i].col = 179;
             enemies[i].row = (i-20)*20;
         }
         if (i >= 27 && i < 34) {
-            enemies[i].col = 214;
+            enemies[i].col = 212;
             enemies[i].row = 10 + (i-27)*18;
         }
 
@@ -782,11 +782,6 @@ void updateGame2() {
         }
     }
 
-    
-
-    
-    
-    
     waitForVBlank();
     DMANow(3, shadowOAM, OAM, 128 * 4);
     resetAnimationFriendly();
