@@ -1613,7 +1613,7 @@ drawEnemies:
 .L271:
 	ldr	r2, [r3, #4]
 	ldr	r0, [r3, #36]
-	add	r2, r2, #1
+	add	r2, r2, #2
 	cmp	r0, #0
 	str	r2, [r3, #4]
 	beq	.L270
@@ -1706,7 +1706,7 @@ drawEnemiesRight:
 .L299:
 	ldr	r2, [r3, #4]
 	ldr	r0, [r3, #36]
-	add	r2, r2, #1
+	add	r2, r2, #2
 	cmp	r0, #0
 	str	r2, [r3, #4]
 	beq	.L298
@@ -2431,7 +2431,7 @@ updateGame2:
 	add	r1, r3, #1360
 .L408:
 	ldr	r2, [r3, #4]
-	sub	r2, r2, #2
+	sub	r2, r2, #4
 	str	r2, [r3, #4]
 	add	r3, r3, #40
 	cmp	r3, r1

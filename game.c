@@ -556,7 +556,7 @@ void clearFood() {
 void drawEnemies() {
     for (int i = 0; i < ENEMYCOUNT; i++) 
     {
-        enemies[i].col+=1;
+        enemies[i].col+=2;
         if (enemies[i].active) 
         {
             shadowOAM[i+45].attr0 = enemies[i].row | ATTR0_4BPP | ATTR0_SQUARE;
@@ -583,7 +583,7 @@ void drawEnemiesRight() {
     
     for (int i = 0; i < ENEMYCOUNT; i++) 
     {
-        enemies[i].col+=1;
+        enemies[i].col+=2;
         if (enemies[i].active) 
         {
             shadowOAM[i+45].attr0 = (enemies[i].row) | ATTR0_4BPP | ATTR0_SQUARE;
@@ -778,7 +778,7 @@ void updateGame2() {
     if (count == 133) {
         count = 0;
         for (int i = 0; i < ENEMYCOUNT; i++) {
-            enemies[i].col-=2;
+            enemies[i].col-=4;
         }
     }
 
