@@ -145,6 +145,7 @@ void goToSplash() {
     hasLost = 0;
     hasWon = 0;
     seed = 0;
+    goToMaze = 0;
 
     stopSound();
 	playSoundA(splashSound, SPLASHSOUNDLEN, 1);
@@ -218,14 +219,25 @@ void goToGame() {
     hideSprites();
     waitForVBlank();
     DMANow(3, shadowOAM, OAM, 512);
-
+    goToMaze = 0;
     // likely these inits can be done elsewhere to be cleaner
     game1 = 1;
+    screenBlock = 28;                       
     initPandas();
     REG_BG1VOFF = vOff;
     REG_BG1HOFF = hOff;
     panda.worldCol = 73; // you should set this up likely in initPanda
     panda.worldRow = 64;
+    panda.col = 73; // you should set this up likely in initPanda
+    panda.row = 64;
+    hOff = 0;
+    vOff = 0;
+    playerHOff = 0;
+    totalHOff = 0;
+    screenBlock = 28;
+
+    door.worldCol = 225;
+    door.worldRow = 5;
 
     state = GAME;
 
@@ -240,10 +252,11 @@ void game() {
         pauseSound();
         goToPause();
     }
-    if (BUTTON_PRESSED(BUTTON_SELECT))
+    if (BUTTON_PRESSED(BUTTON_SELECT) || goToChina)
     {
         goToGame2();
     }
+  
 
     if (hasLost) {
         goToLose();
@@ -277,7 +290,8 @@ void goToGame2() {
     vOff = 0;
     panda.worldRow = 5;
     panda.worldCol = 4;
-
+    initEnemies();
+    goToChina = 0;
     hideSprites();
     waitForVBlank();
     DMANow(3, shadowOAM, OAM, 512);

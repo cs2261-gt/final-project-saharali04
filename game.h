@@ -6,7 +6,10 @@ extern int vOff;
 extern int screenBlock;
 extern int hasShield;
 extern int goToMaze;
+extern int goToChina;
 extern int count;
+extern int playerHOff;
+extern int totalHOff;
 // Structs
     // Panda struct
     typedef struct {

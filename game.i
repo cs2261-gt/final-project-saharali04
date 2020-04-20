@@ -11,7 +11,10 @@ extern int vOff;
 extern int screenBlock;
 extern int hasShield;
 extern int goToMaze;
+extern int goToChina;
 extern int count;
+extern int playerHOff;
+extern int totalHOff;
 
 
     typedef struct {
@@ -1056,6 +1059,7 @@ int playerHOff;
 int screenBlock;
 int totalHOff;
 int goToMaze;
+int goToChina;
 
 
 void initGame() {
@@ -1211,7 +1215,7 @@ void initDoor() {
     door.active = 1;
     door.width = 12;
     door.height = 12;
-    door.worldRow = 75;
+    door.worldRow = 5;
     door.worldCol = 225;
 
 }
@@ -1571,8 +1575,8 @@ void drawFood() {
     }
 }
 void drawDoor() {
-    shadowOAM[100].attr0 = 75 | (0<<13) | (0<<14);
-    shadowOAM[100].attr1 = 225 | (1<<14);
+    shadowOAM[100].attr0 = door.worldRow | (0<<13) | (0<<14);
+    shadowOAM[100].attr1 = door.worldCol | (1<<14);
     shadowOAM[100].attr2 = ((3)*32+(0));
 }
 
@@ -1642,24 +1646,24 @@ void clearEnemies() {
 void drawFoodDelivered() {
     totalStemsDelivered = pandas[0].stemsCollected + pandas[1].stemsCollected + pandas[2].stemsCollected;
     totalLeavesDelivered = pandas[0].leavesCollected + pandas[1].leavesCollected + pandas[2].leavesCollected;
-    shadowOAM[40].attr0 = 136 | (0<<13) | (0<<14);
-    shadowOAM[40].attr1 = 163 | (0<<14);
+    shadowOAM[40].attr0 = 137 | (0<<13) | (0<<14);
+    shadowOAM[40].attr1 = 164 | (0<<14);
     shadowOAM[40].attr2 = ((0)*32+(totalStemsDelivered + 8));
 
-    shadowOAM[41].attr0 = 146 | (0<<13) | (0<<14);
-    shadowOAM[41].attr1 = 163 | (0<<14);
+    shadowOAM[41].attr0 = 147 | (0<<13) | (0<<14);
+    shadowOAM[41].attr1 = 164 | (0<<14);
     shadowOAM[41].attr2 = ((0)*32+(totalLeavesDelivered + 8));
 
 
 }
 
 void drawFoodCollected() {
-    shadowOAM[40].attr0 = 136 | (0<<13) | (0<<14);
-    shadowOAM[40].attr1 = 165 | (0<<14);
+    shadowOAM[40].attr0 = 137 | (0<<13) | (0<<14);
+    shadowOAM[40].attr1 = 164 | (0<<14);
     shadowOAM[40].attr2 = ((0)*32+(panda.stemsCollected + 8));
 
-    shadowOAM[41].attr0 = 146 | (0<<13) | (0<<14);
-    shadowOAM[41].attr1 = 165 | (0<<14);
+    shadowOAM[41].attr0 = 147 | (0<<13) | (0<<14);
+    shadowOAM[41].attr1 = 164 | (0<<14);
     shadowOAM[41].attr2 = ((0)*32+(panda.leavesCollected + 8));
 
 }
@@ -1714,7 +1718,11 @@ void updateGame() {
     if (screenBlock == 31 || (screenBlock == 30 && hOff > 256)) {
         drawFriendlyPandas();
         drawBaskets();
-        drawFoodDelivered();
+        drawDoor();
+    }
+
+    if (collision(panda.worldCol - totalHOff, panda.worldRow, panda.width, panda.height, door.worldCol, door.worldRow, door.width, door.height)) {
+        goToChina = 1;
     }
 
     if (playerHOff > 512) {
@@ -1733,7 +1741,7 @@ void updateGame() {
         }
     }
 
-
+    drawFoodDelivered();
     updatePanda();
     drawPanda();
     checkFoodDelivered();
@@ -1760,10 +1768,11 @@ void resetAnimationFriendly() {
 
 void updateGame2() {
     count++;
+
     updatePanda2();
     if (collision(panda.worldCol, panda.worldRow, panda.width, panda.height, door.worldCol, door.worldRow, door.width, door.height)) {
         goToMaze = 1;
-        pandas[0].stemsCollected++;
+
     }
     drawPanda();
     drawDoor();
@@ -1772,6 +1781,7 @@ void updateGame2() {
 
     if (hasShield) {
         drawShield();
+        drawFood();
         checkFoodCollected();
 
         if (count < 33) {

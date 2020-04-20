@@ -120,7 +120,10 @@ extern int vOff;
 extern int screenBlock;
 extern int hasShield;
 extern int goToMaze;
+extern int goToChina;
 extern int count;
+extern int playerHOff;
+extern int totalHOff;
 
 
     typedef struct {
@@ -238,28 +241,7 @@ extern const unsigned short instructionsScreenMap[1024];
 extern const unsigned short instructionsScreenPal[256];
 # 14 "main.c" 2
 # 1 "gameScreen.h" 1
-
-
-
-
-
-
-<<<<<<< HEAD
-
-
-
-
-
-
-=======
-
-
-
-
-
-
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
-# 31 "gameScreen.h"
+# 22 "gameScreen.h"
 extern const unsigned short gameScreenTiles[25600];
 
 
@@ -269,28 +251,7 @@ extern const unsigned short gameScreenMap[4096];
 extern const unsigned short gameScreenPal[16];
 # 15 "main.c" 2
 # 1 "gameScreen2.h" 1
-
-
-
-
-
-
-<<<<<<< HEAD
-
-
-
-
-
-
-=======
-
-
-
-
-
-
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
-# 31 "gameScreen2.h"
+# 22 "gameScreen2.h"
 extern const unsigned short gameScreen2Tiles[416];
 
 
@@ -337,13 +298,7 @@ extern const unsigned short spriteSheetTiles[16384];
 extern const unsigned short spriteSheetPal[256];
 # 20 "main.c" 2
 # 1 "scoreBackground.h" 1
-# 12 "scoreBackground.h"
-<<<<<<< HEAD
-
-=======
-
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
-# 26 "scoreBackground.h"
+# 22 "scoreBackground.h"
 extern const unsigned short scoreBackgroundTiles[512];
 
 
@@ -1596,13 +1551,7 @@ extern const signed char splashSound[291428];
 extern const signed char gameSound2[677952];
 # 26 "main.c" 2
 # 1 "scoreBackground2.h" 1
-# 12 "scoreBackground2.h"
-<<<<<<< HEAD
-
-=======
-
->>>>>>> f196141c75a3c20fbe809f6fa35823e632504fab
-# 26 "scoreBackground2.h"
+# 22 "scoreBackground2.h"
 extern const unsigned short scoreBackground2Tiles[544];
 
 
@@ -1732,6 +1681,7 @@ void goToSplash() {
     hasLost = 0;
     hasWon = 0;
     seed = 0;
+    goToMaze = 0;
 
     stopSound();
  playSoundA(splashSound, 291428, 1);
@@ -1805,14 +1755,25 @@ void goToGame() {
     hideSprites();
     waitForVBlank();
     DMANow(3, shadowOAM, ((OBJ_ATTR*)(0x7000000)), 512);
-
+    goToMaze = 0;
 
     game1 = 1;
+    screenBlock = 28;
     initPandas();
     (*(volatile unsigned short *)0x04000016) = vOff;
     (*(volatile unsigned short *)0x04000014) = hOff;
     panda.worldCol = 73;
     panda.worldRow = 64;
+    panda.col = 73;
+    panda.row = 64;
+    hOff = 0;
+    vOff = 0;
+    playerHOff = 0;
+    totalHOff = 0;
+    screenBlock = 28;
+
+    door.worldCol = 225;
+    door.worldRow = 5;
 
     state = GAME;
 
@@ -1827,10 +1788,11 @@ void game() {
         pauseSound();
         goToPause();
     }
-    if ((!(~(oldButtons)&((1<<2))) && (~buttons & ((1<<2)))))
+    if ((!(~(oldButtons)&((1<<2))) && (~buttons & ((1<<2)))) || goToChina)
     {
         goToGame2();
     }
+
 
     if (hasLost) {
         goToLose();
@@ -1864,7 +1826,8 @@ void goToGame2() {
     vOff = 0;
     panda.worldRow = 5;
     panda.worldCol = 4;
-
+    initEnemies();
+    goToChina = 0;
     hideSprites();
     waitForVBlank();
     DMANow(3, shadowOAM, ((OBJ_ATTR*)(0x7000000)), 512);
