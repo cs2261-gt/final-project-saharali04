@@ -962,14 +962,14 @@ updatePanda2:
 	bne	.L155
 	cmp	r3, #0
 	ble	.L155
-	ldr	r1, [r4, #16]
-	sub	r1, r3, r1
+	ldr	ip, [r4, #16]
+	sub	ip, r3, ip
 	ldr	r0, .L194+24
-	add	ip, r2, r1, lsl #8
-	lsl	ip, ip, #1
-	ldrh	ip, [r0, ip]
-	cmp	ip, #0
-	lsl	lr, r1, #8
+	add	r1, r2, ip, lsl #8
+	lsl	r1, r1, #1
+	ldrh	r1, [r0, r1]
+	cmp	r1, #0
+	lsl	lr, ip, #8
 	bne	.L190
 .L155:
 	ldr	r1, .L194+20
@@ -984,38 +984,38 @@ updatePanda2:
 	ldrh	r0, [r1, #48]
 	tst	r0, #32
 	bne	.L157
-	cmp	r2, #0
+	cmp	r2, #4
 	ble	.L157
-	ldr	ip, [r4, #20]
-	sub	ip, r2, ip
+	ldr	lr, [r4, #20]
+	sub	lr, r2, lr
 	ldr	r0, .L194+24
-	add	lr, ip, r3, lsl #8
-	lsl	lr, lr, #1
-	ldrh	lr, [r0, lr]
-	cmp	lr, #0
-	lsl	lr, r3, #8
+	add	ip, lr, r3, lsl #8
+	lsl	ip, ip, #1
+	ldrh	ip, [r0, ip]
+	cmp	ip, #0
+	lsl	ip, r3, #8
 	beq	.L157
 	ldr	r5, [r4, #28]
 	ldr	r6, [r4, #16]
 	add	r5, r3, r5
 	sub	r5, r5, r6
-	add	ip, ip, r5, lsl #8
-	lsl	ip, ip, #1
-	ldrh	ip, [r0, ip]
-	cmp	ip, #0
+	add	lr, lr, r5, lsl #8
+	lsl	lr, lr, #1
+	ldrh	lr, [r0, lr]
+	cmp	lr, #0
 	beq	.L157
-	mov	ip, #1
+	mov	lr, #1
 	ldrh	r1, [r1, #48]
 	sub	r2, r2, #1
 	tst	r1, #16
 	str	r2, [r4, #12]
-	str	ip, [r4, #36]
+	str	lr, [r4, #36]
 	bne	.L159
 	ldr	r1, [r4, #24]
 	add	r1, r2, r1
 	cmp	r1, #255
-	bgt	.L159
-	b	.L163
+	ble	.L163
+	b	.L159
 .L157:
 	ldr	r1, .L194+20
 	ldrh	r1, [r1, #48]
@@ -1051,11 +1051,11 @@ updatePanda2:
 	cmp	r1, #255
 	bgt	.L160
 	ldr	r0, .L194+24
-	lsl	lr, r3, #8
+	lsl	ip, r3, #8
 .L163:
-	add	lr, lr, r1
-	lsl	lr, lr, #1
-	ldrh	ip, [r0, lr]
+	add	ip, ip, r1
+	lsl	ip, ip, #1
+	ldrh	ip, [r0, ip]
 	ldr	lr, .L194+40
 	cmp	ip, lr
 	bne	.L160
@@ -1106,18 +1106,18 @@ updatePanda2:
 	str	r1, [r4, #36]
 	b	.L161
 .L190:
-	add	r5, r4, #20
-	ldm	r5, {r5, ip}
-	add	ip, r2, ip
-	sub	ip, ip, r5
-	add	ip, ip, lr
-	lsl	ip, ip, #1
-	ldrh	r0, [r0, ip]
-	cmp	r0, #0
-	movne	r0, #2
-	movne	r3, r1
-	strne	r1, [r4, #8]
-	strne	r0, [r4, #36]
+	ldr	r1, [r4, #24]
+	ldr	r5, [r4, #20]
+	add	r1, r2, r1
+	sub	r1, r1, r5
+	add	r1, r1, lr
+	lsl	r1, r1, #1
+	ldrh	r1, [r0, r1]
+	cmp	r1, #0
+	movne	r1, #2
+	movne	r3, ip
+	strne	ip, [r4, #8]
+	strne	r1, [r4, #36]
 	b	.L155
 .L195:
 	.align	2
