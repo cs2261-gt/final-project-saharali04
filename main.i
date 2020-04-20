@@ -1671,7 +1671,7 @@ void initialize() {
 
 void goToSplash() {
     (*(unsigned short *)0x4000000) = 0 | (1<<9);
-
+    (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((28)<<8);
     DMANow(3, &splashScreenPal, ((unsigned short *)0x5000000), 512/2);
     DMANow(3, splashScreenTiles, &((charblock *)0x6000000)[0], 4192/2);
     DMANow(3, splashScreenMap, &((screenblock *)0x6000000)[28], 2048/2);
@@ -1680,9 +1680,11 @@ void goToSplash() {
     (*(volatile unsigned short *)0x04000016) = 0;
     hasLost = 0;
     hasWon = 0;
+
     seed = 0;
     goToMaze = 0;
-
+    goToChina = 0;
+    initGame();
     stopSound();
  playSoundA(splashSound, 291428, 1);
 
@@ -1716,7 +1718,7 @@ void splash() {
 }
 void goToInstruction() {
     (*(unsigned short *)0x4000000) = 0 | (1<<9);
-
+    (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((28)<<8);
     DMANow(3, &instructionsScreenPal, ((unsigned short *)0x5000000), 512/2);
     DMANow(3, instructionsScreenTiles, &((charblock *)0x6000000)[0], 11584/2);
     DMANow(3, instructionsScreenMap, &((screenblock *)0x6000000)[28], 2048/2);

@@ -1072,7 +1072,8 @@ void initGame() {
     initFood();
     initEnemies();
     initDoor();
-
+    initPandas();
+    initBaskets();
 }
 
 
