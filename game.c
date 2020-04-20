@@ -173,9 +173,9 @@ void initPandas() {
 
 void initDoor() {
     door.active = 1;
-    door.width = 12;
-    door.height = 12;
-    door.worldRow = 5;
+    door.width = 16;
+    door.height = 16;
+    door.worldRow = 0;
     door.worldCol = 225;
 
 }
@@ -687,14 +687,14 @@ void updateGame() {
         playerHOff -= 512;
     }
     for (int i = 0; i < PANDACOUNT; i++) {
-        if (pandas[i].curFrame == 10) 
+        if (pandas[i].curFrame == 8) 
         {
             pandas[i].aniCounter++;
         }
         if (pandas[i].aniCounter == 15)
         {
             pandas[i].aniCounter = 0;
-            pandas[i].curFrame = 8;
+            pandas[i].curFrame = 6;
 
         }
     }

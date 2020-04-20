@@ -301,24 +301,25 @@ initGame:
 	@ Function supports interworking.
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
-	push	{r4, r5, r6, r7, r8, r9, r10, lr}
+	push	{r4, r5, r6, r7, r8, lr}
 	mov	r4, #0
 	mov	ip, #3
-	mov	r0, #28
 	mov	r5, #8
+	mov	r0, #28
 	mov	r6, #1
 	ldr	r3, .L49
 	ldr	r1, .L49+4
 	ldr	r2, .L49+8
 	str	r4, [r1]
-	mov	r7, #12
+	mov	r7, #16
 	ldr	r1, .L49+12
 	str	r4, [r3]
-	mov	r9, #5
-	ldr	r3, .L49+16
 	mov	r8, #225
-	str	ip, [r3, #64]
+	ldr	r3, .L49+16
 	str	r0, [r1]
+	str	ip, [r3, #64]
+	str	r5, [r3, #24]
+	str	r5, [r3, #28]
 	str	r4, [r2]
 	str	r4, [r2, #4]
 	str	r4, [r3, #32]
@@ -326,20 +327,19 @@ initGame:
 	str	r4, [r3, #44]
 	str	r4, [r3, #48]
 	str	r4, [r3, #60]
-	str	r5, [r3, #24]
-	str	r5, [r3, #28]
 	str	r6, [r3, #20]
 	str	r6, [r3, #16]
 	bl	initFood
 	bl	initEnemies
 	mov	r1, r5
+	mov	ip, r4
 	mov	r2, #47
-	mov	lr, #220
+	mov	r5, #220
 	mov	r0, #6
-	mov	ip, #2
+	mov	lr, #2
 	ldr	r3, .L49+20
 	str	r6, [r3, #36]
-	str	r9, [r3, #8]
+	str	r4, [r3, #8]
 	str	r8, [r3, #12]
 	str	r7, [r3, #24]
 	str	r7, [r3, #28]
@@ -350,12 +350,12 @@ initGame:
 	cmp	r2, #107
 	str	r1, [r3, #24]
 	str	r1, [r3, #28]
-	str	lr, [r3, #12]
+	str	r5, [r3, #12]
 	str	r0, [r3, #36]
-	str	r4, [r3, #44]
-	str	r4, [r3, #48]
+	str	ip, [r3, #44]
+	str	ip, [r3, #48]
 	str	r0, [r3, #60]
-	str	ip, [r3, #64]
+	str	lr, [r3, #64]
 	add	r3, r3, #68
 	bne	.L46
 	mov	r2, #16
@@ -384,7 +384,7 @@ initGame:
 	str	r1, [r3, #32]
 	str	r1, [r3, #72]
 	str	r1, [r3, #112]
-	pop	{r4, r5, r6, r7, r8, r9, r10, lr}
+	pop	{r4, r5, r6, r7, r8, lr}
 	bx	lr
 .L50:
 	.align	2
@@ -492,9 +492,9 @@ initDoor:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	@ link register save eliminated.
-	mov	r2, #12
+	mov	r2, #16
 	mov	ip, #1
-	mov	r0, #5
+	mov	r0, #0
 	mov	r1, #225
 	ldr	r3, .L62
 	str	ip, [r3, #36]
@@ -2026,11 +2026,11 @@ updateGame:
 	mov	r0, #0
 	mov	r9, r4
 	mov	r3, r4
-	mov	r1, #8
+	mov	r1, #6
 	add	r6, r4, #204
 .L349:
 	ldr	r2, [r3, #60]
-	cmp	r2, #10
+	cmp	r2, #8
 	ldr	r2, [r3, #32]
 	addeq	r2, r2, #1
 	streq	r2, [r3, #32]
