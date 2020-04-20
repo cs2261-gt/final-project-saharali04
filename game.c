@@ -58,8 +58,6 @@ void initFood() {
         food[i].active = 1;
         food[i].width = 8;
         food[i].height = 8;
-        food[i].col = (rand() % 232);
-        food[i].row = (rand() % 133);
         food[i].cdel = 2;
         food[i].rdel = 2;
         if (i < 4) {
@@ -108,8 +106,6 @@ void initEnemies() {
         enemies[i].cdel = 2;
         enemies[i].rdel = 2;
         enemies[i].aniState = 7;
-
-        
 
         if (i < 5) {
             enemies[i].col = 29;
@@ -288,7 +284,7 @@ void updatePanda() {
             
             }    
         
-            panda.aniState = PANDASAD;
+            
     
         }
 
@@ -348,7 +344,7 @@ void updatePanda() {
                 
         }    
         
-        panda.aniState = PANDASAD;
+        
     
     }
 
