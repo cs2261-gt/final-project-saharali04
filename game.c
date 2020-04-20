@@ -148,8 +148,8 @@ void initBaskets() {
         baskets[i].width = 8;
         baskets[i].height = 8;
         baskets[i].worldRow = 47 + 20*i;
-        baskets[i].worldCol = 210;
-        baskets[i].aniState = BASKET;
+        baskets[i].worldCol = 200;
+        baskets[i].aniState = 4;
         
     }
 }
@@ -161,10 +161,10 @@ void initPandas() {
         pandas[i].height = 8;
         pandas[i].worldCol = 220;
         pandas[i].worldRow = (47 + i*20);
-        pandas[i].aniState = FRIENDLYPANDA;
+        pandas[i].aniState = 6;
         pandas[i].leavesCollected = 0;
         pandas[i].stemsCollected = 0;
-        pandas[i].curFrame = 0;
+        pandas[i].curFrame = 6;
         pandas[i].numFrames = 2;
         
     }
@@ -297,7 +297,7 @@ void updatePanda() {
             && collisionmapBitmap[OFFSET(panda.worldCol + panda.width - panda.cdel, panda.worldRow - panda.rdel, WORLDWIDTH1)])
         {
      
-            if (panda.worldRow > 0) {
+            if (panda.worldRow > 5) {
             
                 panda.aniState = PANDAHAPPY;
                 panda.worldRow-=panda.rdel;
@@ -495,7 +495,7 @@ void checkFoodDelivered() {
             playSoundB(chewSound, CHEWSOUNDLEN, 0);
             pandas[i].leavesCollected++;
             panda.leavesCollected--;
-            pandas[i].curFrame = 1;
+            pandas[i].curFrame = 8;
             
     
         }
@@ -506,7 +506,7 @@ void checkFoodDelivered() {
             playSoundB(chewSound, CHEWSOUNDLEN, 0);
             pandas[i].stemsCollected++;
             panda.stemsCollected--;
-            pandas[i].curFrame = 1;
+            pandas[i].curFrame = 8;
         }
 
      
@@ -634,8 +634,8 @@ void drawBaskets() {
             baskets[i].row = baskets[i].worldRow - vOff;
             baskets[i].col = baskets[i].worldCol - hOff;
             shadowOAM[i+32].attr0 = baskets[i].row | ATTR0_4BPP | ATTR0_SQUARE;
-            shadowOAM[i+32].attr1 = baskets[i].col | ATTR1_TINY;
-            shadowOAM[i+32].attr2 = ATTR2_TILEID(baskets[i].aniState, 0);
+            shadowOAM[i+32].attr1 = baskets[i].col | ATTR1_SMALL;
+            shadowOAM[i+32].attr2 = ATTR2_TILEID(baskets[i].aniState, 6);
         
     }
 }
@@ -655,7 +655,7 @@ void drawFriendlyPandas() {
         pandas[i].col = pandas[i].worldCol - hOff;
 
         shadowOAM[i+36].attr0 =  pandas[i].row | ATTR0_4BPP | ATTR0_SQUARE;
-        shadowOAM[i+36].attr1 =  pandas[i].col | ATTR1_TINY;
+        shadowOAM[i+36].attr1 =  pandas[i].col | ATTR1_SMALL;
         shadowOAM[i+36].attr2 = ATTR2_TILEID(pandas[i].aniState, pandas[i].curFrame);
         
     }
@@ -666,9 +666,7 @@ void updateGame() {
     if (screenBlock == 28) {
         REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;
     }   
-    if (hasShield) {
-        drawShield();
-    }
+    
     if (hOff > 256) {
         screenBlock++;
         hOff -= 256;
@@ -689,14 +687,14 @@ void updateGame() {
         playerHOff -= 512;
     }
     for (int i = 0; i < PANDACOUNT; i++) {
-        if (pandas[i].curFrame == 1) 
+        if (pandas[i].curFrame == 10) 
         {
             pandas[i].aniCounter++;
         }
         if (pandas[i].aniCounter == 15)
         {
             pandas[i].aniCounter = 0;
-            pandas[i].curFrame = 0;
+            pandas[i].curFrame = 8;
 
         }
     }
@@ -705,12 +703,15 @@ void updateGame() {
     updatePanda();
     drawPanda();
     checkFoodDelivered();
+    if (hasShield) {
+        drawShield();
+    }
    
     
     for (int i = 0; i < PANDACOUNT; i++) {
         if (pandas[i].leavesCollected == 5 || pandas[i].stemsCollected == 5) {
             pandas[i].aniState = 8;
-            pandas[i].curFrame = 1;
+            pandas[i].curFrame = 8;
         }
     }
     if ((pandas[0].leavesCollected == 5 || pandas[0].stemsCollected == 5) && (pandas[1].leavesCollected == 5 || pandas[1].stemsCollected == 5) && (pandas[2].leavesCollected == 5 || pandas[2].stemsCollected == 5))
@@ -728,9 +729,9 @@ void updateGame() {
 }
 
 void resetAnimationFriendly() {
-    pandas[0].curFrame = 0;
-    pandas[1].curFrame = 0;
-    pandas[2].curFrame = 0;
+    pandas[0].curFrame = 6;
+    pandas[1].curFrame = 6;
+    pandas[2].curFrame = 6;
     
 }
 
