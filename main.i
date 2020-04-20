@@ -1740,6 +1740,8 @@ void instruction() {
 
 
 void goToGame() {
+    (*(unsigned short *)0x4000000) = 0 | (1<<12) | (1<<8) | (1<<9);
+
     (*(volatile unsigned short*)0x400000A) = (1<<14) | ((0)<<2) | ((28)<<8);
 
 

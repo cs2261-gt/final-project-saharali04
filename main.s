@@ -249,12 +249,14 @@ goToGame:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	push	{r4, r5, r6, r7, r8, r9, r10, lr}
-	mov	r2, #23552
+	mov	r2, #4864
 	mov	r5, #67108864
+	mov	r3, #23552
 	ldr	r4, .L20
-	strh	r2, [r5, #10]	@ movhi
-	mov	r3, #16
+	strh	r2, [r5]	@ movhi
+	strh	r3, [r5, #10]	@ movhi
 	mov	r2, #83886080
+	mov	r3, #16
 	mov	r0, #3
 	ldr	r1, .L20+4
 	mov	lr, pc

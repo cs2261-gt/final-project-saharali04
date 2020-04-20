@@ -204,6 +204,8 @@ void instruction() {
 
 // Sets up the game state
 void goToGame() {
+    REG_DISPCTL = MODE0 | SPRITE_ENABLE | BG0_ENABLE | BG1_ENABLE;
+
     REG_BG1CNT = BG_SIZE_WIDE | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28);
 
     // bg 1 - displayed behind bg0
