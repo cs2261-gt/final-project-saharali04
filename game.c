@@ -606,12 +606,12 @@ void clearEnemies() {
 void drawFoodDelivered() {
     totalStemsDelivered = pandas[0].stemsCollected + pandas[1].stemsCollected + pandas[2].stemsCollected;
     totalLeavesDelivered = pandas[0].leavesCollected + pandas[1].leavesCollected + pandas[2].leavesCollected;
-    shadowOAM[40].attr0 = 137 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[40].attr1 = 164 | ATTR1_TINY;
+    shadowOAM[40].attr0 = 142 | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[40].attr1 = 110 | ATTR1_TINY;
     shadowOAM[40].attr2 = ATTR2_TILEID(totalStemsDelivered + 8, 0);
 
-    shadowOAM[41].attr0 = 147 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[41].attr1 = 164 | ATTR1_TINY;
+    shadowOAM[41].attr0 = 142 | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[41].attr1 = 216 | ATTR1_TINY;
     shadowOAM[41].attr2 = ATTR2_TILEID(totalLeavesDelivered + 8, 0);
 
 

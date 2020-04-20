@@ -1763,9 +1763,9 @@ drawFoodDelivered:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	push	{r4, r5, r6, lr}
-	mov	ip, #164
-	mov	r4, #137
-	mov	lr, #147
+	mov	ip, #142
+	mov	r4, #110
+	mov	lr, #216
 	ldr	r0, .L315
 	ldr	r1, [r0, #116]
 	ldr	r2, [r0, #48]
@@ -1790,10 +1790,10 @@ drawFoodDelivered:
 	strh	r3, [r2]	@ movhi
 	add	r3, r1, #320
 	add	r1, r1, #328
-	strh	r4, [r3]	@ movhi
-	strh	ip, [r3, #2]	@ movhi
-	strh	lr, [r1]	@ movhi
-	strh	ip, [r1, #2]	@ movhi
+	strh	r4, [r3, #2]	@ movhi
+	strh	ip, [r3]	@ movhi
+	strh	lr, [r1, #2]	@ movhi
+	strh	ip, [r1]	@ movhi
 	pop	{r4, r5, r6, lr}
 	bx	lr
 .L316:
