@@ -145,8 +145,8 @@ void initBaskets() {
     for (int i = 0; i < BASKETCOUNT; i++) 
     {
         baskets[i].active = 1;
-        baskets[i].width = 8;
-        baskets[i].height = 8;
+        baskets[i].width = 16;
+        baskets[i].height = 16;
         baskets[i].worldRow = 47 + 20*i;
         baskets[i].worldCol = 200;
         baskets[i].aniState = 4;
@@ -711,7 +711,7 @@ void updateGame() {
     for (int i = 0; i < PANDACOUNT; i++) {
         if (pandas[i].leavesCollected == 5 || pandas[i].stemsCollected == 5) {
             pandas[i].aniState = 8;
-            pandas[i].curFrame = 8;
+            pandas[i].curFrame = 6;
         }
     }
     if ((pandas[0].leavesCollected == 5 || pandas[0].stemsCollected == 5) && (pandas[1].leavesCollected == 5 || pandas[1].stemsCollected == 5) && (pandas[2].leavesCollected == 5 || pandas[2].stemsCollected == 5))
