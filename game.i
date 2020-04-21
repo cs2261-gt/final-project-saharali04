@@ -1505,7 +1505,7 @@ void updatePanda2()
         if (panda.worldCol > 0 && (collisionmap2Bitmap[((panda.worldRow)*(256)+((panda.worldCol - panda.cdel)))])
             && (collisionmap2Bitmap[(((panda.worldRow + panda.height - panda.rdel))*(256)+((panda.worldCol - panda.cdel)))]))
         {
-            panda.worldCol--;
+            panda.worldCol-=panda.cdel;
             panda.aniState = PANDASAD;
         }
     }
@@ -1515,7 +1515,7 @@ void updatePanda2()
         if (panda.worldCol + panda.width < 240 && (collisionmap2Bitmap[((panda.worldRow)*(256)+((panda.worldCol + panda.width)))] == 0x7FFF)
             && (collisionmap2Bitmap[(((panda.worldRow + panda.height - panda.rdel))*(256)+((panda.worldCol + panda.width)))] == 0x7FFF))
         {
-            panda.worldCol++;
+            panda.worldCol+=panda.cdel;
             panda.aniState = PANDASAD;
         }
     }
