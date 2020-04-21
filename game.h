@@ -78,30 +78,41 @@ extern int totalHOff;
     
 
 // Function prototypes
-void initPanda();
-void drawPanda();
-void updatePanda();
-void drawFood();
-void drawEnemies();
-void drawDoor();
-void drawEnemiesRight();
-void drawEnemiesLeft();
-void updateGame();
-void updateGame2();
+
+// INIT FUNCTIONS
 void initGame();
+void initPanda();
 void initFood();
-void initDoor();
 void initEnemies();
-void drawBaskets();
 void initBaskets();
 void initPandas();
-void drawFriendlyPandas();
+void initDoor();
+
+// UPDATE PANDA FUNCTIONS
+void updatePanda();
+void updatePanda2();
+
+// COLLISION CHECKS
 void checkFoodCollected();
 void checkFoodDelivered();
-void drawFoodDelivered();
-void drawScoreCollected();
-void resetAnimationFriendly();
-void updatePanda2();
-void clearEnemies();
 void checkEnemyCollision();
+
+// DRAW FUNCTIONS
+void drawPanda();
+void drawFood();
+void drawEnemies();
+void drawEnemiesLeft();
+void drawEnemiesRight();
+void drawFoodDelivered();
+void drawFoodCollected();
+void drawBaskets();
+void drawFriendlyPandas();
+void drawDoor();
+
+// UPDATE GAME FUNCTIONS
+void updateGame();
+void updateGame2();
+
+// MISC FUNCTIONS
 void checkCheatActivation();
+void resetAnimationFriendly();
