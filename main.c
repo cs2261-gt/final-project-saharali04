@@ -51,8 +51,6 @@ void goToWin();
 void win();
 void goToLose();
 void lose();
-void goToTest();
-void test();
 
 // Prototypes
 void initialize();
@@ -65,12 +63,12 @@ void initialize();
     // Keeps track if player lost
     int hasLost = 0;
     int hasWon = 0;
+    
     // shadowOAM variables
     OBJ_ATTR shadowOAM[128];
     #define SHADOWOAMLENGTH 128
 
     int game1 = 0;
-    // For random
     int seed;
 
     // States
@@ -111,17 +109,15 @@ int main() {
         }
         oldButtons = buttons;
         buttons = BUTTONS;
-
 	}
     return 0;
 }
 
-// Initialize the game on first launch
+// initialize the game on first launch
 void initialize() 
 {
     REG_DISPCTL = MODE0 | SPRITE_ENABLE;
 
-    // Set up bg1 and bg0 control register
     REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28);
     REG_BG0CNT = BG_CHARBLOCK(2) | BG_SCREENBLOCK(27) | BG_SIZE_SMALL;
 
@@ -136,7 +132,7 @@ void initialize()
     goToSplash();
 }
 
-// Sets up the splash state
+// sets up the splash state
 void goToSplash() 
 {
     REG_DISPCTL = MODE0 | BG1_ENABLE;
@@ -166,7 +162,7 @@ void goToSplash()
     state = SPLASH;
 }
 
-// Runs every frame of the splash state
+// runs every frame of the splash state
 void splash() {
     seed++;
 
@@ -184,6 +180,8 @@ void splash() {
         goToInstruction();
     }
 }
+
+// sets up instruction screen state
 void goToInstruction() 
 {
     REG_DISPCTL = MODE0 | BG1_ENABLE;
@@ -196,6 +194,7 @@ void goToInstruction()
     state = INSTRUCTION;
 }
 
+// runs every frame of instruction state
 void instruction() 
 {
     if (BUTTON_PRESSED(BUTTON_START)) 
@@ -210,51 +209,46 @@ void instruction()
     }
 }
 
-// Sets up the game state
+// sets up the game state
 void goToGame() 
 {
     REG_DISPCTL = MODE0 | SPRITE_ENABLE | BG0_ENABLE | BG1_ENABLE;
 
     REG_BG1CNT = BG_SIZE_WIDE | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28);
 
-    // bg 1 - displayed behind bg0
-    // use palette of game bc it has both the score palette and game palette
     DMANow(3, &gameScreenPal, PALETTE, gameScreenPalLen/2);
     DMANow(3, gameScreenTiles, &CHARBLOCK[0], gameScreenTilesLen/2);
     DMANow(3, gameScreenMap, &SCREENBLOCK[28], gameScreenMapLen/2);
 
-    // bg 0
     DMANow(3, scoreBackgroundTiles, &CHARBLOCK[2], scoreBackgroundTilesLen/2);
     DMANow(3, scoreBackgroundMap, &SCREENBLOCK[27], scoreBackgroundMapLen/2);
 
     hideSprites();
     waitForVBlank();
     DMANow(3, shadowOAM, OAM, 512);
-    goToMaze = 0;
-    // likely these inits can be done elsewhere to be cleaner
-    game1 = 1;
-    screenBlock = 28;  
 
+    goToMaze = 0;
+    game1 = 1;
+    
+    screenBlock = 28;  
+    playerHOff = 0;
+    totalHOff = 0;
     hOff = 0;
     vOff = 0;
     REG_BG1VOFF = vOff;
     REG_BG1HOFF = hOff;
 
-    panda.worldCol = 73; // you should set this up likely in initPanda
+    panda.worldCol = 73; 
     panda.worldRow = 64;
-    panda.col = 73; // you should set this up likely in initPanda
+    panda.col = 73; 
     panda.row = 64;
     door.worldCol = 225;
     door.worldRow = 5;
 
-    playerHOff = 0;
-    totalHOff = 0;
-    screenBlock = 28;
-
     state = GAME;
 }
 
-// Runs every frame of the game state
+// runs every frame of the game state
 void game() 
 {
     updateGame();
@@ -281,7 +275,6 @@ void game()
     }
 }
 
-
 // sets up the game state
 void goToGame2() 
 {
@@ -289,13 +282,10 @@ void goToGame2()
     
     REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28);
 
-    // bg 1 - displayed behind bg 0
-    // use palette of game bc it has both the score palette and game palette
     DMANow(3, &gameScreen2Pal, PALETTE, gameScreen2PalLen/2);
     DMANow(3, gameScreen2Map, &SCREENBLOCK[28], gameScreen2MapLen/2);
     DMANow(3, gameScreen2Tiles, &CHARBLOCK[0], gameScreen2TilesLen/2);
 
-    // bg0
     DMANow(3, scoreBackground2Tiles, &CHARBLOCK[2], scoreBackground2TilesLen/2);
     DMANow(3, scoreBackground2Map, &SCREENBLOCK[27], scoreBackground2MapLen/2);
 
@@ -320,7 +310,7 @@ void goToGame2()
     state = GAME2;
 }
 
-// Runs every frame of the game state
+// runs every frame of the game state
 void game2() 
 {
     updateGame2();
@@ -350,7 +340,8 @@ void game2()
 
 }
 // sets up the pause state
-void goToPause() {
+void goToPause() 
+{
     REG_DISPCTL = MODE0 | BG0_ENABLE;
 
     DMANow(3, &pauseScreenPal, PALETTE, pauseScreenPalLen/2);
@@ -365,7 +356,8 @@ void goToPause() {
 }
 
 // runs every frame of the pause state
-void pause() {
+void pause() 
+{
     if (BUTTON_PRESSED(BUTTON_START)) 
     {
         if (game1) 
@@ -380,7 +372,8 @@ void pause() {
 }
 
 // sets up the win state
-void goToWin() {
+void goToWin() 
+{
     REG_DISPCTL = MODE0 | BG0_ENABLE;
 
     DMANow(3, &winScreenPal, PALETTE, winScreenPalLen/2);
@@ -395,7 +388,8 @@ void goToWin() {
 }
 
 // runs every frame of the win state
-void win() {
+void win() 
+{
     if (BUTTON_PRESSED(BUTTON_START)) 
     {
         goToSplash();
@@ -404,7 +398,8 @@ void win() {
 }
 
 // sets up the lose state
-void goToLose() {
+void goToLose() 
+{
     REG_DISPCTL = MODE0 | BG0_ENABLE;
 
     DMANow(3, &loseScreenPal, PALETTE, loseScreenPalLen/2);
@@ -419,7 +414,8 @@ void goToLose() {
 }
 
 // runs every frame of the lose state
-void lose() {
+void lose() 
+{
     if (BUTTON_PRESSED(BUTTON_START)) 
     {
         goToSplash();

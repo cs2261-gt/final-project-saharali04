@@ -296,38 +296,39 @@ goToGame:
 	mov	lr, pc
 	bx	r4
 	mov	r3, #0
+	mov	r7, #28
 	mov	r2, #1
-	mov	r1, #64
 	mov	r0, #73
-	mov	r6, #225
-	mov	r4, #5
-	mov	lr, #28
+	mov	r1, #64
+	mov	r4, #225
+	mov	lr, #5
 	mov	ip, #2
-	ldr	r7, .L20+52
-	str	r3, [r7]
-	ldr	r7, .L20+56
-	str	r3, [r7]
-	ldr	r7, .L20+60
-	str	r3, [r7]
+	ldr	r6, .L20+52
+	str	r3, [r6]
+	ldr	r6, .L20+56
+	str	r3, [r6]
+	ldr	r6, .L20+60
+	str	r3, [r6]
+	ldr	r6, .L20+64
+	str	r3, [r6]
+	ldr	r6, .L20+68
+	str	r3, [r6]
+	ldr	r6, .L20+72
+	str	r7, [r6]
 	strh	r3, [r5, #22]	@ movhi
 	strh	r3, [r5, #20]	@ movhi
-	ldr	r5, .L20+64
-	str	r3, [r5]
-	ldr	r5, .L20+68
-	str	r3, [r5]
-	ldr	r3, .L20+72
-	str	r2, [r3, #8]
 	ldr	r3, .L20+76
-	ldr	r2, .L20+80
-	str	r1, [r3]
-	stmib	r3, {r0, r1}
+	str	r2, [r3, #8]
+	ldr	r3, .L20+80
+	ldr	r2, .L20+84
 	str	r0, [r3, #12]
-	ldr	r1, .L20+84
-	ldr	r3, .L20+88
-	str	r6, [r2, #12]
-	str	r4, [r2, #8]
-	str	lr, [r1]
-	str	ip, [r3]
+	str	r0, [r3, #4]
+	ldr	r0, .L20+88
+	str	r4, [r2, #12]
+	str	lr, [r2, #8]
+	str	r1, [r3, #8]
+	str	r1, [r3]
+	str	ip, [r0]
 	pop	{r4, r5, r6, r7, r8, lr}
 	bx	lr
 .L21:
@@ -347,14 +348,14 @@ goToGame:
 	.word	waitForVBlank
 	.word	shadowOAM
 	.word	goToMaze
-	.word	hOff
-	.word	vOff
 	.word	playerHOff
 	.word	totalHOff
+	.word	hOff
+	.word	vOff
+	.word	screenBlock
 	.word	.LANCHOR0
 	.word	panda
 	.word	door
-	.word	screenBlock
 	.word	state
 	.size	goToGame, .-goToGame
 	.align	2

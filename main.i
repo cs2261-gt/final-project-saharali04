@@ -1613,8 +1613,6 @@ void goToWin();
 void win();
 void goToLose();
 void lose();
-void goToTest();
-void test();
 
 
 void initialize();
@@ -1628,11 +1626,11 @@ void initialize();
     int hasLost = 0;
     int hasWon = 0;
 
+
     OBJ_ATTR shadowOAM[128];
 
 
     int game1 = 0;
-
     int seed;
 
 
@@ -1673,7 +1671,6 @@ int main() {
         }
         oldButtons = buttons;
         buttons = (*(volatile unsigned short *)0x04000130);
-
  }
     return 0;
 }
@@ -1682,7 +1679,6 @@ int main() {
 void initialize()
 {
     (*(unsigned short *)0x4000000) = 0 | (1<<12);
-
 
     (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((28)<<8);
     (*(volatile unsigned short*)0x4000008) = ((2)<<2) | ((27)<<8) | (0<<14);
@@ -1746,6 +1742,8 @@ void splash() {
         goToInstruction();
     }
 }
+
+
 void goToInstruction()
 {
     (*(unsigned short *)0x4000000) = 0 | (1<<9);
@@ -1757,6 +1755,7 @@ void goToInstruction()
 
     state = INSTRUCTION;
 }
+
 
 void instruction()
 {
@@ -1779,12 +1778,9 @@ void goToGame()
 
     (*(volatile unsigned short*)0x400000A) = (1<<14) | ((0)<<2) | ((28)<<8);
 
-
-
     DMANow(3, &gameScreenPal, ((unsigned short *)0x5000000), 32/2);
     DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 29376/2);
     DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[28], 6144/2);
-
 
     DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[2], 960/2);
     DMANow(3, scoreBackgroundMap, &((screenblock *)0x6000000)[27], 2048/2);
@@ -1792,11 +1788,13 @@ void goToGame()
     hideSprites();
     waitForVBlank();
     DMANow(3, shadowOAM, ((OBJ_ATTR*)(0x7000000)), 512);
+
     goToMaze = 0;
-
     game1 = 1;
-    screenBlock = 28;
 
+    screenBlock = 28;
+    playerHOff = 0;
+    totalHOff = 0;
     hOff = 0;
     vOff = 0;
     (*(volatile unsigned short *)0x04000016) = vOff;
@@ -1808,10 +1806,6 @@ void goToGame()
     panda.row = 64;
     door.worldCol = 225;
     door.worldRow = 5;
-
-    playerHOff = 0;
-    totalHOff = 0;
-    screenBlock = 28;
 
     state = GAME;
 }
@@ -1844,19 +1838,15 @@ void game()
 }
 
 
-
 void goToGame2()
 {
     (*(unsigned short *)0x4000000) = 0 | (1<<12) | (1<<8) | (1<<9);
 
     (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((28)<<8);
 
-
-
     DMANow(3, &gameScreen2Pal, ((unsigned short *)0x5000000), 32/2);
     DMANow(3, gameScreen2Map, &((screenblock *)0x6000000)[28], 2048/2);
     DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 832/2);
-
 
     DMANow(3, scoreBackground2Tiles, &((charblock *)0x6000000)[2], 992/2);
     DMANow(3, scoreBackground2Map, &((screenblock *)0x6000000)[27], 2048/2);
@@ -1912,7 +1902,8 @@ void game2()
 
 }
 
-void goToPause() {
+void goToPause()
+{
     (*(unsigned short *)0x4000000) = 0 | (1<<8);
 
     DMANow(3, &pauseScreenPal, ((unsigned short *)0x5000000), 512/2);
@@ -1927,7 +1918,8 @@ void goToPause() {
 }
 
 
-void pause() {
+void pause()
+{
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3)))))
     {
         if (game1)
@@ -1942,7 +1934,8 @@ void pause() {
 }
 
 
-void goToWin() {
+void goToWin()
+{
     (*(unsigned short *)0x4000000) = 0 | (1<<8);
 
     DMANow(3, &winScreenPal, ((unsigned short *)0x5000000), 512/2);
@@ -1957,7 +1950,8 @@ void goToWin() {
 }
 
 
-void win() {
+void win()
+{
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3)))))
     {
         goToSplash();
@@ -1966,7 +1960,8 @@ void win() {
 }
 
 
-void goToLose() {
+void goToLose()
+{
     (*(unsigned short *)0x4000000) = 0 | (1<<8);
 
     DMANow(3, &loseScreenPal, ((unsigned short *)0x5000000), 512/2);
@@ -1981,7 +1976,8 @@ void goToLose() {
 }
 
 
-void lose() {
+void lose()
+{
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3)))))
     {
         goToSplash();
