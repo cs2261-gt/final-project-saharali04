@@ -81,6 +81,8 @@
     extern int goToMaze;
     extern int goToChina;
 
+    // misc
+    extern int count;
 // Function prototypes
 
     // INIT FUNCTIONS
