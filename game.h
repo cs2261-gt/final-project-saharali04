@@ -1,7 +1,7 @@
 // Constants
-#define WORLDWIDTH1 768
-#define WORLDWIDTH2 256
-#define WORLDHEIGHT 256
+    #define WORLDWIDTH1 768
+    #define WORLDWIDTH2 256
+    #define WORLDHEIGHT 256
 
 // Structs
     // panda struct
@@ -23,7 +23,6 @@
         int stemsDelivered;
         int curFrame;
         int numFrames;
-
     } PANDASPRITE;
 
     // sprite struct
@@ -84,40 +83,40 @@
 
 // Function prototypes
 
-// INIT FUNCTIONS
-void initGame();
-void initPanda();
-void initFood();
-void initEnemies();
-void initBaskets();
-void initPandas();
-void initDoor();
+    // INIT FUNCTIONS
+    void initGame();
+    void initPanda();
+    void initFood();
+    void initEnemies();
+    void initBaskets();
+    void initPandas();
+    void initDoor();
 
-// UPDATE PANDA FUNCTIONS
-void updatePanda();
-void updatePanda2();
+    // UPDATE PANDA FUNCTIONS
+    void updatePanda();
+    void updatePanda2();
 
-// COLLISION CHECKS
-void checkFoodCollected();
-void checkFoodDelivered();
-void checkEnemyCollision();
+    // COLLISION CHECKS
+    void checkFoodCollected();
+    void checkFoodDelivered();
+    void checkEnemyCollision();
 
-// DRAW FUNCTIONS
-void drawPanda();
-void drawFood();
-void drawEnemies();
-void drawEnemiesLeft();
-void drawEnemiesRight();
-void drawFoodDelivered();
-void drawFoodCollected();
-void drawBaskets();
-void drawFriendlyPandas();
-void drawDoor();
+    // DRAW FUNCTIONS
+    void drawPanda();
+    void drawFood();
+    void drawEnemies();
+    void drawEnemiesLeft();
+    void drawEnemiesRight();
+    void drawFoodDelivered();
+    void drawFoodCollected();
+    void drawBaskets();
+    void drawFriendlyPandas();
+    void drawDoor();
 
-// UPDATE GAME FUNCTIONS
-void updateGame();
-void updateGame2();
+    // UPDATE GAME FUNCTIONS
+    void updateGame();
+    void updateGame2();
 
-// MISC FUNCTIONS
-void checkCheatActivation();
-void resetAnimationFriendly();
+    // MISC FUNCTIONS
+    void checkCheatActivation();
+    void resetAnimationFriendly();
