@@ -23,7 +23,7 @@ initPanda:
 	@ frame_needed = 0, uses_anonymous_args = 0
 	@ link register save eliminated.
 	mov	r2, #0
-	mov	r0, #9
+	mov	r0, #8
 	mov	r1, #1
 	mov	ip, #3
 	ldr	r3, .L3
@@ -278,49 +278,49 @@ initGame:
 	@ frame_needed = 0, uses_anonymous_args = 0
 	push	{r4, r5, r6, r7, r8, lr}
 	mov	r4, #0
-	mov	r1, #9
 	mov	r2, #1
-	mov	lr, #28
-	mov	r5, #3
+	mov	lr, #3
+	mov	ip, #28
+	mov	r5, #8
 	ldr	r3, .L49
-	ldr	ip, .L49+4
-	ldr	r0, .L49+8
-	str	r4, [ip]
+	ldr	r0, .L49+4
+	ldr	r1, .L49+8
+	str	r4, [r0]
 	str	r4, [r3]
-	ldr	ip, .L49+12
+	ldr	r0, .L49+12
 	ldr	r3, .L49+16
-	str	lr, [ip]
-	str	r1, [r3, #24]
-	str	r1, [r3, #28]
+	str	ip, [r0]
+	str	lr, [r3, #64]
 	str	r2, [r3, #20]
 	str	r2, [r3, #16]
-	str	r4, [r0]
-	str	r4, [r0, #4]
+	str	r4, [r1]
+	str	r4, [r1, #4]
 	str	r4, [r3, #32]
 	str	r4, [r3, #36]
 	str	r4, [r3, #44]
 	str	r4, [r3, #48]
 	str	r4, [r3, #60]
-	str	r5, [r3, #64]
+	str	r5, [r3, #24]
+	str	r5, [r3, #28]
 	bl	initFood
 	bl	initEnemies
+	mov	r1, r5
 	mov	r2, #47
-	mov	r0, #8
 	mov	lr, #220
-	mov	r1, #6
+	mov	r0, #6
 	mov	ip, #2
 	ldr	r3, .L49+20
 .L46:
 	str	r2, [r3, #8]
 	add	r2, r2, #20
 	cmp	r2, #107
-	str	r0, [r3, #24]
-	str	r0, [r3, #28]
+	str	r1, [r3, #24]
+	str	r1, [r3, #28]
 	str	lr, [r3, #12]
-	str	r1, [r3, #36]
+	str	r0, [r3, #36]
 	str	r4, [r3, #44]
 	str	r4, [r3, #48]
-	str	r1, [r3, #60]
+	str	r0, [r3, #60]
 	str	ip, [r3, #64]
 	add	r3, r3, #68
 	bne	.L46
