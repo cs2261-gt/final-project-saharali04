@@ -122,6 +122,7 @@
     void hideBaskets();
     void hidePandas();
     void hideDoor();
+    void hideFood();
 
 
     void updateGame();
@@ -1725,6 +1726,7 @@ void drawDoor()
     shadowOAM[100].attr2 = ((3)*32+(0));
 }
 
+
 void hideBaskets()
 {
     for (int i = 0; i < 3; i++)
@@ -1737,6 +1739,8 @@ void hideBaskets()
     }
 
 }
+
+
 void hidePandas()
 {
     for (int i = 0; i < 3; i++)
@@ -1749,10 +1753,25 @@ void hidePandas()
     }
 }
 
+
 void hideDoor() {
     shadowOAM[100].attr0 = door.worldRow | (0<<13) | (0<<14);
     shadowOAM[100].attr1 = door.worldCol | (1<<14);
     shadowOAM[100].attr2 = ((12)*32+(12));
+}
+
+
+void hideFood()
+{
+    for (int i = 0; i < 35; i++)
+    {
+        if (food[i].active)
+        {
+            shadowOAM[i+1].attr0 = food[i].row | (0<<13) | (0<<14);
+            shadowOAM[i+1].attr1 = food[i].col | (0<<14);
+            shadowOAM[i+1].attr2 = ((12)*32+(12));
+        }
+    }
 }
 
 
@@ -1858,7 +1877,7 @@ void updateGame2()
 
     if (cheatMode)
     {
-        drawFood();
+        hideFood();
         checkEnemyCollision();
 
         if (collision(panda.col, panda.row, panda.width, panda.height, enemies[randomIndex].col, enemies[randomIndex].row, enemies[randomIndex].width, enemies[randomIndex].height))

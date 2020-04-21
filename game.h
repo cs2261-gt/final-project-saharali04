@@ -117,6 +117,7 @@
     void hideBaskets();
     void hidePandas();
     void hideDoor();
+    void hideFood();
 
     // UPDATE GAME FUNCTIONS
     void updateGame();
