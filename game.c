@@ -785,13 +785,6 @@ void updateGame() {
 // update GAME2 state (food/enemy screen)
 void updateGame2() 
 {
-    count++;
-    checkCheatActivation();
-    drawPanda();
-    drawDoor();
-    drawFoodCollected();
-    updatePanda2();
-
     if (collision(panda.worldCol, panda.worldRow, panda.width, panda.height, door.worldCol, door.worldRow, door.width, door.height)) 
     {
         goToMaze = 1;
@@ -823,7 +816,6 @@ void updateGame2()
         drawFood();
         checkFoodCollected();
         checkEnemyCollision();
-
         if (count < 33) 
         {
             drawEnemiesLeft();  
@@ -835,6 +827,13 @@ void updateGame2()
             drawEnemiesRight();
         }  
     }
+
+    count++;
+    checkCheatActivation();
+    drawPanda();
+    drawDoor();
+    drawFoodCollected();
+    updatePanda2(); 
 
     if (count == 133) 
     {

@@ -1204,8 +1204,8 @@ void initEnemies()
     for (int i = 0; i < 34; i++)
     {
         enemies[i].active = 1;
-        enemies[i].width = 8;
-        enemies[i].height = 8;
+        enemies[i].width = 9;
+        enemies[i].height = 9;
         enemies[i].cdel = 2;
         enemies[i].rdel = 2;
         enemies[i].aniState = 7;
@@ -1863,13 +1863,6 @@ void updateGame() {
 
 void updateGame2()
 {
-    count++;
-    checkCheatActivation();
-    drawPanda();
-    drawDoor();
-    drawFoodCollected();
-    updatePanda2();
-
     if (collision(panda.worldCol, panda.worldRow, panda.width, panda.height, door.worldCol, door.worldRow, door.width, door.height))
     {
         goToMaze = 1;
@@ -1901,7 +1894,6 @@ void updateGame2()
         drawFood();
         checkFoodCollected();
         checkEnemyCollision();
-
         if (count < 33)
         {
             drawEnemiesLeft();
@@ -1913,6 +1905,13 @@ void updateGame2()
             drawEnemiesRight();
         }
     }
+
+    count++;
+    checkCheatActivation();
+    drawPanda();
+    drawDoor();
+    drawFoodCollected();
+    updatePanda2();
 
     if (count == 133)
     {

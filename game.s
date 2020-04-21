@@ -175,7 +175,7 @@ initEnemies:
 	push	{r4, r5, r6, r7, r8, r9, r10, lr}
 	mov	r3, #0
 	mov	r4, #1
-	mov	r0, #8
+	mov	r0, #9
 	mov	r1, #2
 	mov	lr, #7
 	mov	r9, #212
@@ -2308,78 +2308,36 @@ updateGame2:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	push	{r4, r5, r6, r7, r8, lr}
-	ldr	r4, .L462
-	ldr	r3, [r4]
-	sub	sp, sp, #16
-	add	r3, r3, #1
-	str	r3, [r4]
-	bl	checkCheatActivation
-	mov	lr, #96
-	mov	r1, #142
-	mov	ip, #105
-	mov	r0, #210
-	ldr	r5, .L462+4
-	ldr	r2, [r5, #4]
-	ldr	r3, .L462+8
-	lsl	r2, r2, #23
-	lsr	r2, r2, #23
-	ldr	r8, [r5, #60]
-	strh	r2, [r3, #2]	@ movhi
-	ldrb	r2, [r5]	@ zero_extendqisi2
-	ldr	r7, [r5, #36]
-	strh	r2, [r3]	@ movhi
-	ldr	r2, [r5, #48]
-	add	r7, r7, r8, lsl #5
-	strh	r7, [r3, #4]	@ movhi
-	add	r2, r2, #8
-	add	r7, r3, #324
-	strh	r2, [r7]	@ movhi
-	ldr	r2, [r5, #44]
-	ldr	r6, .L462+12
-	add	r7, r3, #332
-	add	r2, r2, #8
-	strh	r2, [r7]	@ movhi
-	ldr	r2, [r6, #12]
-	add	r7, r3, #800
-	orr	r2, r2, #16384
-	strh	r2, [r7, #2]	@ movhi
-	ldr	r2, [r6, #8]
-	strh	r2, [r7]	@ movhi
-	add	r2, r3, #804
-	strh	lr, [r2]	@ movhi
-	add	r2, r3, #320
-	add	r3, r3, #328
-	strh	ip, [r2, #2]	@ movhi
-	strh	r1, [r2]	@ movhi
-	strh	r1, [r3]	@ movhi
-	strh	r0, [r3, #2]	@ movhi
-	bl	updatePanda2
-	add	r2, r6, #8
-	ldr	r0, [r6, #28]
-	ldr	r1, [r6, #24]
+	ldr	r5, .L462
+	add	r2, r5, #8
 	ldm	r2, {r2, r3}
+	ldr	r0, [r5, #28]
+	ldr	r1, [r5, #24]
+	sub	sp, sp, #16
+	ldr	r4, .L462+4
+	str	r2, [sp, #4]
 	str	r0, [sp, #12]
 	str	r1, [sp, #8]
-	str	r2, [sp, #4]
 	str	r3, [sp]
-	add	r2, r5, #24
+	add	r2, r4, #24
 	ldm	r2, {r2, r3}
-	ldr	r1, [r5, #8]
-	ldr	r0, [r5, #12]
-	ldr	r6, .L462+16
+	ldr	r1, [r4, #8]
+	ldr	r0, [r4, #12]
+	ldr	r7, .L462+8
 	mov	lr, pc
-	bx	r6
+	bx	r7
 	cmp	r0, #0
 	movne	r2, #1
-	ldrne	r3, .L462+20
+	ldrne	r3, .L462+12
 	strne	r2, [r3]
-	ldr	r3, .L462+24
+	ldr	r3, .L462+16
 	ldr	r3, [r3]
 	cmp	r3, #0
+	ldr	r6, .L462+20
 	beq	.L416
 	mov	lr, #396
-	ldr	r3, .L462+28
-	ldr	r2, .L462+8
+	mov	r2, r6
+	ldr	r3, .L462+24
 	add	r0, r3, #1536
 	add	r0, r0, #4
 .L418:
@@ -2395,9 +2353,9 @@ updateGame2:
 	add	r2, r2, #8
 	bne	.L418
 	bl	checkEnemyCollision
-	ldr	r3, .L462+32
+	ldr	r3, .L462+28
 	ldr	r3, [r3]
-	ldr	r1, .L462+36
+	ldr	r1, .L462+32
 	add	r2, r3, r3, lsl #2
 	add	r3, r3, r2, lsl #1
 	add	r2, r1, r3, lsl #2
@@ -2405,56 +2363,99 @@ updateGame2:
 	ldr	r0, [r2, #28]
 	ldr	r1, [r2, #24]
 	ldr	r3, [r2, #4]
+	str	ip, [sp, #4]
 	str	r0, [sp, #12]
 	str	r1, [sp, #8]
-	str	ip, [sp, #4]
 	str	r3, [sp]
-	add	r2, r5, #24
+	add	r2, r4, #24
 	ldm	r2, {r2, r3}
-	ldr	r1, [r5]
-	ldr	r0, [r5, #4]
+	ldr	r1, [r4]
+	ldr	r0, [r4, #4]
 	mov	lr, pc
-	bx	r6
+	bx	r7
 	cmp	r0, #0
 	movne	r3, #15
-	strne	r3, [r5, #48]
-	strne	r3, [r5, #44]
-	ldr	r3, [r4]
-	cmp	r3, #32
+	ldr	r7, .L462+36
+	ldr	r0, [r7]
+	strne	r3, [r4, #48]
+	strne	r3, [r4, #44]
+	cmp	r0, #32
 	bgt	.L420
-	ldr	r3, .L462+36
+	ldr	r3, .L462+32
 	ldr	r2, .L462+40
-	add	r0, r3, #1488
-	add	r0, r0, #8
+	add	ip, r3, #1488
+	add	ip, ip, #8
 .L422:
 	ldr	r1, [r3, #36]
 	cmp	r1, #0
 	beq	.L421
 	ldr	r1, [r3, #32]
-	ldr	lr, [r3]
-	ldr	ip, [r3, #4]
+	ldm	r3, {r8, lr}
 	add	r1, r1, #96
 	strh	r1, [r2, #4]	@ movhi
-	strh	lr, [r2]	@ movhi
-	strh	ip, [r2, #2]	@ movhi
+	strh	r8, [r2]	@ movhi
+	strh	lr, [r2, #2]	@ movhi
 .L421:
 	add	r3, r3, #44
-	cmp	r3, r0
+	cmp	r3, ip
 	add	r2, r2, #8
 	bne	.L422
-.L432:
+.L423:
+	add	r0, r0, #1
+	str	r0, [r7]
+	mov	r8, #96
+	bl	checkCheatActivation
+	mov	lr, #105
+	mov	r0, #142
+	mov	ip, #210
+	ldr	r1, [r4, #60]
+	ldr	r2, [r4, #36]
+	ldr	r3, [r4, #4]
+	add	r2, r2, r1, lsl #5
+	strh	r2, [r6, #4]	@ movhi
+	ldrb	r2, [r4]	@ zero_extendqisi2
+	lsl	r3, r3, #23
+	add	r1, r5, #8
+	strh	r2, [r6]	@ movhi
+	lsr	r3, r3, #23
+	ldm	r1, {r1, r2}
+	strh	r3, [r6, #2]	@ movhi
 	ldr	r3, .L462+44
+	orr	r2, r2, #16384
+	strh	r1, [r3]	@ movhi
+	strh	r2, [r3, #2]	@ movhi
+	ldr	r1, [r4, #48]
+	ldr	r2, [r4, #44]
+	sub	r4, r3, #480
+	strh	r8, [r3, #4]	@ movhi
+	strh	lr, [r4, #2]	@ movhi
+	sub	lr, r3, #472
+	strh	r0, [r4]	@ movhi
+	add	r1, r1, #8
+	strh	r0, [lr]	@ movhi
+	add	r2, r2, #8
+	sub	r0, r3, #476
+	sub	r3, r3, #468
+	strh	ip, [lr, #2]	@ movhi
+	strh	r1, [r0]	@ movhi
+	strh	r2, [r3]	@ movhi
+	bl	updatePanda2
+	ldr	r3, [r7]
+	cmp	r3, #133
+	beq	.L431
+.L433:
+	ldr	r3, .L462+48
 	mov	lr, pc
 	bx	r3
-	ldr	r4, .L462+48
+	ldr	r4, .L462+52
 	mov	r3, #512
 	mov	r2, #117440512
 	mov	r0, #3
-	ldr	r1, .L462+8
+	ldr	r1, .L462+20
 	mov	lr, pc
 	bx	r4
 	mov	r2, #6
-	ldr	r3, .L462+52
+	ldr	r3, .L462+56
 	str	r2, [r3, #60]
 	str	r2, [r3, #128]
 	str	r2, [r3, #196]
@@ -2463,98 +2464,96 @@ updateGame2:
 	pop	{r4, r5, r6, r7, r8, lr}
 	bx	lr
 .L416:
-	ldr	r3, .L462+28
-	ldr	r2, .L462+8
+	mov	r2, r6
+	ldr	r3, .L462+24
 	add	r0, r3, #1536
 	add	r0, r0, #4
-.L427:
+.L426:
 	ldr	r1, [r3, #36]
 	cmp	r1, #0
-	beq	.L426
+	beq	.L425
 	ldr	lr, [r3]
 	ldr	ip, [r3, #4]
 	ldr	r1, [r3, #32]
 	strh	lr, [r2, #8]	@ movhi
 	strh	ip, [r2, #10]	@ movhi
 	strh	r1, [r2, #12]	@ movhi
-.L426:
+.L425:
 	add	r3, r3, #44
 	cmp	r3, r0
 	add	r2, r2, #8
-	bne	.L427
+	bne	.L426
+	ldr	r7, .L462+36
 	bl	checkFoodCollected
 	bl	checkEnemyCollision
-	ldr	r3, [r4]
-	cmp	r3, #32
-	bgt	.L428
-	ldr	r3, .L462+36
+	ldr	r0, [r7]
+	cmp	r0, #32
+	bgt	.L427
+	ldr	r3, .L462+32
 	ldr	r2, .L462+40
-	add	r0, r3, #1488
-	add	r0, r0, #8
-.L430:
+	add	ip, r3, #1488
+	add	ip, ip, #8
+.L429:
 	ldr	r1, [r3, #36]
 	cmp	r1, #0
-	beq	.L429
+	beq	.L428
 	ldr	r1, [r3, #32]
-	ldr	lr, [r3]
-	ldr	ip, [r3, #4]
+	ldm	r3, {r8, lr}
 	add	r1, r1, #96
 	strh	r1, [r2, #4]	@ movhi
-	strh	lr, [r2]	@ movhi
-	strh	ip, [r2, #2]	@ movhi
-.L429:
-	add	r3, r3, #44
-	cmp	r3, r0
-	add	r2, r2, #8
-	bne	.L430
-	b	.L432
+	strh	r8, [r2]	@ movhi
+	strh	lr, [r2, #2]	@ movhi
 .L428:
-	cmp	r3, #67
-	beq	.L458
+	add	r3, r3, #44
+	cmp	r3, ip
+	add	r2, r2, #8
+	bne	.L429
+	b	.L423
+.L427:
+	cmp	r0, #67
+	beq	.L460
+.L430:
+	cmp	r0, #100
+	bne	.L423
+	bl	drawEnemiesRight
+	ldr	r0, [r7]
+	b	.L423
+.L420:
+	cmp	r0, #66
+	bne	.L430
+.L460:
+	bl	drawEnemies
+	ldr	r0, [r7]
+	b	.L423
 .L431:
-	cmp	r3, #100
-	beq	.L461
-.L425:
-	cmp	r3, #133
-	bne	.L432
 	mov	r2, #0
-	ldr	r3, .L462+36
-	str	r2, [r4]
+	ldr	r3, .L462+32
+	str	r2, [r7]
 	add	r1, r3, #1488
 	add	r1, r1, #8
-.L433:
+.L432:
 	ldr	r2, [r3, #4]
 	sub	r2, r2, #4
 	str	r2, [r3, #4]
 	add	r3, r3, #44
-	cmp	r3, r1
-	bne	.L433
-	b	.L432
-.L420:
-	cmp	r3, #66
-	bne	.L431
-.L458:
-	bl	drawEnemies
-	ldr	r3, [r4]
-	b	.L425
-.L461:
-	bl	drawEnemiesRight
-	ldr	r3, [r4]
-	b	.L425
+	cmp	r1, r3
+	bne	.L432
+	b	.L433
 .L463:
 	.align	2
 .L462:
-	.word	count
-	.word	panda
-	.word	shadowOAM
 	.word	door
+	.word	panda
 	.word	collision
 	.word	goToMaze
 	.word	cheatMode
+	.word	shadowOAM
 	.word	food
 	.word	randomIndex
 	.word	enemies
+	.word	count
 	.word	shadowOAM+360
+	.word	shadowOAM+800
 	.word	waitForVBlank
 	.word	DMANow
 	.word	pandas
