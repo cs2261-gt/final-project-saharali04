@@ -1580,6 +1580,23 @@ extern const unsigned short scoreBackground2Map[1024];
 
 extern const unsigned short scoreBackground2Pal[16];
 # 27 "main.c" 2
+# 1 "sound.h" 1
+SOUND soundA;
+SOUND soundB;
+
+
+
+void setupSounds();
+void playSoundA(const signed char* sound, int length, int loops);
+void playSoundB(const signed char* sound, int length, int loops);
+
+void setupInterrupts();
+void interruptHandler();
+
+void pauseSound();
+void unpauseSound();
+void stopSound();
+# 28 "main.c" 2
 
 
 void goToSplash();
@@ -1619,7 +1636,7 @@ void initialize();
     int seed;
 
 
-    enum {SPLASH, INSTRUCTION, GAME, GAME2, PAUSE, WIN, LOSE, TEST};
+    enum {SPLASH, INSTRUCTION, GAME, GAME2, PAUSE, WIN, LOSE};
     int state;
 
 
@@ -1653,11 +1670,7 @@ int main() {
             case LOSE:
                 lose();
                 break;
-            case TEST:
-                test();
-                break;
         }
-
         oldButtons = buttons;
         buttons = (*(volatile unsigned short *)0x04000130);
 
@@ -1959,13 +1972,4 @@ void lose() {
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3))))) {
         goToSplash();
     }
-}
-
-void goToTest() {
-    state = TEST;
-}
-
-void test() {
-    (*(unsigned short *)0x4000000) = 4;
-
 }

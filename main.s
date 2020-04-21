@@ -48,15 +48,15 @@ goToSplash:
 	mov	lr, pc
 	bx	r5
 	ldr	ip, .L4+20
-	ldr	r1, .L4+24
-	ldr	r3, .L4+28
-	ldr	r0, .L4+32
+	ldr	r0, .L4+24
+	ldr	r1, .L4+28
+	ldr	r3, .L4+32
 	strh	r4, [r6, #20]	@ movhi
 	ldr	r2, .L4+36
 	strh	r4, [r6, #22]	@ movhi
 	str	r4, [ip]
-	str	r4, [r1]
 	str	r4, [r0]
+	str	r4, [r1]
 	str	r4, [r3]
 	str	r4, [r3, #4]
 	mov	lr, pc
@@ -66,8 +66,8 @@ goToSplash:
 	bx	r3
 	mov	r2, #1
 	ldr	r1, .L4+44
-	ldr	r3, .L4+48
-	ldr	r0, .L4+52
+	ldr	r0, .L4+48
+	ldr	r3, .L4+52
 	mov	lr, pc
 	bx	r3
 	ldr	r3, .L4+56
@@ -95,14 +95,14 @@ goToSplash:
 	.word	100720640
 	.word	splashScreenMap
 	.word	seed
+	.word	goToMaze
 	.word	goToChina
 	.word	.LANCHOR0
-	.word	goToMaze
 	.word	initGame
 	.word	stopSound
 	.word	291428
-	.word	playSoundA
 	.word	splashSound
+	.word	playSoundA
 	.word	hideSprites
 	.word	waitForVBlank
 	.word	shadowOAM
@@ -933,8 +933,8 @@ game2:
 	bx	r3
 	mov	r2, #1
 	ldr	r1, .L121+24
-	ldr	r3, .L121+28
-	ldr	r0, .L121+32
+	ldr	r0, .L121+28
+	ldr	r3, .L121+32
 	mov	lr, pc
 	bx	r3
 	bl	goToGame
@@ -955,8 +955,8 @@ game2:
 	.word	.LANCHOR0
 	.word	stopSound
 	.word	1324512
-	.word	playSoundA
 	.word	gameSound
+	.word	playSoundA
 	.word	pauseSound
 	.size	game2, .-game2
 	.section	.text.startup,"ax",%progbits
@@ -984,20 +984,19 @@ main:
 	ldr	r4, .L141+24
 	ldr	r7, .L141+28
 	ldr	r5, .L141+32
-.L136:
-	cmp	r3, #7
+.L135:
+	cmp	r3, #6
 	ldrls	pc, [pc, r3, asl #2]
 	b	.L124
 .L126:
-	.word	.L133
 	.word	.L132
 	.word	.L131
 	.word	.L130
 	.word	.L129
 	.word	.L128
 	.word	.L127
-	.word	.L137
-.L129:
+	.word	.L125
+.L128:
 	ldr	r3, .L141+36
 	mov	lr, pc
 	bx	r3
@@ -1007,66 +1006,63 @@ main:
 	strh	r1, [r4]	@ movhi
 	ldrh	r1, [r5, #48]
 	strh	r1, [r7]	@ movhi
-	b	.L136
-.L130:
+	b	.L135
+.L129:
 	mov	lr, pc
 	bx	r8
 	ldr	r3, [r6]
 	b	.L124
-.L133:
+.L132:
 	mov	lr, pc
 	bx	fp
 	ldr	r3, [r6]
 	b	.L124
-.L131:
+.L130:
 	mov	lr, pc
 	bx	r9
 	ldr	r3, [r6]
 	b	.L124
-.L132:
+.L131:
 	mov	lr, pc
 	bx	r10
 	ldr	r3, [r6]
 	b	.L124
-.L135:
+.L125:
+	ldrh	r3, [r4]
+	tst	r3, #8
+	bne	.L134
+.L139:
 	ldrh	r3, [r7]
 	strh	r3, [r4]	@ movhi
 	ldrh	r3, [r5, #48]
 	strh	r3, [r7]	@ movhi
-.L127:
 	ldrh	r3, [r4]
 	tst	r3, #8
-	beq	.L135
+	beq	.L139
+.L134:
 	ldr	r3, .L141+40
 	mov	lr, pc
 	bx	r3
 	ldr	r3, [r6]
 	b	.L124
-.L134:
+.L127:
+	ldrh	r3, [r4]
+	tst	r3, #8
+	bne	.L133
+.L140:
 	ldrh	r3, [r7]
 	strh	r3, [r4]	@ movhi
 	ldrh	r3, [r5, #48]
 	strh	r3, [r7]	@ movhi
-.L128:
 	ldrh	r3, [r4]
 	tst	r3, #8
-	beq	.L134
+	beq	.L140
+.L133:
 	ldr	r3, .L141+44
 	mov	lr, pc
 	bx	r3
 	ldr	r3, [r6]
 	b	.L124
-.L137:
-	mov	ip, #67108864
-	mov	r0, #4	@ movhi
-	ldr	r1, .L141+32
-.L125:
-	strh	r0, [ip]	@ movhi
-	ldrh	r3, [r7]
-	strh	r3, [r4]	@ movhi
-	ldrh	r3, [r1, #48]
-	strh	r3, [r7]	@ movhi
-	b	.L125
 .L142:
 	.align	2
 .L141:
@@ -1097,42 +1093,6 @@ lose:
 	@ link register save eliminated.
 	b	win
 	.size	lose, .-lose
-	.align	2
-	.global	goToTest
-	.syntax unified
-	.arm
-	.fpu softvfp
-	.type	goToTest, %function
-goToTest:
-	@ Function supports interworking.
-	@ args = 0, pretend = 0, frame = 0
-	@ frame_needed = 0, uses_anonymous_args = 0
-	@ link register save eliminated.
-	mov	r2, #7
-	ldr	r3, .L145
-	str	r2, [r3]
-	bx	lr
-.L146:
-	.align	2
-.L145:
-	.word	state
-	.size	goToTest, .-goToTest
-	.align	2
-	.global	test
-	.syntax unified
-	.arm
-	.fpu softvfp
-	.type	test, %function
-test:
-	@ Function supports interworking.
-	@ args = 0, pretend = 0, frame = 0
-	@ frame_needed = 0, uses_anonymous_args = 0
-	@ link register save eliminated.
-	mov	r3, #67108864
-	mov	r2, #4
-	strh	r2, [r3]	@ movhi
-	bx	lr
-	.size	test, .-test
 	.comm	state,4,4
 	.comm	seed,4,4
 	.global	game1
@@ -1141,6 +1101,8 @@ test:
 	.global	hasLost
 	.comm	oldButtons,2,2
 	.comm	buttons,2,2
+	.comm	soundB,32,4
+	.comm	soundA,32,4
 	.comm	door,44,4
 	.comm	pandas,204,4
 	.comm	baskets,132,4

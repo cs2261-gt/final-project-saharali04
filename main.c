@@ -2,8 +2,8 @@
 // If the player presses A, the cheat is activated and one of the enemies turns pink. Colliding
 // into this enemy will automatically give the player 15 leaves and 15 stems. However, they cannot
 // continue to collect food or go back to the "China Screen" once they leave. If they pass the
-// baskets, they can go to door which will take them back to the start of the maze. Also with the cheat, 
-// the player CAN collide with the maze boundaries.
+// baskets on the maze screen, they can go to door which will take them back to the start of the maze. 
+// Also with the cheat, the player CAN collide with the maze boundaries without having to start over.
 
 
 // Header files
@@ -24,6 +24,7 @@
 #include "splashSound.h"
 #include "gameSound2.h"
 #include "scoreBackground2.h"
+#include "sound.h"
 
 // State Prototypes
 void goToSplash();
@@ -63,7 +64,7 @@ void initialize();
     int seed;
 
     // States
-    enum {SPLASH, INSTRUCTION, GAME, GAME2, PAUSE, WIN, LOSE, TEST};
+    enum {SPLASH, INSTRUCTION, GAME, GAME2, PAUSE, WIN, LOSE};
     int state;
 
 
@@ -97,11 +98,7 @@ int main() {
             case LOSE:
                 lose();
                 break;
-            case TEST:
-                test();
-                break;
         }
-
         oldButtons = buttons;
         buttons = BUTTONS;
 
@@ -403,13 +400,4 @@ void lose() {
     if (BUTTON_PRESSED(BUTTON_START)) {
         goToSplash();
     }
-}
-
-void goToTest() {
-    state = TEST;
-}
-
-void test() {
-    REG_DISPCTL = MODE4;
-    
 }
