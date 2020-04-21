@@ -1132,8 +1132,8 @@ void initGame()
 
 void initPanda()
 {
-    panda.width = 8;
-    panda.height = 8;
+    panda.width = 9;
+    panda.height = 9;
     panda.cdel = 1;
     panda.rdel = 1;
     panda.aniCounter = 0;
