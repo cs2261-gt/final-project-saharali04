@@ -6,7 +6,7 @@
 #include "collisionmap2.h"
 #include "sound.h"
 
-// VARAIBLES
+// VARIABLES
 
 // keeps track if won/lost
 int hasLost;
@@ -16,7 +16,7 @@ int hasWon;
 int totalStemsDelivered;
 int totalLeavesDelivered;
 
-// keeps tra
+// XL background
 int hOff = 0;   
 int vOff = 0;
 int screenBlock;
