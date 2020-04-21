@@ -1739,6 +1739,7 @@ void splash() {
 
     if ((!(~(oldButtons)&((1<<0))) && (~buttons & ((1<<0)))))
     {
+        stopSound();
         goToInstruction();
     }
 }
@@ -1762,6 +1763,7 @@ void instruction()
     if ((!(~(oldButtons)&((1<<3))) && (~buttons & ((1<<3)))))
     {
         srand(seed);
+        playSoundA(gameSound, 1324512, 1);
         goToGame2();
     }
 

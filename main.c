@@ -177,6 +177,7 @@ void splash() {
 
     if (BUTTON_PRESSED(BUTTON_A)) 
     {
+        stopSound();
         goToInstruction();
     }
 }
@@ -200,6 +201,7 @@ void instruction()
     if (BUTTON_PRESSED(BUTTON_START)) 
     {
         srand(seed);
+        playSoundA(gameSound, GAMESOUNDLEN, 1);
         goToGame2(); 
     }
 

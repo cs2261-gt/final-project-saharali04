@@ -501,16 +501,19 @@ splash:
 	pop	{r4, lr}
 	bx	lr
 .L37:
-	pop	{r4, lr}
-	b	goToInstruction
-.L36:
 	ldr	r3, .L38+12
 	mov	lr, pc
 	bx	r3
+	pop	{r4, lr}
+	b	goToInstruction
+.L36:
 	ldr	r3, .L38+16
 	mov	lr, pc
 	bx	r3
 	ldr	r3, .L38+20
+	mov	lr, pc
+	bx	r3
+	ldr	r3, .L38+12
 	mov	lr, pc
 	bx	r3
 	ldr	r3, .L38+24
@@ -528,9 +531,9 @@ splash:
 	.word	seed
 	.word	oldButtons
 	.word	buttons
+	.word	stopSound
 	.word	srand
 	.word	initGame
-	.word	stopSound
 	.word	playSoundA
 	.word	1324512
 	.word	gameSound
@@ -573,6 +576,12 @@ instruction:
 	ldr	r0, [r2]
 	mov	lr, pc
 	bx	r3
+	ldr	r3, .L52+16
+	mov	r2, #1
+	ldr	r1, .L52+20
+	ldr	r0, .L52+24
+	mov	lr, pc
+	bx	r3
 	bl	goToGame2
 	ldrh	r3, [r4]
 	b	.L41
@@ -583,6 +592,9 @@ instruction:
 	.word	buttons
 	.word	seed
 	.word	srand
+	.word	playSoundA
+	.word	1324512
+	.word	gameSound
 	.size	instruction, .-instruction
 	.align	2
 	.global	goToPause
