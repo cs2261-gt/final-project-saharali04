@@ -252,7 +252,7 @@ extern const unsigned short splashScreenPal[256];
 # 23 "main.c" 2
 # 1 "instructionsScreen.h" 1
 # 22 "instructionsScreen.h"
-extern const unsigned short instructionsScreenTiles[5632];
+extern const unsigned short instructionsScreenTiles[5760];
 
 
 extern const unsigned short instructionsScreenMap[1024];
@@ -1747,11 +1747,11 @@ void splash() {
 void goToInstruction()
 {
     (*(unsigned short *)0x4000000) = 0 | (1<<9);
-    (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((28)<<8);
+    (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((27)<<8);
 
     DMANow(3, &instructionsScreenPal, ((unsigned short *)0x5000000), 32/2);
-    DMANow(3, instructionsScreenTiles, &((charblock *)0x6000000)[0], 11264/2);
-    DMANow(3, instructionsScreenMap, &((screenblock *)0x6000000)[28], 2048/2);
+    DMANow(3, instructionsScreenTiles, &((charblock *)0x6000000)[0], 11520/2);
+    DMANow(3, instructionsScreenMap, &((screenblock *)0x6000000)[27], 2048/2);
 
     state = INSTRUCTION;
 }

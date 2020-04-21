@@ -185,11 +185,11 @@ void splash() {
 void goToInstruction() 
 {
     REG_DISPCTL = MODE0 | BG1_ENABLE;
-    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28);
+    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(27);
 
     DMANow(3, &instructionsScreenPal, PALETTE, instructionsScreenPalLen/2);
     DMANow(3, instructionsScreenTiles, &CHARBLOCK[0], instructionsScreenTilesLen/2);
-    DMANow(3, instructionsScreenMap, &SCREENBLOCK[28], instructionsScreenMapLen/2);
+    DMANow(3, instructionsScreenMap, &SCREENBLOCK[27], instructionsScreenMapLen/2);
 
     state = INSTRUCTION;
 }

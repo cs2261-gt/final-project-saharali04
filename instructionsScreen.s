@@ -282,17 +282,21 @@ instructionsScreenMap:
 	.short	141
 	.short	142
 	.short	143
+	.short	3129
+	.short	3130
 	.short	144
 	.short	145
-	.short	146
-	.short	147
 	.short	2104
 	.short	2099
-	.short	148
-	.short	149
+	.short	3139
+	.short	2102
 	.short	1
 	.short	0
 	.short	0
+	.short	146
+	.short	147
+	.short	148
+	.short	149
 	.short	150
 	.short	151
 	.short	152
@@ -319,12 +323,11 @@ instructionsScreenMap:
 	.short	173
 	.short	174
 	.short	175
+	.short	0
+	.short	0
 	.short	176
 	.short	177
 	.short	178
-	.short	1
-	.short	0
-	.short	0
 	.short	179
 	.short	180
 	.short	181
@@ -343,18 +346,15 @@ instructionsScreenMap:
 	.short	194
 	.short	195
 	.short	196
+	.short	186
 	.short	197
 	.short	198
 	.short	199
 	.short	200
 	.short	201
-	.short	1208
 	.short	202
 	.short	203
-	.short	200
 	.short	204
-	.short	1
-	.short	1
 	.short	0
 	.short	0
 	.short	205
@@ -365,34 +365,30 @@ instructionsScreenMap:
 	.short	210
 	.short	211
 	.short	212
-	.short	3131
 	.short	213
 	.short	214
 	.short	215
 	.short	216
+	.short	1230
 	.short	217
 	.short	218
 	.short	219
-	.short	212
 	.short	220
 	.short	221
 	.short	222
-	.short	205
 	.short	223
 	.short	224
+	.short	215
 	.short	225
 	.short	226
 	.short	227
-	.short	223
 	.short	228
-	.short	1
-	.short	1
-	.short	0
-	.short	0
 	.short	229
 	.short	230
 	.short	231
 	.short	232
+	.short	0
+	.short	0
 	.short	233
 	.short	234
 	.short	235
@@ -417,48 +413,14 @@ instructionsScreenMap:
 	.short	254
 	.short	255
 	.short	256
-	.short	1
-	.short	1
-	.short	0
-	.short	0
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	257
 	.short	258
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	259
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	260
 	.short	1
 	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	0
 	.short	0
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	1
 	.short	1
 	.short	1
@@ -466,29 +428,63 @@ instructionsScreenMap:
 	.short	1
 	.short	261
 	.short	262
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
 	.short	263
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
 	.short	264
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	0
+	.short	0
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
 	.short	265
 	.short	266
 	.short	267
 	.short	268
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	0
-	.short	0
 	.short	269
 	.short	270
 	.short	271
 	.short	272
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	0
+	.short	0
 	.short	273
 	.short	274
 	.short	275
@@ -497,30 +493,30 @@ instructionsScreenMap:
 	.short	278
 	.short	279
 	.short	280
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	0
-	.short	0
 	.short	281
 	.short	282
 	.short	283
 	.short	284
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	0
+	.short	0
 	.short	285
 	.short	286
 	.short	287
@@ -528,33 +524,31 @@ instructionsScreenMap:
 	.short	289
 	.short	290
 	.short	291
-	.short	51
-	.short	1
 	.short	292
 	.short	293
 	.short	294
 	.short	295
+	.short	51
+	.short	1
 	.short	296
 	.short	297
 	.short	298
 	.short	299
-	.short	1210
 	.short	300
-	.short	200
 	.short	301
 	.short	302
 	.short	303
-	.short	1
-	.short	1
-	.short	1
-	.short	0
-	.short	0
 	.short	304
 	.short	305
 	.short	306
 	.short	307
 	.short	308
 	.short	309
+	.short	1
+	.short	1
+	.short	1
+	.short	0
+	.short	0
 	.short	310
 	.short	311
 	.short	312
@@ -572,59 +566,65 @@ instructionsScreenMap:
 	.short	324
 	.short	325
 	.short	326
-	.short	223
 	.short	327
 	.short	328
 	.short	329
-	.short	1
-	.short	1
-	.short	1
-	.short	0
-	.short	0
 	.short	330
 	.short	331
-	.short	2285
 	.short	332
 	.short	333
 	.short	334
 	.short	335
 	.short	336
+	.short	1
+	.short	1
+	.short	1
+	.short	0
+	.short	0
 	.short	337
 	.short	338
+	.short	2289
 	.short	339
 	.short	340
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	0
-	.short	0
 	.short	341
 	.short	342
-	.short	3250
 	.short	343
 	.short	344
 	.short	345
 	.short	346
 	.short	347
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	0
+	.short	0
 	.short	348
 	.short	349
 	.short	350
 	.short	351
+	.short	352
+	.short	353
+	.short	354
+	.short	355
+	.short	356
+	.short	357
+	.short	358
+	.short	359
 	.short	1
 	.short	1
 	.short	1
@@ -1062,7 +1062,7 @@ instructionsScreenMap:
 	.short	0
 	.short	0
 	.type	instructionsScreenTiles, %object
-	.size	instructionsScreenTiles, 11264
+	.size	instructionsScreenTiles, 11520
 instructionsScreenTiles:
 	.short	0
 	.short	0
@@ -3319,7 +3319,7 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
-	.short	17476
+	.short	17459
 	.short	13107
 	.short	17459
 	.short	13107
@@ -3334,7 +3334,7 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
-	.short	13107
+	.short	13124
 	.short	13107
 	.short	17204
 	.short	13108
@@ -3348,10 +3348,10 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
+	.short	17459
 	.short	13107
-	.short	13107
-	.short	17204
-	.short	13107
+	.short	17203
+	.short	17203
 	.short	17203
 	.short	17459
 	.short	13107
@@ -3368,38 +3368,6 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
-	.short	13107
-	.short	13363
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17459
-	.short	17204
-	.short	17203
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13124
-	.short	13107
 	.short	13124
 	.short	17203
 	.short	13107
@@ -3413,9 +3381,9 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
+	.short	13124
 	.short	13107
-	.short	17203
-	.short	13107
+	.short	13123
 	.short	13124
 	.short	13124
 	.short	13107
@@ -3431,38 +3399,6 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
-	.short	13107
-	.short	13108
-	.short	13379
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17203
-	.short	17459
-	.short	13108
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13380
 	.short	13107
 	.short	13107
 	.short	13107
@@ -3737,80 +3673,644 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
+	.short	17203
+	.short	13107
+	.short	17203
+	.short	13107
+	.short	17203
+	.short	13107
+	.short	17203
+	.short	13107
+	.short	17203
+	.short	13123
+	.short	17459
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13363
+	.short	13107
+	.short	17203
+	.short	17459
+	.short	17203
+	.short	13123
+	.short	17203
+	.short	17475
+	.short	13363
+	.short	13123
+	.short	13124
+	.short	17459
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17203
+	.short	13107
+	.short	17203
+	.short	17203
+	.short	17204
+	.short	17459
+	.short	17204
+	.short	17203
+	.short	17203
+	.short	17203
+	.short	17460
+	.short	17460
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17459
+	.short	13379
+	.short	17203
+	.short	13123
+	.short	17203
+	.short	13123
+	.short	13107
 	.short	13108
+	.short	13108
+	.short	13108
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13379
+	.short	13379
+	.short	17204
+	.short	17459
+	.short	17476
+	.short	13363
+	.short	13108
+	.short	13363
+	.short	17475
+	.short	17475
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13108
+	.short	17475
+	.short	13107
+	.short	13123
+	.short	13107
+	.short	17475
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	13107
 	.short	13108
 	.short	13107
-	.short	13108
+	.short	17475
 	.short	13107
-	.short	13108
-	.short	13107
+	.short	13123
 	.short	13108
 	.short	13123
+	.short	13107
+	.short	13123
+	.short	13107
+	.short	13123
+	.short	13108
+	.short	13123
+	.short	13108
+	.short	13380
+	.short	13108
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13379
+	.short	17459
+	.short	17204
+	.short	13107
+	.short	17476
+	.short	17459
+	.short	13108
+	.short	13123
+	.short	17475
+	.short	17459
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17203
+	.short	17460
+	.short	13108
+	.short	13364
+	.short	13108
+	.short	13364
+	.short	13108
+	.short	13123
+	.short	13124
+	.short	13123
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17459
+	.short	17203
+	.short	13123
+	.short	13364
+	.short	17475
+	.short	17204
+	.short	13123
+	.short	13107
+	.short	17459
+	.short	17460
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13124
+	.short	17459
+	.short	13107
+	.short	13123
+	.short	13108
+	.short	13123
+	.short	13123
+	.short	13123
+	.short	13108
+	.short	17459
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17459
+	.short	13123
+	.short	17204
+	.short	13108
+	.short	17204
+	.short	13107
+	.short	17204
+	.short	13107
+	.short	17459
+	.short	13108
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17459
+	.short	13124
+	.short	13363
+	.short	13107
+	.short	17459
+	.short	13108
+	.short	13107
+	.short	13123
+	.short	13107
+	.short	13123
+	.short	13123
+	.short	13123
+	.short	17459
+	.short	13108
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13363
+	.short	13107
+	.short	13363
+	.short	17475
+	.short	17475
+	.short	13108
+	.short	13363
+	.short	13379
+	.short	13363
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17459
+	.short	17459
+	.short	13123
+	.short	17204
+	.short	17475
+	.short	17204
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17220
+	.short	13108
+	.short	13363
+	.short	13123
+	.short	13363
+	.short	13123
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17475
+	.short	17203
+	.short	13108
+	.short	13107
+	.short	13379
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13108
+	.short	13107
+	.short	13108
+	.short	13107
+	.short	13124
+	.short	13124
+	.short	17204
+	.short	13363
+	.short	17204
+	.short	13363
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17459
+	.short	17203
+	.short	17203
+	.short	17203
+	.short	17203
+	.short	17459
+	.short	17204
+	.short	17203
+	.short	17203
+	.short	17203
+	.short	17203
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13124
+	.short	17459
+	.short	13363
+	.short	13123
+	.short	13363
+	.short	17475
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17475
+	.short	13108
+	.short	13108
+	.short	13108
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17476
+	.short	13108
+	.short	13123
+	.short	13108
+	.short	13123
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17203
+	.short	13108
+	.short	13108
+	.short	13123
+	.short	17204
+	.short	13124
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17476
+	.short	13107
+	.short	13123
+	.short	17204
+	.short	13123
+	.short	17204
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13379
+	.short	13107
+	.short	13363
+	.short	13107
+	.short	13363
+	.short	13107
+	.short	13380
+	.short	17459
+	.short	13363
+	.short	13107
+	.short	13363
+	.short	17459
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13380
+	.short	17204
+	.short	13107
+	.short	13108
+	.short	13124
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17203
+	.short	13107
+	.short	17203
+	.short	13107
+	.short	17459
+	.short	17204
+	.short	17203
+	.short	13363
+	.short	17203
+	.short	13363
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13108
+	.short	13379
+	.short	13123
+	.short	13363
+	.short	13123
+	.short	13363
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13363
+	.short	13107
+	.short	13107
+	.short	17459
+	.short	13363
+	.short	13364
+	.short	13379
+	.short	13364
+	.short	13363
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17475
+	.short	13124
+	.short	13363
+	.short	13123
+	.short	13363
+	.short	13123
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17459
+	.short	17204
+	.short	17203
+	.short	17203
+	.short	17203
+	.short	17459
+	.short	17203
+	.short	17203
+	.short	17203
+	.short	17203
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13380
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13124
+	.short	17220
+	.short	13107
+	.short	17219
+	.short	13107
+	.short	17219
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17204
+	.short	17204
+	.short	13363
+	.short	13123
+	.short	13363
+	.short	13123
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17460
+	.short	13107
+	.short	17204
+	.short	13107
+	.short	17204
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13124
+	.short	13379
+	.short	13363
+	.short	17204
+	.short	13380
 	.short	17476
 	.short	13107
 	.short	13107
 	.short	13107
 	.short	13107
-	.short	13108
-	.short	13107
-	.short	13108
-	.short	13124
-	.short	17204
-	.short	13363
-	.short	17204
-	.short	13380
-	.short	17204
-	.short	13107
-	.short	13107
-	.short	13380
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13108
-	.short	13107
-	.short	17204
-	.short	13123
-	.short	17204
-	.short	13363
-	.short	17204
-	.short	13363
-	.short	17204
-	.short	13363
-	.short	17204
 	.short	17203
+	.short	13108
 	.short	13107
+	.short	13108
 	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
+	.short	13108
+	.short	17459
+	.short	13108
 	.short	13123
-	.short	13124
-	.short	17204
-	.short	13363
-	.short	17204
-	.short	13380
-	.short	17204
+	.short	13108
+	.short	13123
+	.short	13108
 	.short	13107
-	.short	13107
-	.short	13380
 	.short	13107
 	.short	13107
 	.short	13107
 	.short	13107
 	.short	13107
 	.short	13363
-	.short	13124
+	.short	13107
+	.short	13363
+	.short	13107
+	.short	17475
+	.short	17459
+	.short	13363
+	.short	13123
+	.short	13363
+	.short	13123
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	17475
 	.short	13108
-	.short	13123
+	.short	17204
+	.short	13108
 	.short	13108
 	.short	13107
-	.short	13108
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17459
+	.short	13107
+	.short	17203
+	.short	13107
+	.short	17203
+	.short	17459
+	.short	17203
 	.short	13123
-	.short	13108
+	.short	17204
+	.short	13123
+	.short	17204
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17459
+	.short	13107
+	.short	17203
+	.short	13107
+	.short	17203
+	.short	13107
+	.short	17203
+	.short	17203
+	.short	17203
+	.short	13363
+	.short	17203
 	.short	17459
 	.short	13107
 	.short	13107
@@ -3818,536 +4318,258 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	13108
-	.short	17203
+	.short	13380
+	.short	17219
+	.short	13363
+	.short	17220
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	13123
+	.short	13107
+	.short	13123
+	.short	13107
+	.short	13380
+	.short	13107
+	.short	13123
+	.short	13107
+	.short	13123
+	.short	13107
+	.short	17203
+	.short	13363
+	.short	13380
+	.short	17203
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13123
+	.short	17203
+	.short	17459
+	.short	17460
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	13363
 	.short	13123
+	.short	13364
+	.short	13380
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	17203
+	.short	13107
+	.short	13380
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17204
+	.short	13363
 	.short	13123
-	.short	13107
-	.short	13108
-	.short	17459
+	.short	13124
 	.short	13107
 	.short	13107
 	.short	13107
 	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17203
 	.short	17203
 	.short	13107
 	.short	17460
-	.short	17204
-	.short	17203
-	.short	13363
-	.short	17203
-	.short	17459
-	.short	17204
-	.short	13363
 	.short	13107
-	.short	17204
 	.short	13107
 	.short	13107
 	.short	13107
 	.short	13107
 	.short	13107
 	.short	13107
-	.short	17204
-	.short	17220
-	.short	17219
-	.short	13363
-	.short	17220
-	.short	13363
-	.short	17203
-	.short	13363
-	.short	17220
-	.short	13363
 	.short	13107
 	.short	13107
 	.short	13107
 	.short	13107
 	.short	13107
-	.short	13107
-	.short	13108
-	.short	13379
-	.short	13123
-	.short	13108
-	.short	13123
-	.short	13123
-	.short	13123
-	.short	13363
-	.short	13123
-	.short	13124
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13379
-	.short	13107
-	.short	17204
-	.short	13107
-	.short	17204
-	.short	13107
-	.short	17204
-	.short	13107
-	.short	13379
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17203
-	.short	13379
-	.short	17459
-	.short	13123
-	.short	13363
-	.short	13123
-	.short	13107
-	.short	13123
-	.short	13363
-	.short	13123
-	.short	17203
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13124
-	.short	13107
-	.short	13363
-	.short	13107
-	.short	13363
-	.short	13107
-	.short	13363
-	.short	13107
-	.short	13124
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13123
-	.short	13107
-	.short	13123
-	.short	13107
-	.short	13123
-	.short	13379
-	.short	13123
-	.short	17204
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17459
-	.short	13123
-	.short	13107
-	.short	13364
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13123
-	.short	13124
-	.short	17204
-	.short	13363
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13379
-	.short	17203
-	.short	13108
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13108
-	.short	13107
-	.short	13108
-	.short	13107
-	.short	13124
-	.short	13124
-	.short	17204
-	.short	13363
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13124
-	.short	17203
-	.short	13363
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13379
-	.short	17459
-	.short	17203
-	.short	13123
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13363
-	.short	13107
-	.short	13363
-	.short	13107
-	.short	17459
-	.short	13108
-	.short	13363
-	.short	13123
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17203
-	.short	13380
-	.short	17203
-	.short	17203
-	.short	17203
-	.short	17203
-	.short	17203
-	.short	13380
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17459
-	.short	17459
-	.short	13107
-	.short	13364
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17203
-	.short	13107
-	.short	17203
-	.short	13108
-	.short	17475
-	.short	13123
-	.short	17204
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17459
-	.short	13107
-	.short	13107
-	.short	13108
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13123
-	.short	13107
-	.short	13123
-	.short	13107
-	.short	13380
-	.short	13379
-	.short	13123
-	.short	17204
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17203
-	.short	13363
-	.short	17203
-	.short	17219
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17203
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17219
-	.short	17459
-	.short	17219
-	.short	13363
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13108
-	.short	13107
-	.short	13123
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13363
-	.short	13363
-	.short	13363
-	.short	13123
-	.short	13363
-	.short	13380
-	.short	13363
-	.short	13123
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13363
-	.short	13363
-	.short	17203
-	.short	13123
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13379
-	.short	13123
-	.short	17204
-	.short	13123
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13108
-	.short	17459
-	.short	13108
-	.short	13363
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13108
-	.short	13379
-	.short	13123
-	.short	17204
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17459
-	.short	17203
-	.short	13123
-	.short	13364
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13123
 	.short	13363
 	.short	13123
-	.short	13363
-	.short	13124
-	.short	17475
-	.short	13123
-	.short	13363
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17459
-	.short	17203
-	.short	13123
-	.short	13363
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17203
-	.short	13363
-	.short	17203
-	.short	13363
-	.short	17204
-	.short	13363
-	.short	17219
-	.short	13363
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17203
-	.short	13107
-	.short	17203
-	.short	13107
 	.short	17460
-	.short	13108
-	.short	17203
+	.short	17459
 	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17459
+	.short	13108
+	.short	13107
+	.short	13107
+	.short	13108
+	.short	13107
+	.short	17475
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13123
+	.short	13108
+	.short	17475
+	.short	13108
+	.short	13123
+	.short	13107
+	.short	13380
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13364
+	.short	13123
+	.short	17203
+	.short	13380
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13123
+	.short	17204
+	.short	13380
+	.short	13124
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13363
 	.short	13123
 	.short	17476
+	.short	17459
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17203
+	.short	13363
+	.short	13107
+	.short	17204
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	13123
+	.short	17203
 	.short	13108
+	.short	17203
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13123
+	.short	13363
 	.short	13123
 	.short	17475
 	.short	13107
@@ -4360,42 +4582,107 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
-	.short	17459
-	.short	13364
-	.short	13123
-	.short	13364
-	.short	17459
-	.short	17204
 	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17204
-	.short	13380
-	.short	17204
-	.short	13107
-	.short	13107
-	.short	13380
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13123
 	.short	13107
 	.short	13363
+	.short	13123
+	.short	13363
+	.short	17219
 	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17203
+	.short	17203
+	.short	17459
+	.short	17460
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13363
+	.short	13108
+	.short	13363
+	.short	13107
+	.short	13123
+	.short	13107
+	.short	13124
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13363
+	.short	13123
+	.short	17203
+	.short	13108
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17204
+	.short	13107
+	.short	17475
+	.short	13108
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13108
+	.short	13380
+	.short	17475
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13123
+	.short	13108
+	.short	17459
 	.short	13124
 	.short	13107
 	.short	13107
@@ -4408,43 +4695,10 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
-	.short	17204
-	.short	13363
-	.short	17204
+	.short	13107
 	.short	13363
 	.short	13123
-	.short	13124
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
 	.short	17203
-	.short	13380
-	.short	17203
-	.short	13107
-	.short	13107
-	.short	13380
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17475
-	.short	13123
-	.short	17204
-	.short	13123
-	.short	17475
 	.short	17459
 	.short	13107
 	.short	13107
@@ -4456,75 +4710,11 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
-	.short	13363
-	.short	13123
-	.short	13363
-	.short	13123
-	.short	13363
-	.short	13123
 	.short	13107
 	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17459
-	.short	13364
-	.short	13123
-	.short	13364
-	.short	17459
-	.short	13364
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13123
-	.short	17204
-	.short	13123
-	.short	17204
-	.short	13123
-	.short	17475
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17459
 	.short	13108
-	.short	13123
-	.short	13108
-	.short	17459
-	.short	13108
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13123
 	.short	17204
-	.short	13123
-	.short	17204
-	.short	13363
+	.short	13107
 	.short	13379
 	.short	13107
 	.short	13107
@@ -4536,75 +4726,11 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
-	.short	17203
-	.short	17219
-	.short	13107
-	.short	13108
-	.short	13107
-	.short	13108
 	.short	13107
 	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17219
-	.short	13363
+	.short	13123
 	.short	17204
-	.short	13363
-	.short	17204
-	.short	13363
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13123
-	.short	13107
-	.short	13123
-	.short	13107
-	.short	13123
-	.short	13108
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17203
-	.short	13123
-	.short	17203
-	.short	13123
-	.short	13107
-	.short	13108
-	.short	13107
-	.short	13108
 	.short	17459
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17204
-	.short	13123
-	.short	17204
-	.short	13123
-	.short	13379
 	.short	17459
 	.short	13107
 	.short	13107
@@ -4616,27 +4742,11 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
-	.short	13108
+	.short	13107
+	.short	13107
+	.short	17203
 	.short	13363
-	.short	13108
-	.short	13363
-	.short	13108
-	.short	13363
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17475
-	.short	13364
-	.short	13123
-	.short	13363
-	.short	17459
+	.short	17460
 	.short	17204
 	.short	13107
 	.short	13107
@@ -4648,27 +4758,13 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
-	.short	13123
-	.short	13363
-	.short	13123
+	.short	13107
+	.short	13107
+	.short	17203
 	.short	13363
 	.short	13124
-	.short	17203
+	.short	13124
 	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13123
-	.short	13108
-	.short	13123
-	.short	13108
-	.short	17459
 	.short	13107
 	.short	13107
 	.short	13107
@@ -4681,43 +4777,11 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13123
-	.short	13363
-	.short	13123
-	.short	13363
-	.short	17459
-	.short	17203
 	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17219
-	.short	13363
-	.short	17219
-	.short	13363
-	.short	17204
 	.short	13363
 	.short	13107
 	.short	13107
 	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	17203
-	.short	13107
-	.short	17203
-	.short	13107
-	.short	13108
-	.short	13108
 	.short	13107
 	.short	13107
 	.short	13107
@@ -5872,6 +5936,22 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
+	.short	13107
+	.short	13123
+	.short	13107
+	.short	13123
+	.short	17203
+	.short	13124
+	.short	13363
+	.short	13123
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	13123
 	.short	13107
 	.short	13107
@@ -5880,6 +5960,22 @@ instructionsScreenTiles:
 	.short	17475
 	.short	13123
 	.short	13123
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17459
+	.short	17203
+	.short	13123
+	.short	13364
 	.short	13107
 	.short	13107
 	.short	13107
@@ -6296,6 +6392,22 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
+	.short	17475
+	.short	13364
+	.short	13123
+	.short	13363
+	.short	17459
+	.short	17204
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	13107
 	.short	13123
 	.short	13107
@@ -6550,6 +6662,22 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	17459
+	.short	13107
+	.short	13123
+	.short	13107
+	.short	13123
+	.short	13107
+	.short	13123
+	.short	13107
+	.short	17459
 	.short	13107
 	.short	13107
 	.short	13108

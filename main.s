@@ -198,7 +198,7 @@ goToInstruction:
 	@ frame_needed = 0, uses_anonymous_args = 0
 	mov	r3, #67108864
 	mov	r1, #512
-	mov	r2, #7168
+	mov	r2, #6912
 	push	{r4, lr}
 	mov	r0, #3
 	ldr	r4, .L16
@@ -209,7 +209,7 @@ goToInstruction:
 	mov	r2, #83886080
 	mov	lr, pc
 	bx	r4
-	mov	r3, #5632
+	mov	r3, #5760
 	mov	r2, #100663296
 	mov	r0, #3
 	ldr	r1, .L16+8
@@ -232,7 +232,7 @@ goToInstruction:
 	.word	DMANow
 	.word	instructionsScreenPal
 	.word	instructionsScreenTiles
-	.word	100720640
+	.word	100718592
 	.word	instructionsScreenMap
 	.word	state
 	.size	goToInstruction, .-goToInstruction
