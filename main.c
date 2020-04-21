@@ -1,10 +1,20 @@
-// M4 - All requirements are complete. The cheat turns one of the enemies into a "friend." 
+// M4 - All requirements are complete. 
+// Part 1: Backgrounds - The XL background is 768 x 256 and seen in the GAME state (maze screen). 
+// Part 2:     Sprites - The two animated sprites are the panda character (eyes change color when idle) and the enemies.
+// Part 3:      Sounds - There is a sound for the splash screen as well as one playing during both the GAME and GAME2 states. Both of these sounds are looping. 
+//                       When a stem/leaf is delivered to a panda, a "chew" sound is played, which is not looping.
+//
+// The cheat turns one of the enemies into a "friend." 
 // If the player presses A, the cheat is activated and one of the enemies turns pink. Colliding
 // into this enemy will automatically give the player 15 leaves and 15 stems. However, they cannot
-// continue to collect food or go back to the "China Screen" once they leave. If they pass the
+// continue to collect food or go back to the "China Screen" once they are at the maze. If they pass the
 // baskets on the maze screen, they can go to door which will take them back to the start of the maze. 
 // Also with the cheat, the player CAN collide with the maze boundaries without having to start over.
 
+// The gameplay is the same as the last milestone except to teleport, you must go to the door. You can now
+// go back and forth from the screens through the door (unless the cheat is activated). Also, to win, you 
+// must deliver either FIVE stems or FIVE leaves. Before, it was three stems but I figured it was too confusing for the player
+// to remember how many of each one to deliver.
 
 // Header files
 #include "myLib.h"
@@ -107,7 +117,8 @@ int main() {
 }
 
 // Initialize the game on first launch
-void initialize() {
+void initialize() 
+{
     REG_DISPCTL = MODE0 | SPRITE_ENABLE;
 
     // Set up bg1 and bg0 control register
@@ -119,10 +130,6 @@ void initialize() {
 
     buttons = BUTTONS; 
 
-    initGame();
-    initBaskets();
-    initPandas();
-    
     setupSounds();
 	setupInterrupts();
 
@@ -130,21 +137,24 @@ void initialize() {
 }
 
 // Sets up the splash state
-void goToSplash() {
+void goToSplash() 
+{
     REG_DISPCTL = MODE0 | BG1_ENABLE;
     REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28);
+
     DMANow(3, &splashScreenPal, PALETTE, splashScreenPalLen/2);
     DMANow(3, splashScreenTiles, &CHARBLOCK[0], splashScreenTilesLen/2);
     DMANow(3, splashScreenMap, &SCREENBLOCK[28], splashScreenMapLen/2);
 
     REG_BG1HOFF = 0;
     REG_BG1VOFF = 0;
+
     hasLost = 0;
     hasWon = 0;
-
     seed = 0;
     goToMaze = 0;
     goToChina = 0;
+
     initGame();
     stopSound();
 	playSoundA(splashSound, SPLASHSOUNDLEN, 1);
@@ -154,7 +164,6 @@ void goToSplash() {
     DMANow(3, shadowOAM, OAM, 512);
 
     state = SPLASH;
-
 }
 
 // Runs every frame of the splash state
@@ -174,12 +183,12 @@ void splash() {
     {
         goToInstruction();
     }
-
-
 }
-void goToInstruction() {
+void goToInstruction() 
+{
     REG_DISPCTL = MODE0 | BG1_ENABLE;
     REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28);
+
     DMANow(3, &instructionsScreenPal, PALETTE, instructionsScreenPalLen/2);
     DMANow(3, instructionsScreenTiles, &CHARBLOCK[0], instructionsScreenTilesLen/2);
     DMANow(3, instructionsScreenMap, &SCREENBLOCK[28], instructionsScreenMapLen/2);
@@ -187,7 +196,8 @@ void goToInstruction() {
     state = INSTRUCTION;
 }
 
-void instruction() {
+void instruction() 
+{
     if (BUTTON_PRESSED(BUTTON_START)) 
     {
         srand(seed);
@@ -198,11 +208,11 @@ void instruction() {
     {
         goToSplash();
     }
-
 }
 
 // Sets up the game state
-void goToGame() {
+void goToGame() 
+{
     REG_DISPCTL = MODE0 | SPRITE_ENABLE | BG0_ENABLE | BG1_ENABLE;
 
     REG_BG1CNT = BG_SIZE_WIDE | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28);
@@ -223,29 +233,30 @@ void goToGame() {
     goToMaze = 0;
     // likely these inits can be done elsewhere to be cleaner
     game1 = 1;
-    screenBlock = 28;                       
-    //initPandas();
+    screenBlock = 28;  
+
+    hOff = 0;
+    vOff = 0;
     REG_BG1VOFF = vOff;
     REG_BG1HOFF = hOff;
+
     panda.worldCol = 73; // you should set this up likely in initPanda
     panda.worldRow = 64;
     panda.col = 73; // you should set this up likely in initPanda
     panda.row = 64;
-    hOff = 0;
-    vOff = 0;
+    door.worldCol = 225;
+    door.worldRow = 5;
+
     playerHOff = 0;
     totalHOff = 0;
     screenBlock = 28;
 
-    door.worldCol = 225;
-    door.worldRow = 5;
-
     state = GAME;
-
 }
 
 // Runs every frame of the game state
-void game() {
+void game() 
+{
     updateGame();
     
     if (BUTTON_PRESSED(BUTTON_START)) 
@@ -253,24 +264,27 @@ void game() {
         pauseSound();
         goToPause();
     }
+
     if (goToChina)
     {
         goToGame2();
     }
-  
 
-    if (hasLost) {
+    if (hasLost) 
+    {
         goToLose();
     }
 
-    if (hasWon) {
+    if (hasWon) 
+    {
         goToWin();
     }
 }
 
 
-// Sets up the game state
-void goToGame2() {
+// sets up the game state
+void goToGame2() 
+{
     REG_DISPCTL = MODE0 | SPRITE_ENABLE | BG0_ENABLE | BG1_ENABLE;
     
     REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28);
@@ -287,14 +301,18 @@ void goToGame2() {
 
     count = 0;
     game1 = 0;
+    goToChina = 0;
+    
     hOff = 0;
     vOff = 0;
     REG_BG1HOFF = 0;
     REG_BG1VOFF = 0;
+    
     panda.worldRow = 5;
     panda.worldCol = 4;
+    
     initEnemies();
-    goToChina = 0;
+
     hideSprites();
     waitForVBlank();
     DMANow(3, shadowOAM, OAM, 512);
@@ -303,10 +321,10 @@ void goToGame2() {
 }
 
 // Runs every frame of the game state
-void game2() {    
+void game2() 
+{
     updateGame2();
 
-    
     if (BUTTON_PRESSED(BUTTON_START)) 
     {
         pauseSound();
@@ -320,16 +338,18 @@ void game2() {
         goToGame();
     }
 
-    if (hasLost) {
+    if (hasLost) 
+    {
         goToLose();
     }
 
-    if (hasWon) {
+    if (hasWon) 
+    {
         goToWin();
     }
 
 }
-// Sets up the pause state
+// sets up the pause state
 void goToPause() {
     REG_DISPCTL = MODE0 | BG0_ENABLE;
 
@@ -339,25 +359,27 @@ void goToPause() {
 
     REG_BG0HOFF = 0;
     REG_BG0VOFF = 0;
+
     state = PAUSE;
 
 }
 
-// Runs every frame of the pause state
+// runs every frame of the pause state
 void pause() {
-    if (BUTTON_PRESSED(BUTTON_START)) {
-        if (game1) {
+    if (BUTTON_PRESSED(BUTTON_START)) 
+    {
+        if (game1) 
+        {
             unpauseSound();
             goToGame();
         } else {
             unpauseSound();
             goToGame2();
         }
-        
     }
 }
 
-// Sets up the win state
+// sets up the win state
 void goToWin() {
     REG_DISPCTL = MODE0 | BG0_ENABLE;
 
@@ -372,15 +394,16 @@ void goToWin() {
     state = WIN;
 }
 
-
+// runs every frame of the win state
 void win() {
-    if (BUTTON_PRESSED(BUTTON_START)) {
+    if (BUTTON_PRESSED(BUTTON_START)) 
+    {
         goToSplash();
     }
 
 }
 
-// Sets up the lose state
+// sets up the lose state
 void goToLose() {
     REG_DISPCTL = MODE0 | BG0_ENABLE;
 
@@ -395,9 +418,10 @@ void goToLose() {
     state = LOSE;
 }
 
-// Runs every frame of the lose state
+// runs every frame of the lose state
 void lose() {
-    if (BUTTON_PRESSED(BUTTON_START)) {
+    if (BUTTON_PRESSED(BUTTON_START)) 
+    {
         goToSplash();
     }
 }
