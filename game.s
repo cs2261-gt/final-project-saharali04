@@ -175,7 +175,7 @@ initEnemies:
 	push	{r4, r5, r6, r7, r8, r9, r10, lr}
 	mov	r3, #0
 	mov	r4, #1
-	mov	r0, #9
+	mov	r0, #8
 	mov	r1, #2
 	mov	lr, #7
 	mov	r9, #212
