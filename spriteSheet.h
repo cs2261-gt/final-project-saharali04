@@ -4,11 +4,11 @@
 //======================================================================
 //
 //	spriteSheet, 256x256@4, 
-//	+ palette 16 entries, not compressed
+//	+ palette 256 entries, not compressed
 //	+ 1024 tiles not compressed
-//	Total size: 32 + 32768 = 32800
+//	Total size: 512 + 32768 = 33280
 //
-//	Time-stamp: 2020-04-20, 16:12:46
+//	Time-stamp: 2020-04-20, 20:39:40
 //	Exported by Cearn's GBA Image Transmogrifier, v0.8.3
 //	( http://www.coranac.com/projects/#grit )
 //
@@ -20,8 +20,8 @@
 #define spriteSheetTilesLen 32768
 extern const unsigned short spriteSheetTiles[16384];
 
-#define spriteSheetPalLen 32
-extern const unsigned short spriteSheetPal[16];
+#define spriteSheetPalLen 512
+extern const unsigned short spriteSheetPal[256];
 
 #endif // GRIT_SPRITESHEET_H
 

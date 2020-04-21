@@ -45,6 +45,7 @@ extern int totalHOff;
         int height;
         int aniState;
         int active;
+        int isSpecial;
     } SPRITE;
 // Variables
     // Panda variables
@@ -101,7 +102,6 @@ void drawFoodDelivered();
 void drawScoreCollected();
 void resetAnimationFriendly();
 void updatePanda2();
-void cheat();
 void clearEnemies();
 void checkEnemyCollision();
-void drawShield();
+void checkCheatActivation();
