@@ -114,6 +114,9 @@
     void drawBaskets();
     void drawFriendlyPandas();
     void drawDoor();
+    void hideBaskets();
+    void hidePandas();
+    void hideDoor();
 
     // UPDATE GAME FUNCTIONS
     void updateGame();
@@ -122,3 +125,4 @@
     // MISC FUNCTIONS
     void checkCheatActivation();
     void resetAnimationFriendly();
+    

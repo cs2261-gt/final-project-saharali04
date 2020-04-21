@@ -1,10 +1,10 @@
-// M4 - The player can collect the food but must not collide with the enemies (BLUE E). Once the 
-// player has collected the items they need, they can switch to the other screen by pressing select. Here they
-// must go through the maze to reach the 3 hungry pandas at the end and cannot collide with the maze boundries. The previous requirement
-// of not having any stems/leaves leftover after delivering the right amount has been taken out. Each panda must receive 5 leaves or 3 stems (there can be 
-// stems and leaves left over) and the win state is reached. The lose state is reached if the player collides with the enemies. If the player collides with 
-// the maze boundries, they just start the maze over again, they do not lose. The cheat still needs to be complete. Currently, pressing A on the 
-// China screen will collect all the items but I plan to give the panda a sheild that protects it from the enemies for the cheat requirement.
+// M4 - All requirements are complete. The cheat turns one of the enemies into a "friend." 
+// If the player presses A, the cheat is activated and one of the enemies turns pink. Colliding
+// into this enemy will automatically give the player 15 leaves and 15 stems. However, they cannot
+// continue to collect food or go back to the "China Screen" once they leave. If they pass the
+// baskets, they can go to door which will take them back to the start of the maze. Also with the cheat, 
+// the player CAN collide with the maze boundaries.
+
 
 // Header files
 #include "myLib.h"
@@ -256,7 +256,7 @@ void game() {
         pauseSound();
         goToPause();
     }
-    if (BUTTON_PRESSED(BUTTON_SELECT) || goToChina)
+    if (goToChina)
     {
         goToGame2();
     }
@@ -285,13 +285,15 @@ void goToGame2() {
     DMANow(3, gameScreen2Tiles, &CHARBLOCK[0], gameScreen2TilesLen/2);
 
     // bg0
-    DMANow(3, scoreBackground2Tiles, &CHARBLOCK[2], scoreBackgroundTilesLen/2);
-    DMANow(3, scoreBackground2Map, &SCREENBLOCK[27], scoreBackgroundMapLen/2);
+    DMANow(3, scoreBackground2Tiles, &CHARBLOCK[2], scoreBackground2TilesLen/2);
+    DMANow(3, scoreBackground2Map, &SCREENBLOCK[27], scoreBackground2MapLen/2);
 
     count = 0;
     game1 = 0;
     hOff = 0;
     vOff = 0;
+    REG_BG1HOFF = 0;
+    REG_BG1VOFF = 0;
     panda.worldRow = 5;
     panda.worldCol = 4;
     initEnemies();
@@ -318,9 +320,6 @@ void game2() {
     {
         stopSound();
 		playSoundA(gameSound, GAMESOUNDLEN, 1);
-        goToGame();
-    }
-    if (BUTTON_PRESSED(BUTTON_SELECT)) {
         goToGame();
     }
 

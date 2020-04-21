@@ -115,15 +115,8 @@ int collision(int colA, int rowA, int widthA, int heightA, int colB, int rowB, i
 
 
 
-extern int hOff;
-extern int vOff;
-extern int screenBlock;
-extern int hasShield;
-extern int goToMaze;
-extern int goToChina;
-extern int count;
-extern int playerHOff;
-extern int totalHOff;
+
+
 
 
     typedef struct {
@@ -144,7 +137,6 @@ extern int totalHOff;
         int stemsDelivered;
         int curFrame;
         int numFrames;
-
     } PANDASPRITE;
 
 
@@ -159,15 +151,15 @@ extern int totalHOff;
         int height;
         int aniState;
         int active;
+        int isSpecial;
     } SPRITE;
 
 
     PANDASPRITE panda;
-    SPRITE door;
-
 
 
     SPRITE food[35];
+
 
 
     SPRITE enemies[34];
@@ -177,48 +169,76 @@ extern int totalHOff;
     SPRITE baskets[3];
 
 
+
     PANDASPRITE pandas[3];
 
 
 
-    extern int hasLost;
-    extern int hasWon;
+    SPRITE door;
 
 
     enum { PANDANEUTRAL, PANDASAD, PANDAHAPPY, STEM, LEAF, BLACKBACKGROUND, PANDAIDLE};
     enum { BASKET = 6, FRIENDLYPANDA};
 
 
+    extern int hasLost;
+    extern int hasWon;
 
 
-void initPanda();
-void drawPanda();
-void updatePanda();
-void drawFood();
-void drawEnemies();
-void drawDoor();
-void drawEnemiesRight();
-void drawEnemiesLeft();
-void updateGame();
-void updateGame2();
-void initGame();
-void initFood();
-void initDoor();
-void initEnemies();
-void drawBaskets();
-void initBaskets();
-void initPandas();
-void drawFriendlyPandas();
-void checkFoodCollected();
-void checkFoodDelivered();
-void drawFoodDelivered();
-void drawScoreCollected();
-void resetAnimationFriendly();
-void updatePanda2();
-void cheat();
-void clearEnemies();
-void checkEnemyCollision();
-void drawShield();
+    extern int hOff;
+    extern int vOff;
+    extern int screenBlock;
+    extern int playerHOff;
+    extern int totalHOff;
+
+
+    extern int goToMaze;
+    extern int goToChina;
+
+
+    extern int count;
+
+
+
+    void initGame();
+    void initPanda();
+    void initFood();
+    void initEnemies();
+    void initBaskets();
+    void initPandas();
+    void initDoor();
+
+
+    void updatePanda();
+    void updatePanda2();
+
+
+    void checkFoodCollected();
+    void checkFoodDelivered();
+    void checkEnemyCollision();
+
+
+    void drawPanda();
+    void drawFood();
+    void drawEnemies();
+    void drawEnemiesLeft();
+    void drawEnemiesRight();
+    void drawFoodDelivered();
+    void drawFoodCollected();
+    void drawBaskets();
+    void drawFriendlyPandas();
+    void drawDoor();
+    void hideBaskets();
+    void hidePandas();
+    void hideDoor();
+
+
+    void updateGame();
+    void updateGame2();
+
+
+    void checkCheatActivation();
+    void resetAnimationFriendly();
 # 12 "main.c" 2
 # 1 "splashScreen.h" 1
 # 22 "splashScreen.h"
@@ -232,20 +252,20 @@ extern const unsigned short splashScreenPal[256];
 # 13 "main.c" 2
 # 1 "instructionsScreen.h" 1
 # 22 "instructionsScreen.h"
-extern const unsigned short instructionsScreenTiles[5792];
+extern const unsigned short instructionsScreenTiles[5632];
 
 
 extern const unsigned short instructionsScreenMap[1024];
 
 
-extern const unsigned short instructionsScreenPal[256];
+extern const unsigned short instructionsScreenPal[16];
 # 14 "main.c" 2
 # 1 "gameScreen.h" 1
 # 22 "gameScreen.h"
-extern const unsigned short gameScreenTiles[19968];
+extern const unsigned short gameScreenTiles[14688];
 
 
-extern const unsigned short gameScreenMap[4096];
+extern const unsigned short gameScreenMap[3072];
 
 
 extern const unsigned short gameScreenPal[16];
@@ -299,7 +319,7 @@ extern const unsigned short spriteSheetPal[256];
 # 20 "main.c" 2
 # 1 "scoreBackground.h" 1
 # 22 "scoreBackground.h"
-extern const unsigned short scoreBackgroundTiles[512];
+extern const unsigned short scoreBackgroundTiles[480];
 
 
 extern const unsigned short scoreBackgroundMap[1024];
@@ -1719,8 +1739,8 @@ void splash() {
 void goToInstruction() {
     (*(unsigned short *)0x4000000) = 0 | (1<<9);
     (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((28)<<8);
-    DMANow(3, &instructionsScreenPal, ((unsigned short *)0x5000000), 512/2);
-    DMANow(3, instructionsScreenTiles, &((charblock *)0x6000000)[0], 11584/2);
+    DMANow(3, &instructionsScreenPal, ((unsigned short *)0x5000000), 32/2);
+    DMANow(3, instructionsScreenTiles, &((charblock *)0x6000000)[0], 11264/2);
     DMANow(3, instructionsScreenMap, &((screenblock *)0x6000000)[28], 2048/2);
 
     state = INSTRUCTION;
@@ -1749,11 +1769,11 @@ void goToGame() {
 
 
     DMANow(3, &gameScreenPal, ((unsigned short *)0x5000000), 32/2);
-    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 39936/2);
-    DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[28], 8192/2);
+    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 29376/2);
+    DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[28], 6144/2);
 
 
-    DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[2], 1024/2);
+    DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[2], 960/2);
     DMANow(3, scoreBackgroundMap, &((screenblock *)0x6000000)[27], 2048/2);
 
     hideSprites();
@@ -1792,7 +1812,7 @@ void game() {
         pauseSound();
         goToPause();
     }
-    if ((!(~(oldButtons)&((1<<2))) && (~buttons & ((1<<2)))) || goToChina)
+    if (goToChina)
     {
         goToGame2();
     }
@@ -1821,13 +1841,15 @@ void goToGame2() {
     DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 832/2);
 
 
-    DMANow(3, scoreBackground2Tiles, &((charblock *)0x6000000)[2], 1024/2);
+    DMANow(3, scoreBackground2Tiles, &((charblock *)0x6000000)[2], 992/2);
     DMANow(3, scoreBackground2Map, &((screenblock *)0x6000000)[27], 2048/2);
 
     count = 0;
     game1 = 0;
     hOff = 0;
     vOff = 0;
+    (*(volatile unsigned short *)0x04000014) = 0;
+    (*(volatile unsigned short *)0x04000016) = 0;
     panda.worldRow = 5;
     panda.worldCol = 4;
     initEnemies();
@@ -1854,9 +1876,6 @@ void game2() {
     {
         stopSound();
   playSoundA(gameSound, 1324512, 1);
-        goToGame();
-    }
-    if ((!(~(oldButtons)&((1<<2))) && (~buttons & ((1<<2))))) {
         goToGame();
     }
 

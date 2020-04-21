@@ -9,6 +9,7 @@
 
 
 
+
     typedef struct {
         int row;
         int col;
@@ -27,7 +28,6 @@
         int stemsDelivered;
         int curFrame;
         int numFrames;
-
     } PANDASPRITE;
 
 
@@ -72,6 +72,10 @@
     enum { BASKET = 6, FRIENDLYPANDA};
 
 
+    extern int hasLost;
+    extern int hasWon;
+
+
     extern int hOff;
     extern int vOff;
     extern int screenBlock;
@@ -83,50 +87,49 @@
     extern int goToChina;
 
 
-    extern int hasLost;
-    extern int hasWon;
+    extern int count;
 
 
 
+    void initGame();
+    void initPanda();
+    void initFood();
+    void initEnemies();
+    void initBaskets();
+    void initPandas();
+    void initDoor();
 
 
-
-void initGame();
-void initPanda();
-void initFood();
-void initEnemies();
-void initBaskets();
-void initPandas();
-void initDoor();
+    void updatePanda();
+    void updatePanda2();
 
 
-void updatePanda();
-void updatePanda2();
+    void checkFoodCollected();
+    void checkFoodDelivered();
+    void checkEnemyCollision();
 
 
-void checkFoodCollected();
-void checkFoodDelivered();
-void checkEnemyCollision();
+    void drawPanda();
+    void drawFood();
+    void drawEnemies();
+    void drawEnemiesLeft();
+    void drawEnemiesRight();
+    void drawFoodDelivered();
+    void drawFoodCollected();
+    void drawBaskets();
+    void drawFriendlyPandas();
+    void drawDoor();
+    void hideBaskets();
+    void hidePandas();
+    void hideDoor();
 
 
-void drawPanda();
-void drawFood();
-void drawEnemies();
-void drawEnemiesLeft();
-void drawEnemiesRight();
-void drawFoodDelivered();
-void drawFoodCollected();
-void drawBaskets();
-void drawFriendlyPandas();
-void drawDoor();
+    void updateGame();
+    void updateGame2();
 
 
-void updateGame();
-void updateGame2();
-
-
-void checkCheatActivation();
-void resetAnimationFriendly();
+    void checkCheatActivation();
+    void resetAnimationFriendly();
 # 2 "game.c" 2
 # 1 "myLib.h" 1
 
@@ -1722,6 +1725,36 @@ void drawDoor()
     shadowOAM[100].attr2 = ((3)*32+(0));
 }
 
+void hideBaskets()
+{
+    for (int i = 0; i < 3; i++)
+    {
+            baskets[i].row = baskets[i].worldRow - vOff;
+            baskets[i].col = baskets[i].worldCol - hOff;
+            shadowOAM[i+32].attr0 = baskets[i].row | (0<<13) | (0<<14);
+            shadowOAM[i+32].attr1 = baskets[i].col | (1<<14);
+            shadowOAM[i+32].attr2 = ((12)*32+(12));
+    }
+
+}
+void hidePandas()
+{
+    for (int i = 0; i < 3; i++)
+    {
+            pandas[i].row = pandas[i].worldRow - vOff;
+            pandas[i].col = pandas[i].worldCol - hOff;
+            shadowOAM[i+36].attr0 = pandas[i].row | (0<<13) | (0<<14);
+            shadowOAM[i+36].attr1 = pandas[i].col | (1<<14);
+            shadowOAM[i+36].attr2 = ((12)*32+(12));
+    }
+}
+
+void hideDoor() {
+    shadowOAM[100].attr0 = door.worldRow | (0<<13) | (0<<14);
+    shadowOAM[100].attr1 = door.worldCol | (1<<14);
+    shadowOAM[100].attr2 = ((12)*32+(12));
+}
+
 
 
 
@@ -1748,16 +1781,32 @@ void updateGame() {
         playerHOff -= 512;
     }
 
+    if (collision(panda.worldCol - totalHOff, panda.worldRow, panda.width, panda.height, door.worldCol, door.worldRow, door.width, door.height) && !cheatMode)
+    {
+        goToChina = 1;
+    }
+
+    if (collision(panda.worldCol - totalHOff, panda.worldRow, panda.width, panda.height, door.worldCol, door.worldRow, door.width, door.height) && cheatMode)
+    {
+        panda.col = 73;
+        panda.row = 64;
+        panda.worldCol = 73;
+        panda.worldRow = 64;
+        hOff = 0;
+        vOff = 0;
+        playerHOff = 0;
+        totalHOff = 0;
+        screenBlock = 28;
+        hideBaskets();
+        hidePandas();
+        hideDoor();
+    }
+
     if (screenBlock == 30 || (screenBlock == 29 && hOff > 256))
     {
         drawFriendlyPandas();
         drawBaskets();
         drawDoor();
-    }
-
-    if (collision(panda.worldCol - totalHOff, panda.worldRow, panda.width, panda.height, door.worldCol, door.worldRow, door.width, door.height))
-    {
-        goToChina = 1;
     }
 
     for (int i = 0; i < 3; i++)

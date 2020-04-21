@@ -648,6 +648,36 @@ void drawDoor()
     shadowOAM[100].attr2 = ATTR2_TILEID(0, 3);
 }
 
+void hideBaskets()
+{
+    for (int i = 0; i < BASKETCOUNT; i++) 
+    {
+            baskets[i].row = baskets[i].worldRow - vOff;
+            baskets[i].col = baskets[i].worldCol - hOff;
+            shadowOAM[i+32].attr0 = baskets[i].row | ATTR0_4BPP | ATTR0_SQUARE;
+            shadowOAM[i+32].attr1 = baskets[i].col | ATTR1_SMALL;
+            shadowOAM[i+32].attr2 = ATTR2_TILEID(12, 12);
+    }
+
+}
+void hidePandas()
+{
+    for (int i = 0; i < BASKETCOUNT; i++) 
+    {
+            pandas[i].row = pandas[i].worldRow - vOff;
+            pandas[i].col = pandas[i].worldCol - hOff;
+            shadowOAM[i+36].attr0 = pandas[i].row | ATTR0_4BPP | ATTR0_SQUARE;
+            shadowOAM[i+36].attr1 = pandas[i].col | ATTR1_SMALL;
+            shadowOAM[i+36].attr2 = ATTR2_TILEID(12, 12);
+    }
+}
+
+void hideDoor() {
+    shadowOAM[100].attr0 = door.worldRow | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[100].attr1 = door.worldCol | ATTR1_SMALL;
+    shadowOAM[100].attr2 = ATTR2_TILEID(12, 12);
+}
+
 // UPDATE GAME FUNCTIONS
 
 // update GAME state (maze screen)
@@ -674,16 +704,32 @@ void updateGame() {
         playerHOff -= 512;
     }
 
+    if (collision(panda.worldCol - totalHOff, panda.worldRow, panda.width, panda.height, door.worldCol, door.worldRow, door.width, door.height) && !cheatMode) 
+    {
+        goToChina = 1;
+    }
+
+    if (collision(panda.worldCol - totalHOff, panda.worldRow, panda.width, panda.height, door.worldCol, door.worldRow, door.width, door.height) && cheatMode) 
+    {
+        panda.col = 73;
+        panda.row = 64;
+        panda.worldCol = 73;
+        panda.worldRow = 64;
+        hOff = 0;
+        vOff = 0;
+        playerHOff = 0;
+        totalHOff = 0;
+        screenBlock = 28;
+        hideBaskets();
+        hidePandas();
+        hideDoor();  
+    }
+
     if (screenBlock == 30 || (screenBlock == 29 && hOff > 256)) 
     {
         drawFriendlyPandas();
         drawBaskets();
         drawDoor();
-    }
-
-    if (collision(panda.worldCol - totalHOff, panda.worldRow, panda.width, panda.height, door.worldCol, door.worldRow, door.width, door.height)) 
-    {
-        goToChina = 1;
     }
 
     for (int i = 0; i < PANDACOUNT; i++) 
@@ -815,7 +861,3 @@ void resetAnimationFriendly()
     pandas[1].curFrame = 6;
     pandas[2].curFrame = 6;
 }
-
-
-
-
