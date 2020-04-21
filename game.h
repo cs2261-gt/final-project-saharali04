@@ -1,17 +1,10 @@
+// Constants
 #define WORLDWIDTH1 768
 #define WORLDWIDTH2 256
 #define WORLDHEIGHT 256
-extern int hOff;
-extern int vOff;
-extern int screenBlock;
-extern int hasShield;
-extern int goToMaze;
-extern int goToChina;
-extern int count;
-extern int playerHOff;
-extern int totalHOff;
+
 // Structs
-    // Panda struct
+    // panda struct
     typedef struct {
         int row;
         int col;
@@ -33,7 +26,7 @@ extern int totalHOff;
 
     } PANDASPRITE;
 
-    // Food struct
+    // sprite struct
     typedef struct {
         int row;
         int col;
@@ -48,34 +41,46 @@ extern int totalHOff;
         int isSpecial;
     } SPRITE;
 // Variables
-    // Panda variables
+    // panda variable
     PANDASPRITE panda;
-    SPRITE door;
 
-
-    // Food variables
+    // food array
     SPRITE food[35];
     #define FOODCOUNT 35
 
+    // enemy array
     SPRITE enemies[34];
     #define ENEMYCOUNT 34
 
-    // Basket variables
+    // basket aray
     SPRITE baskets[3];
     #define BASKETCOUNT 3
 
+    // friendly panda array
     PANDASPRITE pandas[3];
     #define PANDACOUNT 3
 
-    // If player has lost
-    extern int hasLost;
-    extern int hasWon;
+    // door variable
+    SPRITE door;
 
     // aniState enums
     enum { PANDANEUTRAL, PANDASAD, PANDAHAPPY, STEM, LEAF, BLACKBACKGROUND, PANDAIDLE};
     enum { BASKET = 6, FRIENDLYPANDA};
 
-    
+    // if player has won/lost
+    extern int hasLost;
+    extern int hasWon;
+
+    // XL background variables
+    extern int hOff;
+    extern int vOff;
+    extern int screenBlock;
+    extern int playerHOff;
+    extern int totalHOff;
+
+    // allows state transitions
+    extern int goToMaze;
+    extern int goToChina;
 
 // Function prototypes
 

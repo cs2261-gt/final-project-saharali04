@@ -6,15 +6,7 @@
 
 
 
-extern int hOff;
-extern int vOff;
-extern int screenBlock;
-extern int hasShield;
-extern int goToMaze;
-extern int goToChina;
-extern int count;
-extern int playerHOff;
-extern int totalHOff;
+
 
 
     typedef struct {
@@ -55,11 +47,10 @@ extern int totalHOff;
 
 
     PANDASPRITE panda;
-    SPRITE door;
-
 
 
     SPRITE food[35];
+
 
 
     SPRITE enemies[34];
@@ -69,47 +60,73 @@ extern int totalHOff;
     SPRITE baskets[3];
 
 
+
     PANDASPRITE pandas[3];
 
 
 
-    extern int hasLost;
-    extern int hasWon;
+    SPRITE door;
 
 
     enum { PANDANEUTRAL, PANDASAD, PANDAHAPPY, STEM, LEAF, BLACKBACKGROUND, PANDAIDLE};
     enum { BASKET = 6, FRIENDLYPANDA};
 
 
+    extern int hOff;
+    extern int vOff;
+    extern int screenBlock;
+    extern int playerHOff;
+    extern int totalHOff;
 
 
-void initPanda();
-void drawPanda();
-void updatePanda();
-void drawFood();
-void drawEnemies();
-void drawDoor();
-void drawEnemiesRight();
-void drawEnemiesLeft();
-void updateGame();
-void updateGame2();
+    extern int goToMaze;
+    extern int goToChina;
+
+
+    extern int hasLost;
+    extern int hasWon;
+
+
+
+
+
+
 void initGame();
+void initPanda();
 void initFood();
-void initDoor();
 void initEnemies();
-void drawBaskets();
 void initBaskets();
 void initPandas();
-void drawFriendlyPandas();
+void initDoor();
+
+
+void updatePanda();
+void updatePanda2();
+
+
 void checkFoodCollected();
 void checkFoodDelivered();
-void drawFoodDelivered();
-void drawScoreCollected();
-void resetAnimationFriendly();
-void updatePanda2();
-void clearEnemies();
 void checkEnemyCollision();
+
+
+void drawPanda();
+void drawFood();
+void drawEnemies();
+void drawEnemiesLeft();
+void drawEnemiesRight();
+void drawFoodDelivered();
+void drawFoodCollected();
+void drawBaskets();
+void drawFriendlyPandas();
+void drawDoor();
+
+
+void updateGame();
+void updateGame2();
+
+
 void checkCheatActivation();
+void resetAnimationFriendly();
 # 2 "game.c" 2
 # 1 "myLib.h" 1
 

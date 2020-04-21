@@ -2389,11 +2389,11 @@ resetAnimationFriendly:
 	.comm	hasLost,4,4
 	.comm	soundB,32,4
 	.comm	soundA,32,4
+	.comm	door,44,4
 	.comm	pandas,204,4
 	.comm	baskets,132,4
 	.comm	enemies,1496,4
 	.comm	food,1540,4
-	.comm	door,44,4
 	.comm	panda,68,4
 	.bss
 	.align	2
