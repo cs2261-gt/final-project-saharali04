@@ -1846,7 +1846,7 @@ drawPandaScore:
 	ldr	ip, [r2, #4]
 	ldr	r0, [r2, #72]
 	ldr	r3, .L329+4
-	add	ip, ip, #2
+	add	ip, ip, #4
 	push	{r4, r5, r6, r7, lr}
 	lsl	ip, ip, #16
 	ldrh	r4, [r2]
@@ -1854,7 +1854,7 @@ drawPandaScore:
 	add	r6, r3, #808
 	add	r5, r3, #832
 	lsr	ip, ip, #16
-	add	r0, r0, #2
+	add	r0, r0, #4
 	ldrh	lr, [r2, #68]
 	lsl	r0, r0, #16
 	strh	ip, [r6, #2]	@ movhi
@@ -1866,7 +1866,7 @@ drawPandaScore:
 	ldrh	ip, [r2, #136]
 	add	r6, r3, #840
 	strh	r4, [r5]	@ movhi
-	add	r1, r1, #2
+	add	r1, r1, #4
 	add	r5, r3, #816
 	ldr	r4, [r2, #48]
 	lsl	r1, r1, #16
@@ -2164,14 +2164,14 @@ hidePandaScore:
 	ldr	r0, [r5, #4]
 	ldr	r1, [r5, #72]
 	ldr	r3, .L366+4
-	add	r0, r0, #2
+	add	r0, r0, #4
 	ldrh	lr, [r5]
 	lsl	r0, r0, #16
 	ldr	r2, [r5, #140]
 	add	r7, r3, #808
 	add	r6, r3, #832
 	lsr	r0, r0, #16
-	add	r1, r1, #2
+	add	r1, r1, #4
 	strh	r0, [r7, #2]	@ movhi
 	add	r4, lr, #30
 	strh	r0, [r6, #2]	@ movhi
@@ -2181,7 +2181,7 @@ hidePandaScore:
 	strh	r0, [r7]	@ movhi
 	lsr	r1, r1, #16
 	ldrh	r0, [r5, #136]
-	add	r2, r2, #2
+	add	r2, r2, #4
 	strh	r4, [r6]	@ movhi
 	add	r5, r3, #840
 	add	r4, r3, #816

@@ -653,28 +653,28 @@ void drawPandaScore()
 {
     // stems
     shadowOAM[101].attr0 = pandas[0].row + 20 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[101].attr1 = pandas[0].col + 2 | ATTR1_TINY;
+    shadowOAM[101].attr1 = pandas[0].col + 4 | ATTR1_TINY;
     shadowOAM[101].attr2 = ATTR2_TILEID(pandas[0].stemsCollected + 8, 0);
 
     shadowOAM[102].attr0 = pandas[1].row + 20 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[102].attr1 = pandas[1].col + 2 | ATTR1_TINY;
+    shadowOAM[102].attr1 = pandas[1].col + 4 | ATTR1_TINY;
     shadowOAM[102].attr2 = ATTR2_TILEID(pandas[1].stemsCollected + 8, 0);
 
     shadowOAM[103].attr0 = pandas[2].row + 20 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[103].attr1 = pandas[2].col + 2 | ATTR1_TINY;
+    shadowOAM[103].attr1 = pandas[2].col + 4 | ATTR1_TINY;
     shadowOAM[103].attr2 = ATTR2_TILEID(pandas[2].stemsCollected + 8, 0);
 
     //leaves 
     shadowOAM[104].attr0 = pandas[0].row + 30 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[104].attr1 = pandas[0].col + 2 | ATTR1_TINY;
+    shadowOAM[104].attr1 = pandas[0].col + 4 | ATTR1_TINY;
     shadowOAM[104].attr2 = ATTR2_TILEID(pandas[0].leavesCollected + 8, 0);
 
     shadowOAM[105].attr0 = pandas[1].row + 30 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[105].attr1 = pandas[1].col + 2 | ATTR1_TINY;
+    shadowOAM[105].attr1 = pandas[1].col + 4 | ATTR1_TINY;
     shadowOAM[105].attr2 = ATTR2_TILEID(pandas[1].leavesCollected + 8, 0);
 
     shadowOAM[106].attr0 = pandas[2].row + 30 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[106].attr1 = pandas[2].col + 2 | ATTR1_TINY;
+    shadowOAM[106].attr1 = pandas[2].col + 4 | ATTR1_TINY;
     shadowOAM[106].attr2 = ATTR2_TILEID(pandas[2].leavesCollected + 8, 0);
 }
 
@@ -757,28 +757,28 @@ void hidePandaScore()
 {
     // stems
     shadowOAM[101].attr0 = pandas[0].row + 20 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[101].attr1 = pandas[0].col + 2 | ATTR1_TINY;
+    shadowOAM[101].attr1 = pandas[0].col + 4 | ATTR1_TINY;
     shadowOAM[101].attr2 = ATTR2_TILEID(12, 12);
 
     shadowOAM[102].attr0 = pandas[1].row + 20 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[102].attr1 = pandas[1].col + 2 | ATTR1_TINY;
+    shadowOAM[102].attr1 = pandas[1].col + 4 | ATTR1_TINY;
     shadowOAM[102].attr2 = ATTR2_TILEID(12, 12);
 
     shadowOAM[103].attr0 = pandas[2].row + 20 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[103].attr1 = pandas[2].col + 2 | ATTR1_TINY;
+    shadowOAM[103].attr1 = pandas[2].col + 4 | ATTR1_TINY;
     shadowOAM[103].attr2 = ATTR2_TILEID(12, 12);
 
     //leaves 
     shadowOAM[104].attr0 = pandas[0].row + 30 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[104].attr1 = pandas[0].col + 2 | ATTR1_TINY;
+    shadowOAM[104].attr1 = pandas[0].col + 4 | ATTR1_TINY;
     shadowOAM[104].attr2 = ATTR2_TILEID(12, 12);
 
     shadowOAM[105].attr0 = pandas[1].row + 30 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[105].attr1 = pandas[1].col + 2 | ATTR1_TINY;
+    shadowOAM[105].attr1 = pandas[1].col + 4 | ATTR1_TINY;
     shadowOAM[105].attr2 = ATTR2_TILEID(12, 12);
 
     shadowOAM[106].attr0 = pandas[2].row + 30 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[106].attr1 = pandas[2].col + 2 | ATTR1_TINY;
+    shadowOAM[106].attr1 = pandas[2].col + 4 | ATTR1_TINY;
     shadowOAM[106].attr2 = ATTR2_TILEID(12, 12);
 }
 

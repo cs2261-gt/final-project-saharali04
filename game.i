@@ -1736,28 +1736,28 @@ void drawPandaScore()
 {
 
     shadowOAM[101].attr0 = pandas[0].row + 20 | (0<<13) | (0<<14);
-    shadowOAM[101].attr1 = pandas[0].col + 2 | (0<<14);
+    shadowOAM[101].attr1 = pandas[0].col + 4 | (0<<14);
     shadowOAM[101].attr2 = ((0)*32+(pandas[0].stemsCollected + 8));
 
     shadowOAM[102].attr0 = pandas[1].row + 20 | (0<<13) | (0<<14);
-    shadowOAM[102].attr1 = pandas[1].col + 2 | (0<<14);
+    shadowOAM[102].attr1 = pandas[1].col + 4 | (0<<14);
     shadowOAM[102].attr2 = ((0)*32+(pandas[1].stemsCollected + 8));
 
     shadowOAM[103].attr0 = pandas[2].row + 20 | (0<<13) | (0<<14);
-    shadowOAM[103].attr1 = pandas[2].col + 2 | (0<<14);
+    shadowOAM[103].attr1 = pandas[2].col + 4 | (0<<14);
     shadowOAM[103].attr2 = ((0)*32+(pandas[2].stemsCollected + 8));
 
 
     shadowOAM[104].attr0 = pandas[0].row + 30 | (0<<13) | (0<<14);
-    shadowOAM[104].attr1 = pandas[0].col + 2 | (0<<14);
+    shadowOAM[104].attr1 = pandas[0].col + 4 | (0<<14);
     shadowOAM[104].attr2 = ((0)*32+(pandas[0].leavesCollected + 8));
 
     shadowOAM[105].attr0 = pandas[1].row + 30 | (0<<13) | (0<<14);
-    shadowOAM[105].attr1 = pandas[1].col + 2 | (0<<14);
+    shadowOAM[105].attr1 = pandas[1].col + 4 | (0<<14);
     shadowOAM[105].attr2 = ((0)*32+(pandas[1].leavesCollected + 8));
 
     shadowOAM[106].attr0 = pandas[2].row + 30 | (0<<13) | (0<<14);
-    shadowOAM[106].attr1 = pandas[2].col + 2 | (0<<14);
+    shadowOAM[106].attr1 = pandas[2].col + 4 | (0<<14);
     shadowOAM[106].attr2 = ((0)*32+(pandas[2].leavesCollected + 8));
 }
 
@@ -1840,28 +1840,28 @@ void hidePandaScore()
 {
 
     shadowOAM[101].attr0 = pandas[0].row + 20 | (0<<13) | (0<<14);
-    shadowOAM[101].attr1 = pandas[0].col + 2 | (0<<14);
+    shadowOAM[101].attr1 = pandas[0].col + 4 | (0<<14);
     shadowOAM[101].attr2 = ((12)*32+(12));
 
     shadowOAM[102].attr0 = pandas[1].row + 20 | (0<<13) | (0<<14);
-    shadowOAM[102].attr1 = pandas[1].col + 2 | (0<<14);
+    shadowOAM[102].attr1 = pandas[1].col + 4 | (0<<14);
     shadowOAM[102].attr2 = ((12)*32+(12));
 
     shadowOAM[103].attr0 = pandas[2].row + 20 | (0<<13) | (0<<14);
-    shadowOAM[103].attr1 = pandas[2].col + 2 | (0<<14);
+    shadowOAM[103].attr1 = pandas[2].col + 4 | (0<<14);
     shadowOAM[103].attr2 = ((12)*32+(12));
 
 
     shadowOAM[104].attr0 = pandas[0].row + 30 | (0<<13) | (0<<14);
-    shadowOAM[104].attr1 = pandas[0].col + 2 | (0<<14);
+    shadowOAM[104].attr1 = pandas[0].col + 4 | (0<<14);
     shadowOAM[104].attr2 = ((12)*32+(12));
 
     shadowOAM[105].attr0 = pandas[1].row + 30 | (0<<13) | (0<<14);
-    shadowOAM[105].attr1 = pandas[1].col + 2 | (0<<14);
+    shadowOAM[105].attr1 = pandas[1].col + 4 | (0<<14);
     shadowOAM[105].attr2 = ((12)*32+(12));
 
     shadowOAM[106].attr0 = pandas[2].row + 30 | (0<<13) | (0<<14);
-    shadowOAM[106].attr1 = pandas[2].col + 2 | (0<<14);
+    shadowOAM[106].attr1 = pandas[2].col + 4 | (0<<14);
     shadowOAM[106].attr2 = ((12)*32+(12));
 }
 
