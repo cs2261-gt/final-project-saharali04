@@ -652,55 +652,55 @@ void drawDoor()
 void drawPandaScore()
 {
     // stems
-    shadowOAM[101].attr0 = pandas[0].row + 20 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[101].attr1 = pandas[0].col + 4 | ATTR1_TINY;
+    shadowOAM[101].attr0 = (pandas[0].row + 20) | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[101].attr1 = (pandas[0].col + 4) | ATTR1_TINY;
     shadowOAM[101].attr2 = ATTR2_TILEID(pandas[0].stemsCollected + 8, 0);
 
-    shadowOAM[102].attr0 = pandas[1].row + 20 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[102].attr1 = pandas[1].col + 4 | ATTR1_TINY;
+    shadowOAM[102].attr0 = (pandas[1].row + 20) | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[102].attr1 = (pandas[1].col + 4) | ATTR1_TINY;
     shadowOAM[102].attr2 = ATTR2_TILEID(pandas[1].stemsCollected + 8, 0);
 
-    shadowOAM[103].attr0 = pandas[2].row + 20 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[103].attr1 = pandas[2].col + 4 | ATTR1_TINY;
+    shadowOAM[103].attr0 = (pandas[2].row + 20) | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[103].attr1 = (pandas[2].col + 4) | ATTR1_TINY;
     shadowOAM[103].attr2 = ATTR2_TILEID(pandas[2].stemsCollected + 8, 0);
 
     //leaves 
-    shadowOAM[104].attr0 = pandas[0].row + 30 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[104].attr1 = pandas[0].col + 4 | ATTR1_TINY;
+    shadowOAM[104].attr0 = (pandas[0].row + 30) | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[104].attr1 = (pandas[0].col + 4) | ATTR1_TINY;
     shadowOAM[104].attr2 = ATTR2_TILEID(pandas[0].leavesCollected + 8, 0);
 
-    shadowOAM[105].attr0 = pandas[1].row + 30 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[105].attr1 = pandas[1].col + 4 | ATTR1_TINY;
+    shadowOAM[105].attr0 = (pandas[1].row + 30) | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[105].attr1 = (pandas[1].col + 4) | ATTR1_TINY;
     shadowOAM[105].attr2 = ATTR2_TILEID(pandas[1].leavesCollected + 8, 0);
 
-    shadowOAM[106].attr0 = pandas[2].row + 30 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[106].attr1 = pandas[2].col + 4 | ATTR1_TINY;
+    shadowOAM[106].attr0 = (pandas[2].row + 30) | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[106].attr1 = (pandas[2].col + 4) | ATTR1_TINY;
     shadowOAM[106].attr2 = ATTR2_TILEID(pandas[2].leavesCollected + 8, 0);
 }
 
 void drawWordStems()
 {
     // draw "stem"
-    shadowOAM[107].attr0 = pandas[0].row + 20 | ATTR0_4BPP | ATTR0_WIDE;
-    shadowOAM[107].attr1 = pandas[0].col - 42 | ATTR1_MEDIUM;
+    shadowOAM[107].attr0 = (pandas[0].row + 20) | ATTR0_4BPP | ATTR0_WIDE;
+    shadowOAM[107].attr1 = (pandas[0].col - 42) | ATTR1_MEDIUM;
     shadowOAM[107].attr2 = ATTR2_TILEID(11, 3);
 
     // draw "s"
-    shadowOAM[108].attr0 = pandas[0].row + 20 | ATTR0_4BPP | ATTR0_WIDE;
-    shadowOAM[108].attr1 = pandas[0].col - 10 | ATTR1_TINY;
+    shadowOAM[108].attr0 = (pandas[0].row + 20) | ATTR0_4BPP | ATTR0_WIDE;
+    shadowOAM[108].attr1 = (pandas[0].col - 10) | ATTR1_TINY;
     shadowOAM[108].attr2 = ATTR2_TILEID(15, 3);
 }
 
 void drawWordLeaves()
 {
     // draw "leav"
-    shadowOAM[109].attr0 = pandas[0].row + 30 | ATTR0_4BPP | ATTR0_WIDE;
-    shadowOAM[109].attr1 = pandas[0].col - 50 | ATTR1_MEDIUM;
+    shadowOAM[109].attr0 = (pandas[0].row + 30) | ATTR0_4BPP | ATTR0_WIDE;
+    shadowOAM[109].attr1 = (pandas[0].col - 50) | ATTR1_MEDIUM;
     shadowOAM[109].attr2 = ATTR2_TILEID(11, 7);
 
     // draw "es"
-    shadowOAM[110].attr0 = pandas[0].row + 30 | ATTR0_4BPP | ATTR0_WIDE;
-    shadowOAM[110].attr1 = pandas[0].col - 18 | ATTR1_SMALL;
+    shadowOAM[110].attr0 = (pandas[0].row + 30) | ATTR0_4BPP | ATTR0_WIDE;
+    shadowOAM[110].attr1 = (pandas[0].col - 18) | ATTR1_SMALL;
     shadowOAM[110].attr2 = ATTR2_TILEID(15, 7);
 }
 
@@ -756,29 +756,29 @@ void hideFood()
 void hidePandaScore()
 {
     // stems
-    shadowOAM[101].attr0 = pandas[0].row + 20 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[101].attr1 = pandas[0].col + 4 | ATTR1_TINY;
+    shadowOAM[101].attr0 = (pandas[0].row + 20) | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[101].attr1 = (pandas[0].col + 4) | ATTR1_TINY;
     shadowOAM[101].attr2 = ATTR2_TILEID(12, 12);
 
-    shadowOAM[102].attr0 = pandas[1].row + 20 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[102].attr1 = pandas[1].col + 4 | ATTR1_TINY;
+    shadowOAM[102].attr0 = (pandas[1].row + 20) | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[102].attr1 = (pandas[1].col + 4) | ATTR1_TINY;
     shadowOAM[102].attr2 = ATTR2_TILEID(12, 12);
 
-    shadowOAM[103].attr0 = pandas[2].row + 20 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[103].attr1 = pandas[2].col + 4 | ATTR1_TINY;
+    shadowOAM[103].attr0 = (pandas[2].row + 20) | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[103].attr1 = (pandas[2].col + 4) | ATTR1_TINY;
     shadowOAM[103].attr2 = ATTR2_TILEID(12, 12);
 
     //leaves 
-    shadowOAM[104].attr0 = pandas[0].row + 30 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[104].attr1 = pandas[0].col + 4 | ATTR1_TINY;
+    shadowOAM[104].attr0 = (pandas[0].row + 30) | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[104].attr1 = (pandas[0].col + 4) | ATTR1_TINY;
     shadowOAM[104].attr2 = ATTR2_TILEID(12, 12);
 
-    shadowOAM[105].attr0 = pandas[1].row + 30 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[105].attr1 = pandas[1].col + 4 | ATTR1_TINY;
+    shadowOAM[105].attr0 = (pandas[1].row + 30) | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[105].attr1 = (pandas[1].col + 4) | ATTR1_TINY;
     shadowOAM[105].attr2 = ATTR2_TILEID(12, 12);
 
-    shadowOAM[106].attr0 = pandas[2].row + 30 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[106].attr1 = pandas[2].col + 4 | ATTR1_TINY;
+    shadowOAM[106].attr0 = (pandas[2].row + 30) | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[106].attr1 = (pandas[2].col + 4) | ATTR1_TINY;
     shadowOAM[106].attr2 = ATTR2_TILEID(12, 12);
 }
 
@@ -786,23 +786,23 @@ void hidePandaScore()
 void hideWordStemsAndLeaves() 
 {
     // erase "stem"
-    shadowOAM[107].attr0 = pandas[0].row + 20 | ATTR0_4BPP | ATTR0_WIDE;
-    shadowOAM[107].attr1 = pandas[0].col - 42 | ATTR1_MEDIUM;
+    shadowOAM[107].attr0 = (pandas[0].row + 20) | ATTR0_4BPP | ATTR0_WIDE;
+    shadowOAM[107].attr1 = (pandas[0].col - 42) | ATTR1_MEDIUM;
     shadowOAM[107].attr2 = ATTR2_TILEID(15, 15);
 
     // erase "s"
-    shadowOAM[108].attr0 = pandas[0].row + 20 | ATTR0_4BPP | ATTR0_WIDE;
-    shadowOAM[108].attr1 = pandas[0].col - 10 | ATTR1_TINY;
+    shadowOAM[108].attr0 = (pandas[0].row + 20) | ATTR0_4BPP | ATTR0_WIDE;
+    shadowOAM[108].attr1 = (pandas[0].col - 10) | ATTR1_TINY;
     shadowOAM[108].attr2 = ATTR2_TILEID(15, 15);
 
     // draw "leav"
-    shadowOAM[109].attr0 = pandas[0].row + 30 | ATTR0_4BPP | ATTR0_WIDE;
-    shadowOAM[109].attr1 = pandas[0].col - 50 | ATTR1_MEDIUM;
+    shadowOAM[109].attr0 = (pandas[0].row + 30) | ATTR0_4BPP | ATTR0_WIDE;
+    shadowOAM[109].attr1 = (pandas[0].col - 50) | ATTR1_MEDIUM;
     shadowOAM[109].attr2 = ATTR2_TILEID(15, 15);
 
     // draw "es"
-    shadowOAM[110].attr0 = pandas[0].row + 30 | ATTR0_4BPP | ATTR0_WIDE;
-    shadowOAM[110].attr1 = pandas[0].col - 18 | ATTR1_SMALL;
+    shadowOAM[110].attr0 = (pandas[0].row + 30) | ATTR0_4BPP | ATTR0_WIDE;
+    shadowOAM[110].attr1 = (pandas[0].col - 18) | ATTR1_SMALL;
     shadowOAM[110].attr2 = ATTR2_TILEID(15, 15);
 }
 

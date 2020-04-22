@@ -1735,55 +1735,55 @@ void drawDoor()
 void drawPandaScore()
 {
 
-    shadowOAM[101].attr0 = pandas[0].row + 20 | (0<<13) | (0<<14);
-    shadowOAM[101].attr1 = pandas[0].col + 4 | (0<<14);
+    shadowOAM[101].attr0 = (pandas[0].row + 20) | (0<<13) | (0<<14);
+    shadowOAM[101].attr1 = (pandas[0].col + 4) | (0<<14);
     shadowOAM[101].attr2 = ((0)*32+(pandas[0].stemsCollected + 8));
 
-    shadowOAM[102].attr0 = pandas[1].row + 20 | (0<<13) | (0<<14);
-    shadowOAM[102].attr1 = pandas[1].col + 4 | (0<<14);
+    shadowOAM[102].attr0 = (pandas[1].row + 20) | (0<<13) | (0<<14);
+    shadowOAM[102].attr1 = (pandas[1].col + 4) | (0<<14);
     shadowOAM[102].attr2 = ((0)*32+(pandas[1].stemsCollected + 8));
 
-    shadowOAM[103].attr0 = pandas[2].row + 20 | (0<<13) | (0<<14);
-    shadowOAM[103].attr1 = pandas[2].col + 4 | (0<<14);
+    shadowOAM[103].attr0 = (pandas[2].row + 20) | (0<<13) | (0<<14);
+    shadowOAM[103].attr1 = (pandas[2].col + 4) | (0<<14);
     shadowOAM[103].attr2 = ((0)*32+(pandas[2].stemsCollected + 8));
 
 
-    shadowOAM[104].attr0 = pandas[0].row + 30 | (0<<13) | (0<<14);
-    shadowOAM[104].attr1 = pandas[0].col + 4 | (0<<14);
+    shadowOAM[104].attr0 = (pandas[0].row + 30) | (0<<13) | (0<<14);
+    shadowOAM[104].attr1 = (pandas[0].col + 4) | (0<<14);
     shadowOAM[104].attr2 = ((0)*32+(pandas[0].leavesCollected + 8));
 
-    shadowOAM[105].attr0 = pandas[1].row + 30 | (0<<13) | (0<<14);
-    shadowOAM[105].attr1 = pandas[1].col + 4 | (0<<14);
+    shadowOAM[105].attr0 = (pandas[1].row + 30) | (0<<13) | (0<<14);
+    shadowOAM[105].attr1 = (pandas[1].col + 4) | (0<<14);
     shadowOAM[105].attr2 = ((0)*32+(pandas[1].leavesCollected + 8));
 
-    shadowOAM[106].attr0 = pandas[2].row + 30 | (0<<13) | (0<<14);
-    shadowOAM[106].attr1 = pandas[2].col + 4 | (0<<14);
+    shadowOAM[106].attr0 = (pandas[2].row + 30) | (0<<13) | (0<<14);
+    shadowOAM[106].attr1 = (pandas[2].col + 4) | (0<<14);
     shadowOAM[106].attr2 = ((0)*32+(pandas[2].leavesCollected + 8));
 }
 
 void drawWordStems()
 {
 
-    shadowOAM[107].attr0 = pandas[0].row + 20 | (0<<13) | (1<<14);
-    shadowOAM[107].attr1 = pandas[0].col - 42 | (2<<14);
+    shadowOAM[107].attr0 = (pandas[0].row + 20) | (0<<13) | (1<<14);
+    shadowOAM[107].attr1 = (pandas[0].col - 42) | (2<<14);
     shadowOAM[107].attr2 = ((3)*32+(11));
 
 
-    shadowOAM[108].attr0 = pandas[0].row + 20 | (0<<13) | (1<<14);
-    shadowOAM[108].attr1 = pandas[0].col - 10 | (0<<14);
+    shadowOAM[108].attr0 = (pandas[0].row + 20) | (0<<13) | (1<<14);
+    shadowOAM[108].attr1 = (pandas[0].col - 10) | (0<<14);
     shadowOAM[108].attr2 = ((3)*32+(15));
 }
 
 void drawWordLeaves()
 {
 
-    shadowOAM[109].attr0 = pandas[0].row + 30 | (0<<13) | (1<<14);
-    shadowOAM[109].attr1 = pandas[0].col - 50 | (2<<14);
+    shadowOAM[109].attr0 = (pandas[0].row + 30) | (0<<13) | (1<<14);
+    shadowOAM[109].attr1 = (pandas[0].col - 50) | (2<<14);
     shadowOAM[109].attr2 = ((7)*32+(11));
 
 
-    shadowOAM[110].attr0 = pandas[0].row + 30 | (0<<13) | (1<<14);
-    shadowOAM[110].attr1 = pandas[0].col - 18 | (1<<14);
+    shadowOAM[110].attr0 = (pandas[0].row + 30) | (0<<13) | (1<<14);
+    shadowOAM[110].attr1 = (pandas[0].col - 18) | (1<<14);
     shadowOAM[110].attr2 = ((7)*32+(15));
 }
 
@@ -1839,29 +1839,29 @@ void hideFood()
 void hidePandaScore()
 {
 
-    shadowOAM[101].attr0 = pandas[0].row + 20 | (0<<13) | (0<<14);
-    shadowOAM[101].attr1 = pandas[0].col + 4 | (0<<14);
+    shadowOAM[101].attr0 = (pandas[0].row + 20) | (0<<13) | (0<<14);
+    shadowOAM[101].attr1 = (pandas[0].col + 4) | (0<<14);
     shadowOAM[101].attr2 = ((12)*32+(12));
 
-    shadowOAM[102].attr0 = pandas[1].row + 20 | (0<<13) | (0<<14);
-    shadowOAM[102].attr1 = pandas[1].col + 4 | (0<<14);
+    shadowOAM[102].attr0 = (pandas[1].row + 20) | (0<<13) | (0<<14);
+    shadowOAM[102].attr1 = (pandas[1].col + 4) | (0<<14);
     shadowOAM[102].attr2 = ((12)*32+(12));
 
-    shadowOAM[103].attr0 = pandas[2].row + 20 | (0<<13) | (0<<14);
-    shadowOAM[103].attr1 = pandas[2].col + 4 | (0<<14);
+    shadowOAM[103].attr0 = (pandas[2].row + 20) | (0<<13) | (0<<14);
+    shadowOAM[103].attr1 = (pandas[2].col + 4) | (0<<14);
     shadowOAM[103].attr2 = ((12)*32+(12));
 
 
-    shadowOAM[104].attr0 = pandas[0].row + 30 | (0<<13) | (0<<14);
-    shadowOAM[104].attr1 = pandas[0].col + 4 | (0<<14);
+    shadowOAM[104].attr0 = (pandas[0].row + 30) | (0<<13) | (0<<14);
+    shadowOAM[104].attr1 = (pandas[0].col + 4) | (0<<14);
     shadowOAM[104].attr2 = ((12)*32+(12));
 
-    shadowOAM[105].attr0 = pandas[1].row + 30 | (0<<13) | (0<<14);
-    shadowOAM[105].attr1 = pandas[1].col + 4 | (0<<14);
+    shadowOAM[105].attr0 = (pandas[1].row + 30) | (0<<13) | (0<<14);
+    shadowOAM[105].attr1 = (pandas[1].col + 4) | (0<<14);
     shadowOAM[105].attr2 = ((12)*32+(12));
 
-    shadowOAM[106].attr0 = pandas[2].row + 30 | (0<<13) | (0<<14);
-    shadowOAM[106].attr1 = pandas[2].col + 4 | (0<<14);
+    shadowOAM[106].attr0 = (pandas[2].row + 30) | (0<<13) | (0<<14);
+    shadowOAM[106].attr1 = (pandas[2].col + 4) | (0<<14);
     shadowOAM[106].attr2 = ((12)*32+(12));
 }
 
@@ -1869,23 +1869,23 @@ void hidePandaScore()
 void hideWordStemsAndLeaves()
 {
 
-    shadowOAM[107].attr0 = pandas[0].row + 20 | (0<<13) | (1<<14);
-    shadowOAM[107].attr1 = pandas[0].col - 42 | (2<<14);
+    shadowOAM[107].attr0 = (pandas[0].row + 20) | (0<<13) | (1<<14);
+    shadowOAM[107].attr1 = (pandas[0].col - 42) | (2<<14);
     shadowOAM[107].attr2 = ((15)*32+(15));
 
 
-    shadowOAM[108].attr0 = pandas[0].row + 20 | (0<<13) | (1<<14);
-    shadowOAM[108].attr1 = pandas[0].col - 10 | (0<<14);
+    shadowOAM[108].attr0 = (pandas[0].row + 20) | (0<<13) | (1<<14);
+    shadowOAM[108].attr1 = (pandas[0].col - 10) | (0<<14);
     shadowOAM[108].attr2 = ((15)*32+(15));
 
 
-    shadowOAM[109].attr0 = pandas[0].row + 30 | (0<<13) | (1<<14);
-    shadowOAM[109].attr1 = pandas[0].col - 50 | (2<<14);
+    shadowOAM[109].attr0 = (pandas[0].row + 30) | (0<<13) | (1<<14);
+    shadowOAM[109].attr1 = (pandas[0].col - 50) | (2<<14);
     shadowOAM[109].attr2 = ((15)*32+(15));
 
 
-    shadowOAM[110].attr0 = pandas[0].row + 30 | (0<<13) | (1<<14);
-    shadowOAM[110].attr1 = pandas[0].col - 18 | (1<<14);
+    shadowOAM[110].attr0 = (pandas[0].row + 30) | (0<<13) | (1<<14);
+    shadowOAM[110].attr1 = (pandas[0].col - 18) | (1<<14);
     shadowOAM[110].attr2 = ((15)*32+(15));
 }
 
