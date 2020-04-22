@@ -115,11 +115,14 @@
     void drawFriendlyPandas();
     void drawDoor();
     void drawPandaScore();
+    void drawWordStems();
+    void drawWordLeaves();
     void hideBaskets();
     void hidePandas();
     void hideDoor();
     void hideFood();
     void hidePandaScore();
+    void hideWordStemsAndLeaves();
 
     // UPDATE GAME FUNCTIONS
     void updateGame();

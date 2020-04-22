@@ -120,11 +120,14 @@
     void drawFriendlyPandas();
     void drawDoor();
     void drawPandaScore();
+    void drawWordStems();
+    void drawWordLeaves();
     void hideBaskets();
     void hidePandas();
     void hideDoor();
     void hideFood();
     void hidePandaScore();
+    void hideWordStemsAndLeaves();
 
 
     void updateGame();
@@ -1728,6 +1731,7 @@ void drawDoor()
     shadowOAM[100].attr2 = ((3)*32+(0));
 }
 
+
 void drawPandaScore()
 {
 
@@ -1755,6 +1759,32 @@ void drawPandaScore()
     shadowOAM[106].attr0 = pandas[2].row + 30 | (0<<13) | (0<<14);
     shadowOAM[106].attr1 = pandas[2].col + 2 | (0<<14);
     shadowOAM[106].attr2 = ((0)*32+(pandas[2].leavesCollected + 8));
+}
+
+void drawWordStems()
+{
+
+    shadowOAM[107].attr0 = pandas[0].row + 20 | (0<<13) | (1<<14);
+    shadowOAM[107].attr1 = pandas[0].col - 42 | (2<<14);
+    shadowOAM[107].attr2 = ((3)*32+(11));
+
+
+    shadowOAM[108].attr0 = pandas[0].row + 20 | (0<<13) | (1<<14);
+    shadowOAM[108].attr1 = pandas[0].col - 10 | (0<<14);
+    shadowOAM[108].attr2 = ((3)*32+(15));
+}
+
+void drawWordLeaves()
+{
+
+    shadowOAM[109].attr0 = pandas[0].row + 30 | (0<<13) | (1<<14);
+    shadowOAM[109].attr1 = pandas[0].col - 50 | (2<<14);
+    shadowOAM[109].attr2 = ((7)*32+(11));
+
+
+    shadowOAM[110].attr0 = pandas[0].row + 30 | (0<<13) | (1<<14);
+    shadowOAM[110].attr1 = pandas[0].col - 18 | (1<<14);
+    shadowOAM[110].attr2 = ((7)*32+(15));
 }
 
 
@@ -1836,9 +1866,34 @@ void hidePandaScore()
 }
 
 
+void hideWordStemsAndLeaves()
+{
+
+    shadowOAM[107].attr0 = pandas[0].row + 20 | (0<<13) | (1<<14);
+    shadowOAM[107].attr1 = pandas[0].col - 42 | (2<<14);
+    shadowOAM[107].attr2 = ((15)*32+(15));
 
 
-void updateGame() {
+    shadowOAM[108].attr0 = pandas[0].row + 20 | (0<<13) | (1<<14);
+    shadowOAM[108].attr1 = pandas[0].col - 10 | (0<<14);
+    shadowOAM[108].attr2 = ((15)*32+(15));
+
+
+    shadowOAM[109].attr0 = pandas[0].row + 30 | (0<<13) | (1<<14);
+    shadowOAM[109].attr1 = pandas[0].col - 50 | (2<<14);
+    shadowOAM[109].attr2 = ((15)*32+(15));
+
+
+    shadowOAM[110].attr0 = pandas[0].row + 30 | (0<<13) | (1<<14);
+    shadowOAM[110].attr1 = pandas[0].col - 18 | (1<<14);
+    shadowOAM[110].attr2 = ((15)*32+(15));
+}
+
+
+
+
+void updateGame()
+{
     checkFoodDelivered();
     updatePanda();
     drawPanda();
@@ -1880,6 +1935,7 @@ void updateGame() {
         hidePandas();
         hideDoor();
         hidePandaScore();
+        hideWordStemsAndLeaves();
     }
 
     if (screenBlock == 30 || (screenBlock == 29 && hOff > 256))
@@ -1888,6 +1944,8 @@ void updateGame() {
         drawBaskets();
         drawDoor();
         drawPandaScore();
+        drawWordStems();
+        drawWordLeaves();
     }
 
     for (int i = 0; i < 3; i++)

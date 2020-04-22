@@ -648,6 +648,7 @@ void drawDoor()
     shadowOAM[100].attr2 = ATTR2_TILEID(0, 3);
 }
 
+// draws the score for each of the friendly pandas
 void drawPandaScore()
 {
     // stems
@@ -675,6 +676,32 @@ void drawPandaScore()
     shadowOAM[106].attr0 = pandas[2].row + 30 | ATTR0_4BPP | ATTR0_SQUARE;
     shadowOAM[106].attr1 = pandas[2].col + 2 | ATTR1_TINY;
     shadowOAM[106].attr2 = ATTR2_TILEID(pandas[2].leavesCollected + 8, 0);
+}
+
+void drawWordStems()
+{
+    // draw "stem"
+    shadowOAM[107].attr0 = pandas[0].row + 20 | ATTR0_4BPP | ATTR0_WIDE;
+    shadowOAM[107].attr1 = pandas[0].col - 42 | ATTR1_MEDIUM;
+    shadowOAM[107].attr2 = ATTR2_TILEID(11, 3);
+
+    // draw "s"
+    shadowOAM[108].attr0 = pandas[0].row + 20 | ATTR0_4BPP | ATTR0_WIDE;
+    shadowOAM[108].attr1 = pandas[0].col - 10 | ATTR1_TINY;
+    shadowOAM[108].attr2 = ATTR2_TILEID(15, 3);
+}
+
+void drawWordLeaves()
+{
+    // draw "leav"
+    shadowOAM[109].attr0 = pandas[0].row + 30 | ATTR0_4BPP | ATTR0_WIDE;
+    shadowOAM[109].attr1 = pandas[0].col - 50 | ATTR1_MEDIUM;
+    shadowOAM[109].attr2 = ATTR2_TILEID(11, 7);
+
+    // draw "es"
+    shadowOAM[110].attr0 = pandas[0].row + 30 | ATTR0_4BPP | ATTR0_WIDE;
+    shadowOAM[110].attr1 = pandas[0].col - 18 | ATTR1_SMALL;
+    shadowOAM[110].attr2 = ATTR2_TILEID(15, 7);
 }
 
 // erases the baskets
@@ -755,10 +782,35 @@ void hidePandaScore()
     shadowOAM[106].attr2 = ATTR2_TILEID(12, 12);
 }
 
+// erase stems and leaves
+void hideWordStemsAndLeaves() 
+{
+    // erase "stem"
+    shadowOAM[107].attr0 = pandas[0].row + 20 | ATTR0_4BPP | ATTR0_WIDE;
+    shadowOAM[107].attr1 = pandas[0].col - 42 | ATTR1_MEDIUM;
+    shadowOAM[107].attr2 = ATTR2_TILEID(15, 15);
+
+    // erase "s"
+    shadowOAM[108].attr0 = pandas[0].row + 20 | ATTR0_4BPP | ATTR0_WIDE;
+    shadowOAM[108].attr1 = pandas[0].col - 10 | ATTR1_TINY;
+    shadowOAM[108].attr2 = ATTR2_TILEID(15, 15);
+
+    // draw "leav"
+    shadowOAM[109].attr0 = pandas[0].row + 30 | ATTR0_4BPP | ATTR0_WIDE;
+    shadowOAM[109].attr1 = pandas[0].col - 50 | ATTR1_MEDIUM;
+    shadowOAM[109].attr2 = ATTR2_TILEID(15, 15);
+
+    // draw "es"
+    shadowOAM[110].attr0 = pandas[0].row + 30 | ATTR0_4BPP | ATTR0_WIDE;
+    shadowOAM[110].attr1 = pandas[0].col - 18 | ATTR1_SMALL;
+    shadowOAM[110].attr2 = ATTR2_TILEID(15, 15);
+}
+
 // UPDATE GAME FUNCTIONS
 
 // update GAME state (maze screen)
-void updateGame() { 
+void updateGame() 
+{ 
     checkFoodDelivered();
     updatePanda();
     drawPanda();
@@ -800,6 +852,7 @@ void updateGame() {
         hidePandas();
         hideDoor();  
         hidePandaScore();
+        hideWordStemsAndLeaves();
     }
 
     if (screenBlock == 30 || (screenBlock == 29 && hOff > 256)) 
@@ -808,6 +861,8 @@ void updateGame() {
         drawBaskets();
         drawDoor();
         drawPandaScore();
+        drawWordStems();
+        drawWordLeaves();
     }
 
     for (int i = 0; i < PANDACOUNT; i++) 

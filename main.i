@@ -229,6 +229,8 @@ int collision(int colA, int rowA, int widthA, int heightA, int colB, int rowB, i
     void drawFriendlyPandas();
     void drawDoor();
     void drawPandaScore();
+    void drawWordStems();
+    void drawWordLeaves();
     void hideBaskets();
     void hidePandas();
     void hideDoor();
@@ -1885,7 +1887,7 @@ void game2()
         goToPause();
 
     }
-    if (goToMaze)
+    if (goToMaze || (!(~(oldButtons)&((1<<2))) && (~buttons & ((1<<2)))))
     {
         stopSound();
   playSoundA(gameSound, 1324512, 1);

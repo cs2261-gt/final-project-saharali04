@@ -320,7 +320,7 @@ void game2()
         goToPause();
 
     }
-    if (goToMaze) 
+    if (goToMaze || BUTTON_PRESSED(BUTTON_SELECT)) 
     {
         stopSound();
 		playSoundA(gameSound, GAMESOUNDLEN, 1);
