@@ -119,10 +119,12 @@
     void drawBaskets();
     void drawFriendlyPandas();
     void drawDoor();
+    void drawPandaScore();
     void hideBaskets();
     void hidePandas();
     void hideDoor();
     void hideFood();
+    void hidePandaScore();
 
 
     void updateGame();
@@ -1212,33 +1214,33 @@ void initEnemies()
 
         if (i < 5)
         {
-            enemies[i].col = 29;
+            enemies[i].col = 26;
             enemies[i].row = i*30;
         }
         if (i >= 5 && i < 9)
         {
-            enemies[i].col = 62;
+            enemies[i].col = 58;
             enemies[i].row = 16 + (i-5)*30;
         }
 
         if (i >= 9 && i < 15)
         {
-            enemies[i].col = 99;
+            enemies[i].col = 97;
             enemies[i].row = (i-9)*25;
         }
         if (i >= 15 && i < 20)
         {
-            enemies[i].col = 139;
+            enemies[i].col = 137;
             enemies[i].row = 13 + (i-15)*25;
         }
         if (i >= 20 && i < 27)
         {
-            enemies[i].col = 179;
+            enemies[i].col = 177;
             enemies[i].row = (i-20)*20;
         }
         if (i >= 27 && i < 34)
         {
-            enemies[i].col = 212;
+            enemies[i].col = 209;
             enemies[i].row = 10 + (i-27)*18;
         }
     }
@@ -1252,8 +1254,8 @@ void initBaskets()
         baskets[i].active = 1;
         baskets[i].width = 16;
         baskets[i].height = 16;
-        baskets[i].worldRow = 47 + 20*i;
-        baskets[i].worldCol = 200;
+        baskets[i].worldRow = 75;
+        baskets[i].worldCol = 150 + 20*i;
         baskets[i].aniState = 4;
 
     }
@@ -1264,10 +1266,10 @@ void initPandas()
 {
     for (int i = 0; i < 3; i++)
     {
-        pandas[i].width = 8;
-        pandas[i].height = 8;
-        pandas[i].worldCol = 220;
-        pandas[i].worldRow = (47 + i*20);
+        pandas[i].width = 16;
+        pandas[i].height = 16;
+        pandas[i].worldCol = 150 + 20*i;
+        pandas[i].worldRow = 97;
         pandas[i].aniState = 6;
         pandas[i].leavesCollected = 0;
         pandas[i].stemsCollected = 0;
@@ -1623,7 +1625,7 @@ void drawEnemies()
 {
     for (int i = 0; i < 34; i++)
     {
-        enemies[i].col+=2;
+        enemies[i].col+=4;
 
         if (enemies[i].active)
         {
@@ -1653,7 +1655,7 @@ void drawEnemiesRight()
 {
     for (int i = 0; i < 34; i++)
     {
-        enemies[i].col+=2;
+        enemies[i].col+=4;
 
         if (enemies[i].active)
         {
@@ -1726,6 +1728,35 @@ void drawDoor()
     shadowOAM[100].attr2 = ((3)*32+(0));
 }
 
+void drawPandaScore()
+{
+
+    shadowOAM[101].attr0 = pandas[0].row + 20 | (0<<13) | (0<<14);
+    shadowOAM[101].attr1 = pandas[0].col + 2 | (0<<14);
+    shadowOAM[101].attr2 = ((0)*32+(pandas[0].stemsCollected + 8));
+
+    shadowOAM[102].attr0 = pandas[1].row + 20 | (0<<13) | (0<<14);
+    shadowOAM[102].attr1 = pandas[1].col + 2 | (0<<14);
+    shadowOAM[102].attr2 = ((0)*32+(pandas[1].stemsCollected + 8));
+
+    shadowOAM[103].attr0 = pandas[2].row + 20 | (0<<13) | (0<<14);
+    shadowOAM[103].attr1 = pandas[2].col + 2 | (0<<14);
+    shadowOAM[103].attr2 = ((0)*32+(pandas[2].stemsCollected + 8));
+
+
+    shadowOAM[104].attr0 = pandas[0].row + 30 | (0<<13) | (0<<14);
+    shadowOAM[104].attr1 = pandas[0].col + 2 | (0<<14);
+    shadowOAM[104].attr2 = ((0)*32+(pandas[0].leavesCollected + 8));
+
+    shadowOAM[105].attr0 = pandas[1].row + 30 | (0<<13) | (0<<14);
+    shadowOAM[105].attr1 = pandas[1].col + 2 | (0<<14);
+    shadowOAM[105].attr2 = ((0)*32+(pandas[1].leavesCollected + 8));
+
+    shadowOAM[106].attr0 = pandas[2].row + 30 | (0<<13) | (0<<14);
+    shadowOAM[106].attr1 = pandas[2].col + 2 | (0<<14);
+    shadowOAM[106].attr2 = ((0)*32+(pandas[2].leavesCollected + 8));
+}
+
 
 void hideBaskets()
 {
@@ -1775,6 +1806,36 @@ void hideFood()
 }
 
 
+void hidePandaScore()
+{
+
+    shadowOAM[101].attr0 = pandas[0].row + 20 | (0<<13) | (0<<14);
+    shadowOAM[101].attr1 = pandas[0].col + 2 | (0<<14);
+    shadowOAM[101].attr2 = ((12)*32+(12));
+
+    shadowOAM[102].attr0 = pandas[1].row + 20 | (0<<13) | (0<<14);
+    shadowOAM[102].attr1 = pandas[1].col + 2 | (0<<14);
+    shadowOAM[102].attr2 = ((12)*32+(12));
+
+    shadowOAM[103].attr0 = pandas[2].row + 20 | (0<<13) | (0<<14);
+    shadowOAM[103].attr1 = pandas[2].col + 2 | (0<<14);
+    shadowOAM[103].attr2 = ((12)*32+(12));
+
+
+    shadowOAM[104].attr0 = pandas[0].row + 30 | (0<<13) | (0<<14);
+    shadowOAM[104].attr1 = pandas[0].col + 2 | (0<<14);
+    shadowOAM[104].attr2 = ((12)*32+(12));
+
+    shadowOAM[105].attr0 = pandas[1].row + 30 | (0<<13) | (0<<14);
+    shadowOAM[105].attr1 = pandas[1].col + 2 | (0<<14);
+    shadowOAM[105].attr2 = ((12)*32+(12));
+
+    shadowOAM[106].attr0 = pandas[2].row + 30 | (0<<13) | (0<<14);
+    shadowOAM[106].attr1 = pandas[2].col + 2 | (0<<14);
+    shadowOAM[106].attr2 = ((12)*32+(12));
+}
+
+
 
 
 void updateGame() {
@@ -1819,6 +1880,7 @@ void updateGame() {
         hideBaskets();
         hidePandas();
         hideDoor();
+        hidePandaScore();
     }
 
     if (screenBlock == 30 || (screenBlock == 29 && hOff > 256))
@@ -1826,6 +1888,7 @@ void updateGame() {
         drawFriendlyPandas();
         drawBaskets();
         drawDoor();
+        drawPandaScore();
     }
 
     for (int i = 0; i < 3; i++)
@@ -1918,7 +1981,7 @@ void updateGame2()
         count = 0;
         for (int i = 0; i < 34; i++)
         {
-            enemies[i].col-=4;
+            enemies[i].col-=8;
         }
     }
 

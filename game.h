@@ -114,10 +114,12 @@
     void drawBaskets();
     void drawFriendlyPandas();
     void drawDoor();
+    void drawPandaScore();
     void hideBaskets();
     void hidePandas();
     void hideDoor();
     void hideFood();
+    void hidePandaScore();
 
     // UPDATE GAME FUNCTIONS
     void updateGame();

@@ -228,9 +228,12 @@ int collision(int colA, int rowA, int widthA, int heightA, int colB, int rowB, i
     void drawBaskets();
     void drawFriendlyPandas();
     void drawDoor();
+    void drawPandaScore();
     void hideBaskets();
     void hidePandas();
     void hideDoor();
+    void hideFood();
+    void hidePandaScore();
 
 
     void updateGame();
@@ -1713,6 +1716,10 @@ void goToSplash()
     goToMaze = 0;
     goToChina = 0;
 
+    for (int i = 0; i < 34; i++) {
+        enemies[i].isSpecial = 0;
+    }
+
     initGame();
     stopSound();
  playSoundA(splashSound, 291428, 1);
@@ -1776,7 +1783,7 @@ void instruction()
 
 void goToGame()
 {
-    (*(unsigned short *)0x4000000) = 0 | (1<<12) | (1<<8) | (1<<9);
+    (*(unsigned short *)0x4000000) = 0 | (1<<12) | (1<<9);
 
     (*(volatile unsigned short*)0x400000A) = (1<<14) | ((0)<<2) | ((28)<<8);
 
@@ -1784,8 +1791,8 @@ void goToGame()
     DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 29376/2);
     DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[28], 6144/2);
 
-    DMANow(3, scoreBackgroundTiles, &((charblock *)0x6000000)[2], 960/2);
-    DMANow(3, scoreBackgroundMap, &((screenblock *)0x6000000)[27], 2048/2);
+
+
 
     hideSprites();
     waitForVBlank();
@@ -1856,6 +1863,8 @@ void goToGame2()
     count = 0;
     game1 = 0;
     goToChina = 0;
+    goToMaze = 0;
+    hasLost = 0;
 
     hOff = 0;
     vOff = 0;

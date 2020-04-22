@@ -151,6 +151,10 @@ void goToSplash()
     goToMaze = 0;
     goToChina = 0;
 
+    for (int i = 0; i < ENEMYCOUNT; i++) {
+        enemies[i].isSpecial = 0;
+    }
+
     initGame();
     stopSound();
 	playSoundA(splashSound, SPLASHSOUNDLEN, 1);
@@ -214,7 +218,7 @@ void instruction()
 // sets up the game state
 void goToGame() 
 {
-    REG_DISPCTL = MODE0 | SPRITE_ENABLE | BG0_ENABLE | BG1_ENABLE;
+    REG_DISPCTL = MODE0 | SPRITE_ENABLE | BG1_ENABLE;
 
     REG_BG1CNT = BG_SIZE_WIDE | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28);
 
@@ -222,8 +226,8 @@ void goToGame()
     DMANow(3, gameScreenTiles, &CHARBLOCK[0], gameScreenTilesLen/2);
     DMANow(3, gameScreenMap, &SCREENBLOCK[28], gameScreenMapLen/2);
 
-    DMANow(3, scoreBackgroundTiles, &CHARBLOCK[2], scoreBackgroundTilesLen/2);
-    DMANow(3, scoreBackgroundMap, &SCREENBLOCK[27], scoreBackgroundMapLen/2);
+    //DMANow(3, scoreBackgroundTiles, &CHARBLOCK[2], scoreBackgroundTilesLen/2);
+    //DMANow(3, scoreBackgroundMap, &SCREENBLOCK[27], scoreBackgroundMapLen/2);
 
     hideSprites();
     waitForVBlank();
@@ -294,7 +298,9 @@ void goToGame2()
     count = 0;
     game1 = 0;
     goToChina = 0;
-    
+    goToMaze = 0;
+    hasLost = 0;
+
     hOff = 0;
     vOff = 0;
     REG_BG1HOFF = 0;
