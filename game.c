@@ -760,7 +760,6 @@ void hidePandaScore()
 // update GAME state (maze screen)
 void updateGame() { 
     checkFoodDelivered();
-    //drawFoodDelivered();
     updatePanda();
     drawPanda();
 

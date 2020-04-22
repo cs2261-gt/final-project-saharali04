@@ -2148,7 +2148,6 @@ updateGame:
 	ldr	r4, .L407
 	sub	sp, sp, #16
 	bl	checkFoodDelivered
-	bl	drawFoodDelivered
 	bl	updatePanda
 	ldr	r3, [r4, #4]
 	ldr	r2, [r4, #60]

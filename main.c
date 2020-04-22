@@ -173,7 +173,6 @@ void splash() {
     if (BUTTON_PRESSED(BUTTON_START)) 
     {
         srand(seed);
-        initGame();
         stopSound();
 		playSoundA(gameSound, GAMESOUNDLEN, 1);
         goToGame2();
@@ -226,9 +225,6 @@ void goToGame()
     DMANow(3, gameScreenTiles, &CHARBLOCK[0], gameScreenTilesLen/2);
     DMANow(3, gameScreenMap, &SCREENBLOCK[28], gameScreenMapLen/2);
 
-    //DMANow(3, scoreBackgroundTiles, &CHARBLOCK[2], scoreBackgroundTilesLen/2);
-    //DMANow(3, scoreBackgroundMap, &SCREENBLOCK[27], scoreBackgroundMapLen/2);
-
     hideSprites();
     waitForVBlank();
     DMANow(3, shadowOAM, OAM, 512);
@@ -268,11 +264,6 @@ void game()
     if (goToChina)
     {
         goToGame2();
-    }
-
-    if (hasLost) 
-    {
-        goToLose();
     }
 
     if (hasWon) 
@@ -340,12 +331,6 @@ void game2()
     {
         goToLose();
     }
-
-    if (hasWon) 
-    {
-        goToWin();
-    }
-
 }
 // sets up the pause state
 void goToPause() 
@@ -416,6 +401,8 @@ void goToLose()
 
     REG_BG0HOFF = 0;
     REG_BG0VOFF = 0;
+    panda.row = 0;
+    panda.col = 0;
     stopSound();
 
     state = LOSE;

@@ -1840,7 +1840,6 @@ void hidePandaScore()
 
 void updateGame() {
     checkFoodDelivered();
-    drawFoodDelivered();
     updatePanda();
     drawPanda();
 
