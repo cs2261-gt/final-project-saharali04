@@ -304,16 +304,16 @@ initGame:
 	str	r5, [r3, #64]
 	bl	initFood
 	bl	initEnemies
-	mov	r2, #150
+	mov	r2, #155
 	mov	r1, #16
-	mov	lr, #97
+	mov	lr, #121
 	mov	r0, #6
 	mov	ip, #2
 	ldr	r3, .L49+20
 .L46:
 	str	r2, [r3, #12]
 	add	r2, r2, #20
-	cmp	r2, #210
+	cmp	r2, #215
 	str	r1, [r3, #24]
 	str	r1, [r3, #28]
 	str	lr, [r3, #8]
@@ -324,12 +324,12 @@ initGame:
 	str	ip, [r3, #64]
 	add	r3, r3, #68
 	bne	.L46
-	mov	r2, #190
+	mov	r2, #195
 	mov	r0, #1
-	mov	lr, #75
+	mov	lr, #105
 	mov	ip, #4
-	mov	r7, #150
-	mov	r6, #170
+	mov	r7, #155
+	mov	r6, #175
 	mov	r5, #225
 	ldr	r3, .L49+24
 	str	r2, [r3, #100]
@@ -383,11 +383,11 @@ initBaskets:
 	push	{r4, r5, lr}
 	mov	r2, #16
 	mov	ip, #1
-	mov	r0, #75
+	mov	r0, #105
 	mov	r1, #4
-	mov	r5, #150
-	mov	r4, #170
-	mov	lr, #190
+	mov	r5, #155
+	mov	r4, #175
+	mov	lr, #195
 	ldr	r3, .L53
 	str	r5, [r3, #12]
 	str	r4, [r3, #56]
@@ -425,9 +425,9 @@ initPandas:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	push	{r4, lr}
-	mov	r2, #150
+	mov	r2, #155
 	mov	ip, #16
-	mov	r4, #97
+	mov	r4, #121
 	mov	r0, #6
 	mov	r1, #0
 	mov	lr, #2
@@ -435,7 +435,7 @@ initPandas:
 .L56:
 	str	r2, [r3, #12]
 	add	r2, r2, #20
-	cmp	r2, #210
+	cmp	r2, #215
 	str	ip, [r3, #24]
 	str	ip, [r3, #28]
 	str	r4, [r3, #8]

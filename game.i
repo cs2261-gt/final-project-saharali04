@@ -1257,8 +1257,8 @@ void initBaskets()
         baskets[i].active = 1;
         baskets[i].width = 16;
         baskets[i].height = 16;
-        baskets[i].worldRow = 75;
-        baskets[i].worldCol = 150 + 20*i;
+        baskets[i].worldRow = 105;
+        baskets[i].worldCol = 155 + 20*i;
         baskets[i].aniState = 4;
 
     }
@@ -1271,8 +1271,8 @@ void initPandas()
     {
         pandas[i].width = 16;
         pandas[i].height = 16;
-        pandas[i].worldCol = 150 + 20*i;
-        pandas[i].worldRow = 97;
+        pandas[i].worldCol = 155 + 20*i;
+        pandas[i].worldRow = 121;
         pandas[i].aniState = 6;
         pandas[i].leavesCollected = 0;
         pandas[i].stemsCollected = 0;

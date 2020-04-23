@@ -16,6 +16,12 @@
 // must deliver either FIVE stems or FIVE leaves. Before, it was three stems but I figured it was too confusing for the player
 // to remember how many of each one to deliver.
 
+// From the last milestone feedback, I fixed the enemy-panda collision. The enemy width/height was set to 
+// to 6 instead of 8. However, when I set it to 8, I notice that the collision still isn't perfect.
+// For this reason, I changed their size to 9 and it seems to be more accurate. I was wondering
+// if you could give me some insight on this. Thanks. I also fixed the transition from 
+// splashScreen -> instructions -> food collection screen, since previously it went straight to the maze.
+
 // Header files
 #include "myLib.h"
 #include "game.h"
@@ -320,7 +326,7 @@ void game2()
         goToPause();
 
     }
-    if (goToMaze || BUTTON_PRESSED(BUTTON_SELECT)) 
+    if (goToMaze) 
     {
         stopSound();
 		playSoundA(gameSound, GAMESOUNDLEN, 1);
