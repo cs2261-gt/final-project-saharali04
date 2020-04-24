@@ -248,7 +248,7 @@ int collision(int colA, int rowA, int widthA, int heightA, int colB, int rowB, i
 # 28 "main.c" 2
 # 1 "splashScreen.h" 1
 # 22 "splashScreen.h"
-extern const unsigned short splashScreenTiles[2096];
+extern const unsigned short splashScreenTiles[3376];
 
 
 extern const unsigned short splashScreenMap[1024];
@@ -258,13 +258,13 @@ extern const unsigned short splashScreenPal[256];
 # 29 "main.c" 2
 # 1 "instructionsScreen.h" 1
 # 22 "instructionsScreen.h"
-extern const unsigned short instructionsScreenTiles[5760];
+extern const unsigned short instructionsScreenTiles[3136];
 
 
 extern const unsigned short instructionsScreenMap[1024];
 
 
-extern const unsigned short instructionsScreenPal[16];
+extern const unsigned short instructionsScreenPal[256];
 # 30 "main.c" 2
 # 1 "gameScreen.h" 1
 # 22 "gameScreen.h"
@@ -1703,12 +1703,12 @@ void initialize()
 
 void goToSplash()
 {
-    (*(unsigned short *)0x4000000) = 0 | (1<<9);
-    (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((28)<<8);
+    (*(unsigned short *)0x4000000) = 0 | (1<<8);
+    (*(volatile unsigned short*)0x4000008) = (0<<14) | ((2)<<2) | ((27)<<8);
 
     DMANow(3, &splashScreenPal, ((unsigned short *)0x5000000), 512/2);
-    DMANow(3, splashScreenTiles, &((charblock *)0x6000000)[0], 4192/2);
-    DMANow(3, splashScreenMap, &((screenblock *)0x6000000)[28], 2048/2);
+    DMANow(3, splashScreenTiles, &((charblock *)0x6000000)[2], 6752/2);
+    DMANow(3, splashScreenMap, &((screenblock *)0x6000000)[27], 2048/2);
 
     (*(volatile unsigned short *)0x04000014) = 0;
     (*(volatile unsigned short *)0x04000016) = 0;
@@ -1759,8 +1759,8 @@ void goToInstruction()
     (*(unsigned short *)0x4000000) = 0 | (1<<9);
     (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((27)<<8);
 
-    DMANow(3, &instructionsScreenPal, ((unsigned short *)0x5000000), 32/2);
-    DMANow(3, instructionsScreenTiles, &((charblock *)0x6000000)[0], 11520/2);
+    DMANow(3, &instructionsScreenPal, ((unsigned short *)0x5000000), 512/2);
+    DMANow(3, instructionsScreenTiles, &((charblock *)0x6000000)[0], 6272/2);
     DMANow(3, instructionsScreenMap, &((screenblock *)0x6000000)[27], 2048/2);
 
     state = INSTRUCTION;

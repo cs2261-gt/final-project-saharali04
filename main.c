@@ -141,12 +141,12 @@ void initialize()
 // sets up the splash state
 void goToSplash() 
 {
-    REG_DISPCTL = MODE0 | BG1_ENABLE;
-    REG_BG1CNT = BG_SIZE_SMALL | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28);
+    REG_DISPCTL = MODE0 | BG0_ENABLE;
+    REG_BG0CNT = BG_SIZE_SMALL | BG_CHARBLOCK(2) | BG_SCREENBLOCK(27);
 
     DMANow(3, &splashScreenPal, PALETTE, splashScreenPalLen/2);
-    DMANow(3, splashScreenTiles, &CHARBLOCK[0], splashScreenTilesLen/2);
-    DMANow(3, splashScreenMap, &SCREENBLOCK[28], splashScreenMapLen/2);
+    DMANow(3, splashScreenTiles, &CHARBLOCK[2], splashScreenTilesLen/2);
+    DMANow(3, splashScreenMap, &SCREENBLOCK[27], splashScreenMapLen/2);
 
     REG_BG1HOFF = 0;
     REG_BG1VOFF = 0;
