@@ -288,7 +288,7 @@ extern const unsigned short gameScreen2Pal[16];
 # 32 "main.c" 2
 # 1 "pauseScreen.h" 1
 # 22 "pauseScreen.h"
-extern const unsigned short pauseScreenTiles[1168];
+extern const unsigned short pauseScreenTiles[2464];
 
 
 extern const unsigned short pauseScreenMap[1024];
@@ -1858,7 +1858,7 @@ void goToGame2()
     game1 = 0;
     goToChina = 0;
     goToMaze = 0;
-    hasLost = 1;
+    hasLost = 0;
     hasWon = 0;
 
     hOff = 0;
@@ -1907,7 +1907,7 @@ void goToPause()
     (*(unsigned short *)0x4000000) = 0 | (1<<8);
 
     DMANow(3, &pauseScreenPal, ((unsigned short *)0x5000000), 512/2);
-    DMANow(3, pauseScreenTiles, &((charblock *)0x6000000)[2], 2336/2);
+    DMANow(3, pauseScreenTiles, &((charblock *)0x6000000)[2], 4928/2);
     DMANow(3, pauseScreenMap, &((screenblock *)0x6000000)[27], 2048/2);
 
     (*(volatile unsigned short *)0x04000010) = 0;

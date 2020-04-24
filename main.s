@@ -401,24 +401,23 @@ goToGame2:
 	mov	lr, pc
 	bx	r4
 	mov	r3, #0
-	mov	r1, #1
 	mov	lr, #5
 	mov	ip, #4
-	ldr	r2, .L26+36
-	str	r3, [r2]
+	ldr	r1, .L26+36
 	ldr	r2, .L26+40
-	str	r3, [r2]
-	ldr	r2, .L26+44
+	str	r3, [r1]
+	ldr	r1, .L26+44
 	str	r3, [r2]
 	ldr	r2, .L26+48
-	str	r3, [r2]
-	ldr	r2, .L26+52
+	str	r3, [r1]
+	ldr	r1, .L26+52
 	str	r3, [r2]
 	ldr	r2, .L26+56
-	str	r1, [r2]
+	str	r3, [r1]
 	ldr	r1, .L26+60
-	strh	r3, [r5, #20]	@ movhi
+	str	r3, [r2]
 	ldr	r0, .L26+64
+	strh	r3, [r5, #20]	@ movhi
 	strh	r3, [r5, #22]	@ movhi
 	str	lr, [r1, #8]
 	str	r3, [r2, #8]
@@ -613,7 +612,7 @@ goToPause:
 	ldr	r1, .L58+4
 	mov	lr, pc
 	bx	r5
-	mov	r3, #1168
+	mov	r3, #2464
 	mov	r0, #3
 	ldr	r2, .L58+8
 	ldr	r1, .L58+12
