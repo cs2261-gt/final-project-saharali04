@@ -298,7 +298,7 @@ extern const unsigned short pauseScreenPal[256];
 # 33 "main.c" 2
 # 1 "winScreen.h" 1
 # 22 "winScreen.h"
-extern const unsigned short winScreenTiles[1440];
+extern const unsigned short winScreenTiles[2768];
 
 
 extern const unsigned short winScreenMap[1024];
@@ -1859,6 +1859,7 @@ void goToGame2()
     goToChina = 0;
     goToMaze = 0;
     hasLost = 0;
+    hasWon = 1;
 
     hOff = 0;
     vOff = 0;
@@ -1899,6 +1900,11 @@ void game2()
     {
         goToLose();
     }
+
+    if (hasWon)
+    {
+        goToWin();
+    }
 }
 
 void goToPause()
@@ -1938,7 +1944,7 @@ void goToWin()
     (*(unsigned short *)0x4000000) = 0 | (1<<8);
 
     DMANow(3, &winScreenPal, ((unsigned short *)0x5000000), 512/2);
-    DMANow(3, winScreenTiles, &((charblock *)0x6000000)[2], 2880/2);
+    DMANow(3, winScreenTiles, &((charblock *)0x6000000)[2], 5536/2);
     DMANow(3, winScreenMap, &((screenblock *)0x6000000)[27], 2048/2);
 
     (*(volatile unsigned short *)0x04000014) = 0;
