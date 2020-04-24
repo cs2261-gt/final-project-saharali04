@@ -284,7 +284,7 @@ extern const unsigned short gameScreen2Tiles[416];
 extern const unsigned short gameScreen2Map[1024];
 
 
-extern const unsigned short gameScreen2Pal[16];
+extern const unsigned short gameScreen2Pal[256];
 # 32 "main.c" 2
 # 1 "pauseScreen.h" 1
 # 22 "pauseScreen.h"
@@ -1847,7 +1847,7 @@ void goToGame2()
 
     (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((28)<<8);
 
-    DMANow(3, &gameScreen2Pal, ((unsigned short *)0x5000000), 32/2);
+    DMANow(3, &gameScreen2Pal, ((unsigned short *)0x5000000), 512/2);
     DMANow(3, gameScreen2Map, &((screenblock *)0x6000000)[28], 2048/2);
     DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 832/2);
 
@@ -1859,7 +1859,7 @@ void goToGame2()
     goToChina = 0;
     goToMaze = 0;
     hasLost = 0;
-    hasWon = 0;
+    hasWon = 1;
 
     hOff = 0;
     vOff = 0;
@@ -1899,6 +1899,10 @@ void game2()
     if (hasLost)
     {
         goToLose();
+    }
+
+    if (hasWon) {
+        goToWin();
     }
 }
 

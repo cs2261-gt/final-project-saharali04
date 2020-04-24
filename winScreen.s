@@ -23,7 +23,7 @@ winScreenPal:
 	.short	9477
 	.short	30621
 	.short	0
-	.short	16224
+	.short	25587
 	.short	9241
 	.short	0
 	.short	0

@@ -21,7 +21,7 @@ instructionsScreenPal:
 	.short	31775
 	.short	32767
 	.short	16776
-	.short	32480
+	.short	32498
 	.short	0
 	.short	0
 	.short	0

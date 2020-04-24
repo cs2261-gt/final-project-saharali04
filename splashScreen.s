@@ -20,7 +20,7 @@
 splashScreenPal:
 	.short	31775
 	.short	32767
-	.short	32480
+	.short	32497
 	.short	25368
 	.short	0
 	.short	32767

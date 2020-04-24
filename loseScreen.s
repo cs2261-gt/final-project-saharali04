@@ -23,7 +23,7 @@ loseScreenPal:
 	.short	16776
 	.short	30621
 	.short	0
-	.short	4190
+	.short	32446
 	.short	9241
 	.short	0
 	.short	0
