@@ -181,6 +181,8 @@ void splash() {
         srand(seed);
         stopSound();
 		playSoundA(gameSound, GAMESOUNDLEN, 1);
+        panda.worldRow = 5;
+        panda.worldCol = 4;
         goToGame2();
     }
 
@@ -225,11 +227,11 @@ void goToGame()
 {
     REG_DISPCTL = MODE0 | SPRITE_ENABLE | BG1_ENABLE;
 
-    REG_BG1CNT = BG_SIZE_WIDE | BG_CHARBLOCK(0) | BG_SCREENBLOCK(28);
+    REG_BG1CNT = BG_SIZE_WIDE | BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock);
 
     DMANow(3, &gameScreenPal, PALETTE, gameScreenPalLen/2);
     DMANow(3, gameScreenTiles, &CHARBLOCK[0], gameScreenTilesLen/2);
-    DMANow(3, gameScreenMap, &SCREENBLOCK[28], gameScreenMapLen/2);
+    DMANow(3, gameScreenMap, &SCREENBLOCK[screenBlock], gameScreenMapLen/2);
 
     hideSprites();
     waitForVBlank();
@@ -237,19 +239,8 @@ void goToGame()
 
     goToMaze = 0;
     game1 = 1;
-    
-    screenBlock = 28;  
-    playerHOff = 0;
-    totalHOff = 0;
-    hOff = 0;
-    vOff = 0;
-    REG_BG1VOFF = vOff;
-    REG_BG1HOFF = hOff;
 
-    panda.worldCol = 73; 
-    panda.worldRow = 64;
-    panda.col = 73; 
-    panda.row = 64;
+
     door.worldCol = 225;
     door.worldRow = 5;
 
@@ -269,6 +260,8 @@ void game()
 
     if (goToChina)
     {
+        panda.worldRow = 5;
+        panda.worldCol = 4;
         goToGame2();
     }
 
@@ -297,15 +290,14 @@ void goToGame2()
     goToChina = 0;
     goToMaze = 0;
     hasLost = 0;
-    hasWon = 1;
+    hasWon = 0;
 
     hOff = 0;
     vOff = 0;
     REG_BG1HOFF = 0;
     REG_BG1VOFF = 0;
     
-    panda.worldRow = 5;
-    panda.worldCol = 4;
+    
     
     initEnemies();
 
@@ -327,10 +319,21 @@ void game2()
         goToPause();
 
     }
-    if (goToMaze) 
+    if (goToMaze || BUTTON_PRESSED(BUTTON_SELECT)) 
     {
         stopSound();
 		playSoundA(gameSound, GAMESOUNDLEN, 1);
+        panda.worldCol = 73; 
+        panda.worldRow = 64;
+        panda.col = 73; 
+        panda.row = 64;
+        screenBlock = 28;  
+        playerHOff = 0;
+        totalHOff = 0;
+        hOff = 0;
+        vOff = 0;
+        REG_BG1VOFF = vOff;
+        REG_BG1HOFF = hOff;
         goToGame();
     }
 

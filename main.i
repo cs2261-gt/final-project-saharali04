@@ -1743,6 +1743,8 @@ void splash() {
         srand(seed);
         stopSound();
   playSoundA(gameSound, 1324512, 1);
+        panda.worldRow = 5;
+        panda.worldCol = 4;
         goToGame2();
     }
 
@@ -1787,11 +1789,11 @@ void goToGame()
 {
     (*(unsigned short *)0x4000000) = 0 | (1<<12) | (1<<9);
 
-    (*(volatile unsigned short*)0x400000A) = (1<<14) | ((0)<<2) | ((28)<<8);
+    (*(volatile unsigned short*)0x400000A) = (1<<14) | ((0)<<2) | ((screenBlock)<<8);
 
     DMANow(3, &gameScreenPal, ((unsigned short *)0x5000000), 32/2);
     DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 29376/2);
-    DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[28], 6144/2);
+    DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[screenBlock], 6144/2);
 
     hideSprites();
     waitForVBlank();
@@ -1800,18 +1802,7 @@ void goToGame()
     goToMaze = 0;
     game1 = 1;
 
-    screenBlock = 28;
-    playerHOff = 0;
-    totalHOff = 0;
-    hOff = 0;
-    vOff = 0;
-    (*(volatile unsigned short *)0x04000016) = vOff;
-    (*(volatile unsigned short *)0x04000014) = hOff;
 
-    panda.worldCol = 73;
-    panda.worldRow = 64;
-    panda.col = 73;
-    panda.row = 64;
     door.worldCol = 225;
     door.worldRow = 5;
 
@@ -1831,6 +1822,8 @@ void game()
 
     if (goToChina)
     {
+        panda.worldRow = 5;
+        panda.worldCol = 4;
         goToGame2();
     }
 
@@ -1859,15 +1852,14 @@ void goToGame2()
     goToChina = 0;
     goToMaze = 0;
     hasLost = 0;
-    hasWon = 1;
+    hasWon = 0;
 
     hOff = 0;
     vOff = 0;
     (*(volatile unsigned short *)0x04000014) = 0;
     (*(volatile unsigned short *)0x04000016) = 0;
 
-    panda.worldRow = 5;
-    panda.worldCol = 4;
+
 
     initEnemies();
 
@@ -1889,20 +1881,27 @@ void game2()
         goToPause();
 
     }
-    if (goToMaze)
+    if (goToMaze || (!(~(oldButtons)&((1<<2))) && (~buttons & ((1<<2)))))
     {
         stopSound();
   playSoundA(gameSound, 1324512, 1);
+        panda.worldCol = 73;
+        panda.worldRow = 64;
+        panda.col = 73;
+        panda.row = 64;
+        screenBlock = 28;
+        playerHOff = 0;
+        totalHOff = 0;
+        hOff = 0;
+        vOff = 0;
+        (*(volatile unsigned short *)0x04000016) = vOff;
+        (*(volatile unsigned short *)0x04000014) = hOff;
         goToGame();
     }
 
     if (hasLost)
     {
         goToLose();
-    }
-
-    if (hasWon) {
-        goToWin();
     }
 }
 
