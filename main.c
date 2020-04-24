@@ -296,7 +296,7 @@ void goToGame2()
     game1 = 0;
     goToChina = 0;
     goToMaze = 0;
-    hasLost = 0;
+    hasLost = 1;
     hasWon = 0;
 
     hOff = 0;

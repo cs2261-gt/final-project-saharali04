@@ -308,7 +308,7 @@ extern const unsigned short winScreenPal[256];
 # 34 "main.c" 2
 # 1 "loseScreen.h" 1
 # 22 "loseScreen.h"
-extern const unsigned short loseScreenTiles[1440];
+extern const unsigned short loseScreenTiles[2768];
 
 
 extern const unsigned short loseScreenMap[1024];
@@ -1858,8 +1858,8 @@ void goToGame2()
     game1 = 0;
     goToChina = 0;
     goToMaze = 0;
-    hasLost = 0;
-    hasWon = 1;
+    hasLost = 1;
+    hasWon = 0;
 
     hOff = 0;
     vOff = 0;
@@ -1899,11 +1899,6 @@ void game2()
     if (hasLost)
     {
         goToLose();
-    }
-
-    if (hasWon)
-    {
-        goToWin();
     }
 }
 
@@ -1970,7 +1965,7 @@ void goToLose()
     (*(unsigned short *)0x4000000) = 0 | (1<<8);
 
     DMANow(3, &loseScreenPal, ((unsigned short *)0x5000000), 512/2);
-    DMANow(3, loseScreenTiles, &((charblock *)0x6000000)[2], 2880/2);
+    DMANow(3, loseScreenTiles, &((charblock *)0x6000000)[2], 5536/2);
     DMANow(3, loseScreenMap, &((screenblock *)0x6000000)[27], 2048/2);
 
     (*(volatile unsigned short *)0x04000010) = 0;

@@ -25,7 +25,7 @@ splashScreenPal:
 	.short	0
 	.short	32767
 	.short	16776
-	.short	0
+	.short	9241
 	.short	0
 	.short	0
 	.short	0
@@ -4037,9 +4037,9 @@ splashScreenTiles:
 	.short	17476
 	.short	17476
 	.short	17476
-	.short	13107
-	.short	13380
-	.short	13107
+	.short	30583
+	.short	29764
+	.short	30583
 	.short	17476
 	.short	17476
 	.short	17476
@@ -4052,10 +4052,10 @@ splashScreenTiles:
 	.short	17476
 	.short	17476
 	.short	17476
-	.short	13107
-	.short	17475
-	.short	13107
-	.short	17459
+	.short	30583
+	.short	17479
+	.short	30583
+	.short	17527
 	.short	17476
 	.short	13380
 	.short	17476
@@ -4168,31 +4168,31 @@ splashScreenTiles:
 	.short	4369
 	.short	4369
 	.short	4369
-	.short	13108
-	.short	13107
-	.short	13108
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13073
-	.short	13107
+	.short	30580
+	.short	30583
+	.short	30580
+	.short	30583
+	.short	30583
+	.short	30583
+	.short	30481
+	.short	30583
 	.short	4369
-	.short	13107
-	.short	4369
-	.short	4369
+	.short	30583
 	.short	4369
 	.short	4369
 	.short	4369
 	.short	4369
-	.short	13107
-	.short	17203
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	4403
-	.short	13107
+	.short	4369
+	.short	4369
+	.short	30583
+	.short	18295
+	.short	30583
+	.short	30583
+	.short	30583
+	.short	30583
+	.short	30583
+	.short	4471
+	.short	30583
 	.short	4369
 	.short	4369
 	.short	4369
