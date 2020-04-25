@@ -244,7 +244,7 @@ void goToGame()
 
 
     door.worldCol = 225;
-    door.worldRow = 5;
+    door.worldRow = 0;
 
     state = GAME;
 }

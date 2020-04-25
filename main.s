@@ -304,19 +304,18 @@ goToGame:
 	mov	lr, pc
 	bx	r4
 	mov	r2, #0
-	mov	r4, #1
-	mov	ip, #225
-	mov	r0, #5
-	mov	r1, #2
-	ldr	r3, .L22+36
-	ldr	lr, .L22+40
-	str	r2, [r3]
-	ldr	r3, .L22+44
-	ldr	r2, .L22+48
-	str	r4, [lr, #8]
-	str	ip, [r3, #12]
-	str	r0, [r3, #8]
-	str	r1, [r2]
+	mov	r4, #225
+	mov	lr, #1
+	mov	r0, #2
+	ldr	r1, .L22+36
+	ldr	r3, .L22+40
+	str	r2, [r1]
+	ldr	ip, .L22+44
+	ldr	r1, .L22+48
+	str	r4, [r3, #12]
+	str	lr, [ip, #8]
+	str	r2, [r3, #8]
+	str	r0, [r1]
 	pop	{r4, r5, r6, lr}
 	bx	lr
 .L23:
@@ -325,15 +324,15 @@ goToGame:
 	.word	screenBlock
 	.word	DMANow
 	.word	gameScreenPal
-	.word	14688
+	.word	14832
 	.word	gameScreenTiles
 	.word	gameScreenMap
 	.word	hideSprites
 	.word	waitForVBlank
 	.word	shadowOAM
 	.word	goToMaze
-	.word	.LANCHOR0
 	.word	door
+	.word	.LANCHOR0
 	.word	state
 	.size	goToGame, .-goToGame
 	.align	2
@@ -354,7 +353,7 @@ goToGame2:
 	strh	r2, [r5]	@ movhi
 	strh	r3, [r5, #10]	@ movhi
 	mov	r2, #83886080
-	mov	r3, #256
+	mov	r3, #16
 	mov	r0, #3
 	ldr	r1, .L26+4
 	mov	lr, pc

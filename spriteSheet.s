@@ -4228,21 +4228,21 @@ spriteSheetTiles:
 	.short	0
 	.short	0
 	.short	0
-	.short	-17477
+	.short	0
 	.short	30583
-	.short	-17477
+	.short	0
 	.short	30583
-	.short	-17477
+	.short	0
 	.short	30583
-	.short	-17477
+	.short	0
 	.short	30583
-	.short	-17545
-	.short	30651
-	.short	-17545
-	.short	30651
-	.short	-17545
+	.short	119
+	.short	30464
+	.short	119
+	.short	30464
+	.short	119
 	.short	30549
-	.short	-17545
+	.short	119
 	.short	30549
 	.short	30583
 	.short	-17477

@@ -830,7 +830,7 @@ void updateGame()
     checkFoodDelivered();
     updatePanda();
     drawPanda();
-
+    
     if (screenBlock == 28) 
     {
         REG_BG1CNT = BG_CHARBLOCK(0) | BG_SCREENBLOCK(screenBlock) | BG_SIZE_WIDE;

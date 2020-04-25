@@ -268,7 +268,7 @@ extern const unsigned short instructionsScreenPal[16];
 # 30 "main.c" 2
 # 1 "gameScreen.h" 1
 # 22 "gameScreen.h"
-extern const unsigned short gameScreenTiles[14688];
+extern const unsigned short gameScreenTiles[14832];
 
 
 extern const unsigned short gameScreenMap[3072];
@@ -284,7 +284,7 @@ extern const unsigned short gameScreen2Tiles[416];
 extern const unsigned short gameScreen2Map[1024];
 
 
-extern const unsigned short gameScreen2Pal[256];
+extern const unsigned short gameScreen2Pal[16];
 # 32 "main.c" 2
 # 1 "pauseScreen.h" 1
 # 22 "pauseScreen.h"
@@ -1794,7 +1794,7 @@ void goToGame()
     (*(volatile unsigned short*)0x400000A) = (1<<14) | ((0)<<2) | ((screenBlock)<<8);
 
     DMANow(3, &gameScreenPal, ((unsigned short *)0x5000000), 32/2);
-    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 29376/2);
+    DMANow(3, gameScreenTiles, &((charblock *)0x6000000)[0], 29664/2);
     DMANow(3, gameScreenMap, &((screenblock *)0x6000000)[screenBlock], 6144/2);
 
     hideSprites();
@@ -1806,7 +1806,7 @@ void goToGame()
 
 
     door.worldCol = 225;
-    door.worldRow = 5;
+    door.worldRow = 0;
 
     state = GAME;
 }
@@ -1842,7 +1842,7 @@ void goToGame2()
 
     (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((28)<<8);
 
-    DMANow(3, &gameScreen2Pal, ((unsigned short *)0x5000000), 512/2);
+    DMANow(3, &gameScreen2Pal, ((unsigned short *)0x5000000), 32/2);
     DMANow(3, gameScreen2Map, &((screenblock *)0x6000000)[28], 2048/2);
     DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 832/2);
 
