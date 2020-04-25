@@ -2110,6 +2110,13 @@ gameScreenMap:
 	.short	1
 	.short	1
 	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
 	.short	741
 	.short	742
 	.short	1
@@ -2117,39 +2124,32 @@ gameScreenMap:
 	.short	1
 	.short	1
 	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
 	.short	743
-	.short	744
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	745
-	.short	746
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	747
 	.short	76
 	.short	1
 	.short	1
@@ -2173,15 +2173,15 @@ gameScreenMap:
 	.short	1
 	.short	1
 	.short	1
-	.short	748
-	.short	749
-	.short	750
-	.short	751
-	.short	752
 	.short	1
 	.short	1
 	.short	1
-	.short	753
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	744
 	.short	98
 	.short	1
 	.short	1
@@ -2213,48 +2213,48 @@ gameScreenMap:
 	.short	1
 	.short	1
 	.short	1
-	.short	754
+	.short	745
 	.short	139
 	.short	1
 	.short	1
+	.short	746
+	.short	747
+	.short	748
+	.short	749
+	.short	750
+	.short	1113
+	.short	751
+	.short	752
+	.short	753
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	754
+	.short	145
+	.short	1
+	.short	1
+	.short	73
 	.short	755
 	.short	756
 	.short	757
 	.short	758
 	.short	759
-	.short	1113
-	.short	760
-	.short	761
-	.short	762
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	763
-	.short	145
-	.short	1
-	.short	1
-	.short	73
-	.short	764
-	.short	765
-	.short	766
-	.short	767
-	.short	768
 	.short	449
 	.short	450
 	.short	451
@@ -2277,16 +2277,16 @@ gameScreenMap:
 	.short	1
 	.short	1
 	.short	1
-	.short	769
+	.short	760
 	.short	151
 	.short	1
 	.short	1
 	.short	72
-	.short	770
-	.short	771
-	.short	772
-	.short	773
-	.short	774
+	.short	761
+	.short	762
+	.short	763
+	.short	764
+	.short	765
 	.short	460
 	.short	461
 	.short	462
@@ -2309,17 +2309,49 @@ gameScreenMap:
 	.short	1
 	.short	1
 	.short	1
-	.short	775
+	.short	766
 	.short	145
 	.short	1
 	.short	1
 	.short	79
 	.short	1162
+	.short	767
+	.short	768
+	.short	769
+	.short	1
+	.short	1
+	.short	770
+	.short	771
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	772
+	.short	151
+	.short	1
+	.short	1
+	.short	99
+	.short	773
+	.short	774
+	.short	775
 	.short	776
 	.short	777
 	.short	778
-	.short	1
-	.short	1
 	.short	779
 	.short	780
 	.short	1
@@ -2341,11 +2373,12 @@ gameScreenMap:
 	.short	1
 	.short	1
 	.short	1
+	.short	745
+	.short	139
+	.short	1
+	.short	1
+	.short	76
 	.short	781
-	.short	151
-	.short	1
-	.short	1
-	.short	99
 	.short	782
 	.short	783
 	.short	784
@@ -2353,73 +2386,38 @@ gameScreenMap:
 	.short	786
 	.short	787
 	.short	788
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
 	.short	789
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	754
-	.short	139
-	.short	1
-	.short	1
-	.short	76
 	.short	790
-	.short	791
-	.short	792
-	.short	793
-	.short	794
-	.short	795
-	.short	796
-	.short	797
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	798
-	.short	799
 	.short	1
 	.short	1
 	.short	99
 	.short	388
-	.short	800
-	.short	801
-	.short	802
+	.short	791
+	.short	792
+	.short	793
 	.short	1
-	.short	803
-	.short	804
-	.short	805
-	.short	1
-	.short	1
+	.short	794
+	.short	795
+	.short	796
 	.short	1
 	.short	1
 	.short	1
@@ -2437,12 +2435,14 @@ gameScreenMap:
 	.short	1
 	.short	1
 	.short	1
-	.short	806
-	.short	807
+	.short	1
+	.short	1
+	.short	797
+	.short	798
 	.short	1
 	.short	1
 	.short	76
-	.short	808
+	.short	799
 	.short	309
 	.short	310
 	.short	311
@@ -2469,16 +2469,16 @@ gameScreenMap:
 	.short	1
 	.short	1
 	.short	1
-	.short	809
-	.short	810
+	.short	800
+	.short	801
 	.short	1
 	.short	1
 	.short	79
-	.short	811
+	.short	802
 	.short	330
 	.short	331
 	.short	332
-	.short	812
+	.short	803
 	.short	335
 	.short	336
 	.short	337
@@ -2501,16 +2501,16 @@ gameScreenMap:
 	.short	1
 	.short	1
 	.short	1
-	.short	813
-	.short	807
+	.short	804
+	.short	798
 	.short	1
 	.short	1
 	.short	99
-	.short	814
-	.short	815
-	.short	816
-	.short	817
-	.short	818
+	.short	805
+	.short	806
+	.short	807
+	.short	808
+	.short	809
 	.short	661
 	.short	662
 	.short	663
@@ -2542,7 +2542,7 @@ gameScreenMap:
 	.short	219
 	.short	220
 	.short	221
-	.short	819
+	.short	810
 	.short	476
 	.short	477
 	.short	478
@@ -2569,12 +2569,12 @@ gameScreenMap:
 	.short	1
 	.short	1
 	.short	1
-	.short	820
-	.short	821
+	.short	811
+	.short	812
 	.short	233
 	.short	234
 	.short	235
-	.short	822
+	.short	813
 	.short	496
 	.short	497
 	.short	498
@@ -2602,11 +2602,11 @@ gameScreenMap:
 	.short	473
 	.short	474
 	.short	472
-	.short	823
+	.short	814
 	.short	257
 	.short	486
 	.short	259
-	.short	824
+	.short	815
 	.short	511
 	.short	512
 	.short	513
@@ -2631,7 +2631,7 @@ gameScreenMap:
 	.short	1
 	.short	21
 	.short	22
-	.short	825
+	.short	816
 	.short	476
 	.short	477
 	.short	478
@@ -2639,9 +2639,9 @@ gameScreenMap:
 	.short	21
 	.short	22
 	.short	218
-	.short	826
-	.short	827
-	.short	828
+	.short	817
+	.short	818
+	.short	819
 	.short	1
 	.short	1
 	.short	1
@@ -2663,14 +2663,14 @@ gameScreenMap:
 	.short	1
 	.short	43
 	.short	44
-	.short	829
+	.short	820
 	.short	496
 	.short	497
 	.short	498
 	.short	509
 	.short	43
 	.short	44
-	.short	830
+	.short	821
 	.short	262
 	.short	263
 	.short	264
@@ -2695,14 +2695,14 @@ gameScreenMap:
 	.short	1
 	.short	65
 	.short	66
-	.short	831
+	.short	822
 	.short	511
 	.short	512
 	.short	513
 	.short	525
 	.short	65
 	.short	66
-	.short	832
+	.short	823
 	.short	285
 	.short	286
 	.short	287
@@ -2725,42 +2725,74 @@ gameScreenMap:
 	.short	1
 	.short	1
 	.short	1
-	.short	833
+	.short	824
 	.short	535
 	.short	1
 	.short	1
 	.short	1
 	.short	1
+	.short	825
+	.short	826
+	.short	827
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	828
+	.short	829
+	.short	1
+	.short	1
+	.short	1
+	.short	830
+	.short	831
+	.short	832
+	.short	833
 	.short	834
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
 	.short	835
 	.short	836
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	837
 	.short	838
-	.short	1
-	.short	1
 	.short	1
 	.short	839
 	.short	840
@@ -2793,69 +2825,66 @@ gameScreenMap:
 	.short	845
 	.short	846
 	.short	847
-	.short	1
+	.short	134
 	.short	848
 	.short	849
 	.short	850
 	.short	851
 	.short	852
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	853
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
 	.short	854
 	.short	855
 	.short	856
-	.short	134
 	.short	857
 	.short	858
 	.short	859
 	.short	860
 	.short	861
 	.short	862
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	863
 	.short	864
 	.short	865
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
 	.short	866
 	.short	867
 	.short	868
@@ -2865,29 +2894,29 @@ gameScreenMap:
 	.short	872
 	.short	873
 	.short	874
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	875
 	.short	876
 	.short	877
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
 	.short	878
 	.short	879
 	.short	880
@@ -2897,28 +2926,29 @@ gameScreenMap:
 	.short	884
 	.short	885
 	.short	886
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	887
 	.short	888
+	.short	877
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
 	.short	889
 	.short	890
 	.short	891
@@ -2928,31 +2958,33 @@ gameScreenMap:
 	.short	895
 	.short	896
 	.short	897
-	.short	886
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	898
 	.short	899
+	.short	2913
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
 	.short	900
 	.short	901
+	.short	692
+	.short	1
 	.short	902
 	.short	903
 	.short	904
@@ -2960,7 +2992,7 @@ gameScreenMap:
 	.short	906
 	.short	907
 	.short	908
-	.short	2922
+	.short	1
 	.short	1
 	.short	1
 	.short	1
@@ -2982,110 +3014,78 @@ gameScreenMap:
 	.short	1
 	.short	1
 	.short	909
-	.short	910
-	.short	692
 	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	910
 	.short	911
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
 	.short	912
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
 	.short	913
 	.short	914
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
 	.short	915
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
 	.short	916
 	.short	917
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	918
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	919
-	.short	920
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	921
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	922
-	.short	923
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	924
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	925
-	.short	926
 	.short	1
 	.short	1
 	.short	1
@@ -3110,7 +3110,7 @@ gameScreenMap:
 	.short	1
 	.short	1
 	.type	gameScreenTiles, %object
-	.size	gameScreenTiles, 29664
+	.size	gameScreenTiles, 29376
 gameScreenTiles:
 	.short	0
 	.short	0
@@ -14968,38 +14968,6 @@ gameScreenTiles:
 	.short	-4370
 	.short	-4370
 	.short	-4370
-	.short	-8748
-	.short	-8739
-	.short	-8748
-	.short	-8739
-	.short	19924
-	.short	17476
-	.short	19924
-	.short	-8748
-	.short	19924
-	.short	-8748
-	.short	19924
-	.short	-8892
-	.short	-8748
-	.short	-8739
-	.short	-8748
-	.short	-8739
-	.short	-8748
-	.short	-8739
-	.short	-8748
-	.short	-8739
-	.short	19924
-	.short	-8892
-	.short	19924
-	.short	-8892
-	.short	19924
-	.short	-8892
-	.short	19924
-	.short	-8892
-	.short	-8748
-	.short	-8739
-	.short	-8748
-	.short	-8739
 	.short	17476
 	.short	-6930
 	.short	17476
@@ -15034,38 +15002,6 @@ gameScreenTiles:
 	.short	-6930
 	.short	17476
 	.short	17476
-	.short	-8748
-	.short	-8739
-	.short	-8748
-	.short	-8739
-	.short	-11196
-	.short	17629
-	.short	-11196
-	.short	17629
-	.short	-11196
-	.short	17629
-	.short	-11196
-	.short	17629
-	.short	-11196
-	.short	17629
-	.short	17476
-	.short	17476
-	.short	-8748
-	.short	-8739
-	.short	-8748
-	.short	-8739
-	.short	19924
-	.short	-8892
-	.short	19924
-	.short	-8892
-	.short	19924
-	.short	-8892
-	.short	-8748
-	.short	-8739
-	.short	-8748
-	.short	-8739
-	.short	17476
-	.short	17476
 	.short	17476
 	.short	-4380
 	.short	17476
@@ -15080,86 +15016,6 @@ gameScreenTiles:
 	.short	-6940
 	.short	17476
 	.short	-6940
-	.short	-11196
-	.short	17485
-	.short	-11196
-	.short	17629
-	.short	-11196
-	.short	17629
-	.short	-11196
-	.short	-8883
-	.short	-11196
-	.short	-8883
-	.short	-11196
-	.short	17485
-	.short	-11196
-	.short	17485
-	.short	-11196
-	.short	17485
-	.short	19924
-	.short	-8739
-	.short	19933
-	.short	-8739
-	.short	19933
-	.short	17629
-	.short	19924
-	.short	17629
-	.short	19924
-	.short	-8739
-	.short	19924
-	.short	-8739
-	.short	19924
-	.short	17629
-	.short	19924
-	.short	17629
-	.short	19933
-	.short	-8739
-	.short	19933
-	.short	-8739
-	.short	19924
-	.short	17476
-	.short	19924
-	.short	-11196
-	.short	19933
-	.short	-8748
-	.short	19933
-	.short	19924
-	.short	19924
-	.short	-8739
-	.short	19924
-	.short	-8739
-	.short	19933
-	.short	-8739
-	.short	19933
-	.short	-8739
-	.short	19924
-	.short	17629
-	.short	17629
-	.short	-8739
-	.short	17485
-	.short	-8739
-	.short	17476
-	.short	17629
-	.short	19933
-	.short	-8739
-	.short	19933
-	.short	-8739
-	.short	19933
-	.short	17476
-	.short	19933
-	.short	17476
-	.short	17476
-	.short	17476
-	.short	17485
-	.short	17476
-	.short	17485
-	.short	17476
-	.short	17476
-	.short	17476
-	.short	19933
-	.short	17476
-	.short	19933
-	.short	17476
 	.short	17476
 	.short	-6940
 	.short	17476
