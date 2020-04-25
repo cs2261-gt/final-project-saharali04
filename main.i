@@ -1775,6 +1775,8 @@ void instruction()
     {
         srand(seed);
         playSoundA(gameSound, 1324512, 1);
+        panda.worldRow = 5;
+        panda.worldCol = 4;
         goToGame2();
     }
 
@@ -1852,7 +1854,7 @@ void goToGame2()
     goToChina = 0;
     goToMaze = 0;
     hasLost = 0;
-    hasWon = 1;
+    hasWon = 0;
 
     hOff = 0;
     vOff = 0;

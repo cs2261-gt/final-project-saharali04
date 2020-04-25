@@ -213,6 +213,8 @@ void instruction()
     {
         srand(seed);
         playSoundA(gameSound, GAMESOUNDLEN, 1);
+        panda.worldRow = 5;
+        panda.worldCol = 4;
         goToGame2(); 
     }
 

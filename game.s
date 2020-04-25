@@ -221,7 +221,7 @@ initEnemies:
 	str	r1, [r2, #16]
 	str	lr, [r2, #32]
 	bgt	.L28
-	mov	r10, #26
+	mov	r10, #28
 	rsb	ip, r3, r3, lsl #4
 	lsl	ip, ip, #1
 	str	ip, [r2]
@@ -232,7 +232,7 @@ initEnemies:
 	bx	lr
 .L38:
 	mov	ip, #30
-	mov	r10, #58
+	mov	r10, #60
 	mul	ip, r3, ip
 	sub	ip, ip, #134
 	str	ip, [r2]

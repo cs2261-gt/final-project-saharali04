@@ -384,23 +384,23 @@ goToGame2:
 	mov	lr, pc
 	bx	r4
 	mov	r3, #0
-	mov	r0, #1
-	ldr	ip, .L26+36
-	ldr	r1, .L26+40
-	ldr	r2, .L26+44
-	str	r3, [ip]
+	ldr	r1, .L26+36
+	ldr	r2, .L26+40
 	str	r3, [r1]
 	str	r3, [r2]
-	ldr	ip, .L26+48
-	ldr	r2, .L26+52
+	ldr	ip, .L26+44
+	ldr	r2, .L26+48
+	ldr	r0, .L26+52
 	ldr	r1, .L26+56
 	str	r3, [ip]
+	str	r3, [r0]
 	str	r3, [r2]
 	str	r3, [r1]
 	strh	r3, [r5, #20]	@ movhi
 	ldr	r1, .L26+60
 	strh	r3, [r5, #22]	@ movhi
-	stmib	r2, {r0, r3}
+	str	r3, [r2, #8]
+	str	r3, [r2, #4]
 	mov	lr, pc
 	bx	r1
 	ldr	r3, .L26+64
@@ -435,8 +435,8 @@ goToGame2:
 	.word	count
 	.word	goToChina
 	.word	goToMaze
-	.word	hOff
 	.word	.LANCHOR0
+	.word	hOff
 	.word	vOff
 	.word	initEnemies
 	.word	hideSprites
@@ -555,12 +555,17 @@ instruction:
 	ldr	r0, [r2]
 	mov	lr, pc
 	bx	r3
-	ldr	r3, .L54+16
 	mov	r2, #1
-	ldr	r1, .L54+20
-	ldr	r0, .L54+24
+	ldr	r1, .L54+16
+	ldr	r0, .L54+20
+	ldr	r3, .L54+24
 	mov	lr, pc
 	bx	r3
+	mov	r1, #5
+	mov	r2, #4
+	ldr	r3, .L54+28
+	str	r1, [r3, #8]
+	str	r2, [r3, #12]
 	bl	goToGame2
 	ldrh	r3, [r4]
 	b	.L43
@@ -571,9 +576,10 @@ instruction:
 	.word	buttons
 	.word	seed
 	.word	srand
-	.word	playSoundA
 	.word	1324512
 	.word	gameSound
+	.word	playSoundA
+	.word	panda
 	.size	instruction, .-instruction
 	.align	2
 	.global	goToPause

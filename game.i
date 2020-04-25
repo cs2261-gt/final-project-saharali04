@@ -1217,12 +1217,12 @@ void initEnemies()
 
         if (i < 5)
         {
-            enemies[i].col = 26;
+            enemies[i].col = 28;
             enemies[i].row = i*30;
         }
         if (i >= 5 && i < 9)
         {
-            enemies[i].col = 58;
+            enemies[i].col = 60;
             enemies[i].row = 16 + (i-5)*30;
         }
 
