@@ -1938,8 +1938,8 @@ drawWordStems:
 	mvn	r1, r1, lsl #17
 	push	{r4, r5, lr}
 	mvn	r1, r1, lsr #17
-	mov	r5, #107
-	mov	r4, #111
+	mov	r5, #105
+	mov	r4, #109
 	ldr	r3, [r3]
 	add	r3, r3, #20
 	ldr	r2, .L338+4
@@ -1981,8 +1981,8 @@ drawWordLeaves:
 	mvn	r0, r0, lsl #17
 	push	{r4, r5, lr}
 	mvn	r0, r0, lsr #17
-	mov	r5, #235
-	mov	r4, #239
+	mov	r5, #112
+	mov	r4, #116
 	ldr	r3, [r3]
 	add	r3, r3, #30
 	ldr	r2, .L342+4
@@ -2495,12 +2495,12 @@ updateGame:
 	strh	r1, [r5]	@ movhi
 	strh	r2, [r5, #4]	@ movhi
 	bl	drawPandaScore
-	mov	fp, #107
+	mov	fp, #105
 	mov	lr, r5
 	mov	ip, r5
-	mov	r10, #111
+	mov	r10, #109
 	mov	r0, r5
-	mov	r9, #235
+	mov	r9, #112
 	ldr	r7, .L426+40
 	ldrh	r3, [r7]
 	add	r1, r3, #20
@@ -2528,7 +2528,7 @@ updateGame:
 	strh	r8, [ip, #2]	@ movhi
 	strh	r9, [r5, #76]	@ movhi
 	strh	r3, [r0, #80]!	@ movhi
-	mov	r3, #239	@ movhi
+	mov	r3, #116	@ movhi
 	sub	r2, r2, #18
 	orr	r2, r2, #16384
 	strh	r2, [r0, #2]	@ movhi

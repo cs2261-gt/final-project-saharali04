@@ -699,12 +699,12 @@ void drawWordStems()
     // draw "stem"
     shadowOAM[107].attr0 = (pandas[0].row + 20) | ATTR0_4BPP | ATTR0_WIDE;
     shadowOAM[107].attr1 = (pandas[0].col - 42) | ATTR1_MEDIUM;
-    shadowOAM[107].attr2 = ATTR2_TILEID(11, 3);
+    shadowOAM[107].attr2 = ATTR2_TILEID(9, 3);
 
     // draw "s"
     shadowOAM[108].attr0 = (pandas[0].row + 20) | ATTR0_4BPP | ATTR0_WIDE;
     shadowOAM[108].attr1 = (pandas[0].col - 10) | ATTR1_TINY;
-    shadowOAM[108].attr2 = ATTR2_TILEID(15, 3);
+    shadowOAM[108].attr2 = ATTR2_TILEID(13, 3);
 }
 
 void drawWordLeaves()
@@ -712,12 +712,12 @@ void drawWordLeaves()
     // draw "leav"
     shadowOAM[109].attr0 = (pandas[0].row + 30) | ATTR0_4BPP | ATTR0_WIDE;
     shadowOAM[109].attr1 = (pandas[0].col - 50) | ATTR1_MEDIUM;
-    shadowOAM[109].attr2 = ATTR2_TILEID(11, 7);
+    shadowOAM[109].attr2 = ATTR2_TILEID(16, 3);
 
     // draw "es"
     shadowOAM[110].attr0 = (pandas[0].row + 30) | ATTR0_4BPP | ATTR0_WIDE;
     shadowOAM[110].attr1 = (pandas[0].col - 18) | ATTR1_SMALL;
-    shadowOAM[110].attr2 = ATTR2_TILEID(15, 7);
+    shadowOAM[110].attr2 = ATTR2_TILEID(20, 3);
 }
 
 // erases the baskets

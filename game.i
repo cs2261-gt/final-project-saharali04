@@ -1782,12 +1782,12 @@ void drawWordStems()
 
     shadowOAM[107].attr0 = (pandas[0].row + 20) | (0<<13) | (1<<14);
     shadowOAM[107].attr1 = (pandas[0].col - 42) | (2<<14);
-    shadowOAM[107].attr2 = ((3)*32+(11));
+    shadowOAM[107].attr2 = ((3)*32+(9));
 
 
     shadowOAM[108].attr0 = (pandas[0].row + 20) | (0<<13) | (1<<14);
     shadowOAM[108].attr1 = (pandas[0].col - 10) | (0<<14);
-    shadowOAM[108].attr2 = ((3)*32+(15));
+    shadowOAM[108].attr2 = ((3)*32+(13));
 }
 
 void drawWordLeaves()
@@ -1795,12 +1795,12 @@ void drawWordLeaves()
 
     shadowOAM[109].attr0 = (pandas[0].row + 30) | (0<<13) | (1<<14);
     shadowOAM[109].attr1 = (pandas[0].col - 50) | (2<<14);
-    shadowOAM[109].attr2 = ((7)*32+(11));
+    shadowOAM[109].attr2 = ((3)*32+(16));
 
 
     shadowOAM[110].attr0 = (pandas[0].row + 30) | (0<<13) | (1<<14);
     shadowOAM[110].attr1 = (pandas[0].col - 18) | (1<<14);
-    shadowOAM[110].attr2 = ((7)*32+(15));
+    shadowOAM[110].attr2 = ((3)*32+(20));
 }
 
 
