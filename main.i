@@ -258,13 +258,13 @@ extern const unsigned short splashScreenPal[256];
 # 29 "main.c" 2
 # 1 "instructionsScreen.h" 1
 # 22 "instructionsScreen.h"
-extern const unsigned short instructionsScreenTiles[3136];
+extern const unsigned short instructionsScreenTiles[4336];
 
 
 extern const unsigned short instructionsScreenMap[1024];
 
 
-extern const unsigned short instructionsScreenPal[256];
+extern const unsigned short instructionsScreenPal[16];
 # 30 "main.c" 2
 # 1 "gameScreen.h" 1
 # 22 "gameScreen.h"
@@ -298,23 +298,23 @@ extern const unsigned short pauseScreenPal[256];
 # 33 "main.c" 2
 # 1 "winScreen.h" 1
 # 22 "winScreen.h"
-extern const unsigned short winScreenTiles[2768];
+extern const unsigned short winScreenTiles[2800];
 
 
 extern const unsigned short winScreenMap[1024];
 
 
-extern const unsigned short winScreenPal[256];
+extern const unsigned short winScreenPal[16];
 # 34 "main.c" 2
 # 1 "loseScreen.h" 1
 # 22 "loseScreen.h"
-extern const unsigned short loseScreenTiles[2768];
+extern const unsigned short loseScreenTiles[2816];
 
 
 extern const unsigned short loseScreenMap[1024];
 
 
-extern const unsigned short loseScreenPal[256];
+extern const unsigned short loseScreenPal[16];
 # 35 "main.c" 2
 # 1 "spriteSheet.h" 1
 # 21 "spriteSheet.h"
@@ -1578,7 +1578,7 @@ extern const signed char gameSound2[677952];
 # 42 "main.c" 2
 # 1 "scoreBackground2.h" 1
 # 22 "scoreBackground2.h"
-extern const unsigned short scoreBackground2Tiles[496];
+extern const unsigned short scoreBackground2Tiles[752];
 
 
 extern const unsigned short scoreBackground2Map[1024];
@@ -1758,11 +1758,11 @@ void splash() {
 
 void goToInstruction()
 {
-    (*(unsigned short *)0x4000000) = 0 | (1<<9);
-    (*(volatile unsigned short*)0x400000A) = (0<<14) | ((0)<<2) | ((27)<<8);
+    (*(unsigned short *)0x4000000) = 0 | (1<<8);
+    (*(volatile unsigned short*)0x4000008) = (0<<14) | ((2)<<2) | ((27)<<8);
 
-    DMANow(3, &instructionsScreenPal, ((unsigned short *)0x5000000), 512/2);
-    DMANow(3, instructionsScreenTiles, &((charblock *)0x6000000)[0], 6272/2);
+    DMANow(3, &instructionsScreenPal, ((unsigned short *)0x5000000), 32/2);
+    DMANow(3, instructionsScreenTiles, &((charblock *)0x6000000)[2], 8672/2);
     DMANow(3, instructionsScreenMap, &((screenblock *)0x6000000)[27], 2048/2);
 
     state = INSTRUCTION;
@@ -1844,7 +1844,7 @@ void goToGame2()
     DMANow(3, gameScreen2Map, &((screenblock *)0x6000000)[28], 2048/2);
     DMANow(3, gameScreen2Tiles, &((charblock *)0x6000000)[0], 832/2);
 
-    DMANow(3, scoreBackground2Tiles, &((charblock *)0x6000000)[2], 992/2);
+    DMANow(3, scoreBackground2Tiles, &((charblock *)0x6000000)[2], 1504/2);
     DMANow(3, scoreBackground2Map, &((screenblock *)0x6000000)[27], 2048/2);
 
     count = 0;
@@ -1852,7 +1852,7 @@ void goToGame2()
     goToChina = 0;
     goToMaze = 0;
     hasLost = 0;
-    hasWon = 0;
+    hasWon = 1;
 
     hOff = 0;
     vOff = 0;
@@ -1941,8 +1941,8 @@ void goToWin()
 {
     (*(unsigned short *)0x4000000) = 0 | (1<<8);
 
-    DMANow(3, &winScreenPal, ((unsigned short *)0x5000000), 512/2);
-    DMANow(3, winScreenTiles, &((charblock *)0x6000000)[2], 5536/2);
+    DMANow(3, &winScreenPal, ((unsigned short *)0x5000000), 32/2);
+    DMANow(3, winScreenTiles, &((charblock *)0x6000000)[2], 5600/2);
     DMANow(3, winScreenMap, &((screenblock *)0x6000000)[27], 2048/2);
 
     (*(volatile unsigned short *)0x04000014) = 0;
@@ -1967,8 +1967,8 @@ void goToLose()
 {
     (*(unsigned short *)0x4000000) = 0 | (1<<8);
 
-    DMANow(3, &loseScreenPal, ((unsigned short *)0x5000000), 512/2);
-    DMANow(3, loseScreenTiles, &((charblock *)0x6000000)[2], 5536/2);
+    DMANow(3, &loseScreenPal, ((unsigned short *)0x5000000), 32/2);
+    DMANow(3, loseScreenTiles, &((charblock *)0x6000000)[2], 5632/2);
     DMANow(3, loseScreenMap, &((screenblock *)0x6000000)[27], 2048/2);
 
     (*(volatile unsigned short *)0x04000010) = 0;

@@ -208,40 +208,43 @@ goToInstruction:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	mov	r3, #67108864
-	mov	r1, #512
-	mov	r2, #6912
+	mov	r1, #256
+	ldr	r2, .L18
 	push	{r4, lr}
 	mov	r0, #3
-	ldr	r4, .L18
+	ldr	r4, .L18+4
 	strh	r1, [r3]	@ movhi
-	strh	r2, [r3, #10]	@ movhi
-	ldr	r1, .L18+4
-	mov	r3, #256
+	strh	r2, [r3, #8]	@ movhi
+	ldr	r1, .L18+8
+	mov	r3, #16
 	mov	r2, #83886080
 	mov	lr, pc
 	bx	r4
-	mov	r3, #3136
-	mov	r2, #100663296
 	mov	r0, #3
-	ldr	r1, .L18+8
+	ldr	r3, .L18+12
+	ldr	r2, .L18+16
+	ldr	r1, .L18+20
 	mov	lr, pc
 	bx	r4
 	mov	r3, #1024
-	ldr	r2, .L18+12
+	ldr	r2, .L18+24
 	mov	r0, #3
-	ldr	r1, .L18+16
+	ldr	r1, .L18+28
 	mov	lr, pc
 	bx	r4
 	mov	r2, #1
-	ldr	r3, .L18+20
+	ldr	r3, .L18+32
 	pop	{r4, lr}
 	str	r2, [r3]
 	bx	lr
 .L19:
 	.align	2
 .L18:
+	.word	6920
 	.word	DMANow
 	.word	instructionsScreenPal
+	.word	4336
+	.word	100696064
 	.word	instructionsScreenTiles
 	.word	100718592
 	.word	instructionsScreenMap
@@ -368,7 +371,7 @@ goToGame2:
 	ldr	r1, .L26+16
 	mov	lr, pc
 	bx	r4
-	mov	r3, #496
+	mov	r3, #752
 	mov	r0, #3
 	ldr	r2, .L26+20
 	ldr	r1, .L26+24
@@ -381,23 +384,23 @@ goToGame2:
 	mov	lr, pc
 	bx	r4
 	mov	r3, #0
-	ldr	r1, .L26+36
-	ldr	r2, .L26+40
+	mov	r0, #1
+	ldr	ip, .L26+36
+	ldr	r1, .L26+40
+	ldr	r2, .L26+44
+	str	r3, [ip]
 	str	r3, [r1]
 	str	r3, [r2]
-	ldr	ip, .L26+44
-	ldr	r2, .L26+48
-	ldr	r0, .L26+52
+	ldr	ip, .L26+48
+	ldr	r2, .L26+52
 	ldr	r1, .L26+56
 	str	r3, [ip]
-	str	r3, [r0]
 	str	r3, [r2]
 	str	r3, [r1]
 	strh	r3, [r5, #20]	@ movhi
 	ldr	r1, .L26+60
 	strh	r3, [r5, #22]	@ movhi
-	str	r3, [r2, #8]
-	str	r3, [r2, #4]
+	stmib	r2, {r0, r3}
 	mov	lr, pc
 	bx	r1
 	ldr	r3, .L26+64
@@ -432,8 +435,8 @@ goToGame2:
 	.word	count
 	.word	goToChina
 	.word	goToMaze
-	.word	.LANCHOR0
 	.word	hOff
+	.word	.LANCHOR0
 	.word	vOff
 	.word	initEnemies
 	.word	hideSprites
@@ -675,16 +678,17 @@ goToWin:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	push	{r4, r5, r6, lr}
-	mov	r3, #256
+	mov	r2, #256
 	mov	r4, #67108864
 	ldr	r5, .L73
-	strh	r3, [r4]	@ movhi
+	strh	r2, [r4]	@ movhi
+	mov	r3, #16
 	mov	r2, #83886080
 	mov	r0, #3
 	ldr	r1, .L73+4
 	mov	lr, pc
 	bx	r5
-	mov	r3, #2768
+	mov	r3, #2800
 	mov	r0, #3
 	ldr	r2, .L73+8
 	ldr	r1, .L73+12
@@ -813,16 +817,17 @@ goToLose:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	push	{r4, r5, r6, lr}
-	mov	r3, #256
+	mov	r2, #256
 	mov	r4, #67108864
 	ldr	r5, .L97
-	strh	r3, [r4]	@ movhi
+	strh	r2, [r4]	@ movhi
+	mov	r3, #16
 	mov	r2, #83886080
 	mov	r0, #3
 	ldr	r1, .L97+4
 	mov	lr, pc
 	bx	r5
-	mov	r3, #2768
+	mov	r3, #2816
 	mov	r0, #3
 	ldr	r2, .L97+8
 	ldr	r1, .L97+12

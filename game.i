@@ -1687,13 +1687,13 @@ void drawFoodDelivered()
 
 void drawFoodCollected()
 {
-    shadowOAM[40].attr0 = 142 | (0<<13) | (0<<14);
-    shadowOAM[40].attr1 = 105 | (0<<14);
-    shadowOAM[40].attr2 = ((0)*32+(panda.stemsCollected + 8));
+    shadowOAM[40].attr0 = 140 | (0<<13) | (0<<14);
+    shadowOAM[40].attr1 = 96 | (1<<14);
+    shadowOAM[40].attr2 = ((18)*32+(panda.stemsCollected * 2));
 
-    shadowOAM[41].attr0 = 142 | (0<<13) | (0<<14);
-    shadowOAM[41].attr1 = 210 | (0<<14);
-    shadowOAM[41].attr2 = ((0)*32+(panda.leavesCollected + 8));
+    shadowOAM[41].attr0 = 140 | (0<<13) | (0<<14);
+    shadowOAM[41].attr1 = 222 | (1<<14);
+    shadowOAM[41].attr2 = ((18)*32+(panda.leavesCollected * 2));
 }
 
 

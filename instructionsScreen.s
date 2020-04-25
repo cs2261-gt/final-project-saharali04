@@ -16,252 +16,12 @@
 	.section	.rodata
 	.align	2
 	.type	instructionsScreenPal, %object
-	.size	instructionsScreenPal, 512
+	.size	instructionsScreenPal, 32
 instructionsScreenPal:
 	.short	31775
 	.short	32767
 	.short	16776
 	.short	32498
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
 	.short	0
 	.short	0
 	.short	0
@@ -631,133 +391,22 @@ instructionsScreenMap:
 	.short	0
 	.short	1
 	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	0
-	.short	0
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	139
 	.short	140
 	.short	141
-	.short	1165
 	.short	142
-	.short	1166
-	.short	1
 	.short	143
-	.short	1167
 	.short	144
 	.short	145
-	.short	1
-	.short	142
-	.short	1166
 	.short	146
-	.short	1170
 	.short	147
 	.short	148
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	0
-	.short	0
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	2187
-	.short	2188
-	.short	2189
-	.short	3213
 	.short	149
-	.short	1173
-	.short	1
+	.short	139
 	.short	150
-	.short	1174
-	.short	2192
-	.short	2193
-	.short	1
-	.short	149
-	.short	1173
-	.short	2194
-	.short	3218
 	.short	151
 	.short	152
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	0
-	.short	0
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	0
-	.short	0
-	.short	1
+	.short	1163
 	.short	153
 	.short	154
 	.short	155
@@ -768,115 +417,98 @@ instructionsScreenMap:
 	.short	160
 	.short	161
 	.short	162
+	.short	1
+	.short	1
+	.short	0
+	.short	0
+	.short	1
+	.short	1
 	.short	163
 	.short	164
+	.short	2189
+	.short	2190
 	.short	165
+	.short	2192
 	.short	166
 	.short	167
 	.short	168
 	.short	169
 	.short	170
+	.short	163
 	.short	171
 	.short	172
 	.short	173
+	.short	1187
 	.short	174
+	.short	2202
 	.short	175
+	.short	2204
 	.short	176
 	.short	177
 	.short	178
 	.short	179
-	.short	170
-	.short	1
-	.short	0
-	.short	0
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	0
-	.short	0
-	.short	1
-	.short	1
-	.short	1
-	.short	1
 	.short	180
 	.short	181
+	.short	1
+	.short	1
+	.short	0
+	.short	0
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1052
 	.short	182
 	.short	183
+	.short	1207
+	.short	1052
+	.short	28
+	.short	1
 	.short	184
+	.short	1208
 	.short	185
+	.short	186
+	.short	1
+	.short	1052
+	.short	28
+	.short	1210
 	.short	186
 	.short	187
 	.short	188
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	0
+	.short	0
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
 	.short	189
 	.short	190
-	.short	190
-	.short	1
 	.short	191
-	.short	183
+	.short	1215
 	.short	192
+	.short	1216
+	.short	1
 	.short	193
-	.short	183
+	.short	1217
 	.short	194
 	.short	195
 	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	0
-	.short	0
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
+	.short	192
+	.short	1216
+	.short	196
+	.short	1220
+	.short	197
+	.short	198
 	.short	1
 	.short	1
 	.short	1
@@ -891,6 +523,96 @@ instructionsScreenMap:
 	.short	1
 	.short	1
 	.short	1
+	.short	199
+	.short	200
+	.short	201
+	.short	1225
+	.short	202
+	.short	1226
+	.short	1
+	.short	203
+	.short	1227
+	.short	204
+	.short	205
+	.short	1
+	.short	202
+	.short	1226
+	.short	206
+	.short	1230
+	.short	207
+	.short	208
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	0
+	.short	0
+	.short	1
+	.short	209
+	.short	210
+	.short	211
+	.short	212
+	.short	1134
+	.short	213
+	.short	214
+	.short	1238
+	.short	215
+	.short	216
+	.short	217
+	.short	214
+	.short	1238
+	.short	215
+	.short	215
+	.short	218
+	.short	1242
+	.short	219
+	.short	1238
+	.short	1237
+	.short	112
+	.short	1235
+	.short	1238
+	.short	1237
+	.short	216
+	.short	1240
+	.short	215
+	.short	219
+	.short	1
+	.short	0
+	.short	0
+	.short	1
+	.short	220
+	.short	221
+	.short	222
+	.short	223
+	.short	1153
+	.short	224
+	.short	225
+	.short	226
+	.short	227
+	.short	228
+	.short	229
+	.short	230
+	.short	231
+	.short	232
+	.short	233
+	.short	234
+	.short	235
+	.short	236
+	.short	237
+	.short	238
+	.short	239
+	.short	237
+	.short	240
+	.short	241
+	.short	242
+	.short	243
+	.short	244
+	.short	236
+	.short	1
+	.short	0
+	.short	0
 	.short	1
 	.short	1
 	.short	1
@@ -898,6 +620,31 @@ instructionsScreenMap:
 	.short	1
 	.short	1
 	.short	1
+	.short	245
+	.short	246
+	.short	247
+	.short	248
+	.short	249
+	.short	250
+	.short	251
+	.short	252
+	.short	253
+	.short	254
+	.short	255
+	.short	256
+	.short	139
+	.short	257
+	.short	258
+	.short	1271
+	.short	259
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	1
+	.short	0
+	.short	0
 	.short	1
 	.short	1
 	.short	1
@@ -905,10 +652,23 @@ instructionsScreenMap:
 	.short	1
 	.short	1
 	.short	1
-	.short	1
-	.short	1
-	.short	1
-	.short	1
+	.short	3321
+	.short	2294
+	.short	260
+	.short	261
+	.short	262
+	.short	263
+	.short	264
+	.short	265
+	.short	266
+	.short	2302
+	.short	2303
+	.short	267
+	.short	163
+	.short	268
+	.short	269
+	.short	1284
+	.short	270
 	.short	1
 	.short	1
 	.short	1
@@ -1302,7 +1062,7 @@ instructionsScreenMap:
 	.short	0
 	.short	0
 	.type	instructionsScreenTiles, %object
-	.size	instructionsScreenTiles, 6272
+	.size	instructionsScreenTiles, 8672
 instructionsScreenTiles:
 	.short	0
 	.short	0
@@ -3322,11 +3082,11 @@ instructionsScreenTiles:
 	.short	8755
 	.short	13107
 	.short	13107
+	.short	13107
+	.short	13090
 	.short	9010
 	.short	13090
 	.short	8738
-	.short	13090
-	.short	12834
 	.short	13090
 	.short	12835
 	.short	13090
@@ -3528,10 +3288,806 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	12834
+	.short	8738
+	.short	12834
+	.short	13090
+	.short	12835
+	.short	8738
+	.short	12834
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13090
+	.short	8755
+	.short	13090
+	.short	8755
+	.short	12835
+	.short	12835
+	.short	12835
+	.short	12835
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8739
+	.short	12834
+	.short	8739
+	.short	12834
+	.short	12835
+	.short	12835
+	.short	12835
+	.short	12835
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12835
+	.short	8739
+	.short	12835
+	.short	8739
+	.short	12835
+	.short	12835
+	.short	12835
+	.short	12835
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	9011
+	.short	13090
+	.short	9011
+	.short	13090
+	.short	9011
+	.short	12835
+	.short	9011
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	8754
+	.short	8738
+	.short	8754
+	.short	13106
+	.short	8755
+	.short	8738
+	.short	8755
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8755
+	.short	8739
+	.short	8754
+	.short	8739
+	.short	8754
+	.short	12835
+	.short	8738
+	.short	8739
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12834
+	.short	13090
+	.short	12834
+	.short	12834
+	.short	13107
+	.short	8738
+	.short	13090
+	.short	8994
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8755
+	.short	12835
+	.short	8739
+	.short	12835
+	.short	8738
+	.short	12835
+	.short	8754
+	.short	12835
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	8754
+	.short	8738
+	.short	8754
+	.short	13090
+	.short	8755
+	.short	8738
+	.short	8755
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	13107
+	.short	8738
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13090
+	.short	8994
+	.short	12834
+	.short	8994
+	.short	12834
+	.short	8994
+	.short	8738
+	.short	8994
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13090
+	.short	13107
+	.short	8738
+	.short	13107
+	.short	8754
+	.short	13107
+	.short	9010
+	.short	13106
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13090
+	.short	8755
+	.short	12834
+	.short	8739
+	.short	8738
+	.short	8738
+	.short	8994
+	.short	8754
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8739
+	.short	8994
+	.short	8739
+	.short	8994
+	.short	13107
+	.short	8994
+	.short	9011
+	.short	8994
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	13106
+	.short	8738
+	.short	13106
+	.short	13106
+	.short	13107
+	.short	12834
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8739
+	.short	13090
+	.short	8739
+	.short	13090
+	.short	12835
+	.short	13090
+	.short	8739
+	.short	13090
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	8994
+	.short	8738
+	.short	8994
+	.short	13090
+	.short	8994
+	.short	13090
+	.short	8994
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	9010
+	.short	8754
+	.short	9010
+	.short	8754
+	.short	9010
+	.short	8754
+	.short	9010
+	.short	8754
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8755
+	.short	8739
+	.short	8754
+	.short	8739
+	.short	8754
+	.short	12835
+	.short	8738
+	.short	12835
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	13090
+	.short	8738
+	.short	13090
+	.short	13090
+	.short	12835
+	.short	8738
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8994
+	.short	8754
+	.short	8994
+	.short	8754
+	.short	8994
+	.short	8754
+	.short	8994
+	.short	8754
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	8739
+	.short	8738
+	.short	8739
+	.short	13107
+	.short	12835
+	.short	12834
+	.short	8739
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12834
+	.short	12835
+	.short	12834
+	.short	12835
+	.short	13107
+	.short	12835
+	.short	12834
+	.short	12835
+	.short	8738
+	.short	12834
+	.short	13090
+	.short	12835
+	.short	13090
+	.short	12835
+	.short	13090
+	.short	12835
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8755
+	.short	13090
+	.short	8755
+	.short	13090
+	.short	9011
+	.short	13106
+	.short	9011
+	.short	13106
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12835
+	.short	9011
+	.short	13090
+	.short	9011
+	.short	13090
+	.short	9011
+	.short	13106
+	.short	9011
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	8739
+	.short	8738
+	.short	12835
+	.short	8739
+	.short	8739
+	.short	8755
+	.short	8739
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13090
+	.short	13090
+	.short	13107
+	.short	13090
+	.short	12834
+	.short	13090
+	.short	12834
+	.short	13090
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8755
+	.short	12835
+	.short	8755
+	.short	12835
+	.short	8755
+	.short	12835
+	.short	8755
+	.short	12835
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	8755
+	.short	13090
+	.short	13107
+	.short	8738
+	.short	8754
+	.short	8738
+	.short	8754
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	13107
+	.short	8755
+	.short	13107
+	.short	8738
+	.short	13107
+	.short	8738
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	8994
+	.short	8738
+	.short	8994
+	.short	8994
+	.short	8994
+	.short	13090
+	.short	8994
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	9010
+	.short	13106
+	.short	8754
+	.short	13107
+	.short	8738
+	.short	13107
+	.short	12834
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13090
+	.short	8755
+	.short	13090
+	.short	8755
+	.short	13090
+	.short	8755
+	.short	13090
+	.short	8755
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8755
+	.short	9010
+	.short	8739
+	.short	9011
+	.short	8739
+	.short	8994
+	.short	8739
+	.short	8994
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8739
+	.short	12834
+	.short	12835
+	.short	12835
+	.short	8739
+	.short	12834
+	.short	8739
+	.short	12834
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	9010
+	.short	8754
+	.short	9010
+	.short	8754
+	.short	8738
+	.short	8754
+	.short	8738
+	.short	8754
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	12835
+	.short	8738
+	.short	12835
+	.short	8739
+	.short	8739
+	.short	8755
+	.short	8739
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12835
+	.short	8738
+	.short	13090
+	.short	8738
+	.short	13090
+	.short	8738
+	.short	13106
+	.short	13090
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8994
+	.short	8754
+	.short	9011
+	.short	8754
+	.short	8994
+	.short	8754
+	.short	8994
+	.short	8754
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12834
+	.short	8739
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	8739
+	.short	8738
+	.short	8739
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12834
+	.short	12835
+	.short	12835
+	.short	12835
+	.short	12834
+	.short	13107
+	.short	12834
+	.short	12835
+	.short	13107
+	.short	12835
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8755
+	.short	13090
+	.short	4659
+	.short	13089
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8755
+	.short	8738
+	.short	4659
+	.short	4369
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	9011
+	.short	8738
+	.short	9011
+	.short	4369
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	8738
+	.short	4370
+	.short	4369
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	13107
+	.short	8465
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	8738
 	.short	13107
 	.short	8466
+	.short	13090
 	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8739
+	.short	13106
+	.short	4387
+	.short	13106
 	.short	8466
 	.short	13107
 	.short	8466
@@ -3544,10 +4100,10 @@ instructionsScreenTiles:
 	.short	8738
 	.short	4370
 	.short	4369
-	.short	8755
-	.short	13090
-	.short	4659
-	.short	13089
+	.short	4370
+	.short	4369
+	.short	8466
+	.short	8738
 	.short	4659
 	.short	13089
 	.short	4659
@@ -3560,10 +4116,10 @@ instructionsScreenTiles:
 	.short	13089
 	.short	4369
 	.short	13089
-	.short	8755
-	.short	8738
-	.short	4659
 	.short	4369
+	.short	13089
+	.short	4642
+	.short	13089
 	.short	4659
 	.short	4369
 	.short	4659
@@ -3576,10 +4132,10 @@ instructionsScreenTiles:
 	.short	13089
 	.short	4659
 	.short	13089
-	.short	8738
-	.short	13107
-	.short	8466
-	.short	13107
+	.short	4659
+	.short	13089
+	.short	4659
+	.short	13089
 	.short	8466
 	.short	13107
 	.short	8466
@@ -3592,10 +4148,10 @@ instructionsScreenTiles:
 	.short	4659
 	.short	8466
 	.short	4659
-	.short	9011
-	.short	8738
-	.short	9011
-	.short	4369
+	.short	8466
+	.short	4659
+	.short	8466
+	.short	4659
 	.short	9011
 	.short	4369
 	.short	9011
@@ -3608,12 +4164,12 @@ instructionsScreenTiles:
 	.short	4659
 	.short	13107
 	.short	4659
-	.short	8738
-	.short	8738
+	.short	13107
+	.short	4659
+	.short	13107
+	.short	4659
 	.short	4370
 	.short	4369
-	.short	4370
-	.short	4369
 	.short	8466
 	.short	8738
 	.short	8466
@@ -3624,12 +4180,12 @@ instructionsScreenTiles:
 	.short	13107
 	.short	8466
 	.short	13107
-	.short	8738
+	.short	8466
+	.short	13107
+	.short	8466
 	.short	13107
 	.short	8465
 	.short	13107
-	.short	8465
-	.short	13107
 	.short	8466
 	.short	13107
 	.short	8466
@@ -3640,10 +4196,10 @@ instructionsScreenTiles:
 	.short	13107
 	.short	8466
 	.short	13107
+	.short	8466
 	.short	13107
-	.short	8738
+	.short	8466
 	.short	13107
-	.short	4370
 	.short	13107
 	.short	4370
 	.short	13107
@@ -3656,10 +4212,10 @@ instructionsScreenTiles:
 	.short	4659
 	.short	13107
 	.short	4659
-	.short	8738
 	.short	13107
-	.short	8466
-	.short	13090
+	.short	4659
+	.short	13107
+	.short	4659
 	.short	4370
 	.short	13089
 	.short	4370
@@ -3672,10 +4228,10 @@ instructionsScreenTiles:
 	.short	8465
 	.short	8466
 	.short	4370
-	.short	8739
-	.short	13106
-	.short	4387
-	.short	13106
+	.short	8466
+	.short	4386
+	.short	8466
+	.short	4643
 	.short	4387
 	.short	13106
 	.short	4387
@@ -3688,10 +4244,58 @@ instructionsScreenTiles:
 	.short	13106
 	.short	4386
 	.short	13106
+	.short	4386
+	.short	13106
+	.short	4385
+	.short	13106
 	.short	8466
-	.short	4659
+	.short	13107
 	.short	8466
+	.short	13107
+	.short	8466
+	.short	13107
+	.short	8466
+	.short	13107
+	.short	8466
+	.short	13107
+	.short	8738
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	4659
+	.short	13089
+	.short	4659
+	.short	13089
+	.short	4659
+	.short	13089
+	.short	4659
+	.short	13089
+	.short	4659
+	.short	13089
+	.short	8755
+	.short	13090
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	4659
+	.short	13089
+	.short	4659
+	.short	13089
+	.short	4659
+	.short	8737
+	.short	4659
+	.short	4369
+	.short	4659
+	.short	4369
+	.short	8755
+	.short	8738
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	8466
 	.short	4659
 	.short	8466
@@ -3705,9 +4309,9 @@ instructionsScreenTiles:
 	.short	8738
 	.short	8738
 	.short	13107
-	.short	4659
 	.short	13107
-	.short	4659
+	.short	13107
+	.short	13107
 	.short	13107
 	.short	4659
 	.short	13107
@@ -3720,10 +4324,58 @@ instructionsScreenTiles:
 	.short	4659
 	.short	13107
 	.short	8755
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	8466
-	.short	4386
+	.short	13107
 	.short	8466
-	.short	4643
+	.short	13107
+	.short	8466
+	.short	8738
+	.short	4370
+	.short	4369
+	.short	4370
+	.short	4369
+	.short	8738
+	.short	8738
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8466
+	.short	13107
+	.short	8466
+	.short	13107
+	.short	8466
+	.short	13107
+	.short	8465
+	.short	13107
+	.short	8465
+	.short	13107
+	.short	8738
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	4659
+	.short	13107
+	.short	4659
+	.short	13107
+	.short	4642
+	.short	13107
+	.short	4370
+	.short	13107
+	.short	4370
+	.short	13107
+	.short	8738
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	8466
 	.short	4659
 	.short	8466
@@ -3736,10 +4388,10 @@ instructionsScreenTiles:
 	.short	13107
 	.short	8738
 	.short	13107
-	.short	4386
-	.short	13106
-	.short	4385
-	.short	13106
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	4385
 	.short	13106
 	.short	4369
@@ -3753,9 +4405,185 @@ instructionsScreenTiles:
 	.short	8739
 	.short	13106
 	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	12834
 	.short	13107
 	.short	8738
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	9011
+	.short	8738
+	.short	9010
+	.short	8738
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8755
+	.short	13107
+	.short	8755
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12835
+	.short	12835
+	.short	12835
+	.short	12835
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	8755
+	.short	8738
+	.short	8755
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	13107
+	.short	8738
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12834
+	.short	8739
+	.short	12834
+	.short	8739
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12834
+	.short	13090
+	.short	12834
+	.short	13090
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8755
+	.short	8755
+	.short	8755
+	.short	8755
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12834
+	.short	13090
+	.short	12834
+	.short	12834
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12834
+	.short	13107
+	.short	12834
+	.short	13107
 	.short	13107
 	.short	8994
 	.short	13107
@@ -3768,10 +4596,10 @@ instructionsScreenTiles:
 	.short	8738
 	.short	13107
 	.short	8738
-	.short	9011
-	.short	8738
-	.short	9010
-	.short	8738
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	9010
 	.short	13106
 	.short	8994
@@ -3784,9 +4612,9 @@ instructionsScreenTiles:
 	.short	8738
 	.short	9011
 	.short	8738
-	.short	8755
 	.short	13107
-	.short	8755
+	.short	13107
+	.short	13107
 	.short	13107
 	.short	8755
 	.short	13107
@@ -3800,10 +4628,10 @@ instructionsScreenTiles:
 	.short	8738
 	.short	8755
 	.short	8738
-	.short	12835
-	.short	12835
-	.short	12835
-	.short	12835
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	12835
 	.short	8755
 	.short	12835
@@ -3816,26 +4644,10 @@ instructionsScreenTiles:
 	.short	13107
 	.short	12835
 	.short	13107
-	.short	9011
-	.short	9010
-	.short	9011
-	.short	9010
-	.short	8755
-	.short	9011
-	.short	8755
-	.short	9011
-	.short	12834
-	.short	9011
-	.short	12834
-	.short	9011
-	.short	13090
-	.short	9011
-	.short	13090
-	.short	9011
-	.short	8738
-	.short	8755
-	.short	8738
-	.short	8755
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	13106
 	.short	8755
 	.short	12834
@@ -3848,9 +4660,9 @@ instructionsScreenTiles:
 	.short	8755
 	.short	8738
 	.short	8755
-	.short	8738
 	.short	13107
-	.short	8738
+	.short	13107
+	.short	13107
 	.short	13107
 	.short	8755
 	.short	13107
@@ -3865,6 +4677,14 @@ instructionsScreenTiles:
 	.short	8755
 	.short	13107
 	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13090
+	.short	13107
+	.short	13090
+	.short	13107
 	.short	8738
 	.short	13107
 	.short	8738
@@ -3873,17 +4693,9 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13090
 	.short	13107
-	.short	8738
 	.short	13107
-	.short	8738
 	.short	13107
-	.short	13090
 	.short	13107
-	.short	13090
-	.short	12834
-	.short	8739
-	.short	12834
-	.short	8739
 	.short	13107
 	.short	9011
 	.short	13107
@@ -3896,10 +4708,10 @@ instructionsScreenTiles:
 	.short	8739
 	.short	13107
 	.short	8739
-	.short	12834
-	.short	13090
-	.short	12834
-	.short	13090
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	13106
 	.short	12835
 	.short	13106
@@ -3912,10 +4724,10 @@ instructionsScreenTiles:
 	.short	9011
 	.short	12834
 	.short	9011
-	.short	8755
-	.short	8755
-	.short	8755
-	.short	8755
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	12835
 	.short	8755
 	.short	12835
@@ -3928,9 +4740,9 @@ instructionsScreenTiles:
 	.short	8755
 	.short	13106
 	.short	8755
-	.short	8738
 	.short	13107
-	.short	8738
+	.short	13107
+	.short	13107
 	.short	13107
 	.short	13107
 	.short	13107
@@ -3945,9 +4757,9 @@ instructionsScreenTiles:
 	.short	8738
 	.short	13107
 	.short	13107
-	.short	8738
 	.short	13107
-	.short	8738
+	.short	13107
+	.short	13107
 	.short	13107
 	.short	13090
 	.short	13107
@@ -3960,10 +4772,10 @@ instructionsScreenTiles:
 	.short	8738
 	.short	13107
 	.short	8738
-	.short	12834
-	.short	8739
-	.short	12834
-	.short	8739
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	13107
 	.short	9011
 	.short	12834
@@ -3976,10 +4788,10 @@ instructionsScreenTiles:
 	.short	9011
 	.short	12834
 	.short	9011
-	.short	12834
-	.short	8739
-	.short	12834
-	.short	8739
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	13106
 	.short	12835
 	.short	13106
@@ -3992,10 +4804,10 @@ instructionsScreenTiles:
 	.short	8739
 	.short	13106
 	.short	8739
-	.short	12834
-	.short	13090
-	.short	12834
-	.short	12834
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	13107
 	.short	8738
 	.short	13090
@@ -4008,10 +4820,10 @@ instructionsScreenTiles:
 	.short	13090
 	.short	12834
 	.short	13090
-	.short	8755
-	.short	8739
-	.short	8739
-	.short	8739
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	8738
 	.short	12835
 	.short	8754
@@ -4024,9 +4836,9 @@ instructionsScreenTiles:
 	.short	8739
 	.short	8755
 	.short	8739
-	.short	12834
 	.short	13107
-	.short	12834
+	.short	13107
+	.short	13107
 	.short	13107
 	.short	13107
 	.short	13107
@@ -4041,57 +4853,9 @@ instructionsScreenTiles:
 	.short	12834
 	.short	13107
 	.short	13107
-	.short	8738
-	.short	13107
-	.short	8738
-	.short	13107
-	.short	13090
-	.short	13107
-	.short	13090
-	.short	13107
-	.short	13090
-	.short	13107
-	.short	13090
-	.short	13107
-	.short	8738
-	.short	13107
-	.short	8738
-	.short	13090
-	.short	8738
-	.short	13090
-	.short	8738
-	.short	13090
-	.short	13090
-	.short	13090
-	.short	8738
-	.short	13090
-	.short	8738
-	.short	13090
-	.short	8738
-	.short	13090
-	.short	8738
-	.short	13090
-	.short	13090
-	.short	13090
-	.short	13107
-	.short	13090
-	.short	13107
-	.short	13090
-	.short	13107
-	.short	13090
-	.short	13107
-	.short	13090
 	.short	13107
 	.short	13107
 	.short	13107
-	.short	13090
-	.short	13107
-	.short	13090
-	.short	13107
-	.short	13107
-	.short	13090
-	.short	13107
-	.short	13090
 	.short	13107
 	.short	13090
 	.short	13107
@@ -4105,41 +4869,73 @@ instructionsScreenTiles:
 	.short	13107
 	.short	8738
 	.short	13107
-	.short	8738
 	.short	13107
-	.short	8738
 	.short	13107
-	.short	13090
-	.short	13107
-	.short	8738
-	.short	13107
-	.short	8738
-	.short	13107
-	.short	13090
-	.short	13090
-	.short	8738
-	.short	13090
-	.short	8738
-	.short	13090
-	.short	8738
-	.short	13090
-	.short	8738
-	.short	13107
-	.short	13090
-	.short	13107
-	.short	8738
-	.short	13107
-	.short	8738
 	.short	13107
 	.short	13090
 	.short	13090
 	.short	13090
+	.short	8738
+	.short	13090
+	.short	8738
+	.short	13090
+	.short	8738
+	.short	13090
+	.short	8738
 	.short	13090
 	.short	13090
-	.short	12834
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	13090
-	.short	12834
+	.short	13107
 	.short	13090
+	.short	13107
+	.short	13090
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13090
+	.short	13107
+	.short	13090
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13090
+	.short	13107
+	.short	8738
+	.short	13107
+	.short	8738
+	.short	13107
+	.short	13090
+	.short	13090
+	.short	8738
+	.short	13090
+	.short	8738
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13090
+	.short	13107
+	.short	8738
+	.short	13107
+	.short	8738
+	.short	13107
+	.short	13090
+	.short	13090
+	.short	13090
+	.short	13090
+	.short	13090
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	12835
 	.short	12835
 	.short	12834
@@ -4152,10 +4948,10 @@ instructionsScreenTiles:
 	.short	9011
 	.short	12835
 	.short	9011
-	.short	8755
-	.short	8739
-	.short	8755
-	.short	8739
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	12835
 	.short	12835
 	.short	12835
@@ -4168,10 +4964,10 @@ instructionsScreenTiles:
 	.short	8739
 	.short	13106
 	.short	8739
-	.short	12834
-	.short	8739
-	.short	12834
-	.short	8739
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	13107
 	.short	12835
 	.short	13090
@@ -4184,53 +4980,49 @@ instructionsScreenTiles:
 	.short	8739
 	.short	12834
 	.short	8739
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	13107
 	.short	8738
+	.short	13090
+	.short	8738
+	.short	13090
+	.short	8755
+	.short	13107
+	.short	8755
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	13107
 	.short	8738
-	.short	13107
-	.short	8755
-	.short	13107
-	.short	8755
-	.short	13107
-	.short	8755
-	.short	13107
-	.short	8755
-	.short	13107
-	.short	8755
-	.short	13107
-	.short	8755
 	.short	13090
-	.short	8739
+	.short	8738
 	.short	13090
-	.short	8739
+	.short	13090
+	.short	13090
+	.short	13090
+	.short	13090
 	.short	13107
-	.short	12835
 	.short	13107
-	.short	12835
 	.short	13107
-	.short	12835
 	.short	13107
-	.short	12835
 	.short	13107
-	.short	8739
 	.short	13107
-	.short	8739
-	.short	12834
 	.short	13107
-	.short	12834
-	.short	13107
-	.short	12835
-	.short	13107
-	.short	12835
-	.short	13107
-	.short	12835
-	.short	13107
-	.short	12835
-	.short	13107
-	.short	12834
-	.short	13107
-	.short	12834
 	.short	13107
 	.short	8755
 	.short	8738
@@ -4240,46 +5032,6 @@ instructionsScreenTiles:
 	.short	9011
 	.short	8755
 	.short	8738
-	.short	8755
-	.short	8738
-	.short	8755
-	.short	9011
-	.short	8755
-	.short	9011
-	.short	8755
-	.short	9011
-	.short	13106
-	.short	13090
-	.short	13106
-	.short	13090
-	.short	13106
-	.short	13090
-	.short	13106
-	.short	13090
-	.short	13106
-	.short	13090
-	.short	13106
-	.short	13090
-	.short	13106
-	.short	8738
-	.short	13106
-	.short	8738
-	.short	13107
-	.short	12835
-	.short	13107
-	.short	12835
-	.short	13107
-	.short	12835
-	.short	13107
-	.short	12835
-	.short	13107
-	.short	12835
-	.short	13107
-	.short	12835
-	.short	13090
-	.short	8739
-	.short	13090
-	.short	8739
 	.short	13107
 	.short	13107
 	.short	13107
@@ -4287,157 +5039,365 @@ instructionsScreenTiles:
 	.short	13107
 	.short	13107
 	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	13107
-	.short	12834
-	.short	13107
-	.short	12834
-	.short	13107
-	.short	8755
-	.short	8738
-	.short	8755
-	.short	8738
-	.short	13107
-	.short	13090
-	.short	13107
-	.short	13090
-	.short	13107
-	.short	13090
-	.short	13107
-	.short	13090
-	.short	13107
-	.short	13090
-	.short	13107
-	.short	13090
-	.short	8755
-	.short	8755
-	.short	8755
-	.short	8755
-	.short	8755
-	.short	8755
-	.short	8755
-	.short	8738
-	.short	8755
-	.short	8738
-	.short	8755
-	.short	8755
-	.short	8755
-	.short	8755
-	.short	8755
-	.short	8755
-	.short	8755
-	.short	8738
-	.short	8755
-	.short	8738
-	.short	8755
-	.short	8755
-	.short	8755
-	.short	8738
-	.short	8755
-	.short	8738
-	.short	8755
-	.short	13090
-	.short	8755
-	.short	8738
-	.short	8755
-	.short	8755
-	.short	8755
-	.short	8738
-	.short	8755
-	.short	8738
-	.short	8755
-	.short	13107
-	.short	8755
-	.short	12834
-	.short	8755
-	.short	12834
-	.short	8755
-	.short	13107
-	.short	8755
-	.short	8738
-	.short	8755
-	.short	8738
-	.short	8755
-	.short	8738
-	.short	8755
-	.short	8738
-	.short	8755
-	.short	8755
-	.short	8755
-	.short	8738
-	.short	8755
-	.short	8738
-	.short	8755
-	.short	13107
-	.short	8755
-	.short	13107
-	.short	8755
 	.short	13107
 	.short	9010
+	.short	13106
 	.short	9010
+	.short	13106
+	.short	9010
+	.short	13106
+	.short	9010
+	.short	13106
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13090
+	.short	13107
+	.short	13090
+	.short	13107
+	.short	13090
+	.short	13107
+	.short	13090
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8739
+	.short	13107
+	.short	8739
+	.short	13107
+	.short	9011
+	.short	13107
+	.short	9011
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12834
+	.short	12835
+	.short	12834
+	.short	12835
+	.short	13106
+	.short	12835
+	.short	13106
+	.short	8739
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12835
+	.short	8739
+	.short	12835
+	.short	8739
+	.short	12835
+	.short	12835
+	.short	12834
+	.short	8739
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12834
+	.short	8739
+	.short	12834
+	.short	8739
+	.short	12835
+	.short	12835
+	.short	12834
+	.short	8739
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12834
+	.short	8739
+	.short	12834
+	.short	8739
+	.short	13107
+	.short	12835
+	.short	13090
+	.short	8739
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12834
+	.short	13107
+	.short	12834
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13090
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	13090
+	.short	8738
+	.short	13090
+	.short	13090
+	.short	13090
+	.short	8738
+	.short	13090
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12835
+	.short	12835
+	.short	8739
+	.short	12835
+	.short	8739
+	.short	12835
+	.short	8739
+	.short	12834
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12834
+	.short	9011
+	.short	8738
 	.short	9010
 	.short	8994
 	.short	9010
+	.short	13090
+	.short	8994
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	13090
+	.short	8738
+	.short	13090
+	.short	13090
+	.short	13107
+	.short	8738
+	.short	13090
+	.short	8755
+	.short	8738
+	.short	8755
+	.short	9011
+	.short	8755
+	.short	9011
+	.short	8755
+	.short	9011
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	9010
+	.short	13106
+	.short	9010
+	.short	13106
+	.short	9010
+	.short	8738
+	.short	9010
+	.short	8738
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13090
+	.short	13107
+	.short	13090
+	.short	13090
+	.short	8738
+	.short	13090
+	.short	8738
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	9011
+	.short	13107
+	.short	9011
+	.short	13090
+	.short	9011
+	.short	13090
+	.short	9011
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13106
+	.short	8739
+	.short	13106
+	.short	12835
+	.short	13106
+	.short	12835
+	.short	13106
+	.short	12835
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12834
+	.short	8739
+	.short	12835
+	.short	8739
+	.short	12835
+	.short	8739
+	.short	12835
+	.short	12835
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	12834
+	.short	8739
+	.short	13106
+	.short	12835
+	.short	12834
+	.short	8739
+	.short	12835
+	.short	8739
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8738
+	.short	13090
+	.short	13090
+	.short	13107
+	.short	13090
+	.short	13107
+	.short	13090
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	8739
+	.short	12834
+	.short	8739
+	.short	12834
+	.short	12835
+	.short	12834
+	.short	12835
+	.short	12835
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13090
+	.short	8994
 	.short	8994
 	.short	9010
 	.short	8738
 	.short	9010
 	.short	8738
-	.short	9010
-	.short	8738
-	.short	9010
-	.short	8754
-	.short	9010
-	.short	9010
-	.short	8754
-	.short	13106
-	.short	8754
-	.short	12834
-	.short	8754
-	.short	12835
-	.short	8754
-	.short	8755
-	.short	8754
-	.short	8755
-	.short	8754
-	.short	12835
-	.short	8754
-	.short	12834
-	.short	8754
-	.short	13090
-	.short	9010
-	.short	8738
-	.short	9010
-	.short	8738
-	.short	9010
-	.short	13106
-	.short	9010
-	.short	8738
-	.short	9010
-	.short	8738
-	.short	13106
 	.short	9011
-	.short	9010
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
+	.short	13107
 	.short	8738
-	.short	9010
+	.short	13090
+	.short	13107
+	.short	13090
 	.short	8738
-	.short	13106
+	.short	13090
+	.short	8738
+	.short	13090
 	.short	13107
-	.short	13106
 	.short	13107
 	.short	13107
 	.short	13107
-	.short	13106
 	.short	13107
-	.short	13106
 	.short	13107
-	.short	13106
 	.short	13107
-	.short	13106
-	.short	13107
-	.short	13106
 	.short	13107
 	.ident	"GCC: (devkitARM release 53) 9.1.0"

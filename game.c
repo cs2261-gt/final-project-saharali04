@@ -604,13 +604,13 @@ void drawFoodDelivered()
 // draws score for how much food is collected
 void drawFoodCollected() 
 {
-    shadowOAM[40].attr0 = 142 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[40].attr1 = 105 | ATTR1_TINY;
-    shadowOAM[40].attr2 = ATTR2_TILEID(panda.stemsCollected + 8, 0);
+    shadowOAM[40].attr0 = 140 | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[40].attr1 = 96 | ATTR1_SMALL;
+    shadowOAM[40].attr2 = ATTR2_TILEID(panda.stemsCollected * 2, 18);
 
-    shadowOAM[41].attr0 = 142 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[41].attr1 = 210 | ATTR1_TINY;
-    shadowOAM[41].attr2 = ATTR2_TILEID(panda.leavesCollected + 8, 0);
+    shadowOAM[41].attr0 = 140 | ATTR0_4BPP | ATTR0_SQUARE;
+    shadowOAM[41].attr1 = 222 | ATTR1_SMALL;
+    shadowOAM[41].attr2 = ATTR2_TILEID(panda.leavesCollected * 2, 18);
 }
 
 // draws the baskets 
