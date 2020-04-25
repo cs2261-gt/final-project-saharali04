@@ -31,7 +31,7 @@ spriteSheetPal:
 	.short	0
 	.short	4630
 	.short	15775
-	.short	32109
+	.short	32525
 	.short	22510
 	.type	spriteSheetTiles, %object
 	.size	spriteSheetTiles, 32768
@@ -10404,9 +10404,9 @@ spriteSheetTiles:
 	.short	3822
 	.short	-4370
 	.short	3822
+	.short	-4384
 	.short	-4370
-	.short	-4370
-	.short	-4370
+	.short	-4384
 	.short	-4370
 	.short	0
 	.short	-4608
@@ -10416,9 +10416,9 @@ spriteSheetTiles:
 	.short	-4608
 	.short	0
 	.short	-4608
+	.short	-4384
 	.short	-4370
-	.short	-4370
-	.short	-4370
+	.short	-4384
 	.short	-4370
 	.short	-4384
 	.short	-4370
@@ -10853,21 +10853,21 @@ spriteSheetTiles:
 	.short	0
 	.short	3808
 	.short	3808
-	.short	3822
+	.short	238
 	.short	3808
-	.short	3822
+	.short	238
 	.short	3808
-	.short	3822
+	.short	238
 	.short	3808
-	.short	3822
+	.short	238
 	.short	3808
-	.short	3822
+	.short	238
 	.short	3808
-	.short	3822
-	.short	3808
-	.short	-4370
+	.short	238
 	.short	3808
 	.short	-4370
+	.short	3808
+	.short	-4370
 	.short	0
 	.short	3808
 	.short	0
@@ -10916,21 +10916,21 @@ spriteSheetTiles:
 	.short	3808
 	.short	0
 	.short	3808
-	.short	3822
+	.short	3808
 	.short	0
-	.short	3822
+	.short	3808
 	.short	0
-	.short	3822
+	.short	3808
 	.short	0
-	.short	3822
+	.short	3808
 	.short	0
-	.short	3822
+	.short	3808
 	.short	0
-	.short	3822
+	.short	3808
 	.short	0
+	.short	-4384
 	.short	-4370
-	.short	-4370
-	.short	-4370
+	.short	-4384
 	.short	-4370
 	.short	3808
 	.short	-4608

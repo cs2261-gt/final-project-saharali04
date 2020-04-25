@@ -604,13 +604,29 @@ void drawFoodDelivered()
 // draws score for how much food is collected
 void drawFoodCollected() 
 {
-    shadowOAM[40].attr0 = 140 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[40].attr1 = 96 | ATTR1_SMALL;
-    shadowOAM[40].attr2 = ATTR2_TILEID(panda.stemsCollected * 2, 18);
+    if (panda.stemsCollected < 16) {
+        shadowOAM[40].attr0 = 140 | ATTR0_4BPP | ATTR0_SQUARE;
+        shadowOAM[40].attr1 = 96 | ATTR1_SMALL;
+        shadowOAM[40].attr2 = ATTR2_TILEID(panda.stemsCollected * 2, 18);
+    } 
+    if (panda.stemsCollected >= 16) {
+        shadowOAM[40].attr0 = 140 | ATTR0_4BPP | ATTR0_SQUARE;
+        shadowOAM[40].attr1 = 96 | ATTR1_SMALL;
+        shadowOAM[40].attr2 = ATTR2_TILEID((panda.stemsCollected - 16) * 2, 20);
+    }
 
-    shadowOAM[41].attr0 = 140 | ATTR0_4BPP | ATTR0_SQUARE;
-    shadowOAM[41].attr1 = 222 | ATTR1_SMALL;
-    shadowOAM[41].attr2 = ATTR2_TILEID(panda.leavesCollected * 2, 18);
+    if (panda.leavesCollected < 16) {
+        shadowOAM[41].attr0 = 140 | ATTR0_4BPP | ATTR0_SQUARE;
+        shadowOAM[41].attr1 = 222 | ATTR1_SMALL;
+        shadowOAM[41].attr2 = ATTR2_TILEID(panda.leavesCollected * 2, 18);
+    }
+
+    if (panda.leavesCollected >= 16) {
+        shadowOAM[41].attr0 = 140 | ATTR0_4BPP | ATTR0_SQUARE;
+        shadowOAM[41].attr1 = 222 | ATTR1_SMALL;
+        shadowOAM[41].attr2 = ATTR2_TILEID((panda.leavesCollected - 16) * 2, 20);
+    }
+    
 }
 
 // draws the baskets 
